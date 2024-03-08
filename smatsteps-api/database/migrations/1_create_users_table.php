@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('user_pseudo', 50)->unique();
 
             $table->string('user_email',)->unique();
-            $table->boolean('is_admin')->default(false);
+            $table->boolean('is_admin');
             $table->string('password');
             $table->string('user_image', 50)->nullable();
             $table->string('slug')->unique();
