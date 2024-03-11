@@ -2,39 +2,35 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Faker\Factory as Faker;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
- */
 class UserFactory extends Factory
 {
-    /**
-     * The current password being used by the factory.
-     */
+    protected $model = User::class;
     protected static ?string $password;
 
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
+        $faker = Faker::create();
+
+        // Liste des noms de fichiers d'images possibles
+        $imageOptions = ['ajkbar.jpg', 'ashoka.jpg', 'mara.jpg', 'r2d2.jpg', 'obi.jpg'];
+
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
+            'user_pseudo' => $faker->userName,
+            'password' => static::$password ??= Hash::make('Azerty@123'),
+            'user_email' => $faker->unique()->safeEmail,
+            'user_image' => $faker->randomElement($imageOptions), // Choix aléatoire parmi les images disponibles
+            'is_admin' => false,
+            'slug' => Str::slug($faker->userName),
             'remember_token' => Str::random(10),
         ];
     }
 
-    /**
-     * Indicate that the model's email address should be unverified.
-     */
     public function unverified(): static
     {
         return $this->state(fn (array $attributes) => [

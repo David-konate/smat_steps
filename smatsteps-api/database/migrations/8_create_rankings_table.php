@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('rankings', function (Blueprint $table) {
 
-            $table->decimal('result_quizz', 5, 2);
-            $table->decimal('time_quizz', 20, 2);
+            $table->decimal('result_quiz', 5, 2);
+            $table->decimal('time_quiz', 20, 2);
             $table->unsignedBigInteger('level');
             $table->timestamps();
             $table->foreignId('user_id')->constrained('users');

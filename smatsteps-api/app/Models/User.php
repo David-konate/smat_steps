@@ -54,4 +54,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function smats()
+    {
+        return $this->belongsToMany(Smat::class, 'smat_user', 'user_id', 'smat_id');
+    }
 }

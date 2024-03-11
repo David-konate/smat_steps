@@ -14,7 +14,11 @@ return new class extends Migration
         Schema::create('sous_themes', function (Blueprint $table) {
             $table->id();
             $table->string('sous_theme', 50);
+            $table->unsignedBigInteger('theme_id'); // Ajoutez la colonne theme_id
             $table->timestamps();
+
+            // Ajoutez la contrainte de clé étrangère
+            $table->foreign('theme_id')->references('id')->on('themes')->onDelete('cascade');
         });
     }
 

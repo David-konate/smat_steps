@@ -14,10 +14,12 @@ return new class extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->text('question');
+            $table->text('image_question')->nullable();
+
 
             $table->timestamps();
 
-            $table->foreignId('theme_id')->constrained('themes');
+            $table->foreignId('sous_theme_id')->constrained('sous_themes');
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('level_id')->constrained('levels');
             $table->foreignId('category_id')->constrained('categories');

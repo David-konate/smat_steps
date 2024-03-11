@@ -13,6 +13,25 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+
+    public function addFriend(User $friend, User $user)
+    {
+        // Vérifiez si l'ami n'est pas déjà ajouté
+        if (!$user->isFriendWith($friend)) {
+            // Ajoutez l'ami à la liste des amis de l'utilisateur actuel
+            $user->friends()->attach($friend->id);
+
+            // Ajoutez également l'utilisateur actuel à la liste d'amis de l'ami
+            $friend->friends()->attach($user->id);
+        }
+    }
+
+
+    public function isFriendWith(User $user)
+    {
+        // Vérifiez si l'utilisateur est déjà ami avec l'utilisateur donné
+        return $this->friends()->where('friend_id', $user->id)->exists();
+    }
     /**
      * Display a listing of the resource.
      */
