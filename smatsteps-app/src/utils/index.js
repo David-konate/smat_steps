@@ -1,6 +1,7 @@
 // index.js
 
 export const IMAGE_PATH = process.env.REACT_APP_BASE_URL + "/storage/uploads/";
+export const IMAGE_API = process.env.REACT_APP_BASE_URL + "/storage/images/";
 
 export const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -79,6 +80,9 @@ export const convertToRoman = (num) => {
 
 export const displayImage = (image) =>
   image ? IMAGE_PATH + "/" + image : IMAGE_PATH + "/notImage.png";
+
+export const displayImageApi = (image) =>
+  image ? IMAGE_API + "/" + image : IMAGE_PATH + "/notImage.png";
 
 export const cleanHtmlText = (htmlString) => {
   const cleanText = htmlString

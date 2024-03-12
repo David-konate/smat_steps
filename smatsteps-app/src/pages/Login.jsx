@@ -19,21 +19,21 @@ const Login = () => {
       }}
     >
       <Box>
-        <WhiteButton
+        <Button
           onClick={() => setTabSelected("loginForm")}
           isActive={tabSelected === "loginForm"}
-          style={{ margin: "0 8px 2px 0" }}
+          style={{ margin: "0 8px 2px 0", color: "var(--text-color)" }}
         >
           Connexion
-        </WhiteButton>
+        </Button>
 
-        <WhiteButton
+        <Button
           onClick={() => setTabSelected("registerForm")}
           isActive={tabSelected === "registerForm"}
-          style={{ margin: "0 0 2px 0" }}
+          style={{ margin: "0 0 2px 0", color: "var(--text-color)" }}
         >
           Inscription
-        </WhiteButton>
+        </Button>
       </Box>
 
       <Box>

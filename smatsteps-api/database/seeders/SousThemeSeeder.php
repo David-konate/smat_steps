@@ -26,5 +26,21 @@ class SousThemeSeeder extends Seeder
             'sous_theme' => 'Basket',
             'theme_id' => 3
         ]);
+        SousTheme::create([
+            'sous_theme' => 'France',
+            'theme_id' => 4
+        ]);
+        SousTheme::create([
+            'sous_theme' => 'Rap US',
+            'theme_id' => 5
+        ]);
+        SousTheme::create([
+            'sous_theme' => 'Europe',
+            'theme_id' => 6
+        ]);
+        SousTheme::create([
+            'sous_theme' => 'Zelda',
+            'theme_id' => 7
+        ]);
     }
 }

@@ -1,0 +1,1201 @@
+{
+    "info": {
+        "_postman_id": "65ef1e6f020bb",
+        "name": "testPostman2",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "api",
+            "item": [
+                {
+                    "name": "categories [Post] [App\\Http\\Controllers\\Api\\CategoryController] store",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": []
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/categories",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api/categories"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "levels [Get] [App\\Http\\Controllers\\Api\\LevelController] index",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "body": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/levels",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api/levels"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "levels [Post] [App\\Http\\Controllers\\Api\\LevelController] store",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": []
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/levels",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api/levels"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "questions [Get] [App\\Http\\Controllers\\Api\\QuestionController] index",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "body": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/questions",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api/questions"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "questions-random [Get] [App\\Http\\Controllers\\Api\\QuestionController] random",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "body": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/questions-random",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api/questions-random"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "questions [Post] [App\\Http\\Controllers\\Api\\QuestionController] store",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": []
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/questions",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api/questions"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "rankings [Get] [App\\Http\\Controllers\\Api\\RankingController] index",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "body": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/rankings",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api/rankings"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "sous-themes [Get] [App\\Http\\Controllers\\Api\\SousThemeController] index",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "body": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/sous-themes",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api/sous-themes"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "sous-themes [Post] [App\\Http\\Controllers\\Api\\SousThemeController] store",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": []
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/sous-themes",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api/sous-themes"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "themes [Get] [App\\Http\\Controllers\\Api\\ThemeController] index",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "body": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/themes",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api/themes"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "themes [Post] [App\\Http\\Controllers\\Api\\ThemeController] store",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": []
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/themes",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api/themes"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "users [Get] [App\\Http\\Controllers\\Api\\UserController] index",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "body": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/users",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api/users"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "security",
+                    "item": [
+                        {
+                            "name": "register [Post] [App\\Http\\Controllers\\Api\\SecurityController] register",
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "POST",
+                                "header": [],
+                                "body": {
+                                    "mode": "formdata",
+                                    "formdata": []
+                                },
+                                "url": {
+                                    "raw": "{{base_url}}/api/security/register",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "api/security/register"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "login [Post] [App\\Http\\Controllers\\Api\\SecurityController] login",
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "POST",
+                                "header": [],
+                                "body": {
+                                    "mode": "formdata",
+                                    "formdata": []
+                                },
+                                "url": {
+                                    "raw": "{{base_url}}/api/security/login",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "api/security/login"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "logout [Post] [App\\Http\\Controllers\\Api\\SecurityController] logout",
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "POST",
+                                "header": [],
+                                "body": {
+                                    "mode": "formdata",
+                                    "formdata": []
+                                },
+                                "url": {
+                                    "raw": "{{base_url}}/api/security/logout",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "api/security/logout"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        }
+                    ]
+                },
+                {
+                    "name": "categories",
+                    "item": [
+                        {
+                            "name": "index [Get] [App\\Http\\Controllers\\Api\\CategoryController] index",
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [],
+                                "body": [],
+                                "url": {
+                                    "raw": "{{base_url}}/api/categories/index",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "api/categories/index"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "{category} [Get] [App\\Http\\Controllers\\Api\\CategoryController] show",
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [],
+                                "body": [],
+                                "url": {
+                                    "raw": "{{base_url}}/api/categories/{category}",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "api/categories/{category}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "{category} [Put] [App\\Http\\Controllers\\Api\\CategoryController] update",
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "PUT",
+                                "header": [],
+                                "body": {
+                                    "mode": "formdata",
+                                    "formdata": [
+                                        {
+                                            "key": "_method",
+                                            "value": "PUT",
+                                            "type": "default"
+                                        }
+                                    ]
+                                },
+                                "url": {
+                                    "raw": "{{base_url}}/api/categories/{category}",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "api/categories/{category}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "{category} [Delete] [App\\Http\\Controllers\\Api\\CategoryController] destroy",
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "header": [],
+                                "body": [],
+                                "url": {
+                                    "raw": "{{base_url}}/api/categories/{category}",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "api/categories/{category}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        }
+                    ]
+                },
+                {
+                    "name": "levels",
+                    "item": [
+                        {
+                            "name": "{level} [Get] [App\\Http\\Controllers\\Api\\LevelController] show",
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [],
+                                "body": [],
+                                "url": {
+                                    "raw": "{{base_url}}/api/levels/{level}",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "api/levels/{level}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "{level} [Delete] [App\\Http\\Controllers\\Api\\LevelController] destroy",
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "header": [],
+                                "body": [],
+                                "url": {
+                                    "raw": "{{base_url}}/api/levels/{level}",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "api/levels/{level}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        }
+                    ]
+                },
+                {
+                    "name": "new-game",
+                    "item": [
+                        {
+                            "name": "{currentLevel} [Get] [App\\Http\\Controllers\\Api\\QuestionController] newGame",
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [],
+                                "body": [],
+                                "url": {
+                                    "raw": "{{base_url}}/api/new-game/{currentLevel}",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "api/new-game/{currentLevel}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        }
+                    ]
+                },
+                {
+                    "name": "questions",
+                    "item": [
+                        {
+                            "name": "{question} [Get] [App\\Http\\Controllers\\Api\\QuestionController] show",
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [],
+                                "body": [],
+                                "url": {
+                                    "raw": "{{base_url}}/api/questions/{question}",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "api/questions/{question}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "{question} [Post] [App\\Http\\Controllers\\Api\\QuestionController] update",
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "POST",
+                                "header": [],
+                                "body": {
+                                    "mode": "formdata",
+                                    "formdata": []
+                                },
+                                "url": {
+                                    "raw": "{{base_url}}/api/questions/{question}",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "api/questions/{question}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        }
+                    ]
+                },
+                {
+                    "name": "rankings",
+                    "item": [
+                        {
+                            "name": "save-stats [Post] [App\\Http\\Controllers\\Api\\RankingController] saveStats",
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "POST",
+                                "header": [],
+                                "body": {
+                                    "mode": "formdata",
+                                    "formdata": []
+                                },
+                                "url": {
+                                    "raw": "{{base_url}}/api/rankings/save-stats",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "api/rankings/save-stats"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "welcome",
+                            "item": [
+                                {
+                                    "name": "{currentLevel} [Get] [App\\Http\\Controllers\\Api\\RankingController] welcome",
+                                    "request": {
+                                        "auth": {
+                                            "type": "bearer",
+                                            "bearer": [
+                                                {
+                                                    "key": "token",
+                                                    "value": "{{token}}",
+                                                    "type": "string"
+                                                }
+                                            ]
+                                        },
+                                        "method": "GET",
+                                        "header": [],
+                                        "body": [],
+                                        "url": {
+                                            "raw": "{{base_url}}/api/rankings/welcome/{currentLevel}",
+                                            "host": [
+                                                "{{base_url}}"
+                                            ],
+                                            "path": [
+                                                "api/rankings/welcome/{currentLevel}"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "sous-themes",
+                    "item": [
+                        {
+                            "name": "{id} [Get] [App\\Http\\Controllers\\Api\\SousThemeController] show",
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [],
+                                "body": [],
+                                "url": {
+                                    "raw": "{{base_url}}/api/sous-themes/{id}",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "api/sous-themes/{id}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "{id} [Put] [App\\Http\\Controllers\\Api\\SousThemeController] update",
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "PUT",
+                                "header": [],
+                                "body": {
+                                    "mode": "formdata",
+                                    "formdata": [
+                                        {
+                                            "key": "_method",
+                                            "value": "PUT",
+                                            "type": "default"
+                                        }
+                                    ]
+                                },
+                                "url": {
+                                    "raw": "{{base_url}}/api/sous-themes/{id}",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "api/sous-themes/{id}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "{id} [Delete] [App\\Http\\Controllers\\Api\\SousThemeController] destroy",
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "header": [],
+                                "body": [],
+                                "url": {
+                                    "raw": "{{base_url}}/api/sous-themes/{id}",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "api/sous-themes/{id}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        }
+                    ]
+                },
+                {
+                    "name": "themes",
+                    "item": [
+                        {
+                            "name": "{id} [Get] [App\\Http\\Controllers\\Api\\ThemeController] show",
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [],
+                                "body": [],
+                                "url": {
+                                    "raw": "{{base_url}}/api/themes/{id}",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "api/themes/{id}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "{id} [Put] [App\\Http\\Controllers\\Api\\ThemeController] update",
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "PUT",
+                                "header": [],
+                                "body": {
+                                    "mode": "formdata",
+                                    "formdata": [
+                                        {
+                                            "key": "_method",
+                                            "value": "PUT",
+                                            "type": "default"
+                                        }
+                                    ]
+                                },
+                                "url": {
+                                    "raw": "{{base_url}}/api/themes/{id}",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "api/themes/{id}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "{id} [Delete] [App\\Http\\Controllers\\Api\\ThemeController] destroy",
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "header": [],
+                                "body": [],
+                                "url": {
+                                    "raw": "{{base_url}}/api/themes/{id}",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "api/themes/{id}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        }
+                    ]
+                },
+                {
+                    "name": "users",
+                    "item": [
+                        {
+                            "name": "{user} [Get] [App\\Http\\Controllers\\Api\\UserController] show",
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [],
+                                "body": [],
+                                "url": {
+                                    "raw": "{{base_url}}/api/users/{user}",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "api/users/{user}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "{user} [Put] [App\\Http\\Controllers\\Api\\UserController] update",
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "PUT",
+                                "header": [],
+                                "body": {
+                                    "mode": "formdata",
+                                    "formdata": [
+                                        {
+                                            "key": "_method",
+                                            "value": "PUT",
+                                            "type": "default"
+                                        }
+                                    ]
+                                },
+                                "url": {
+                                    "raw": "{{base_url}}/api/users/{user}",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "api/users/{user}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "{user} [Delete] [App\\Http\\Controllers\\Api\\UserController] destroy",
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "header": [],
+                                "body": [],
+                                "url": {
+                                    "raw": "{{base_url}}/api/users/{user}",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "api/users/{user}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "{friend}",
+                            "item": [
+                                {
+                                    "name": "add-friend",
+                                    "item": [
+                                        {
+                                            "name": "{user} [Post] [App\\Http\\Controllers\\Api\\UserController] addFriend",
+                                            "request": {
+                                                "auth": {
+                                                    "type": "bearer",
+                                                    "bearer": [
+                                                        {
+                                                            "key": "token",
+                                                            "value": "{{token}}",
+                                                            "type": "string"
+                                                        }
+                                                    ]
+                                                },
+                                                "method": "POST",
+                                                "header": [],
+                                                "body": {
+                                                    "mode": "formdata",
+                                                    "formdata": []
+                                                },
+                                                "url": {
+                                                    "raw": "{{base_url}}/api/users/{friend}/add-friend/{user}",
+                                                    "host": [
+                                                        "{{base_url}}"
+                                                    ],
+                                                    "path": [
+                                                        "api/users/{friend}/add-friend/{user}"
+                                                    ]
+                                                }
+                                            },
+                                            "response": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "{user}",
+                            "item": [
+                                {
+                                    "name": "is-friend-with",
+                                    "item": [
+                                        {
+                                            "name": "{friend} [Get] [App\\Http\\Controllers\\Api\\UserController] isFriendWith",
+                                            "request": {
+                                                "auth": {
+                                                    "type": "bearer",
+                                                    "bearer": [
+                                                        {
+                                                            "key": "token",
+                                                            "value": "{{token}}",
+                                                            "type": "string"
+                                                        }
+                                                    ]
+                                                },
+                                                "method": "GET",
+                                                "header": [],
+                                                "body": [],
+                                                "url": {
+                                                    "raw": "{{base_url}}/api/users/{user}/is-friend-with/{friend}",
+                                                    "host": [
+                                                        "{{base_url}}"
+                                                    ],
+                                                    "path": [
+                                                        "api/users/{user}/is-friend-with/{friend}"
+                                                    ]
+                                                }
+                                            },
+                                            "response": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost:8000",
+            "type": "default"
+        },
+        {
+            "key": "token",
+            "value": "your_token",
+            "type": "default"
+        }
+    ]
+}

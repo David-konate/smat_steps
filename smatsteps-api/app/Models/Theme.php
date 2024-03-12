@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Theme extends Model
 {
-    use HasFactory;
+    protected $fillable = ['theme', 'theme_image'];
 
-    protected $fillable = ['theme'];
-
-    // Si vous ne souhaitez pas utiliser les timestamps 'created_at' et 'updated_at'
-    // public $timestamps = false;
+    public function sousThemes()
+    {
+        return $this->hasMany(SousTheme::class); // Relation avec SousTheme
+    }
 }

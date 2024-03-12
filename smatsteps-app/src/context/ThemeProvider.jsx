@@ -7,7 +7,8 @@ const CustomThemeProvider = ({ children }) => {
   const { theme } = useTheme();
 
   const themeConfig = createTheme({
-    typography: {
+    typographies: {
+      // Correction ici : utilisez 'typographies' au lieu de 'typography'
       fontFamily: "Baloo, sans-serif",
     },
     components: {

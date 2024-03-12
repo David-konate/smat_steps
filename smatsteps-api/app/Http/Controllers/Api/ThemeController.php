@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\Level;
 use App\Models\Theme;
+use App\Models\Ranking;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 

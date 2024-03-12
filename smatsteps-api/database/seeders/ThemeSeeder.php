@@ -18,6 +18,10 @@ class ThemeSeeder extends Seeder
             ['theme' => 'Cinema'],
             ['theme' => 'Serie'],
             ['theme' => 'Sport'],
+            ['theme' => 'Histoire'],
+            ['theme' => 'Musique'],
+            ['theme' => 'Géographie'],
+            ['theme' => 'Jeux vidéo'],
         ]);
     }
 }

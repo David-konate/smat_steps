@@ -3,11 +3,15 @@ import Button from "@mui/material/Button";
 const WhiteButton = ({ children, onClick, isActive = false }) => {
   return (
     <Button
+      className="white-btn"
       onClick={onClick}
       sx={{
+        borderRadius: 20,
+        padding: 1,
         backgroundColor: "white",
-        color: isActive ? "var(--primary-color)" : "var(--black-color)",
+        color: "var(--primary-color)",
         width: "fit-content",
+        fontSize: "0.7em",
         "&:hover": {
           color: "white",
           background: "var(--light-dark-color)",

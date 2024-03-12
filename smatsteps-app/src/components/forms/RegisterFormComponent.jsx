@@ -17,6 +17,7 @@ import { getViolationField } from "../../utils";
 import { useUserContext } from "../../context/UserProvider";
 import LoadingButton from "@mui/lab/LoadingButton";
 import MessageDialog from "../message/MessageDialog";
+import { Box } from "@mui/system";
 
 const RegisterFormComponent = () => {
   const {
@@ -68,78 +69,86 @@ const RegisterFormComponent = () => {
 
   return (
     <Container component="main" maxWidth="xs">
-      hemm
-      <Stack justifyContent="center" alignItems="center">
-        <Stack spacing={5} mt={5} width={700} maxWidth="100%">
-          {/* <TitleSectionText
+      <Box p={5}>
+        <Typography component="h1" variant="h5">
+          Inscription
+        </Typography>
+        <Stack justifyContent="center" alignItems="center">
+          <Stack spacing={5} mt={5} width={700} maxWidth="100%">
+            {/* <TitleSectionText
             variant="h5"
             alignSelf="center"
             startText="Je crée"
             endText="mon compte"
           /> */}
-          <Stack component="form" onSubmit={handleSubmit(onSubmit)} spacing={3}>
-            <TextField
-              {...register("user_pseudo")}
-              {...errorField(errors?.user_pseudo)}
-              label="Pseudo"
-              fullWidth
-              placeholder="Votre pseudo"
-              required
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment className="string_count" position="end">
-                    {watch("user_pseudo")?.length || 0}/{20}
-                  </InputAdornment>
-                ),
-                inputProps: {
-                  maxLength: 20,
-                },
-              }}
-            />
-            <TextField
-              {...register("user_email")}
-              {...errorField(errors?.user_email)}
-              fullWidth
-              label="Adresse email"
-              required
-              placeholder="email@email.fr"
-              type="email"
-            />
-            <TextField
-              {...register("password")}
-              {...errorField(errors?.password)}
-              fullWidth
-              label="Mot de passe"
-              required
-              placeholder="6+ caractères requis"
-              type="password"
-            />
-            <TextField
-              {...register("confirmPassword")}
-              {...errorField(errors?.confirmPassword)}
-              fullWidth
-              label="Confirmez votre mot de passe"
-              required
-              placeholder="6+ caractères requis"
-              type="password"
-            />
-            <LoadingButton
-              variant="contained"
-              loading={isSubmitting}
-              type="submit"
+            <Stack
+              component="form"
+              onSubmit={handleSubmit(onSubmit)}
+              spacing={3}
             >
-              Je m'inscris
-            </LoadingButton>
-            <MessageDialog
-              open={openDialog}
-              onClose={handleDialogClose}
-              title={dialogTitle}
-              message={dialogMessage}
-              redirection={-1}
-            />
+              <TextField
+                {...register("user_pseudo")}
+                {...errorField(errors?.user_pseudo)}
+                label="Pseudo"
+                fullWidth
+                placeholder="Votre pseudo"
+                required
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment className="string_count" position="end">
+                      {watch("user_pseudo")?.length || 0}/{20}
+                    </InputAdornment>
+                  ),
+                  inputProps: {
+                    maxLength: 20,
+                  },
+                }}
+              />
+              <TextField
+                {...register("user_email")}
+                {...errorField(errors?.user_email)}
+                fullWidth
+                label="Adresse email"
+                required
+                placeholder="email@email.fr"
+                type="email"
+              />
+              <TextField
+                {...register("password")}
+                {...errorField(errors?.password)}
+                fullWidth
+                label="Mot de passe"
+                required
+                placeholder="6+ caractères requis"
+                type="password"
+              />
+              <TextField
+                {...register("confirmPassword")}
+                {...errorField(errors?.confirmPassword)}
+                fullWidth
+                label="Confirmez votre mot de passe"
+                required
+                placeholder="6+ caractères requis"
+                type="password"
+              />
+              <LoadingButton
+                variant="contained"
+                loading={isSubmitting}
+                type="submit"
+              >
+                Je m'inscris
+              </LoadingButton>
+              <MessageDialog
+                open={openDialog}
+                onClose={handleDialogClose}
+                title={dialogTitle}
+                message={dialogMessage}
+                redirection={-1}
+              />
+            </Stack>
           </Stack>
         </Stack>
-      </Stack>
+      </Box>
     </Container>
   );
 };

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class SousTheme extends Model
 {
     use HasFactory;
-    protected $fillable = ['sous_theme', 'theme_id'];  // Renommez l'attribut ici
+    protected $fillable = ['sous_theme', 'theme_id', 'sous_theme_image'];  // Renommez l'attribut ici
 
     public function theme()
     {

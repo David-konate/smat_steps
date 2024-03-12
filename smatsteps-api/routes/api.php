@@ -32,18 +32,18 @@ Route::prefix('/security')->group(function () {
 //Route Categories
 Route::prefix('categories')->group(function () {
     Route::get('/', [CategoryController::class, 'index']);
-    Route::get('{category}', [CategoryController::class, 'show']);
+    Route::get('/{category}', [CategoryController::class, 'show']);
     Route::post('/', [CategoryController::class, 'store']);
-    Route::put('{category}', [CategoryController::class, 'update']);
-    Route::delete('{category}', [CategoryController::class, 'destroy']);
+    Route::put('/{category}', [CategoryController::class, 'update']);
+    Route::delete('/{category}', [CategoryController::class, 'destroy']);
 });
 
 //Level
 Route::prefix('levels')->group(function () {
     Route::get('/', [LevelController::class, 'index']);
-    Route::get('{level}', [LevelController::class, 'show']);
+    Route::get('/{level}', [LevelController::class, 'show']);
     Route::post('/', [LevelController::class, 'store']);
-    Route::delete('{level}', [LevelController::class, 'destroy']);
+    Route::delete('/{level}', [LevelController::class, 'destroy']);
 });
 
 //Route questions
@@ -59,6 +59,7 @@ Route::controller(QuestionController::class)->group(function () {
 // Routes Ranking
 Route::prefix('rankings')->group(function () {
     Route::get('/', [RankingController::class, 'index']);
+    Route::get('/top-collection', [RankingController::class, 'topCollection']);
     Route::get('welcome/{currentLevel}', [RankingController::class, 'welcome']);
     Route::post('save-stats', [RankingController::class, 'saveStats']);
 });
@@ -85,7 +86,6 @@ Route::prefix('themes')->group(function () {
 Route::prefix('users')->group(function () {
     Route::get('/', [UserController::class, 'index']);
     Route::get('{user}', [UserController::class, 'show']);
-    Route::post('/', [UserController::class, 'store']);
     Route::put('{user}', [UserController::class, 'update']);
     Route::post('{friend}/add-friend/{user}', [UserController::class, 'addFriend']);
     Route::get('{user}/is-friend-with/{friend}', [UserController::class, 'isFriendWith']);

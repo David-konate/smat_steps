@@ -6,6 +6,7 @@ use Carbon\Carbon;
 
 
 use App\Models\Ranking;
+use App\Models\SousTheme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -73,6 +74,57 @@ class RankingController extends Controller
             ], 403);
         }
     }
+
+    public function topCollection()
+    {
+        // Récupérer le nombre de sous-thèmes existants et leur nom
+        $sousThemesData = SousTheme::select('id', 'sous_theme')->get();
+
+        // Compter le nombre total de sous-thèmes
+        $countSousThemes = $sousThemesData->count();
+
+        // Récupérer les données des sous-thèmes
+        $sousThemes = $sousThemesData->toArray();
+
+        // Récupérez tous les classements avec leurs sous-thèmes associés
+        $rankings = Ranking::with('sousTheme.theme')->get();
+
+        // Utilisez la méthode 'pluck' pour extraire uniquement les sous-thèmes de chaque objet Ranking
+        $sousThemesRanking = $rankings->pluck('sousTheme.theme');
+
+        // Comptez le nombre d'occurrences de chaque ID de thème
+        $counts = $sousThemesRanking->groupBy('id')
+            ->map
+            ->count();
+
+        // Récupérez les images de thème et les noms de thème
+        $themeData = $sousThemesRanking->map(function ($theme) {
+            return [
+                'id' => $theme->id,
+                'theme_image' => $theme->theme_image,
+                'theme' => $theme->theme, // Ajout du nom du thème
+            ];
+        });
+
+        // Formattez les résultats dans un tableau associatif avec l'ID du thème, le nombre d'occurrences, l'image du thème et le nom du thème
+        $result = [];
+        foreach ($counts as $themeId => $count) {
+            $result[] = [
+                'theme_id' => $themeId,
+                'count_them' => $count,
+                'theme_image' => $themeData->where('id', $themeId)->first()['theme_image'],
+                'theme' => $themeData->where('id', $themeId)->first()['theme'], // Récupération du nom du thème
+            ];
+        }
+
+        // Retournez le tableau associatif contenant les résultats des classements, les données des sous-thèmes et le nombre total de sous-thèmes
+        return [
+            'themes' => $result,
+            'sousThemes' => $sousThemes,
+
+        ];
+    }
+
 
 
 
