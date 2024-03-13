@@ -127,7 +127,8 @@ class UserController extends Controller
         try {
             $validator = Validator::make($request->all(), [
 
-                'user_role' => 'required|min:1|string',
+                'is_admin' => 'required|min:1|',
+                'to_subscribe' => 'required|min:1|',
                 'user_pseudo' => 'required|min:1|string|unique:users,user_pseudo,' . $id,
                 'user_email' => 'required|min:1|string|unique:users,user_email,' . $id,
                 'password' => 'required|string|min:8',
@@ -165,6 +166,8 @@ class UserController extends Controller
                 'user_pseudo' => $request->user_pseudo,
                 'user_email' => $request->user_email,
                 'user_email' => $request->user_role,
+                'to_subscribe' => $request->user_role,
+
                 'password' => Hash::make($request->password),
 
             ]);

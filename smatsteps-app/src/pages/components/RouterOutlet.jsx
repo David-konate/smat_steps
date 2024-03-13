@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "../Home";
 import Login from "../Login";
 import Profil from "../users/Profil";
+import Theme from "../themes/Theme";
 
 const RouterOutlet = () => {
   return (
@@ -11,6 +12,7 @@ const RouterOutlet = () => {
       <Route path={`/login`} element={<Login />} />
 
       <Route path="/profil" element={<Profil />} />
+      <Route path="/theme/:id" element={<Theme />} />
     </Routes>
   );
 };

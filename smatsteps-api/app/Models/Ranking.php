@@ -24,4 +24,8 @@ class Ranking extends Model
     {
         return $this->belongsTo(SousTheme::class);
     }
+    public function Theme()
+    {
+        return $this->belongsTo(Theme::class);
+    }
 }

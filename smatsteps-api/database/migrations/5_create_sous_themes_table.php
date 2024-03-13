@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('sous_theme', 50);
             $table->unsignedBigInteger('theme_id'); // Ajoutez la colonne theme_id
             $table->timestamps();
-            $table->string('theme_image', 50)->nullable();
+            $table->string('sous_theme_image', 50)->nullable();
             // Ajoutez la contrainte de clé étrangère
             $table->foreign('theme_id')->references('id')->on('themes')->onDelete('cascade');
         });

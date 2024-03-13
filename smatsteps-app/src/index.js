@@ -12,6 +12,7 @@ import App from "./App";
 import "./App.scss";
 import { UserProvider } from "./context/UserProvider";
 import { FilterProvider } from "./context/FilterProvider";
+import { GameProvider } from "./context/GameProvider";
 
 moment.locale("fr");
 
@@ -30,7 +31,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <CustomThemeProvider>
         <FilterProvider>
           <UserProvider>
-            <App />
+            <GameProvider>
+              <App />
+            </GameProvider>
           </UserProvider>
         </FilterProvider>
       </CustomThemeProvider>

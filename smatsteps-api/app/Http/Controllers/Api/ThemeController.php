@@ -51,11 +51,28 @@ class ThemeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id, Request $request)
     {
+        $currentLevel = $request->query('currentLevel');
+
+        // Récupérer les trois meilleurs résultats de la table Rankings avec les utilisateurs associés
+        $topRankings = Ranking::with('user')
+            ->where('theme_id', $id)
+            ->where('level', $currentLevel)
+            ->orderBy('result_quiz', 'desc')
+            ->limit(3)
+            ->get();
+
+        // Récupérer le thème correspondant
         $theme = Theme::findOrFail($id);
-        return response()->json($theme);
+
+        // Retourner les données
+        return response()->json([
+            'theme' => $theme,
+            'topRankings' => $topRankings
+        ]);
     }
+
     /**
      * Update the specified resource in storage.
      */

@@ -10,6 +10,7 @@ use App\Models\SousTheme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Theme;
 
 class RankingController extends Controller
 {
@@ -75,55 +76,96 @@ class RankingController extends Controller
         }
     }
 
+    public function collectionTheme()
+    {
+        // // Récupérer le nombre de sous-thèmes existants et leur nom
+        // $sousThemesData = SousTheme::select('id', 'sous_theme')->get();
+
+        // // Compter le nombre total de sous-thèmes
+        // $countSousThemes = $sousThemesData->count();
+
+        // // Récupérer les données des sous-thèmes
+        // $sousThemes = $sousThemesData->toArray();
+
+        // // Récupérez tous les classements avec leurs sous-thèmes associés
+        // $rankings = Ranking::with('sousTheme.theme')->get();
+
+        // // Utilisez la méthode 'pluck' pour extraire uniquement les sous-thèmes de chaque objet Ranking
+        // $sousThemesRanking = $rankings->pluck('sousTheme.theme');
+
+        // // Comptez le nombre d'occurrences de chaque ID de thème
+        // $counts = $sousThemesRanking->groupBy('id')
+        //     ->map
+        //     ->count();
+
+        // // Récupérez les images de thème et les noms de thème
+        // $themeData = $sousThemesRanking->map(function ($theme) {
+        //     return [
+        //         'id' => $theme->id,
+        //         'theme_image' => $theme->theme_image,
+        //         'theme' => $theme->theme, // Ajout du nom du thème
+        //     ];
+        // });
+
+        // // Formattez les résultats dans un tableau associatif avec l'ID du thème, le nombre d'occurrences, l'image du thème et le nom du thème
+        // $result = [];
+        // foreach ($counts as $themeId => $count) {
+        //     $result[] = [
+        //         'theme_id' => $themeId,
+        //         'count_them' => $count,
+        //         'theme_image' => $themeData->where('id', $themeId)->first()['theme_image'],
+        //         'theme' => $themeData->where('id', $themeId)->first()['theme'], // Récupération du nom du thème
+        //     ];
+        // }
+
+        // // Retournez le tableau associatif contenant les résultats des classements, les données des sous-thèmes et le nombre total de sous-thèmes
+        // return [
+        //     'themes' => $result,
+        //     'sousThemes' => $sousThemes,
+
+        // ];
+    }
     public function topCollection()
     {
-        // Récupérer le nombre de sous-thèmes existants et leur nom
-        $sousThemesData = SousTheme::select('id', 'sous_theme')->get();
+        // Récupérer les données des sous-thèmes avec leur thème associé
+        $sousThemes = SousTheme::with('theme')->select('id', 'sous_theme', 'sous_theme_image')->get();
 
-        // Compter le nombre total de sous-thèmes
-        $countSousThemes = $sousThemesData->count();
-
-        // Récupérer les données des sous-thèmes
-        $sousThemes = $sousThemesData->toArray();
-
-        // Récupérez tous les classements avec leurs sous-thèmes associés
-        $rankings = Ranking::with('sousTheme.theme')->get();
-
-        // Utilisez la méthode 'pluck' pour extraire uniquement les sous-thèmes de chaque objet Ranking
-        $sousThemesRanking = $rankings->pluck('sousTheme.theme');
+        // Récupérer les données de classement avec les thèmes et les sous-thèmes associés
+        $rankings = Ranking::with(['theme', 'sousTheme'])->get();
 
         // Comptez le nombre d'occurrences de chaque ID de thème
-        $counts = $sousThemesRanking->groupBy('id')
-            ->map
-            ->count();
+        $counts = $rankings->groupBy('theme_id')->map->count();
 
-        // Récupérez les images de thème et les noms de thème
-        $themeData = $sousThemesRanking->map(function ($theme) {
-            return [
-                'id' => $theme->id,
-                'theme_image' => $theme->theme_image,
-                'theme' => $theme->theme, // Ajout du nom du thème
-            ];
-        });
+        // Récupérer les images de thème et les noms de thème
+        $themesData = Theme::whereIn('id', $counts->keys())->get()->keyBy('id');
 
         // Formattez les résultats dans un tableau associatif avec l'ID du thème, le nombre d'occurrences, l'image du thème et le nom du thème
         $result = [];
         foreach ($counts as $themeId => $count) {
+            $theme = $themesData->get($themeId);
             $result[] = [
                 'theme_id' => $themeId,
-                'count_them' => $count,
-                'theme_image' => $themeData->where('id', $themeId)->first()['theme_image'],
-                'theme' => $themeData->where('id', $themeId)->first()['theme'], // Récupération du nom du thème
+                'count_theme' => $count,
+                'theme_image' => $theme ? $theme->theme_image : null,
+                'theme' => $theme ? $theme->theme : null,
             ];
         }
 
-        // Retournez le tableau associatif contenant les résultats des classements, les données des sous-thèmes et le nombre total de sous-thèmes
+
+
+        // Sélectionner trois sous-thèmes aléatoires
+        $randoms = $sousThemes->shuffle()->take(5);
+
+
+        // Retournez le tableau associatif contenant les résultats des classements, les données des sous-thèmes, le nombre total de sous-thèmes et les données aléatoires
         return [
             'themes' => $result,
             'sousThemes' => $sousThemes,
-
+            'randoms' => $randoms,
         ];
     }
+
+
 
 
 

@@ -1,7 +1,5 @@
 import React from "react";
-import { useEffect, useState } from "react";
-import CircularProgress from "@mui/material/CircularProgress";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import {
   Box,
   Typography,
@@ -9,55 +7,41 @@ import {
   Stack,
   Card,
   CardContent,
-  CardActions,
-  Button,
   CardMedia,
   CardActionArea,
 } from "@mui/material";
-import axios from "axios";
 
 import WhiteButton from "../components/buttons/WhiteButton";
 import { displayImage } from "../utils";
-
+import { useGameContext } from "../context/GameProvider";
 const Home = () => {
-  const [topThemes, setTopThemes] = useState();
-  const [topSousThemes, setTopSousThemes] = useState();
-  const [isBusy, setIsBusy] = useState(true);
+  const { topSousThemes, topThemes, randomThemes } = useGameContext();
 
-  useEffect(() => {
-    fetchData();
-  }, []); // Ajouter slug dans la liste de dépendances pour recharger les données lorsque le slug change
-
-  const fetchData = async () => {
-    try {
-      const res = await axios.get(`/rankings/top-collection`);
-      setTopThemes(res.data.themes);
-      setTopSousThemes(res.data.sousThemes);
-      console.log(res.data);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setIsBusy(false);
-    }
-  };
-
-  return isBusy ? (
+  return (
     <Container>
-      <Box sx={{ display: "flex" }}>
-        <CircularProgress />
-      </Box>
-    </Container>
-  ) : (
-    <Container>
-      <Box mt={5} width={"100%"}>
-        <Card className="card-new-ranking" style={{ borderRadius: 20 }}>
+      <Box mt={5} width={"100%"} justifyContent={"center"}>
+        <Card
+          className="card-new-ranking"
+          sx={{
+            width: {
+              xs: "100%",
+              sm: "80%",
+              md: "60%",
+              l: "60%",
+              xl: "60%",
+              margin: "auto",
+              borderRadius: 20,
+            },
+          }}
+        >
           <CardContent>
             <Stack
+              position={"relative"}
               justifyContent={"space-between"}
               direction={"row"}
               flexWrap={"wrap"}
             >
-              <Box width={"80%"}>
+              <Stack width={"80%"}>
                 <Stack direction={"row"} alignItems={"baseline"} spacing={1}>
                   <Typography
                     className="text-special"
@@ -65,19 +49,20 @@ const Home = () => {
                   >
                     Jouez
                   </Typography>
-                  <Typography
-                    variant="h6"
-                    className="text-card-home"
-                    sx={{ color: "white" }}
-                  >
-                    contre les membres de la communauté ici !
-                  </Typography>
+                  <Stack>
+                    <Typography
+                      variant="h6"
+                      className="text-card-home"
+                      sx={{ color: "white" }}
+                    >
+                      contre les membres de la communauté ici !
+                    </Typography>
+                    <Box position={"absolute"} bottom={0}>
+                      <WhiteButton>C'est partie</WhiteButton>
+                    </Box>
+                  </Stack>
                 </Stack>
-
-                <Box mt={2} ml={4}>
-                  <WhiteButton>C'est partie</WhiteButton>
-                </Box>
-              </Box>
+              </Stack>
               <img width={"20%"} src="/avatars.png" alt="Avatar Random" />
             </Stack>
           </CardContent>
@@ -85,14 +70,25 @@ const Home = () => {
         <Card
           className="card-new-prived"
           style={{ borderRadius: 20, marginTop: 10 }}
+          sx={{
+            width: {
+              xs: "100%",
+              sm: "80%",
+              md: "60%",
+              l: "60%",
+              xl: "60%",
+              margin: "auto",
+            },
+          }}
         >
           <CardContent>
             <Stack
+              position={"relative"}
               justifyContent={"space-between"}
               direction={"row"}
               flexWrap={"wrap"}
             >
-              <Box width={"80%"}>
+              <Stack width={"80%"}>
                 <Stack direction={"row"} alignItems={"baseline"} spacing={1}>
                   <Typography
                     className="text-special"
@@ -100,41 +96,78 @@ const Home = () => {
                   >
                     Défiez
                   </Typography>
-                  <Typography
-                    variant="h6"
-                    className="text-card-home"
-                    sx={{ color: "black" }}
-                  >
-                    vos amis par ici !
-                  </Typography>
+                  <Stack>
+                    <Typography
+                      variant="h6"
+                      className="text-card-home"
+                      sx={{ color: "black" }}
+                    >
+                      vos amis par ici !
+                    </Typography>
+                    <Box position={"absolute"} bottom={0}>
+                      <WhiteButton>C'est partie</WhiteButton>
+                    </Box>
+                  </Stack>
                 </Stack>
-
-                <Box mt={5} ml={4}>
-                  <WhiteButton>C'est partie</WhiteButton>
-                </Box>
-              </Box>
+              </Stack>
               <img width={"20%"} src="/avatars.png" alt="Avatar Random" />
             </Stack>
           </CardContent>
         </Card>
+
         <Stack mt={5} direction={"row"} justifyContent={"space-between"}>
           <Typography className="top-theme-title">TOP THEMES</Typography>
           <Link className="top-theme-link">Tous voir</Link>
         </Stack>
-        <Stack direction={"row"} spacing={3} mt={1} sx={{ overflowX: "auto" }}>
-          {topThemes.slice(0, 5).map((topTheme, index) => (
-            <Card sx={{ width: "350px", height: "100px" }} key={index}>
-              <CardActionArea style={{ width: "100%" }}>
-                <CardMedia
-                  component="img"
-                  height="100px"
-                  width="350px"
-                  image={displayImage(topTheme.theme_image)} // Utilisation de topTheme.theme_image comme source d'image
-                  alt="Image description"
-                />
-              </CardActionArea>
-            </Card>
-          ))}
+        <Stack
+          className="card-top-theme-home"
+          direction={"row"}
+          spacing={3}
+          mt={1}
+          sx={{ overflowX: "auto" }}
+        >
+          {topThemes.length ? (
+            topThemes.slice(0, 5).map((topTheme, index) => (
+              <Card sx={{ minWidth: 200, height: "100px" }} key={index}>
+                <NavLink
+                  to={`/theme/${topTheme.theme_id}`}
+                  key={topTheme.theme_id}
+                >
+                  <CardActionArea style={{ width: "100%" }}>
+                    <CardMedia
+                      className="image-theme-home"
+                      component="img"
+                      height="100px"
+                      width="350px"
+                      image={displayImage(topTheme.theme_image)} // Utilisation de topTheme.theme_image comme source d'image
+                      alt="Image description"
+                    />
+                    <Typography
+                      variant="body2"
+                      component="div"
+                      className="text-top-home"
+                      sx={{
+                        position: "absolute",
+                        bottom: 0,
+                        left: "50%",
+                        transform: "translateX(-50%)",
+                        backgroundColor: "rgba(105, 73, 255, 0.5)",
+                        padding: "4px",
+                        borderRadius: "4px",
+                        textAlign: "center",
+                        width: "100%",
+                        color: "var(--secondary-color)",
+                      }}
+                    >
+                      {topTheme.theme}
+                    </Typography>
+                  </CardActionArea>
+                </NavLink>
+              </Card>
+            ))
+          ) : (
+            <></>
+          )}
         </Stack>
         <Stack
           mt={5}
@@ -145,20 +178,103 @@ const Home = () => {
           <Typography className="top-theme-title">TOP SOUS THEMES</Typography>
           <Link className="top-theme-link">Tous voir</Link>
         </Stack>
-        <Stack direction={"row"} spacing={3} mt={1} sx={{ overflowX: "auto" }}>
-          {topSousThemes.slice(0, 5).map((topTheme, index) => (
-            <Card sx={{ width: "350px", height: "100px" }} key={index}>
-              <CardActionArea style={{ width: "100%" }}>
-                <CardMedia
-                  component="img"
-                  height="100px"
-                  width="350px"
-                  image={displayImage(topTheme.theme_image)} // Utilisation de topTheme.theme_image comme source d'image
-                  alt="Image description"
-                />
-              </CardActionArea>
-            </Card>
-          ))}
+        <Stack
+          className="card-top-theme-home"
+          direction={"row"}
+          spacing={3}
+          mt={1}
+          sx={{ overflowX: "auto" }}
+        >
+          {topSousThemes.length ? (
+            topSousThemes.slice(0, 5).map((topSousTheme, index) => (
+              <Card sx={{ minWidth: 200, height: "100px" }} key={index}>
+                <CardActionArea style={{ width: "100%" }}>
+                  <CardMedia
+                    className="image-theme-home"
+                    component="img"
+                    height="100px"
+                    width="350px"
+                    image={displayImage(topSousTheme.sous_theme_image)} // Utilisation de topTheme.theme_image comme source d'image
+                    alt="Image description"
+                  />
+                  <Typography
+                    variant="body2"
+                    component="div"
+                    className="text-top-home"
+                    sx={{
+                      position: "absolute",
+                      bottom: 0,
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      backgroundColor: "rgba(105, 73, 255, 0.5)",
+                      padding: "4px",
+                      borderRadius: "4px",
+                      textAlign: "center",
+                      width: "100%",
+                      color: "var(--secondary-color)",
+                    }}
+                  >
+                    {topSousTheme.sous_theme}
+                  </Typography>
+                </CardActionArea>
+              </Card>
+            ))
+          ) : (
+            <></>
+          )}
+        </Stack>
+        <Stack
+          mt={5}
+          direction={"row"}
+          justifyContent={"space-between"}
+          justifyItems={"end"}
+        >
+          <Typography className="top-theme-title">ALEATOIRE</Typography>
+        </Stack>
+        <Stack
+          className="card-top-theme-home"
+          direction={"row"}
+          spacing={3}
+          mt={1}
+          sx={{ overflowX: "auto" }}
+        >
+          {randomThemes.length ? (
+            randomThemes.slice(0, 5).map((randomTheme, index) => (
+              <Card sx={{ minWidth: 200, height: "100px" }} key={index}>
+                <CardActionArea style={{ width: "100%" }}>
+                  <CardMedia
+                    className="image-theme-home"
+                    component="img"
+                    height="100px"
+                    width="350px"
+                    image={displayImage(randomTheme.sous_theme_image)} // Utilisation de topTheme.theme_image comme source d'image
+                    alt="Image description"
+                  />
+                  <Typography
+                    variant="body2"
+                    component="div"
+                    className="text-top-home"
+                    sx={{
+                      position: "absolute",
+                      bottom: 0,
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      backgroundColor: "rgba(105, 73, 255, 0.5)",
+                      padding: "4px",
+                      borderRadius: "4px",
+                      textAlign: "center",
+                      width: "100%",
+                      color: "var(--secondary-color)",
+                    }}
+                  >
+                    {randomTheme.sous_theme}
+                  </Typography>
+                </CardActionArea>
+              </Card>
+            ))
+          ) : (
+            <></>
+          )}
         </Stack>
       </Box>
     </Container>

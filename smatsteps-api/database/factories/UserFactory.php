@@ -18,7 +18,7 @@ class UserFactory extends Factory
         $faker = Faker::create();
 
         // Liste des noms de fichiers d'images possibles
-        $imageOptions = ['ajkbar.jpg', 'ashoka.jpg', 'mara.jpg', 'r2d2.jpg', 'obi.jpg'];
+        $imageOptions = ['1.png', 'banreduite.jpg', 'carter.jpg', 'frien.jpg', 'Lightsaber.webp', 'link.jpg',];
 
         return [
             'user_pseudo' => $faker->userName,

@@ -32,90 +32,121 @@ html,
 #root {
   margin: 0;
   padding: 0;
-  color: var(--color-text); // Changer ici selon le thème initial
 }
 
-body.dark {
-  --color-text: var(--color-text-light);
-  background: var(--secondary-color-dark);
-}
-body.light {
-  --color-text: var(--color-text-dark);
-  background: var(--secondary-color-light);
-}
-.navbar_link {
-  padding: 0 8px;
-  display: flex;
-  position: relative;
-  text-decoration: none;
-  color: var(
-    --color-text
-  ); // Utilise la variable --color-text pour définir la couleur du texte
-  align-items: center;
-
-  &:hover::after,
-  &.active::after {
-    content: "";
-    position: absolute;
-    bottom: -28px;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 5px;
-    background-color: var(--primary-color);
+body {
+  &.dark {
+    --color-text: var(--color-text-light);
+    background: var(--secondary-color-dark);
+  }
+  &.light {
+    --color-text: var(--color-text-dark);
+    background: var(--secondary-color-light);
+  }
+  .card-top-theme-home::-webkit-scrollbar {
+    display: none;
   }
 
-  &.active {
+  .top-theme-title {
+    font-weight: "bold";
+    color: var(--color-text);
+    font-family: "Madimi One", sans-serif;
+  }
+  .btn-resultat {
+    font-family: "Madimi One", sans-serif;
+    color: var(--color-text);
+  }
+  .navbar_link {
+    padding: 0 8px;
+    display: flex;
+    position: relative;
+    text-decoration: none;
+    color: var(
+      --color-text
+    ); // Utilise la variable --color-text pour définir la couleur du texte
+    align-items: center;
+
+    &:hover::after,
+    &.active::after {
+      content: "";
+      position: absolute;
+      bottom: -28px;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 5px;
+      background-color: var(--primary-color);
+    }
+
+    &.active {
+      color: var(--primary-color);
+    }
+  }
+
+  .custom-link {
+    color: var(--color-text-title) !important;
+    text-decoration: underline; // Ajouter un soulignement
+    // Ajouter d'autres styles personnalisés selon vos besoins
+  }
+
+  .custom-link:hover {
+    color: var(--color-text) !important; // Changer la couleur au survol
+  }
+
+  .card-new-ranking {
+    background-image: url("../public/fonfVilot.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .card-new-prived {
+    background-image: url("../public/fonfJaune.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .text-special {
+    font-family: "Bangers", sans-serif;
+    font-weight: bold;
+    font-size: "3em";
+  }
+
+  .text-card-home {
+    font-weight: "bold";
+    color: var(--color-text);
+    font-family: "Madimi One", sans-serif !important;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .top-theme-link {
+    font-family: "Madimi One", sans-serif !important;
+    font-size: 0.8rem;
+  }
+
+  .text-top-home {
+    font-family: "Madimi One", sans-serif;
+  }
+  .titre-theme {
+    font-family: "Bangers", sans-serif;
     color: var(--primary-color);
   }
-}
-
-.custom-link {
-  color: var(--color-text-title) !important;
-  text-decoration: underline; // Ajouter un soulignement
-  // Ajouter d'autres styles personnalisés selon vos besoins
-}
-
-.custom-link:hover {
-  color: var(--color-text) !important; // Changer la couleur au survol
-}
-
-.card-new-ranking {
-  background-image: url("../public/fonfVilot.png") !important;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.card-new-prived {
-  background-image: url("../public/fonfJaune.png") !important;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.text-special {
-  font-family: "Bangers", sans-serif !important;
-  font-weight: bold;
-  color: var(--text-color);
-  font-size: "3em";
-}
-
-.text-card-home {
-  font-weight: "bold";
-  color: "var(--text-color)";
-  font-family: "Madimi One", sans-serif !important;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.top-theme-title {
-  font-weight: "bold";
-  color: "var(--text-color)";
-  font-family: "Madimi One", sans-serif !important;
-}
-.top-theme-link {
-  color: "var(--text-color)";
-  font-family: "Madimi One", sans-serif !important;
-  font-size: 0.8rem;
+  .title-box-level {
+    color: var(--color-text);
+    font-family: "Madimi One", sans-serif !important;
+  }
+  .player-card {
+    .player-info {
+      .player-pseudo {
+        color: var(--color-text);
+        font-family: "Madimi One", sans-serif;
+      }
+      .player-top-ranking {
+        color: var(--color-text);
+        font-family: "Madimi One", sans-serif;
+      }
+    }
+  }
 }

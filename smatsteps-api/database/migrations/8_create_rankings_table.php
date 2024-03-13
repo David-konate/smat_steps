@@ -18,7 +18,9 @@ return new class extends Migration
             $table->unsignedBigInteger('level');
             $table->timestamps();
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('sous_theme_id')->constrained('sous_themes');
+            // Ajoutez 'nullable()' pour autoriser les valeurs NULL
+            $table->foreignId('sous_theme_id')->nullable()->constrained('sous_themes');
+            $table->foreignId('theme_id')->constrained('themes');
         });
     }
 

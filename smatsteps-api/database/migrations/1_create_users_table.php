@@ -17,6 +17,7 @@ return new class extends Migration
 
             $table->string('user_email',)->unique();
             $table->boolean('is_admin');
+            $table->boolean('to_subscribe')->default(false);
             $table->string('password');
             $table->string('user_image', 50)->nullable();
             $table->string('slug')->unique();
