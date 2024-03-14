@@ -114,7 +114,6 @@ const Home = () => {
             </Stack>
           </CardContent>
         </Card>
-
         <Stack mt={5} direction={"row"} justifyContent={"space-between"}>
           <Typography className="top-theme-title">TOP THEMES</Typography>
           <Link className="top-theme-link">Tous voir</Link>
@@ -188,35 +187,40 @@ const Home = () => {
           {topSousThemes.length ? (
             topSousThemes.slice(0, 5).map((topSousTheme, index) => (
               <Card sx={{ minWidth: 200, height: "100px" }} key={index}>
-                <CardActionArea style={{ width: "100%" }}>
-                  <CardMedia
-                    className="image-theme-home"
-                    component="img"
-                    height="100px"
-                    width="350px"
-                    image={displayImage(topSousTheme.sous_theme_image)} // Utilisation de topTheme.theme_image comme source d'image
-                    alt="Image description"
-                  />
-                  <Typography
-                    variant="body2"
-                    component="div"
-                    className="text-top-home"
-                    sx={{
-                      position: "absolute",
-                      bottom: 0,
-                      left: "50%",
-                      transform: "translateX(-50%)",
-                      backgroundColor: "rgba(105, 73, 255, 0.5)",
-                      padding: "4px",
-                      borderRadius: "4px",
-                      textAlign: "center",
-                      width: "100%",
-                      color: "var(--secondary-color)",
-                    }}
-                  >
-                    {topSousTheme.sous_theme}
-                  </Typography>
-                </CardActionArea>
+                <NavLink
+                  to={`/sous-theme/${topSousTheme.id}`}
+                  key={topSousTheme.id}
+                >
+                  <CardActionArea style={{ width: "100%" }}>
+                    <CardMedia
+                      className="image-theme-home"
+                      component="img"
+                      height="100px"
+                      width="350px"
+                      image={displayImage(topSousTheme.sous_theme_image)} // Utilisation de topTheme.theme_image comme source d'image
+                      alt="Image description"
+                    />
+                    <Typography
+                      variant="body2"
+                      component="div"
+                      className="text-top-home"
+                      sx={{
+                        position: "absolute",
+                        bottom: 0,
+                        left: "50%",
+                        transform: "translateX(-50%)",
+                        backgroundColor: "rgba(105, 73, 255, 0.5)",
+                        padding: "4px",
+                        borderRadius: "4px",
+                        textAlign: "center",
+                        width: "100%",
+                        color: "var(--secondary-color)",
+                      }}
+                    >
+                      {topSousTheme.sous_theme}
+                    </Typography>
+                  </CardActionArea>
+                </NavLink>
               </Card>
             ))
           ) : (
@@ -241,35 +245,40 @@ const Home = () => {
           {randomThemes.length ? (
             randomThemes.slice(0, 5).map((randomTheme, index) => (
               <Card sx={{ minWidth: 200, height: "100px" }} key={index}>
-                <CardActionArea style={{ width: "100%" }}>
-                  <CardMedia
-                    className="image-theme-home"
-                    component="img"
-                    height="100px"
-                    width="350px"
-                    image={displayImage(randomTheme.sous_theme_image)} // Utilisation de topTheme.theme_image comme source d'image
-                    alt="Image description"
-                  />
-                  <Typography
-                    variant="body2"
-                    component="div"
-                    className="text-top-home"
-                    sx={{
-                      position: "absolute",
-                      bottom: 0,
-                      left: "50%",
-                      transform: "translateX(-50%)",
-                      backgroundColor: "rgba(105, 73, 255, 0.5)",
-                      padding: "4px",
-                      borderRadius: "4px",
-                      textAlign: "center",
-                      width: "100%",
-                      color: "var(--secondary-color)",
-                    }}
-                  >
-                    {randomTheme.sous_theme}
-                  </Typography>
-                </CardActionArea>
+                <NavLink
+                  to={`/sous-theme/${randomTheme.id}`}
+                  key={randomTheme.id}
+                >
+                  <CardActionArea style={{ width: "100%" }}>
+                    <CardMedia
+                      className="image-theme-home"
+                      component="img"
+                      height="100px"
+                      width="350px"
+                      image={displayImage(randomTheme.sous_theme_image)} // Utilisation de topTheme.theme_image comme source d'image
+                      alt="Image description"
+                    />
+                    <Typography
+                      variant="body2"
+                      component="div"
+                      className="text-top-home"
+                      sx={{
+                        position: "absolute",
+                        bottom: 0,
+                        left: "50%",
+                        transform: "translateX(-50%)",
+                        backgroundColor: "rgba(105, 73, 255, 0.5)",
+                        padding: "4px",
+                        borderRadius: "4px",
+                        textAlign: "center",
+                        width: "100%",
+                        color: "var(--secondary-color)",
+                      }}
+                    >
+                      {randomTheme.sous_theme}
+                    </Typography>
+                  </CardActionArea>
+                </NavLink>
               </Card>
             ))
           ) : (

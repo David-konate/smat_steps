@@ -3,6 +3,7 @@ import Home from "../Home";
 import Login from "../Login";
 import Profil from "../users/Profil";
 import Theme from "../themes/Theme";
+import SousTheme from "../sousThemes/SousTheme";
 
 const RouterOutlet = () => {
   return (
@@ -13,6 +14,7 @@ const RouterOutlet = () => {
 
       <Route path="/profil" element={<Profil />} />
       <Route path="/theme/:id" element={<Theme />} />
+      <Route path="/sous-theme/:id" element={<SousTheme />} />
     </Routes>
   );
 };

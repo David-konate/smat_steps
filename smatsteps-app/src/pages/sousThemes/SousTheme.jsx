@@ -19,9 +19,9 @@ import ListIcon from "@mui/icons-material/List";
 import MultiplePersonsIcon from "../../components/svg/MultiplePersonsIcon";
 import RankingsList from "../../components/list/RankingList";
 
-const Theme = () => {
+const SousTheme = () => {
   const { id } = useParams();
-  const [theme, setTheme] = useState();
+  const [sousTheme, setSousTheme] = useState();
 
   const [isBusy, setIsBusy] = useState(true);
   const { currentLevel, setCurrentLevel, topUserRanking, setTopUserRanking } =
@@ -39,14 +39,14 @@ const Theme = () => {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get(`themes/${id}`, {
+      const res = await axios.get(`sous-themes/${id}`, {
         params: {
           currentLevel: currentLevel,
         },
       });
 
       console.log(res.data);
-      setTheme(res.data.theme);
+      setSousTheme(res.data.sousTheme);
       setTopUserRanking(res.data.topRankings);
     } catch (error) {
       console.error(error);
@@ -71,7 +71,7 @@ const Theme = () => {
     <Container>
       <Box textAlign="center" mt={3}>
         <Typography mb={2} color={"var(--primary-color)"} variant="h3">
-          {theme?.theme}
+          {sousTheme?.sous_theme}
         </Typography>
         <LevelBox
           currentLevel={currentLevel}
@@ -167,4 +167,4 @@ const Theme = () => {
   );
 };
 
-export default Theme;
+export default SousTheme;

@@ -149,4 +149,20 @@ body {
       }
     }
   }
+  .stack-nav-list-multi {
+    .btn-list {
+      background-color: var(--primary-color);
+      color: var(--color-text);
+      border-radius: 50%;
+      height: 60px;
+      box-shadow: 0px 1px 6px var(--color-text);
+    }
+    .btn-multi {
+      background-color: var(--secondary-color);
+      color: var(--color-text);
+      border-radius: 50%;
+      height: 60px;
+      box-shadow: 0px 1px 6px var(--color-text);
+    }
+  }
 }

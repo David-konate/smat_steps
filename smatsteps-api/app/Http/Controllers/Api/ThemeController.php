@@ -60,7 +60,6 @@ class ThemeController extends Controller
             ->where('theme_id', $id)
             ->where('level', $currentLevel)
             ->orderBy('result_quiz', 'desc')
-            ->limit(3)
             ->get();
 
         // Récupérer le thème correspondant
