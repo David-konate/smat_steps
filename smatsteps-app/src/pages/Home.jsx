@@ -42,10 +42,19 @@ const Home = () => {
               flexWrap={"wrap"}
             >
               <Stack width={"80%"}>
-                <Stack direction={"row"} alignItems={"baseline"} spacing={1}>
+                <Stack direction={"row"} alignItems={"baseline"} spacing={2}>
                   <Typography
                     className="text-special"
-                    sx={{ fontSize: "1.3rem", color: "white" }}
+                    sx={{
+                      fontSize: {
+                        xs: "1.3rem",
+                        sm: "2rem",
+                        md: "2.4rem",
+                        lg: "2.8rem",
+                        xl: "3.2rem",
+                      },
+                      color: "white",
+                    }}
                   >
                     Jouez
                   </Typography>
@@ -53,11 +62,20 @@ const Home = () => {
                     <Typography
                       variant="h6"
                       className="text-card-home"
-                      sx={{ color: "white" }}
+                      sx={{
+                        color: "white",
+                        fontSize: {
+                          xs: "1.1rem",
+                          sm: "1.8rem",
+                          md: "2.2rem",
+                          lg: "2.6rem",
+                          xl: "2.6rem",
+                        },
+                      }}
                     >
-                      contre les membres de la communauté ici !
+                      VS la communauté
                     </Typography>
-                    <Box position={"absolute"} bottom={0}>
+                    <Box mt={2} position={"absolute"} bottom={0}>
                       <WhiteButton>C'est partie</WhiteButton>
                     </Box>
                   </Stack>
@@ -89,10 +107,19 @@ const Home = () => {
               flexWrap={"wrap"}
             >
               <Stack width={"80%"}>
-                <Stack direction={"row"} alignItems={"baseline"} spacing={1}>
+                <Stack direction={"row"} alignItems={"baseline"} spacing={2}>
                   <Typography
                     className="text-special"
-                    sx={{ fontSize: "1.3rem", color: "black" }}
+                    sx={{
+                      fontSize: {
+                        xs: "1.3rem",
+                        sm: "2rem",
+                        md: "2.4rem",
+                        lg: "2.8rem",
+                        xl: "3.2rem",
+                      },
+                      color: "black",
+                    }}
                   >
                     Défiez
                   </Typography>
@@ -100,9 +127,18 @@ const Home = () => {
                     <Typography
                       variant="h6"
                       className="text-card-home"
-                      sx={{ color: "black" }}
+                      sx={{
+                        color: "black",
+                        fontSize: {
+                          xs: "1.1rem",
+                          sm: "1.8rem",
+                          md: "2.2rem",
+                          lg: "2.6rem",
+                          xl: "2.6rem",
+                        },
+                      }}
                     >
-                      vos amis par ici !
+                      VS vos amis
                     </Typography>
                     <Box position={"absolute"} bottom={0}>
                       <WhiteButton>C'est partie</WhiteButton>

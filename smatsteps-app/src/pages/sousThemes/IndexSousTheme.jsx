@@ -130,7 +130,7 @@ const IndexSousTheme = () => {
               ))
             ) : (
               <Typography
-                sx={{ color: "var(--color-text)" }}
+                sx={{ color: "var(--color-text)", fontFamily: "Madimi One" }}
                 variant="body1"
                 textAlign="center"
               >

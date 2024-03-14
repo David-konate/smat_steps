@@ -91,7 +91,10 @@ const IndexTheme = () => {
                     }}
                     key={index}
                   >
-                    <NavLink to={`/theme/${topTheme.id}`} key={topTheme.id}>
+                    <NavLink
+                      to={`/theme/${topTheme.theme_id}`}
+                      key={topTheme.theme_id}
+                    >
                       <CardActionArea style={{ width: "100%" }}>
                         <CardMedia
                           className="image-theme-home"
@@ -126,13 +129,17 @@ const IndexTheme = () => {
                 </Grid>
               ))
             ) : (
-              <Typography
-                sx={{ color: "var(--color-text)" }}
-                variant="body1"
-                textAlign="center"
-              >
-                Aucun résultat trouvé.
-              </Typography>
+              <Container>
+                {" "}
+                <Typography
+                  sx={{ color: "var(--color-text)", fontFamily: "Madimi One" }}
+                  className="no-result"
+                  variant="body1"
+                  textAlign="center"
+                >
+                  Aucun résultat trouvé.
+                </Typography>
+              </Container>
             )}
           </Grid>
         </>
