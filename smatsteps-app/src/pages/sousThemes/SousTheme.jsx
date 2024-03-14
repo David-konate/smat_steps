@@ -21,11 +21,16 @@ import RankingsList from "../../components/list/RankingList";
 
 const SousTheme = () => {
   const { id } = useParams();
-  const [sousTheme, setSousTheme] = useState();
 
   const [isBusy, setIsBusy] = useState(true);
-  const { currentLevel, setCurrentLevel, topUserRanking, setTopUserRanking } =
-    useGameContext();
+  const {
+    currentLevel,
+    setCurrentLevel,
+    topUserRanking,
+    setTopUserRanking,
+    sousTheme,
+    setSousTheme,
+  } = useGameContext();
   const shadowColors = [
     "rgba(218, 165, 32, 0.2)",
     "rgba(192, 192, 192, 0.2)",

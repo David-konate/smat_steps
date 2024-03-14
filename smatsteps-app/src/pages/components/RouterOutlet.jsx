@@ -4,6 +4,8 @@ import Login from "../Login";
 import Profil from "../users/Profil";
 import Theme from "../themes/Theme";
 import SousTheme from "../sousThemes/SousTheme";
+import IndexSousTheme from "../sousThemes/IndexSousTheme";
+import IndexTheme from "../themes/IndexTheme";
 
 const RouterOutlet = () => {
   return (
@@ -13,8 +15,13 @@ const RouterOutlet = () => {
       <Route path={`/login`} element={<Login />} />
 
       <Route path="/profil" element={<Profil />} />
+
+      {/* Routes themes */}
       <Route path="/theme/:id" element={<Theme />} />
+      <Route path="/theme" element={<IndexTheme />} />
+      {/* Routes sous-themes */}
       <Route path="/sous-theme/:id" element={<SousTheme />} />
+      <Route path="/sous-theme" element={<IndexSousTheme />} />
     </Routes>
   );
 };

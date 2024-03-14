@@ -9,6 +9,7 @@ export const GameProvider = ({ children }) => {
   const [randomThemes, setRandomThemes] = useState([]);
   const [topUserRanking, setTopUserRanking] = useState();
   const [isBusy, setIsBusy] = useState(false);
+  const [sousTheme, setSousTheme] = useState();
   const [currentLevel, setCurrentLevel] = useState(() => {
     const storedLevel = localStorage.getItem("level");
     return storedLevel ? parseInt(storedLevel) : 2;
@@ -40,6 +41,8 @@ export const GameProvider = ({ children }) => {
         randomThemes,
         currentLevel,
         topUserRanking,
+        sousTheme,
+        setSousTheme,
         setTopUserRanking,
         setCurrentLevel,
       }}

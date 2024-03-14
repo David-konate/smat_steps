@@ -116,7 +116,9 @@ const Home = () => {
         </Card>
         <Stack mt={5} direction={"row"} justifyContent={"space-between"}>
           <Typography className="top-theme-title">TOP THEMES</Typography>
-          <Link className="top-theme-link">Tous voir</Link>
+          <Link to={`/theme`} className="top-theme-link">
+            Tous voir
+          </Link>
         </Stack>
         <Stack
           className="card-top-theme-home"
@@ -150,7 +152,7 @@ const Home = () => {
                         bottom: 0,
                         left: "50%",
                         transform: "translateX(-50%)",
-                        backgroundColor: "rgba(105, 73, 255, 0.5)",
+                        backgroundColor: "rgba(105, 73, 255, 0.8)",
                         padding: "4px",
                         borderRadius: "4px",
                         textAlign: "center",
@@ -175,7 +177,9 @@ const Home = () => {
           justifyItems={"end"}
         >
           <Typography className="top-theme-title">TOP SOUS THEMES</Typography>
-          <Link className="top-theme-link">Tous voir</Link>
+          <Link to={`/sous-theme`} className="top-theme-link">
+            Tous voir
+          </Link>
         </Stack>
         <Stack
           className="card-top-theme-home"
@@ -209,7 +213,7 @@ const Home = () => {
                         bottom: 0,
                         left: "50%",
                         transform: "translateX(-50%)",
-                        backgroundColor: "rgba(105, 73, 255, 0.5)",
+                        backgroundColor: "rgba(105, 73, 255, 0.8)",
                         padding: "4px",
                         borderRadius: "4px",
                         textAlign: "center",
@@ -234,6 +238,9 @@ const Home = () => {
           justifyItems={"end"}
         >
           <Typography className="top-theme-title">ALEATOIRE</Typography>
+          <Link to={`/sous-theme`} className="top-theme-link">
+            Tous voir
+          </Link>
         </Stack>
         <Stack
           className="card-top-theme-home"
@@ -267,7 +274,7 @@ const Home = () => {
                         bottom: 0,
                         left: "50%",
                         transform: "translateX(-50%)",
-                        backgroundColor: "rgba(105, 73, 255, 0.5)",
+                        backgroundColor: "rgba(105, 73, 255, 0.8)",
                         padding: "4px",
                         borderRadius: "4px",
                         textAlign: "center",
