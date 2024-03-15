@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Level;
+use App\Models\Theme;
 use App\Models\Answer;
 use App\Models\Category;
 use App\Models\Question;
@@ -25,6 +26,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 2,
+                'theme_id' => 2,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Ross Geller', 'is_correct' => true],
@@ -39,6 +41,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 2,
+                'theme_id' => 2,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Chandler Bing', 'is_correct' => false],
@@ -53,6 +56,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 2,
+                'theme_id' => 2,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Chef', 'is_correct' => true],
@@ -65,6 +69,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Ingénieur', 'is_correct' => false],
@@ -79,6 +84,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Astronomie', 'is_correct' => false],
@@ -93,6 +99,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'I\'ll Be There for You', 'is_correct' => true],
@@ -107,6 +114,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Phoebe', 'is_correct' => false],
@@ -121,6 +129,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Central Perk', 'is_correct' => true],
@@ -135,6 +144,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'George', 'is_correct' => false],
@@ -149,6 +159,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Peur des clowns', 'is_correct' => false],
@@ -163,6 +174,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 2,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Matt LeBlanc', 'is_correct' => false],
@@ -177,6 +189,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 2,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'How you doin\'?', 'is_correct' => true],
@@ -191,6 +204,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 2,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Chandler Bing', 'is_correct' => false],
@@ -205,6 +219,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 2,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'The One with the Prom Video', 'is_correct' => false],
@@ -219,6 +234,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 2,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Doug', 'is_correct' => false],
@@ -233,6 +249,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 2,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'David Crane', 'is_correct' => true],
@@ -247,6 +264,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 2,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Sharing is caring!', 'is_correct' => false],
@@ -261,6 +279,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 2,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Central Perk', 'is_correct' => false],
@@ -275,6 +294,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 2,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Janice', 'is_correct' => false],
@@ -289,6 +309,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 2,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Jennifer Aniston', 'is_correct' => false],
@@ -302,6 +323,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 3,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Matt LeBlanc', 'is_correct' => false],
@@ -315,6 +337,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 3,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => "How you doin'?", 'is_correct' => true],
@@ -328,6 +351,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 3,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Chandler Bing', 'is_correct' => false],
@@ -341,6 +365,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 3,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'The One with All the Thanksgivings', 'is_correct' => false],
@@ -354,6 +379,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 3,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Tom', 'is_correct' => false],
@@ -367,6 +393,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 3,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'David Crane', 'is_correct' => false],
@@ -380,6 +407,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 3,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Tous pour un, un pour tous', 'is_correct' => false],
@@ -393,6 +421,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 3,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Central Perk', 'is_correct' => true],
@@ -406,6 +435,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 3,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Les animaux', 'is_correct' => false],
@@ -419,6 +449,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 3,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Jennifer Aniston', 'is_correct' => false],
@@ -432,6 +463,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 4,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => '8', 'is_correct' => false],
@@ -445,6 +477,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 4,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Un symbole de paix', 'is_correct' => false],
@@ -458,6 +491,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 4,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Ikea', 'is_correct' => false],
@@ -471,6 +505,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 4,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Problèmes de fertilité de Monica', 'is_correct' => false],
@@ -484,6 +519,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 4,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Bruce Willis', 'is_correct' => false],
@@ -497,6 +533,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 4,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Les personnages de \'Friends\' sont inspirés par ceux de \'Mad About You\'', 'is_correct' => true],
@@ -510,6 +547,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 4,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Brad Pitt', 'is_correct' => false],
@@ -523,6 +561,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 4,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Regina Phalange', 'is_correct' => true],
@@ -536,6 +575,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 4,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'The Last One', 'is_correct' => true],
@@ -549,6 +589,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 4,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Little Women', 'is_correct' => false],
@@ -562,6 +603,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 2,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'The Rembrandts', 'is_correct' => true],
@@ -575,6 +617,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 2,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'New York', 'is_correct' => true],
@@ -588,6 +631,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 2,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Hi', 'is_correct' => true],
@@ -601,6 +645,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 2,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Pizza', 'is_correct' => true],
@@ -614,6 +659,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 2,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'The Routine', 'is_correct' => true],
@@ -627,6 +673,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 2,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Pete Becker', 'is_correct' => true],
@@ -640,6 +687,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 2,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Ursula Buffay', 'is_correct' => true],
@@ -653,6 +701,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 2,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'New York', 'is_correct' => true],
@@ -666,6 +715,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 2,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Erica', 'is_correct' => true],
@@ -679,6 +729,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 2,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'La Chambre de l\'Hilarité', 'is_correct' => true],
@@ -692,6 +743,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Jack Geller', 'is_correct' => true],
@@ -705,6 +757,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Serveuse', 'is_correct' => true],
@@ -718,6 +771,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Carol Willick', 'is_correct' => true],
@@ -731,6 +785,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Ursula Buffay', 'is_correct' => true],
@@ -744,6 +799,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Pete Becker', 'is_correct' => true],
@@ -757,6 +813,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Joey Tribbiani', 'is_correct' => true],
@@ -770,6 +827,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Bonnie', 'is_correct' => true],
@@ -783,6 +841,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Baby Got Back', 'is_correct' => true],
@@ -796,6 +855,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Gary', 'is_correct' => true],
@@ -809,6 +869,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Joey Tribbiani', 'is_correct' => true],
@@ -822,6 +883,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 2,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'M. Toad', 'is_correct' => true],
@@ -835,6 +897,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 2,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Chloe', 'is_correct' => true],
@@ -848,6 +911,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 2,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Roger', 'is_correct' => true],
@@ -861,6 +925,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 2,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Paul Stevens', 'is_correct' => true],
@@ -874,6 +939,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 2,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Scientifique', 'is_correct' => true],
@@ -887,6 +953,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 2,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Leonard Hayes', 'is_correct' => true],
@@ -900,6 +967,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 2,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Macaroni au fromage', 'is_correct' => true],
@@ -915,6 +983,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 2,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'The One with the Morning After', 'is_correct' => true],
@@ -928,6 +997,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 3,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Cadeau de mariage', 'is_correct' => true],
@@ -941,6 +1011,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 3,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Smelly Cat', 'is_correct' => true],
@@ -954,6 +1025,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 3,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Erica', 'is_correct' => true],
@@ -967,6 +1039,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 3,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Oh... mon... Dieu!', 'is_correct' => true],
@@ -980,6 +1053,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 3,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'The One with the Fertility Test', 'is_correct' => true],
@@ -993,6 +1067,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 3,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Armstrong', 'is_correct' => true],
@@ -1006,6 +1081,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 3,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Tom Selleck', 'is_correct' => true],
@@ -1019,6 +1095,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 3,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Morgan Stanley', 'is_correct' => true],
@@ -1032,6 +1109,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 3,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Jill', 'is_correct' => true],
@@ -1045,6 +1123,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 3,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Smelly Cat', 'is_correct' => true],
@@ -1058,6 +1137,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 3,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Phoebe Buffay', 'is_correct' => true],
@@ -1071,6 +1151,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 3,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Peur des animaux', 'is_correct' => true],
@@ -1084,6 +1165,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 3,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Sean Penn', 'is_correct' => true],
@@ -1097,6 +1179,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 3,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Amanda', 'is_correct' => true],
@@ -1110,6 +1193,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 3,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Eric', 'is_correct' => true],
@@ -1123,6 +1207,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 3,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Moccamaster', 'is_correct' => true],
@@ -1136,6 +1221,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 3,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Javu', 'is_correct' => true],
@@ -1149,6 +1235,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 3,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Jack', 'is_correct' => true],
@@ -1162,6 +1249,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 3,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'I\'ll be there for you', 'is_correct' => true],
@@ -1175,6 +1263,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 3,
                     'sous_theme_id' => 2,
+                    'theme_id' => 2,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Kevin S. Bright', 'is_correct' => true],
@@ -1188,6 +1277,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 3,
+                    'theme_id' => 3,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Zion Williamson', 'is_correct' => false],
@@ -1202,6 +1292,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 3,
+                    'theme_id' => 3,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'LeBron James', 'is_correct' => false],
@@ -1216,6 +1307,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 3,
+                    'theme_id' => 3,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => '16', 'is_correct' => true],
@@ -1230,6 +1322,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 3,
+                    'theme_id' => 3,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'LeBron James', 'is_correct' => true],
@@ -1244,6 +1337,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 3,
+                    'theme_id' => 3,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Miami Heat', 'is_correct' => false],
@@ -1258,6 +1352,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 3,
+                    'theme_id' => 3,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Stephen Curry', 'is_correct' => true],
@@ -1272,6 +1367,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 3,
+                    'theme_id' => 3,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => '1', 'is_correct' => false],
@@ -1286,6 +1382,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 3,
+                    'theme_id' => 3,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Lonzo Ball', 'is_correct' => false],
@@ -1300,6 +1397,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 3,
+                    'theme_id' => 3,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'New York Knicks', 'is_correct' => false],
@@ -1314,6 +1412,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 3,
+                    'theme_id' => 3,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => '3', 'is_correct' => false],
@@ -1328,6 +1427,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 3,
+                    'theme_id' => 3,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Los Angeles Lakers', 'is_correct' => true],
@@ -1342,6 +1442,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 3,
+                    'theme_id' => 3,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'LeBron James', 'is_correct' => false],
@@ -1356,6 +1457,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 3,
+                    'theme_id' => 3,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Joel Embiid', 'is_correct' => false],
@@ -1369,6 +1471,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 3,
+                    'theme_id' => 3,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => '8 minutes', 'is_correct' => false],
@@ -1383,6 +1486,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 3,
+                    'theme_id' => 3,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'LeBron James', 'is_correct' => false],
@@ -1397,6 +1501,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 3,
+                    'theme_id' => 3,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Los Angeles Lakers', 'is_correct' => false],
@@ -1411,6 +1516,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 3,
+                    'theme_id' => 3,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Joel Embiid', 'is_correct' => true],
@@ -1425,6 +1531,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 3,
+                    'theme_id' => 3,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => '5', 'is_correct' => true],
@@ -1439,6 +1546,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 3,
+                    'theme_id' => 3,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Kobe Bryant', 'is_correct' => false],
@@ -1453,6 +1561,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 3,
+                    'theme_id' => 3,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Anthony Davis', 'is_correct' => true],
@@ -1467,6 +1576,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 3,
+                    'theme_id' => 3,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Los Angeles Lakers', 'is_correct' => false],
@@ -1481,6 +1591,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 3,
+                    'theme_id' => 3,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Allen Iverson', 'is_correct' => true],
@@ -1495,6 +1606,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 3,
+                    'theme_id' => 3,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => '1', 'is_correct' => false],
@@ -1509,6 +1621,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 3,
+                    'theme_id' => 3,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Klay Thompson', 'is_correct' => false],
@@ -1523,6 +1636,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 3,
+                    'theme_id' => 3,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Los Angeles Lakers', 'is_correct' => true],
@@ -1537,6 +1651,7 @@ class QuestionSeeder extends Seeder
                     'category_id' => 1,
                     'level_id' => 1,
                     'sous_theme_id' => 3,
+                    'theme_id' => 3,
                     'user_id' => 1,
                     'answers' => [
                         ['answer' => 'Wilt Chamberlain', 'is_correct' => true],
@@ -1551,6 +1666,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'LaMelo Ball', 'is_correct' => false],
@@ -1565,6 +1681,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => '3', 'is_correct' => false],
@@ -1579,6 +1696,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'LeBron James', 'is_correct' => false],
@@ -1593,6 +1711,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Los Angeles Lakers', 'is_correct' => false],
@@ -1607,6 +1726,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Dennis Rodman', 'is_correct' => false],
@@ -1621,6 +1741,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Erik Spoelstra', 'is_correct' => false],
@@ -1635,6 +1756,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => '1', 'is_correct' => false],
@@ -1649,6 +1771,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Scottie Pippen', 'is_correct' => true],
@@ -1663,6 +1786,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Dwight Howard', 'is_correct' => false],
@@ -1676,6 +1800,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'LeBron James', 'is_correct' => false],
@@ -1690,6 +1815,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Golden State Warriors', 'is_correct' => false],
@@ -1704,6 +1830,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Magic Johnson', 'is_correct' => false],
@@ -1718,6 +1845,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => '45', 'is_correct' => false],
@@ -1732,6 +1860,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Zach LaVine', 'is_correct' => false],
@@ -1746,6 +1875,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Nikola Jokic', 'is_correct' => true],
@@ -1760,6 +1890,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => '4', 'is_correct' => true],
@@ -1774,6 +1905,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Rudy Gobert', 'is_correct' => false],
@@ -1788,6 +1920,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Dominique Wilkins', 'is_correct' => false],
@@ -1802,6 +1935,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => '1', 'is_correct' => false],
@@ -1816,6 +1950,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => '1', 'is_correct' => false],
@@ -1830,6 +1965,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'LeBron James', 'is_correct' => false],
@@ -1844,6 +1980,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Stephen Curry', 'is_correct' => false],
@@ -1858,6 +1995,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => '15', 'is_correct' => true],
@@ -1872,6 +2010,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Boston Celtics', 'is_correct' => false],
@@ -1886,6 +2025,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Magic Johnson', 'is_correct' => false],
@@ -1900,6 +2040,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => '30.1', 'is_correct' => true],
@@ -1914,6 +2055,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Boston Celtics', 'is_correct' => true],
@@ -1927,6 +2069,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'LeBron James', 'is_correct' => false],
@@ -1941,6 +2084,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => '50', 'is_correct' => false],
@@ -1955,6 +2099,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Michael Jordan', 'is_correct' => false],
@@ -1969,6 +2114,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Stephen Curry', 'is_correct' => true],
@@ -1983,6 +2129,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => '1', 'is_correct' => false],
@@ -1997,6 +2144,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'LeBron James', 'is_correct' => false],
@@ -2011,6 +2159,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Chicago Bulls', 'is_correct' => false],
@@ -2025,6 +2174,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Michael Jordan', 'is_correct' => false],
@@ -2039,6 +2189,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => '81', 'is_correct' => false],
@@ -2053,6 +2204,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Chris Bosh', 'is_correct' => false],
@@ -2067,6 +2219,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => '28', 'is_correct' => false],
@@ -2080,6 +2233,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Dwight Howard', 'is_correct' => false],
@@ -2094,6 +2248,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Shaquille O\'Neal', 'is_correct' => false],
@@ -2108,6 +2263,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => '1996', 'is_correct' => false],
@@ -2122,6 +2278,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Boston Celtics', 'is_correct' => false],
@@ -2136,6 +2293,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Bam Adebayo', 'is_correct' => true],
@@ -2150,6 +2308,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => '3', 'is_correct' => false],
@@ -2163,6 +2322,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Dwight Howard', 'is_correct' => false],
@@ -2177,6 +2337,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Magic Johnson', 'is_correct' => false],
@@ -2191,6 +2352,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => '4', 'is_correct' => false],
@@ -2205,6 +2367,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Stephen Curry', 'is_correct' => true],
@@ -2219,6 +2382,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Los Angeles Lakers', 'is_correct' => false],
@@ -2233,6 +2397,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => '2', 'is_correct' => false],
@@ -2247,6 +2412,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Kareem Abdul-Jabbar', 'is_correct' => true],
@@ -2261,6 +2427,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => '1954', 'is_correct' => true],
@@ -2275,6 +2442,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Magic Johnson', 'is_correct' => false],
@@ -2288,6 +2456,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Shaquille O\'Neal', 'is_correct' => false],
@@ -2302,6 +2471,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => '7', 'is_correct' => false],
@@ -2316,6 +2486,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'LeBron James', 'is_correct' => false],
@@ -2330,6 +2501,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Wilt Chamberlain', 'is_correct' => false],
@@ -2344,6 +2516,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => '10', 'is_correct' => false],
@@ -2358,6 +2531,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Magic Johnson', 'is_correct' => false],
@@ -2372,6 +2546,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Stephen Curry', 'is_correct' => false],
@@ -2386,6 +2561,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => '1', 'is_correct' => false],
@@ -2400,6 +2576,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Denver Nuggets', 'is_correct' => false],
@@ -2414,6 +2591,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Michael Jordan', 'is_correct' => false],
@@ -2428,6 +2606,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => '0', 'is_correct' => true],
@@ -2442,6 +2621,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Michael Jordan', 'is_correct' => false],
@@ -2456,6 +2636,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => '1', 'is_correct' => false],
@@ -2470,6 +2651,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Klay Thompson', 'is_correct' => false],
@@ -2485,6 +2667,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => '3', 'is_correct' => false],
@@ -2499,6 +2682,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'LeBron James', 'is_correct' => false],
@@ -2512,6 +2696,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => '1', 'is_correct' => false],
@@ -2526,6 +2711,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Tim Duncan', 'is_correct' => false],
@@ -2540,6 +2726,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => '1', 'is_correct' => false],
@@ -2554,6 +2741,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Boston Celtics', 'is_correct' => true],
@@ -2568,6 +2756,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Michael Jordan', 'is_correct' => false],
@@ -2582,6 +2771,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => '5', 'is_correct' => false],
@@ -2596,6 +2786,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Dwight Howard', 'is_correct' => false],
@@ -2610,6 +2801,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => '3', 'is_correct' => false],
@@ -2624,6 +2816,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'LeBron James', 'is_correct' => false],
@@ -2638,6 +2831,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 3,
+                'theme_id' => 3,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => '1', 'is_correct' => false],
@@ -2651,6 +2845,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Han Solo', 'is_correct' => false],
@@ -2665,6 +2860,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'R2-D2', 'is_correct' => true],
@@ -2679,6 +2875,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Hoth', 'is_correct' => false],
@@ -2693,6 +2890,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Yoda', 'is_correct' => false],
@@ -2707,6 +2905,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Millennium Falcon', 'is_correct' => true],
@@ -2721,6 +2920,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Yoda', 'is_correct' => false],
@@ -2735,6 +2935,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Jabba the Hutt', 'is_correct' => false],
@@ -2749,6 +2950,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Côté obscur', 'is_correct' => true],
@@ -2762,6 +2964,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Leia Organa', 'is_correct' => true],
@@ -2776,6 +2979,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Les Hutts', 'is_correct' => false],
@@ -2790,6 +2994,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Dark Vador', 'is_correct' => true],
@@ -2804,6 +3009,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Chewbacca', 'is_correct' => true],
@@ -2818,6 +3024,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Darth Vader', 'is_correct' => false],
@@ -2832,6 +3039,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Étoile de la Mort', 'is_correct' => true],
@@ -2846,6 +3054,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Qui-Gon Jinn', 'is_correct' => false],
@@ -2859,6 +3068,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Kenobi', 'is_correct' => false],
@@ -2873,6 +3083,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Podrace de Tatooine', 'is_correct' => true],
@@ -2887,6 +3098,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Han Solo', 'is_correct' => false],
@@ -2901,6 +3113,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Wookiee', 'is_correct' => true],
@@ -2915,6 +3128,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Désert de Hoth', 'is_correct' => true],
@@ -2928,6 +3142,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Boba Fett', 'is_correct' => true],
@@ -2942,6 +3157,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Trandoshan', 'is_correct' => true],
@@ -2956,6 +3172,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Général Grievous', 'is_correct' => false],
@@ -2970,6 +3187,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Mace Windu', 'is_correct' => false],
@@ -2984,6 +3202,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Kashyyyk', 'is_correct' => true],
@@ -2998,6 +3217,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Lando Calrissian', 'is_correct' => false],
@@ -3012,6 +3232,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Slave I', 'is_correct' => false],
@@ -3025,6 +3246,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Coruscant', 'is_correct' => false],
@@ -3039,6 +3261,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Dark Vador', 'is_correct' => false],
@@ -3053,6 +3276,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Mark Hamill', 'is_correct' => false],
@@ -3067,6 +3291,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Rodian', 'is_correct' => false],
@@ -3081,6 +3306,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Qui-Gon Jinn', 'is_correct' => false],
@@ -3095,6 +3321,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Lando Calrissian', 'is_correct' => false],
@@ -3108,6 +3335,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Jabba the Hutt', 'is_correct' => false],
@@ -3122,6 +3350,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'C-3PO', 'is_correct' => false],
@@ -3136,6 +3365,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Tatooine', 'is_correct' => false],
@@ -3150,6 +3380,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Leia Organa', 'is_correct' => true],
@@ -3164,6 +3395,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Tatooine', 'is_correct' => false],
@@ -3178,6 +3410,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Boba Fett', 'is_correct' => false],
@@ -3192,6 +3425,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Daisy Ridley', 'is_correct' => false],
@@ -3205,6 +3439,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'R2-D2', 'is_correct' => false],
@@ -3219,6 +3454,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Dark Sidious', 'is_correct' => false],
@@ -3233,6 +3469,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Jango Fett', 'is_correct' => false],
@@ -3247,6 +3484,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Obi-Wan Kenobi', 'is_correct' => false],
@@ -3261,6 +3499,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'R2-D2', 'is_correct' => false],
@@ -3275,6 +3514,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Bataillon 501', 'is_correct' => false],
@@ -3289,6 +3529,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Watto', 'is_correct' => false],
@@ -3302,6 +3543,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'La Rébellion', 'is_correct' => false],
@@ -3316,6 +3558,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Casino Royale', 'is_correct' => false],
@@ -3330,6 +3573,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Tatooine', 'is_correct' => false],
@@ -3344,6 +3588,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Poe Dameron', 'is_correct' => false],
@@ -3358,6 +3603,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Mace Windu', 'is_correct' => false],
@@ -3372,6 +3618,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Naberrie', 'is_correct' => false],
@@ -3385,6 +3632,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Mandaloriens', 'is_correct' => true],
@@ -3399,6 +3647,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Dark Tyranus (Count Dooku)', 'is_correct' => false],
@@ -3413,6 +3662,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Les Hutts', 'is_correct' => false],
@@ -3427,6 +3677,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Count Dooku', 'is_correct' => false],
@@ -3441,6 +3692,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Laura Dern', 'is_correct' => true],
@@ -3455,6 +3707,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'IG-88', 'is_correct' => false],
@@ -3469,6 +3722,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Jakku', 'is_correct' => false],
@@ -3482,6 +3736,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Endor', 'is_correct' => false],
@@ -3496,6 +3751,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'TIE Fighter', 'is_correct' => false],
@@ -3510,6 +3766,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Yoda', 'is_correct' => false],
@@ -3524,6 +3781,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Han Solo', 'is_correct' => false],
@@ -3538,6 +3796,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'C-3PO', 'is_correct' => false],
@@ -3552,6 +3811,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Snoke', 'is_correct' => true],
@@ -3566,6 +3826,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Obi-Wan Kenobi', 'is_correct' => false],
@@ -3580,6 +3841,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Mace Windu', 'is_correct' => false],
@@ -3594,6 +3856,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Han Solo', 'is_correct' => false],
@@ -3608,6 +3871,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 1,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Wookiee', 'is_correct' => false],
@@ -3621,6 +3885,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Boba Fett', 'is_correct' => false],
@@ -3635,6 +3900,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Han Solo', 'is_correct' => false],
@@ -3649,6 +3915,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Hoth', 'is_correct' => false],
@@ -3663,6 +3930,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'BB-8', 'is_correct' => false],
@@ -3677,6 +3945,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Count Dooku', 'is_correct' => false],
@@ -3691,6 +3960,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Mace Windu', 'is_correct' => false],
@@ -3705,6 +3975,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Kylo Ren', 'is_correct' => false],
@@ -3719,6 +3990,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Naboo', 'is_correct' => true],
@@ -3733,6 +4005,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Mace Windu', 'is_correct' => true],
@@ -3747,6 +4020,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 2,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Sabine Wren', 'is_correct' => true],
@@ -3760,6 +4034,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Darth Maul', 'is_correct' => false],
@@ -3774,6 +4049,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'The Devastator', 'is_correct' => false],
@@ -3788,6 +4064,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Anakin Skywalker', 'is_correct' => false],
@@ -3802,6 +4079,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Quinlan Vos', 'is_correct' => false],
@@ -3816,6 +4094,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Qui-Gon Jinn', 'is_correct' => false],
@@ -3830,6 +4109,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Takodana', 'is_correct' => true],
@@ -3844,6 +4124,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Les Rebelles', 'is_correct' => false],
@@ -3858,6 +4139,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Darth Maul', 'is_correct' => false],
@@ -3872,6 +4154,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Le Crimson Dawn', 'is_correct' => true],
@@ -3886,6 +4169,7 @@ class QuestionSeeder extends Seeder
                 'category_id' => 1,
                 'level_id' => 3,
                 'sous_theme_id' => 1,
+                'theme_id' => 1,
                 'user_id' => 1,
                 'answers' => [
                     ['answer' => 'Darth Sidious', 'is_correct' => true],
@@ -3900,6 +4184,7 @@ class QuestionSeeder extends Seeder
             $category = Category::where('id', $questionData['category_id'])->firstOrFail();
             $level = Level::find($questionData['level_id']);
             $sous_theme = SousTheme::where('id', $questionData['sous_theme_id'])->firstOrFail();
+            $theme = Theme::where('id', $questionData['theme_id'])->firstOrFail();
             $user = User::where('id', $questionData['user_id'])->firstOrFail();
 
             $createdQuestion = Question::create([
@@ -3907,6 +4192,7 @@ class QuestionSeeder extends Seeder
                 'level_id' => $level->id,
                 'category_id' => $category->id,
                 'sous_theme_id' => $sous_theme->id,
+                'theme_id' => $theme->id,
                 'user_id' => $user->id,
             ]);
 

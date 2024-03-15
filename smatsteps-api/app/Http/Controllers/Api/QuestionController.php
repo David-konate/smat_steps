@@ -21,8 +21,19 @@ class QuestionController extends Controller
      */
     public function newGame($currentLevel, Request $request)
     {
-        $currentUniver = $request->query('currentUniver');
         try {
+            // Récupérer les thèmes et sous-thèmes spécifiés dans la requête
+            $theme = $request->query('theme');
+            $sous_theme = $request->query('sousTheme');
+
+            // Convertir les valeurs en tableaux si elles ne sont pas nulles et ne sont pas déjà des tableaux
+            if ($theme && !is_array($theme)) {
+                $theme = [$theme];
+            }
+            if ($sous_theme && !is_array($sous_theme)) {
+                $sous_theme = [$sous_theme];
+            }
+
             // Initialiser une collection vide pour stocker les questions
             $questions = collect();
 
@@ -32,61 +43,49 @@ class QuestionController extends Controller
             // Ajuster le nombre de questions en fonction du niveau actuel
             switch ($currentLevel) {
                 case 1:
-                    break; // Pas de changement, le nombre de questions reste à 20
+                    // Pas de changement, le nombre de questions reste à 20
+                    break;
                 case 2:
-                    $count = 10; // 10 questions de niveau 1 et 10 questions de niveau 2
+                    // 10 questions de niveau 1 et 10 questions de niveau 2
+                    $count = 10;
                     break;
                 case 3:
-                    $count = 7; // 7 questions de niveau 1, 7 questions de niveau 2 et 6 questions de niveau 3
+                    // 7 questions de niveau 1, 7 questions de niveau 2 et 6 questions de niveau 3
+                    $count = 7;
                     break;
                 default:
-                    break; // Pas de changement, le nombre de questions reste à 20
+                    // Pas de changement, le nombre de questions reste à 20
+                    break;
             }
 
             // Niveaux à récupérer
-            $levelsToRetrieve = ($currentLevel == 2) ? [1, 3] : [$currentLevel];
+            $levelsToRetrieve = range(1, $currentLevel);
 
+            // Récupérer les questions pour chaque niveau spécifié
+            foreach ($levelsToRetrieve as $lvl) {
+                $query = Question::with(['answers', 'theme'])
+                    ->select('questions.*', 'categories.category', 'levels.id', 'answers.answer')
+                    ->join('categories', 'questions.category_id', '=', 'categories.id')
+                    ->join('levels', 'questions.level_id', '=', 'levels.id')
+                    ->leftJoin('answers', 'questions.id', '=', 'answers.question_id')
+                    ->where('questions.level_id', $lvl);
 
-
-            if ($currentUniver) {
-                // Récupérer les questions pour chaque niveau spécifié
-                foreach ($levelsToRetrieve as $lvl) {
-                    $levelQuestions = Question::with(['answers', 'univer'])
-                        ->select('questions.*', 'categories.category', 'levels.level', 'answers.answer')
-                        ->join('categories', 'questions.category_id', '=', 'categories.id')
-                        ->join('levels', 'questions.level_id', '=', 'levels.id')
-                        ->join('univers', 'questions.univer_id', '=', 'univers.id')
-                        ->leftJoin('answers', 'questions.id', '=', 'answers.question_id')
-                        ->where('questions.level_id', $lvl)
-                        ->where('univer', '=', $currentUniver)
-                        ->inRandomOrder()
-                        ->limit($count)
-                        ->get();
-
-                    $questions = $questions->merge($levelQuestions);
+                // Ajouter un filtre par thèmes si des thèmes sont spécifiés
+                if ($theme) {
+                    $query->whereIn('questions.theme_id', $theme);
                 }
-            } else {
-                // Récupérer les questions pour chaque niveau spécifié
-                foreach ($levelsToRetrieve as $lvl) {
-                    $levelQuestions = Question::with(['answers', 'univer'])
-                        ->select('questions.*', 'categories.category', 'levels.level', 'answers.answer')
-                        ->join('categories', 'questions.category_id', '=', 'categories.id')
-                        ->join('levels', 'questions.level_id', '=', 'levels.id')
 
-                        ->leftJoin('answers', 'questions.id', '=', 'answers.question_id')
-
-                        ->where('questions.level_id', $lvl)
-
-                        ->inRandomOrder()
-                        ->limit($count)
-                        ->get();
-
-                    $questions = $questions->merge($levelQuestions);
+                // Ajouter un filtre par sous-thèmes si des sous-thèmes sont spécifiés
+                if ($sous_theme) {
+                    $query->whereIn('questions.sous_theme_id', $sous_theme);
                 }
+
+                $levelQuestions = $query->inRandomOrder()
+                    ->limit($count)
+                    ->get();
+
+                $questions = $questions->merge($levelQuestions);
             }
-
-
-
 
             // Mélanger aléatoirement les réponses de chaque question
             $questions->each(function ($question) {
@@ -106,6 +105,9 @@ class QuestionController extends Controller
             ], 500); // Utiliser le code 500 pour les erreurs internes du serveur
         }
     }
+
+
+
 
 
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import {
   Box,
@@ -14,8 +14,15 @@ import {
 import WhiteButton from "../components/buttons/WhiteButton";
 import { displayImage } from "../utils";
 import { useGameContext } from "../context/GameProvider";
+import MessageNewRanged from "../components/message/MessageNewRanged";
+
 const Home = () => {
   const { topSousThemes, topThemes, randomThemes } = useGameContext();
+  const [isCardNewRankedOpen, setIsCardNewRankedOpen] = useState(false);
+
+  const handleOpenCardNewRanked = () => {
+    setIsCardNewRankedOpen(true);
+  };
 
   return (
     <Container>
@@ -75,8 +82,11 @@ const Home = () => {
                     >
                       VS la communauté
                     </Typography>
+
                     <Box mt={2} position={"absolute"} bottom={0}>
-                      <WhiteButton>C'est partie</WhiteButton>
+                      <WhiteButton onClick={handleOpenCardNewRanked}>
+                        C'est partie
+                      </WhiteButton>
                     </Box>
                   </Stack>
                 </Stack>
@@ -85,6 +95,14 @@ const Home = () => {
             </Stack>
           </CardContent>
         </Card>
+        {isCardNewRankedOpen && (
+          <MessageNewRanged
+            open={isCardNewRankedOpen}
+            onClose={() => setIsCardNewRankedOpen(false)}
+            title="Votre nouveau classement"
+            message="Félicitations ! Vous avez un nouveau classement."
+          />
+        )}
         <Card
           className="card-new-prived"
           style={{ borderRadius: 20, marginTop: 10 }}
@@ -176,7 +194,7 @@ const Home = () => {
                       component="img"
                       height="100px"
                       width="350px"
-                      image={displayImage(topTheme.theme_image)} // Utilisation de topTheme.theme_image comme source d'image
+                      image={displayImage(topTheme.theme_image)}
                       alt="Image description"
                     />
                     <Typography
@@ -237,7 +255,7 @@ const Home = () => {
                       component="img"
                       height="100px"
                       width="350px"
-                      image={displayImage(topSousTheme.sous_theme_image)} // Utilisation de topTheme.theme_image comme source d'image
+                      image={displayImage(topSousTheme.sous_theme_image)}
                       alt="Image description"
                     />
                     <Typography
@@ -298,7 +316,7 @@ const Home = () => {
                       component="img"
                       height="100px"
                       width="350px"
-                      image={displayImage(randomTheme.sous_theme_image)} // Utilisation de topTheme.theme_image comme source d'image
+                      image={displayImage(randomTheme.sous_theme_image)}
                       alt="Image description"
                     />
                     <Typography

@@ -1,31 +1,15 @@
 import React, { useEffect, useMemo, useState } from "react";
 import axios from "axios";
-import {
-  Box,
-  Container,
-  Grid,
-  Input,
-  InputBase,
-  TextField,
-  Typography,
-} from "@mui/material";
-import {
-  Card,
-  CardActionArea,
-  CardMedia,
-  CircularProgress,
-} from "@mui/material";
-import { NavLink } from "react-router-dom";
+import { Box, Container, Grid, InputBase, Typography } from "@mui/material";
+import { CircularProgress } from "@mui/material";
 import { useGameContext } from "../../context/GameProvider";
-import { displayImage } from "../../utils";
-import { border } from "@mui/system";
+import CardTheme from "../../components/cards/CardTheme";
 
 const IndexSousTheme = () => {
   const [isBusy, setIsBusy] = useState(true);
   const { topSousThemes } = useGameContext();
-  const [searchText, setSearchText] = useState(""); // État pour stocker le texte de recherche
+  const [searchText, setSearchText] = useState("");
 
-  // Utilisation de useEffect pour mettre à jour isBusy une fois les données chargées
   useEffect(() => {
     setIsBusy(false);
   }, [topSousThemes]);
@@ -84,48 +68,12 @@ const IndexSousTheme = () => {
             {filteredThemes?.length ? (
               filteredThemes.map((topSousTheme, index) => (
                 <Grid item key={index} md={3} sm={4} xs={6}>
-                  <Card
-                    sx={{
-                      border: "1px solid var(--secondary-color)",
-                      boxShadow: "0px 4px 8px rgba(105, 73, 255, 0.7)",
-                    }}
-                    key={index}
-                  >
-                    <NavLink
-                      to={`/sous-theme/${topSousTheme.id}`}
-                      key={topSousTheme.id}
-                    >
-                      <CardActionArea style={{ width: "100%" }}>
-                        <CardMedia
-                          className="image-theme-home"
-                          component="img"
-                          height="100px"
-                          width="350px"
-                          image={displayImage(topSousTheme.sous_theme_image)}
-                          alt="Image description"
-                        />
-                        <Typography
-                          variant="body2"
-                          component="div"
-                          className="text-top-home"
-                          sx={{
-                            position: "absolute",
-                            bottom: 0,
-                            left: "50%",
-                            transform: "translateX(-50%)",
-                            backgroundColor: "rgba(105, 73, 255, 0.8)",
-                            padding: "4px",
-                            borderRadius: "4px",
-                            textAlign: "center",
-                            width: "100%",
-                            color: "var(--secondary-color)",
-                          }}
-                        >
-                          {topSousTheme.sous_theme}
-                        </Typography>
-                      </CardActionArea>
-                    </NavLink>
-                  </Card>
+                  {/* Utiliser le composant CardTheme */}
+                  <CardTheme
+                    theme={topSousTheme.sous_theme}
+                    theme_id={topSousTheme.id}
+                    theme_image={topSousTheme.sous_theme_image}
+                  />
                 </Grid>
               ))
             ) : (

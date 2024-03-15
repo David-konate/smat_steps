@@ -9,13 +9,7 @@ class Question extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['question', 'sous_theme_id', 'user_id', 'level_id', 'category_id', 'image_question'];
-
-    // Si vous ne souhaitez pas utiliser les timestamps 'created_at' et 'updated_at'
-    // public $timestamps = false;
-
-    // Définissez les relations avec d'autres modèles ici
-
+    protected $fillable = ['question', 'sous_theme_id', 'theme_id', 'user_id', 'level_id', 'category_id', 'image_question'];
 
     public function user()
     {
@@ -30,5 +24,19 @@ class Question extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function theme()
+    {
+        return $this->belongsTo(Theme::class);
+    }
+
+    public function sousTheme()
+    {
+        return $this->belongsTo(SousTheme::class, 'sous_theme_id');
+    }
+    public function answers()
+    {
+        return $this->hasMany(Answer::class, 'question_id');
     }
 }

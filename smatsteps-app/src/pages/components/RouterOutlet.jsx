@@ -6,6 +6,7 @@ import Theme from "../themes/Theme";
 import SousTheme from "../sousThemes/SousTheme";
 import IndexSousTheme from "../sousThemes/IndexSousTheme";
 import IndexTheme from "../themes/IndexTheme";
+import WelcomeRanked from "../rankedParty/WelcomeRanked";
 
 const RouterOutlet = () => {
   return (
@@ -22,6 +23,8 @@ const RouterOutlet = () => {
       {/* Routes sous-themes */}
       <Route path="/sous-theme/:id" element={<SousTheme />} />
       <Route path="/sous-theme" element={<IndexSousTheme />} />
+      {/* Routes ranking */}
+      <Route path="/partie-classe" element={<WelcomeRanked />} />
     </Routes>
   );
 };
