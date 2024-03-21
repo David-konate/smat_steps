@@ -65,7 +65,7 @@ Route::prefix('rankings')->group(function () {
     Route::get('/', [RankingController::class, 'index']);
     Route::get('/top-collection', [RankingController::class, 'topCollection']);
     Route::get('welcome/{currentLevel}', [RankingController::class, 'welcome']);
-    Route::post('save-stats', [RankingController::class, 'saveStats']);
+    Route::post('/save-stats', [RankingController::class, 'saveStats']);
 });
 
 // Routes SousTheme
@@ -95,6 +95,9 @@ Route::prefix('users')->group(function () {
     Route::get('{user}/is-friend-with/{friend}', [UserController::class, 'isFriendWith']);
     Route::delete('{user}', [UserController::class, 'destroy']);
 });
+
+
+
 Route::get('/me/{currentLevel}', function ($currentLevel) {
     // Assurez-vous que l'utilisateur est authentifié
     $user = Auth::user();

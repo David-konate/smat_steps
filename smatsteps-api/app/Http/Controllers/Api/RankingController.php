@@ -128,6 +128,9 @@ class RankingController extends Controller
                 'result_quiz' => 'required',
                 'time_quiz' => 'required',
                 'user_id' => 'required',
+                'sous_theme_id' => 'nullable', // Valider si elle peut être nulle
+                'theme_id' => 'required', // Valider si elle peut être nulle
+                'level' => 'required',
             ]);
 
             // Créer une nouvelle entrée dans la table rankings
@@ -135,12 +138,15 @@ class RankingController extends Controller
                 'result_quiz' => $data['result_quiz'],
                 'time_quiz' => $data['time_quiz'],
                 'user_id' => $data['user_id'],
+                'level' => $data['level'],
+                'sous_theme_id' => $data['sous_theme_id'], // Ajouter la sauvegarde de sous_theme_id
+                'theme_id' => $data['theme_id'], // Ajouter la sauvegarde de theme_id
             ]);
 
             return response()->json([
                 'status' => true,
                 'message' => 'Résultat enregistré avec succès !',
-                $ranking,
+                'ranking' => $ranking, // Envoyer l'objet ranking dans la réponse JSON
             ]);
         } catch (\Throwable $e) {
             return response()->json([

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('rankings', function (Blueprint $table) {
-
+            $table->id();
             $table->decimal('result_quiz', 5, 2);
             $table->decimal('time_quiz', 20, 2);
             $table->unsignedBigInteger('level');
