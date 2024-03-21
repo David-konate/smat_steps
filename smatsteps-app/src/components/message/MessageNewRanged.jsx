@@ -7,11 +7,9 @@ import {
   Button,
   InputBase,
   Typography,
-  IconButton,
   Box,
-  Container,
-  Card,
 } from "@mui/material";
+
 import { useNavigate } from "react-router-dom";
 import { useGameContext } from "../../context/GameProvider";
 import LevelBox from "../LevelBox";
@@ -22,10 +20,11 @@ const MessageNewRanged = ({
   onClose,
   title,
   message,
-  redirection = null,
+  redirection = "/partie-classe",
 }) => {
   const navigate = useNavigate();
   const onClick = () => {
+    resetGame();
     fetchNewGame();
     onClose();
     if (redirection) {
@@ -44,7 +43,9 @@ const MessageNewRanged = ({
     currentSousTheme,
     currentTheme,
     fetchNewGame,
+    resetGame,
   } = useGameContext();
+
   const [searchTextTheme, setSearchTextTheme] = useState("");
   const [searchTextSousTheme, setSearchTextSousTheme] = useState("");
   const [isBusy, setIsBusy] = useState(false);
@@ -109,22 +110,9 @@ const MessageNewRanged = ({
   };
 
   return (
-    <Dialog sx className="new-ranked" open={open} onClose={onClose}>
+    <Dialog className="new-ranked" open={open} onClose={onClose}>
       <Box sx={{ padding: 3 }} className="card-new-ranked">
-        <Typography
-          sx={{
-            fontSize: {
-              xs: "2.5rem",
-              sm: "3rem",
-              md: "3.5rem",
-              lg: "4rem",
-              xl: "4.5rem",
-            },
-          }}
-          className="title"
-        >
-          Partie classé
-        </Typography>
+        <Typography className="title">Partie classé</Typography>
         <InputBase
           className="sous-theme"
           sx={{ marginTop: 3 }}
@@ -138,6 +126,7 @@ const MessageNewRanged = ({
         <Box className="ul" style={{ maxHeight: "80px", overflowY: "auto" }}>
           {filteredThemes.map((theme) => (
             <Box
+              style={{ cursor: "pointer" }}
               className="li"
               key={theme.id}
               onClick={() => handleThemeChange(theme)}
@@ -159,6 +148,7 @@ const MessageNewRanged = ({
         <Box className="ul" style={{ maxHeight: "80px", overflowY: "auto" }}>
           {filteredSousThemes.map((sousTheme) => (
             <Box
+              style={{ cursor: "pointer" }}
               className="li"
               key={sousTheme.id}
               onClick={() => handleSousThemeChange(sousTheme)}

@@ -18,6 +18,7 @@ import { useUserContext } from "../../context/UserProvider";
 import LoadingButton from "@mui/lab/LoadingButton";
 import MessageDialog from "../message/MessageDialog";
 import { Box } from "@mui/system";
+import CustomButton from "../buttons/CustomButton";
 
 const RegisterFormComponent = () => {
   const {
@@ -69,12 +70,20 @@ const RegisterFormComponent = () => {
 
   return (
     <Container component="main" maxWidth="xs">
-      <Box p={5}>
-        <Typography component="h1" variant="h5">
+      <Box
+        className="form-connexion"
+        sx={{
+          marginTop: 4,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Typography className="title-connexion" component="h1" variant="h1">
           Inscription
         </Typography>
         <Stack justifyContent="center" alignItems="center">
-          <Stack spacing={5} mt={5} width={700} maxWidth="100%">
+          <Stack spacing={5} mt={5}>
             {/* <TitleSectionText
             variant="h5"
             alignSelf="center"
@@ -87,6 +96,7 @@ const RegisterFormComponent = () => {
               spacing={3}
             >
               <TextField
+                className="input-connexion"
                 {...register("user_pseudo")}
                 {...errorField(errors?.user_pseudo)}
                 label="Pseudo"
@@ -105,6 +115,7 @@ const RegisterFormComponent = () => {
                 }}
               />
               <TextField
+                className="input-connexion"
                 {...register("user_email")}
                 {...errorField(errors?.user_email)}
                 fullWidth
@@ -114,6 +125,7 @@ const RegisterFormComponent = () => {
                 type="email"
               />
               <TextField
+                className="input-connexion"
                 {...register("password")}
                 {...errorField(errors?.password)}
                 fullWidth
@@ -123,6 +135,7 @@ const RegisterFormComponent = () => {
                 type="password"
               />
               <TextField
+                className="input-connexion"
                 {...register("confirmPassword")}
                 {...errorField(errors?.confirmPassword)}
                 fullWidth
@@ -131,19 +144,22 @@ const RegisterFormComponent = () => {
                 placeholder="6+ caractères requis"
                 type="password"
               />
-              <LoadingButton
-                variant="contained"
-                loading={isSubmitting}
-                type="submit"
-              >
-                Je m'inscris
-              </LoadingButton>
+              <Box mt={3}>
+                <LoadingButton
+                  className="btn-connexion"
+                  variant="contained"
+                  loading={isSubmitting}
+                  type="submit"
+                >
+                  Je m'inscris
+                </LoadingButton>
+              </Box>
               <MessageDialog
                 open={openDialog}
                 onClose={handleDialogClose}
                 title={dialogTitle}
                 message={dialogMessage}
-                redirection={-1}
+                redirection={"/"}
               />
             </Stack>
           </Stack>

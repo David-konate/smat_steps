@@ -16,8 +16,8 @@ class SecurityController extends Controller
 
         try {
             $validation = Validator::make(request()->all(), [
-                'user_pseudo' => 'required|user_pseudo',
-                'password' => 'required'
+                // 'user_pseudo' => 'required|user_pseudo',
+                // 'password' => 'required'
             ]);
 
             if ($validation->fails()) {
@@ -58,8 +58,6 @@ class SecurityController extends Controller
             $validation = Validator::make(request()->all(), [
 
                 'user_pseudo' => 'required|min:1|string|unique:users,user_pseudo,',
-                'is_admin' => 'required|min:1',
-                'to_subscribe' => 'required|min:1',
                 'user_email' => 'required|min:1|string|unique:users,user_email,',
                 'password' => 'required|string|min:8',
 
@@ -75,7 +73,6 @@ class SecurityController extends Controller
 
             $user = User::create([
                 'user_pseudo' => request('user_pseudo'),
-
                 'user_email' => request('user_email'),
                 'is_admin' => false,
                 'password' => Hash::make(request('password')),

@@ -1,40 +1,25 @@
 // VotrePage.js
-
 import LoginFormComponent from "../components/forms/LoginFormComponent";
 import RegisterFormComponent from "../components/forms/RegisterFormComponent";
 import React, { useState } from "react";
-import WhiteButton from "../components/buttons/WhiteButton";
+import CustomButton from "../components/buttons/CustomButton";
 
-import { Box, Button, Container } from "@mui/material";
+import { Box, Container } from "@mui/material";
+import { Stack } from "@mui/system";
 
 const Login = () => {
   const [tabSelected, setTabSelected] = useState("loginForm");
   return (
-    <Container
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        margin: "1rem auto",
-      }}
-    >
-      <Box>
-        <Button
-          onClick={() => setTabSelected("loginForm")}
-          isActive={tabSelected === "loginForm"}
-          style={{ margin: "0 8px 2px 0", color: "var(--text-color)" }}
-        >
+    <Container>
+      <Stack mt={3} direction={"row"} gap={5} justifyContent={"center"}>
+        <CustomButton onClick={() => setTabSelected("loginForm")}>
           Connexion
-        </Button>
+        </CustomButton>
 
-        <Button
-          onClick={() => setTabSelected("registerForm")}
-          isActive={tabSelected === "registerForm"}
-          style={{ margin: "0 0 2px 0", color: "var(--text-color)" }}
-        >
+        <CustomButton onClick={() => setTabSelected("registerForm")}>
           Inscription
-        </Button>
-      </Box>
+        </CustomButton>
+      </Stack>
 
       <Box>
         {tabSelected === "loginForm" && <LoginFormComponent />}

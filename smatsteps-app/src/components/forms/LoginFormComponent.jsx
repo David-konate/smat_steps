@@ -1,39 +1,40 @@
-// LoginFormComponent.js
-
 import React, { useState } from "react";
-import { Container, Typography, TextField, Button, Box } from "@mui/material";
+import { Container, Typography, TextField, Box, Button } from "@mui/material";
 import axios from "axios";
 import MessageDialog from "../message/MessageDialog";
-
 import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../../context/UserProvider";
+import CustomButton from "../buttons/CustomButton";
+import { useForm } from "react-hook-form";
+import { Stack } from "@mui/system";
 
 const LoginFormComponent = () => {
-  const { setUser, authentification } = useUserContext();
+  const { setUser, authentication } = useUserContext();
   const navigate = useNavigate();
   const [openDialog, setOpenDialog] = useState(false);
   const [dialogTitle, setDialogTitle] = useState("");
   const [dialogMessage, setDialogMessage] = useState("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm();
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-
+  const onSubmit = async (data) => {
     try {
-      const response = await axios.post("/security/login", formData);
+      const response = await axios.post("/security/login", data);
       localStorage.setItem("token", response.data.token);
       setUser(response.data.user);
-      await authentification();
-      setDialogTitle(response.status);
+      setDialogTitle("Success");
       setDialogMessage(response.data.message);
       setOpenDialog(true);
-      navigate(-1);
+      navigate("/");
     } catch (error) {
-      setDialogTitle(error.status);
-      setDialogMessage(error.data.message);
+      setDialogTitle("Erreur");
+      setDialogMessage(
+        error.response?.data?.message || "Une erreur s'est produite"
+      );
       setOpenDialog(true);
-
-      // Ajoutez ici une logique pour gérer les erreurs côté client
     }
   };
 
@@ -44,52 +45,71 @@ const LoginFormComponent = () => {
   return (
     <Container component="main" maxWidth="xs">
       <Box
+        className="form-connexion"
         sx={{
-          marginTop: 8,
+          marginTop: 4,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
         }}
       >
-        <Typography component="h1" variant="h5">
+        <Typography className="title-connexion" component="h1" variant="h1">
           Connexion
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+        <Stack
+          component="form"
+          onSubmit={handleSubmit(onSubmit)} // Utiliser handleSubmit(onSubmit)
+          noValidate
+          justifyContent="center"
+          alignItems="center"
+          sx={{ mt: 3 }}
+        >
+          {/* Supprimer le formulaire inutile */}
           <TextField
+            className="input-connexion"
             margin="normal"
             required
             fullWidth
             id="user_pseudo"
             label="Pseudo"
-            name="user_pseudo"
-            autoFocus
+            {...register("user_pseudo", { required: true })}
+            error={!!errors.user_pseudo}
+            helperText={errors.user_pseudo && "Ce champ est requis"}
           />
           <TextField
+            className="input-connexion"
             margin="normal"
             required
             fullWidth
             name="password"
             label="Mot de passe"
             type="password"
-            id="password"
+            {...register("password", { required: true })}
+            error={!!errors.password}
+            helperText={errors.password && "Ce champ est requis"}
           />
-
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ color: "var(--color-text)", mt: 3, mb: 2 }}
-          >
-            Connexion
-          </Button>
-        </Box>
+          <Box mt={3}>
+            <Button
+              className="btn-connexion"
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Connexion
+            </Button>{" "}
+          </Box>
+        </Stack>
       </Box>
-      <MessageDialog
-        open={openDialog}
-        onClose={handleDialogClose}
-        title={dialogTitle}
-        message={dialogMessage}
-      />
+      <Box>
+        {" "}
+        <MessageDialog
+          open={openDialog}
+          onClose={handleDialogClose}
+          title={dialogTitle}
+          message={dialogMessage}
+        />
+      </Box>
     </Container>
   );
 };

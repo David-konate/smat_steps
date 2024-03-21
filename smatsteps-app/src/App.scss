@@ -38,9 +38,10 @@ body {
   &.dark {
     --color-text: var(--color-text-light);
     background: var(--secondary-color-dark);
+
     --primary-color-special: var(--primary-color);
     --secondary-color-special: var(--secondary-color);
-
+    --proress-bar-bg: var(--secondary-color-light);
     // gestion rgba
     .index-sous-theme {
       .text-field-sous-theme {
@@ -57,6 +58,7 @@ body {
     background: var(--secondary-color-light);
     --primary-color-special: var(--secondary-color);
     --secondary-color-special: var(--primary-color);
+    --proress-bar-bg: var(--secondary-color-dark);
 
     // gestion rgba
     .index-sous-theme {
@@ -76,9 +78,268 @@ body {
     border: 1px solid var(--secondary-color);
     box-shadow: 0px 4px 8px rgba(105, 73, 255, 0.7);
   }
+  .answer-text {
+    font-family: "Madimi One", sans-serif;
+    // font-size: 2rem; /* Taille par défaut de la police */
+
+    // /* Définir différentes tailles de police pour différents breakpoints */
+    // @media (max-width: 600px) {
+    //   font-size: 1.2rem; /* Taille de police pour les écrans extra-small (xs) */
+    // }
+    // @media (min-width: 601px) and (max-width: 960px) {
+    //   font-size: 1.7rem; /* Taille de police pour les écrans small (sm) */
+    // }
+    // @media (min-width: 961px) and (max-width: 1280px) {
+    //   font-size: 2.5rem; /* Taille de police pour les écrans medium (md) */
+    // }
+    // @media (min-width: 1281px) {
+    //   font-size: 3rem; /* Taille de police pour les écrans large (lg) et supérieurs */
+    // }
+  }
+
+  .question {
+    font-family: "Madimi One", sans-serif;
+    font-size: 2rem; /* Taille par défaut de la police */
+    /* Définir différentes tailles de police pour différents breakpoints */
+    @media (max-width: 600px) {
+      font-size: 1.6rem; /* Taille de police pour les écrans extra-small (xs) */
+    }
+    @media (min-width: 601px) and (max-width: 960px) {
+      font-size: 2rem; /* Taille de police pour les écrans small (sm) */
+    }
+    @media (min-width: 961px) and (max-width: 1280px) {
+      font-size: 2rem; /* Taille de police pour les écrans medium (md) */
+    }
+    @media (min-width: 1281px) {
+      font-size: 3rem; /* Taille de police pour les écrans large (lg) et supérieurs */
+    }
+  }
+
+  .card-correction {
+    border: 2px solid rgba(255, 193, 7, 0.4);
+    box-shadow: 1px 1px 6px rgba(105, 73, 255, 1);
+
+    .question-correction {
+      font-family: "Bangers", sans-serif;
+      color: var(--primary-color);
+      -webkit-text-stroke: 1px rgba(255, 193, 7, 0.4); /* Ajoute une bordure autour de chaque lettre */
+    }
+    .text-answer-correction {
+      font-family: "Madimi One", sans-serif;
+
+      border-radius: 20;
+    }
+    .stack-answer-correction {
+      font-family: "Madimi One", sans-serif;
+
+      .text-good-answer-correction {
+        font-family: "Madimi One", sans-serif;
+      }
+      .good-answer-correction {
+        padding: "15px";
+        background-color: rgba(255, 193, 7);
+        font-family: "Bangers", sans-serif;
+        color: var(--primary-color);
+        border: 2px solid rgba(105, 73, 255, 0.6);
+        box-shadow: 0px 1px 6px rgba(105, 73, 255, 1);
+        -webkit-text-stroke: 1px var(--color-text-dark);
+      }
+    }
+  }
+  .btn-log {
+    font-family: "Bangers", sans-serif;
+  }
+  .form-connexion {
+    .title-connexion {
+      font-family: "Bangers", sans-serif;
+      color: var(--secondary-color-special);
+    }
+    .input-connexion {
+      font-family: "Madimi One", sans-serif;
+      border-radius: 5px;
+      box-shadow: 0px 1px 6px rgba(105, 73, 255, 0.8);
+    }
+    .btn-connexion {
+      color: var(--primary-color);
+      border: 2px solid rgba(105, 73, 255, 0.3);
+      box-shadow: 1px 1px 6px rgba(105, 73, 255, 0.3);
+    }
+  }
+  .border-correction {
+    border: 2px solid rgba(105, 73, 255, 0.8);
+    box-shadow: 1px 1px 6px var(--primary-color);
+  }
+
+  .box-correction {
+    .title-correction {
+      color: var(--primary-color);
+      font-family: "Bangers", sans-serif;
+      -webkit-text-stroke: 1px rgba(255, 193, 7, 0.6); /* Ajoute une bordure autour de chaque lettre */
+    }
+  }
+
+  .completion-msg-card {
+    background-color: rgba(255, 193, 7);
+    border: 2px solid rgba(105, 73, 255, 0.8);
+    box-shadow: 0px 1px 6px var(--primary-color);
+
+    .title {
+      color: var(--primary-color);
+      font-family: "Bangers", sans-serif;
+    }
+    .text {
+      color: var(--color-text-dark);
+      font-family: "Madimi One", sans-serif;
+    }
+    .card {
+      background-color: rgba(105, 73, 255, 0.4);
+    }
+    .text-score {
+      color: var(--color-text-dark);
+      font-family: "Madimi One", sans-serif;
+    }
+    .result {
+      color: var(--primary-color);
+      font-family: "Bangers", sans-serif;
+      font-size: 1.8rem;
+    }
+    .btn-correction {
+      font-family: "Madimi One", sans-serif !important;
+      color: var(--color-text-dark);
+    }
+
+    .btn-correction:hover {
+      filter: brightness(90%); /* Ajoute un filtre de luminosité au survol */
+    }
+
+    .btn-fermer {
+      font-family: "Madimi One", sans-serif;
+      color: var(--color-text-dark);
+    }
+
+    .btn-fermer:hover {
+      filter: brightness(90%); /* Ajoute un filtre de luminosité au survol */
+    }
+  }
+  .theme-new-ranked {
+    background-color: rgba(255, 193, 7, 0.3);
+    .card-theme-new-ranked {
+      border: 1px solid var(--primary-color);
+      border-radius: "20px";
+      margin: "50px";
+      .lancer-quiz {
+        margin: "50px";
+        color: #000000;
+        font-size: 0.8rem;
+        text-align: center;
+        font-family: "Madimi One", sans-serif !important;
+      }
+      .title {
+        color: var(--primary-color);
+        font-family: "Bangers", sans-serif;
+        margin: "10px";
+        text-align: center;
+        .text-with-shadow {
+          position: relative;
+          display: inline-block;
+          -webkit-text-stroke: 1px rgba(255, 193, 7, 0.3); /* Bordure autour du texte */
+        }
+
+        .text-with-shadow::after {
+          content: attr(data-content);
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: -1;
+          color: rgba(105, 73, 255, 0.9); /* Couleur de l'ombre */
+          text-shadow: 2px 2px 4px rgba(105, 73, 255, 0.9); /* Définition de l'ombre portée */
+        }
+      }
+      .card {
+        width: "80%";
+        border: 1px solid rgba(105, 73, 255, 0.4);
+        background-color: #ffc107;
+        box-shadow: 0px 1px 6px rgba(105, 73, 255, 0.5);
+      }
+      .text {
+        font-family: "Madimi One", sans-serif;
+        color: var(--color-text);
+      }
+      .label {
+        font-family: "Bangers", sans-serif;
+        color: var(--primary-color);
+      }
+      .level {
+        font-family: "Bangers", sans-serif;
+        color: var(--primary-color);
+      }
+      .bouton {
+        font-family: "Madimi One", sans-serif;
+        color: var(--color-text);
+      }
+      .ul {
+        padding: 0;
+        list-style: none;
+        // Utilisez flexbox pour centrer la liste
+        text-align: center; // Centrez horizontalement les éléments de la liste
+        margin-top: 10px; // Ajoutez une marge en haut pour l'espace
+      }
+
+      .li {
+        padding: 3px; // Ajoutez un espacement autour des éléments de liste
+        color: #000000;
+        font-family: "Madimi One", sans-serif;
+      }
+    }
+  }
 
   .new-ranked {
     background-color: rgba(255, 193, 7, 0.3);
+    .card-new-ranked {
+      border: 1px solid var(--primary-color);
+      border-radius: "20px";
+      margin: "50px";
+      .lancer-quiz {
+        margin: "50px";
+        color: #000000;
+        font-size: 0.8rem;
+        text-align: center;
+        font-family: "Madimi One", sans-serif !important;
+      }
+      .title {
+        color: #000000;
+        font-family: "Bangers", sans-serif;
+        margin: "10px";
+        text-align: center;
+      }
+      .sous-theme {
+        margin: "50px";
+        padding: 1;
+        color: #000000;
+        border-width: 0;
+        border: 1px solid var(--primary-color);
+        border-radius: 10px;
+        background-color: rgba(105, 73, 255, 0.5);
+        font-family: "Madimi One", sans-serif;
+      }
+      .bouton {
+        font-family: "Madimi One", sans-serif;
+        color: var(--color-text);
+      }
+      .ul {
+        padding: 0;
+        list-style: none;
+        // Utilisez flexbox pour centrer la liste
+        text-align: center; // Centrez horizontalement les éléments de la liste
+        margin-top: 10px; // Ajoutez une marge en haut pour l'espace
+      }
+
+      .li {
+        padding: 3px; // Ajoutez un espacement autour des éléments de liste
+        color: #000000;
+        font-family: "Madimi One", sans-serif;
+      }
+    }
 
     .card-new-ranked {
       border: 1px solid var(--primary-color);
@@ -172,7 +433,14 @@ body {
   .custom-link:hover {
     color: var(--color-text) !important; // Changer la couleur au survol
   }
-  .overlay {
+  .text-bar-question {
+    color: var(--color-text);
+
+    font-family: "Madimi One", sans-serif;
+  }
+  .red-text {
+    color: red;
+    font-family: "Bangers", sans-serif;
   }
 
   .card-new-ranking {

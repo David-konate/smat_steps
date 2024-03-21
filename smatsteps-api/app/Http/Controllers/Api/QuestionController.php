@@ -7,6 +7,7 @@ use App\Models\Answer;
 
 use App\Models\Question;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
@@ -19,6 +20,54 @@ class QuestionController extends Controller
      * @param int $currentLevel Niveau actuel (1, 2 ou 3)
      * @return \Illuminate\Http\JsonResponse Réponse JSON contenant les questions
      */
+
+    // public function newGame($currentLevel, Request $request)
+    // {
+    //     try {
+    //         // Récupérer les thèmes et sous-thèmes spécifiés dans la requête
+    //         $theme = $request->query('theme');
+    //         $sous_theme = $request->query('sousTheme');
+
+    //         // Convertir les valeurs en tableaux si elles ne sont pas nulles et ne sont pas déjà des tableaux
+    //         $theme = is_array($theme) ? $theme : ($theme ? [$theme] : null);
+    //         $sous_theme = is_array($sous_theme) ? $sous_theme : ($sous_theme ? [$sous_theme] : null);
+    //         // Initialiser une collection vide pour stocker les questions
+    //         $questions = collect();
+    //         $query = Question::all();
+    //         // Ajouter un filtre par thèmes si des thèmes sont spécifiés
+    //         if ($theme) {
+    //             $query->whereIn('theme_id', $theme);
+    //         }
+    //         // Ajouter un filtre par sous-thèmes si des sous-thèmes sont spécifiés
+    //         if ($sous_theme) {
+    //             $query->whereIn('sous_theme_id', $sous_theme);
+    //         }
+    //         // Récupérer exactement le nombre de questions requis pour ce niveau
+    //         $levelQuestions = $query->inRandomOrder()
+    //             ->limit(20)
+    //             ->with('answers') // Charger les réponses associées à chaque question
+    //             ->get();
+
+    //         $questions = $questions->merge($levelQuestions);
+    //         // Mélanger aléatoirement le contenu du jeu
+    //         $questions = $questions->shuffle();
+    //         // Retourner les questions sous forme de réponse JSON
+    //         return response()->json([
+    //             'questions' => $questions,
+    //         ]);
+    //     } catch (\Throwable $e) {
+    //         // Logguer l'erreur pour le débogage
+    //         Log::error('Erreur lors de la récupération des questions: ' . $e->getMessage());
+
+    //         // Retourner une réponse JSON d'erreur
+    //         return response()->json([
+    //             'status' => false,
+    //             'message' => 'Erreur lors de la récupération des questions. Veuillez réessayer ultérieurement.',
+    //         ], 500); // Utiliser le code 500 pour les erreurs internes du serveur
+    //     }
+    // }
+
+
     public function newGame($currentLevel, Request $request)
     {
         try {
@@ -27,84 +76,158 @@ class QuestionController extends Controller
             $sous_theme = $request->query('sousTheme');
 
             // Convertir les valeurs en tableaux si elles ne sont pas nulles et ne sont pas déjà des tableaux
-            if ($theme && !is_array($theme)) {
-                $theme = [$theme];
-            }
-            if ($sous_theme && !is_array($sous_theme)) {
-                $sous_theme = [$sous_theme];
-            }
+            $theme = is_array($theme) ? $theme : ($theme ? [$theme] : null);
+            $sous_theme = is_array($sous_theme) ? $sous_theme : ($sous_theme ? [$sous_theme] : null);
 
-            // Initialiser une collection vide pour stocker les questions
+            // Initialiser une variable pour stocker les questions
             $questions = collect();
-
-            // Nombre de questions à récupérer par défaut
-            $count = 20;
-
-            // Ajuster le nombre de questions en fonction du niveau actuel
+            $countLevel1 = 0;
+            $countLevel2 = 0;
+            $countLevel3 = 0;
             switch ($currentLevel) {
+
                 case 1:
-                    // Pas de changement, le nombre de questions reste à 20
+                    // Récupérer 20 questions de niveau 1
+                    $questions = Question::with(['theme', 'sousTheme', 'answers'])
+                        ->where('level_id', 1)
+                        ->limit(20);
+                    if ($theme) {
+                        $questions->whereIn('theme_id', $theme);
+                    }
+                    // Ajouter un filtre par sous-thèmes si des sous-thèmes sont spécifiés
+                    if ($sous_theme) {
+                        $questions->whereIn('sous_theme_id', $sous_theme);
+                    }
+
+                    $countLevel1 = 20;
+
                     break;
                 case 2:
-                    // 10 questions de niveau 1 et 10 questions de niveau 2
-                    $count = 10;
+                    // Récupérer 10 questions de niveau 1 et 10 questions de niveau 2
+                    $questionsLevel1 = Question::with(['theme', 'sousTheme', 'answers'])
+                        ->where('level_id', 1)
+                        ->limit(10);
+                    if ($theme) {
+                        $questionsLevel1->whereIn('theme_id', $theme);
+                    }
+                    // Ajouter un filtre par sous-thèmes si des sous-thèmes sont spécifiés
+                    if ($sous_theme) {
+                        $questionsLevel1->whereIn('sous_theme_id', $sous_theme);
+                    }
+
+                    $questionsLevel2 = Question::with(['theme', 'sousTheme', 'answers'])
+                        ->where('level_id', 2)
+                        ->limit(10);
+                    if ($theme) {
+                        $questionsLevel2->whereIn('theme_id', $theme);
+                    }
+                    // Ajouter un filtre par sous-thèmes si des sous-thèmes sont spécifiés
+                    if ($sous_theme) {
+                        $questionsLevel2->whereIn('sous_theme_id', $sous_theme);
+                    }
+
+                    $questions = $questionsLevel1->union($questionsLevel2);
+                    $countLevel1 = 10;
+                    $countLevel2 = 10;
                     break;
                 case 3:
-                    // 7 questions de niveau 1, 7 questions de niveau 2 et 6 questions de niveau 3
-                    $count = 7;
+                    // Récupérer 7 questions de niveau 1, 7 questions de niveau 2 et 6 questions de niveau 3
+                    $questionsLevel1 = Question::with(['theme', 'sousTheme', 'answers'])
+                        ->where('level_id', 1)
+                        ->limit(7);
+                    if ($theme) {
+                        $questionsLevel1->whereIn('theme_id', $theme);
+                    }
+                    // Ajouter un filtre par sous-thèmes si des sous-thèmes sont spécifiés
+                    if ($sous_theme) {
+                        $questionsLevel1->whereIn('sous_theme_id', $sous_theme);
+                    }
+
+                    $questionsLevel2 = Question::with(['theme', 'sousTheme', 'answers'])
+                        ->where('level_id', 2)
+                        ->limit(7);
+                    if ($theme) {
+                        $questionsLevel2->whereIn('theme_id', $theme);
+                    }
+                    // Ajouter un filtre par sous-thèmes si des sous-thèmes sont spécifiés
+                    if ($sous_theme) {
+                        $questionsLevel2->whereIn('sous_theme_id', $sous_theme);
+                    }
+
+                    $questionsLevel3 = Question::with(['theme', 'sousTheme', 'answers'])
+                        ->where('level_id', 3)
+                        ->limit(6);
+                    if ($theme) {
+                        $questionsLevel3->whereIn('theme_id', $theme);
+                    }
+                    // Ajouter un filtre par sous-thèmes si des sous-thèmes sont spécifiés
+                    if ($sous_theme) {
+                        $questionsLevel3->whereIn('sous_theme_id', $sous_theme);
+                    }
+
+                    $questions = $questionsLevel1->union($questionsLevel2)->union($questionsLevel3);
+                    $countLevel1 = 7;
+                    $countLevel2 = 7;
+                    $countLevel3 = 6;
                     break;
                 default:
-                    // Pas de changement, le nombre de questions reste à 20
+                    // Récupérer 10 questions de niveau 1 et 10 questions de niveau 2
+                    $questionsLevel1 = Question::with(['theme', 'sousTheme', 'answers'])
+                        ->where('level_id', 1)
+                        ->limit(10);
+                    $questionsLevel2 = Question::with(['theme', 'sousTheme', 'answers'])
+                        ->where('level_id', 2)
+                        ->limit(10);
+                    $questions = $questionsLevel1->union($questionsLevel2);
+                    $countLevel1 = 10;
+                    $countLevel2 = 10;
                     break;
             }
 
-            // Niveaux à récupérer
-            $levelsToRetrieve = range(1, $currentLevel);
-
-            // Récupérer les questions pour chaque niveau spécifié
-            foreach ($levelsToRetrieve as $lvl) {
-                $query = Question::with(['answers', 'theme'])
-                    ->select('questions.*', 'categories.category', 'levels.id', 'answers.answer')
-                    ->join('categories', 'questions.category_id', '=', 'categories.id')
-                    ->join('levels', 'questions.level_id', '=', 'levels.id')
-                    ->leftJoin('answers', 'questions.id', '=', 'answers.question_id')
-                    ->where('questions.level_id', $lvl);
-
-                // Ajouter un filtre par thèmes si des thèmes sont spécifiés
-                if ($theme) {
-                    $query->whereIn('questions.theme_id', $theme);
-                }
-
-                // Ajouter un filtre par sous-thèmes si des sous-thèmes sont spécifiés
-                if ($sous_theme) {
-                    $query->whereIn('questions.sous_theme_id', $sous_theme);
-                }
-
-                $levelQuestions = $query->inRandomOrder()
-                    ->limit($count)
-                    ->get();
-
-                $questions = $questions->merge($levelQuestions);
+            // Ajouter des conditions pour les thèmes et sous-thèmes si disponibles
+            if (!is_null($theme)) {
+                $questions->whereIn('theme_id', $theme);
+            }
+            if (!is_null($sous_theme)) {
+                $questions->whereIn('sous_theme_id', $sous_theme);
             }
 
-            // Mélanger aléatoirement les réponses de chaque question
+            // Exécuter la requête et récupérer les questions
+            $questions = $questions->inRandomOrder()->get();
+
+            // Mélanger l'ordre des réponses à l'intérieur de chaque question
             $questions->each(function ($question) {
-                $question->answers = $question->answers->shuffle();
+                $question->answers->shuffle();
             });
 
-            // Mélanger aléatoirement le contenu du jeu
-            $questions = $questions->shuffle();
-
             // Retourner les questions sous forme de réponse JSON
-            return response()->json($questions);
+            return response()->json([
+                'questions' => $questions,
+                'countLevel1' => $countLevel1,
+                'countLevel2' => $countLevel2,
+                'countLevel3' => $countLevel3,
+            ]);
         } catch (\Throwable $e) {
-            // En cas d'erreur, retourner une réponse JSON d'erreur
+            // Logguer l'erreur pour le débogage
+            Log::error('Erreur lors de la récupération des questions: ' . $e->getMessage());
+
+            // Retourner une réponse JSON d'erreur
             return response()->json([
                 'status' => false,
-                'message' => $e->getMessage(),
+                'message' => 'Erreur lors de la récupération des questions. Veuillez réessayer ultérieurement.',
             ], 500); // Utiliser le code 500 pour les erreurs internes du serveur
         }
     }
+
+
+
+
+
+
+
+
+
+
 
 
 

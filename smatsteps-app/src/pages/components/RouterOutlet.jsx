@@ -6,7 +6,8 @@ import Theme from "../themes/Theme";
 import SousTheme from "../sousThemes/SousTheme";
 import IndexSousTheme from "../sousThemes/IndexSousTheme";
 import IndexTheme from "../themes/IndexTheme";
-import WelcomeRanked from "../rankedParty/WelcomeRanked";
+import GameRanked from "../rankedParty/GameRanked";
+import PrivateRouteGuard from "../../guards/PrivateRouteGuard";
 
 const RouterOutlet = () => {
   return (
@@ -24,7 +25,10 @@ const RouterOutlet = () => {
       <Route path="/sous-theme/:id" element={<SousTheme />} />
       <Route path="/sous-theme" element={<IndexSousTheme />} />
       {/* Routes ranking */}
-      <Route path="/partie-classe" element={<WelcomeRanked />} />
+      <Route
+        path="/partie-classe"
+        element={<PrivateRouteGuard element={<GameRanked />} />}
+      />
     </Routes>
   );
 };

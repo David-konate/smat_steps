@@ -1,15 +1,19 @@
 <?php
 
-use App\Http\Controllers\Api\CategoryController;
-use App\Http\Controllers\Api\LevelController;
-use App\Http\Controllers\Api\QuestionController;
-use App\Http\Controllers\Api\RankingController;
+use App\Models\User;
+use App\Models\Ranking;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\UserController;
+
+use App\Http\Controllers\Api\LevelController;
+use App\Http\Controllers\Api\ThemeController;
+use App\Http\Controllers\Api\RankingController;
+use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\QuestionController;
 use App\Http\Controllers\Api\SecurityController;
 use App\Http\Controllers\Api\SousThemeController;
-use App\Http\Controllers\Api\ThemeController;
-use App\Http\Controllers\Api\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,3 +95,38 @@ Route::prefix('users')->group(function () {
     Route::get('{user}/is-friend-with/{friend}', [UserController::class, 'isFriendWith']);
     Route::delete('{user}', [UserController::class, 'destroy']);
 });
+Route::get('/me/{currentLevel}', function ($currentLevel) {
+    // Assurez-vous que l'utilisateur est authentifié
+    $user = Auth::user();
+
+    // Charger l'utilisateur avec la relation "rankings"
+    $userWithRankings = User::with('rankings')->find($user->id);
+
+    // Récupérer les 3 meilleurs classements pour l'utilisateur spécifié et le niveau actuel
+    $topRankings = Ranking::where('user_id', $user->id)
+        ->where('level', $currentLevel)
+        ->orderByDesc('result_quiz')
+        ->limit(3)
+        ->get();
+
+    // Récupérer les 3 derniers résultats triés par ordre croissant de 'resultQuizz' pour l'utilisateur spécifié et le niveau actuel
+    $latestRankings = Ranking::where('user_id', $user->id)
+        ->where('level', $currentLevel)
+        ->orderByDesc('created_at') // Utilisation de orderByDesc pour trier par ordre décroissant
+        ->limit(3)
+        ->get();
+
+    // Compter le nombre total de classements de l'utilisateur
+    $totalRankingsCount = Ranking::where('user_id', $user->id)
+        ->where('level', $currentLevel)
+        ->count();
+
+    // Retourner les données sous forme de tableau associatif
+    return [
+        'user' => $user,
+        'rankings' => $userWithRankings->rankings,
+        'topRankings' => $topRankings,
+        'latestRankings' => $latestRankings,
+        'totalRankingsCount' => $totalRankingsCount,
+    ];
+})->middleware('auth:sanctum');

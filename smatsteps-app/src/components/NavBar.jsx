@@ -45,6 +45,7 @@ function NavBar() {
 
   const handleLogout = async () => {
     console.log("logout");
+    localStorage.removeItem("token");
     try {
       await axios.post(
         "/security/logout",

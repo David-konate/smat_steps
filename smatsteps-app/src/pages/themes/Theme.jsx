@@ -18,14 +18,22 @@ import { displayImage } from "../../utils";
 import ListIcon from "@mui/icons-material/List";
 import MultiplePersonsIcon from "../../components/svg/MultiplePersonsIcon";
 import RankingsList from "../../components/list/RankingList";
+import MessageThemeNewRanged from "../../components/message/MessageThemeNewRanged";
+import PlayerCard from "../../components/cards/PlayerCars";
 
 const Theme = () => {
   const { id } = useParams();
-  const [theme, setTheme] = useState();
-
+  const [isCardNewRankedOpen, setIsCardNewRankedOpen] = useState(false);
   const [isBusy, setIsBusy] = useState(true);
-  const { currentLevel, setCurrentLevel, topUserRanking, setTopUserRanking } =
-    useGameContext();
+  const {
+    currentLevel,
+    setCurrentLevel,
+    topUserRanking,
+    setTopUserRanking,
+    setCurrentTheme,
+    theme,
+    setTheme,
+  } = useGameContext();
   const shadowColors = [
     "rgba(218, 165, 32, 0.2)",
     "rgba(192, 192, 192, 0.2)",
@@ -38,6 +46,7 @@ const Theme = () => {
   }, [currentLevel]);
 
   const fetchData = async () => {
+    setIsBusy(true);
     try {
       const res = await axios.get(`themes/${id}`, {
         params: {
@@ -47,6 +56,7 @@ const Theme = () => {
 
       console.log(res.data);
       setTheme(res.data.theme);
+      setCurrentTheme(res.data.theme);
       setTopUserRanking(res.data.topRankings);
     } catch (error) {
       console.error(error);
@@ -61,6 +71,10 @@ const Theme = () => {
 
   const handleLevelChange = (event) => {
     setCurrentLevel(parseInt(event.target.value));
+  };
+
+  const handleOpenCardNewRanked = () => {
+    setIsCardNewRankedOpen(true);
   };
 
   return isBusy ? (
@@ -81,55 +95,10 @@ const Theme = () => {
       <Grid container spacing={2} justifyContent="center" mt={3}>
         {topUserRanking.slice(0, 3).map((userRanking, index) => (
           <Grid item xs={4} sm={2} md={3} key={index}>
-            <Card
-              className={`player-card`}
-              style={{
-                borderRadius: 20,
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-
-                boxShadow: `0px 4px 8px ${
-                  shadowColors[index % shadowColors.length]
-                }`,
-                border: `3px solid ${
-                  shadowColors[index % shadowColors.length]
-                }`,
-                background: ` ${shadowColors[index % shadowColors.length]}`,
-              }}
-            >
-              <CardContent className="player-info" sx={{ textAlign: "center" }}>
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <Avatar
-                    sx={{
-                      width: 100,
-                      height: 100,
-                      boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
-                    }}
-                    src={displayImage(userRanking.user.user_image)}
-                  />
-                </Box>
-                <Typography mt={2} variant="body1" className="player-pseudo">
-                  {userRanking.user.user_pseudo}
-                </Typography>
-                <Paper>
-                  {" "}
-                  <Typography
-                    mt={1}
-                    variant="body1"
-                    className="player-top-ranking"
-                  >
-                    {userRanking.result_quiz} %
-                  </Typography>
-                </Paper>
-              </CardContent>
-            </Card>
+            <PlayerCard
+              userRanking={userRanking}
+              shadowColor={shadowColors[index % shadowColors.length]}
+            />
           </Grid>
         ))}
       </Grid>
@@ -151,7 +120,12 @@ const Theme = () => {
         borderRadius={16}
         justifyContent="space-between"
       >
-        <Button className="btn-list" label="Classée" value="list">
+        <Button
+          onClick={handleOpenCardNewRanked}
+          className="btn-list"
+          label="Classée"
+          value="list"
+        >
           <ListIcon className="icon-list" />
         </Button>
         <Button
@@ -163,6 +137,12 @@ const Theme = () => {
           <MultiplePersonsIcon className="icon-multi" />
         </Button>
       </Stack>
+      {isCardNewRankedOpen && (
+        <MessageThemeNewRanged
+          open={isCardNewRankedOpen}
+          onClose={() => setIsCardNewRankedOpen(false)}
+        />
+      )}
     </Container>
   );
 };

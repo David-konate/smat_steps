@@ -18,9 +18,11 @@ import { displayImage } from "../../utils";
 import ListIcon from "@mui/icons-material/List";
 import MultiplePersonsIcon from "../../components/svg/MultiplePersonsIcon";
 import RankingsList from "../../components/list/RankingList";
+import MessageThemeNewRanged from "../../components/message/MessageThemeNewRanged";
 
 const SousTheme = () => {
   const { id } = useParams();
+  const [isCardNewRankedOpen, setIsCardNewRankedOpen] = useState(false);
 
   const [isBusy, setIsBusy] = useState(true);
   const {
@@ -30,6 +32,7 @@ const SousTheme = () => {
     setTopUserRanking,
     sousTheme,
     setSousTheme,
+    setCurrentSousTheme,
   } = useGameContext();
   const shadowColors = [
     "rgba(218, 165, 32, 0.2)",
@@ -50,8 +53,8 @@ const SousTheme = () => {
         },
       });
 
-      console.log(res.data);
       setSousTheme(res.data.sousTheme);
+      setCurrentSousTheme(res.data.sousTheme);
       setTopUserRanking(res.data.topRankings);
     } catch (error) {
       console.error(error);
@@ -66,6 +69,10 @@ const SousTheme = () => {
 
   const handleLevelChange = (event) => {
     setCurrentLevel(parseInt(event.target.value));
+  };
+
+  const handleOpenCardNewRanked = () => {
+    setIsCardNewRankedOpen(true);
   };
 
   return isBusy ? (
@@ -156,7 +163,12 @@ const SousTheme = () => {
         borderRadius={16}
         justifyContent="space-between"
       >
-        <Button className="btn-list" label="Classée" value="list">
+        <Button
+          onClick={handleOpenCardNewRanked}
+          className="btn-list"
+          label="Classée"
+          value="list"
+        >
           <ListIcon className="icon-list" />
         </Button>
         <Button
@@ -168,6 +180,12 @@ const SousTheme = () => {
           <MultiplePersonsIcon className="icon-multi" />
         </Button>
       </Stack>
+      {isCardNewRankedOpen && (
+        <MessageThemeNewRanged
+          open={isCardNewRankedOpen}
+          onClose={() => setIsCardNewRankedOpen(false)}
+        />
+      )}
     </Container>
   );
 };

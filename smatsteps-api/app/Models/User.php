@@ -36,6 +36,10 @@ class User extends Authenticatable
             ]
         ];
     }
+    public function rankings()
+    {
+        return $this->hasMany(Ranking::class, 'user_id');
+    }
 
     /**
      * The attributes that should be hidden for serialization.

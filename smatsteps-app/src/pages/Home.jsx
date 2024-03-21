@@ -99,8 +99,6 @@ const Home = () => {
           <MessageNewRanged
             open={isCardNewRankedOpen}
             onClose={() => setIsCardNewRankedOpen(false)}
-            title="Votre nouveau classement"
-            message="Félicitations ! Vous avez un nouveau classement."
           />
         )}
         <Card
