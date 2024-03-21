@@ -5,7 +5,8 @@ import {
   calculatePercentage,
   calculatePoints,
 } from "../utils";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useUserContext } from "./UserProvider";
 
 // Création du contexte de jeu
 const GameContext = createContext({});
@@ -17,14 +18,14 @@ export const GameProvider = ({ children }) => {
   const [topSousThemes, setTopSousThemes] = useState([]);
   const [points, setPoints] = useState(0);
   const [pointsMax, setPointsMax] = useState(0);
-  const [pointsTotal, setPointsTotal] = useState(0);
+  const [pointsTotal] = useState(0);
   const [themes, setThemes] = useState([]);
   const [theme, setTheme] = useState();
   const [resultat, setResultat] = useState(0);
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [countLevel1, setCountLevel1] = useState(0);
-  const [count, setCount] = useState(0);
+  const [setCount] = useState(0);
   const [totalTime, setTotalTime] = useState(0);
   const [badAnswers, setBadAnswers] = useState();
   const [isQuizFinished, setIsQuizFinished] = useState(true);
@@ -46,6 +47,7 @@ export const GameProvider = ({ children }) => {
     const storedLevel = localStorage.getItem("level");
     return storedLevel ? parseInt(storedLevel) : 2;
   });
+  const { user } = useUserContext();
   const navigate = useNavigate();
   // Fonction pour charger les données du jeu depuis le serveur
   useEffect(() => {
@@ -191,12 +193,22 @@ export const GameProvider = ({ children }) => {
   const gameFinished = async () => {
     try {
       setIsBusy(true);
-
-      await axios.post(`rankings`, {
-        resultQuizz: resultat,
-        timeQuizz: totalTime,
-        // user_id: user.id,
-      });
+      await axios.post(
+        `rankings/save-stats`,
+        {
+          result_quiz: resultat,
+          time_quiz: totalTime,
+          user_id: user.id,
+          sous_theme_id: currentSousTheme, // 0 = all sous clas s du theme
+          theme_id: currentTheme.id,
+          level: currentLevel,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
     } catch (error) {
       console.error(error);
     } finally {

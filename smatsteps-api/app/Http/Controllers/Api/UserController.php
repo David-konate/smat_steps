@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use App\Models\Ranking;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -55,8 +56,12 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($user)
+    public function show($user, Request $request)
     {
+        $currentLevel = $request->query('currentLevel');
+        $currentTheme = $request->query('currentTheme');
+        $currentSousTheme = $request->query('currentSousTheme');
+
         try {
             $user = User::findOrFail($user);
 
@@ -67,15 +72,18 @@ class UserController extends Controller
                 ], 404);
             }
 
+            $rankings = Ranking::where('user_id', $user->id)
+                ->where('level', $currentLevel)
+                ->with(['theme', 'sousTheme']);
+
+            $rankings = $rankings->orderByDesc('result_quiz')->get();
 
             // $latestReview = $user->receiverReviews->first(); // Assuming reviews are ordered by creation date
-
             return response()->json([
                 'status' => true,
-                'data' => [
-                    'user' => $user,
-                    // 'latestReview' => $latestReview
-                ]
+                'user' => $user,
+                'rankings' => $rankings // Envoyer les classements dans la réponse JSON
+                // 'latestReview' => $latestReview
             ], 200);
         } catch (\Exception $e) {
             return response()->json([
@@ -84,6 +92,7 @@ class UserController extends Controller
             ], 500);
         }
     }
+
 
     public function multi($userIds)
     {

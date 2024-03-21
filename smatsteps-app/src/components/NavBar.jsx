@@ -32,7 +32,7 @@ import React from "react";
 function NavBar() {
   const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
-  const { user, setUser } = useUserContext(); // Utilisez le hook useUserContext pour obtenir l'état d'authentification
+  const { user, setUser, authentification } = useUserContext(); // Utilisez le hook useUserContext pour obtenir l'état d'authentification
   const [drawerOpen, setDrawerOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
@@ -43,6 +43,10 @@ function NavBar() {
     setDrawerOpen(false);
   };
 
+  const onProfil = () => {
+    console.log("profil");
+    navigate(`/profil/${user.id}`);
+  };
   const handleLogout = async () => {
     console.log("logout");
     localStorage.removeItem("token");
@@ -105,6 +109,17 @@ function NavBar() {
                   <Typography
                     sx={{ fontSize: "0.8rem" }}
                     className="navbar_link"
+                    onClick={onProfil}
+                  >
+                    Profil
+                  </Typography>
+                ) : (
+                  <></>
+                )}
+                {user ? (
+                  <Typography
+                    sx={{ fontSize: "0.8rem" }}
+                    className="navbar_link"
                     onClick={handleLogout}
                   >
                     Logout
@@ -140,6 +155,7 @@ function NavBar() {
               {firstLetterUppercase(link.label)}
             </NavLink>
           ))}
+
           {user ? (
             <Typography
               sx={{ fontSize: "0.8rem" }}

@@ -1,6 +1,7 @@
 // UserProvider.jsx
 import axios from "axios";
 import React, { createContext, useContext, useMemo, useState } from "react";
+import { useGameContext } from "./GameProvider";
 
 const UserContext = createContext({});
 
@@ -10,23 +11,29 @@ export const UserProvider = ({ children }) => {
   const [userTopRankings, setUserTopRankings] = useState(null);
   const [userRankingsCount, setUserRankingsCount] = useState(null);
   const [userLatestRankings, setUserLastetRankings] = useState(null);
+  const [isBusy, setIsBusy] = useState(true);
+
+  const { currentLevel } = useGameContext();
   const userToken = useMemo(() => {
     return localStorage.getItem("token");
   }, [localStorage.getItem("token")]);
 
+  const shadowColors = [
+    "rgba(218, 165, 32, 0.2)",
+    "rgba(192, 192, 192, 0.2)",
+    "rgba(205, 127, 50, 0.2)",
+  ];
+
   function authentification() {
-    axios
-      .get(`/me/$`)
-      .then((res) => {
+    try {
+      axios.get(`/me/${currentLevel}`).then((res) => {
         setUser(res.data.user);
-        setUserRankings(res.data.rankings);
-        setUserTopRankings(res.data.topRankings);
-        setUserLastetRankings(res.data.latestRankings);
-        setUserRankingsCount(res.data.totalRankingsCount);
-      })
-      .catch((e) => {
-        console.log(e);
       });
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsBusy(false);
+    }
   }
 
   return (

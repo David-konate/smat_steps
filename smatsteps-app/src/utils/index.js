@@ -8,53 +8,34 @@ export const BASE_URL = process.env.REACT_APP_BASE_URL;
 export const BASE_URL_API = process.env.REACT_APP_BASE_URL_API;
 
 // Navigation
-export const linksUserLoged = [
-  {
-    label: "Home",
-    path: "/",
-  },
-  {
-    label: "Profil",
-    path: "/profil",
-  },
+// export const linksUserLoged = [
+//   {
+//     label: "Home",
+//     path: "/",
+//   },
+//   {
+//     label: "Profil",
+//     path: "/profil",
+//   },
 
-  {
-    label: "Logout",
-    path: "/login",
-  },
-  {
-    label: "login",
-    path: "/login",
-  },
-];
+//   {
+//     label: "Logout",
+//     path: "/login",
+//   },
+//   {
+//     label: "login",
+//     path: "/login",
+//   },
+// ];
 export const links = [
   {
     label: "Home",
     path: "/",
   },
-  {
-    label: "Profil",
-    path: "/profil",
-  },
-];
-
-export const linksAcceuil = [
-  {
-    label: "Home",
-    path: "/",
-  },
-  {
-    label: "Profil",
-    path: "/rofil",
-  },
-  {
-    label: "Login",
-    path: "/login",
-  },
-  {
-    label: "Logout",
-    path: "/lpgin",
-  },
+  // {
+  //   label: "Profil",
+  //   path: "/profil",
+  // },
 ];
 
 // Transformation

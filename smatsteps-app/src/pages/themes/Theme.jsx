@@ -2,19 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Box, Container, Stack } from "@mui/system";
-import {
-  Avatar,
-  Button,
-  Card,
-  CardContent,
-  CircularProgress,
-  Grid,
-  Paper,
-  Typography,
-} from "@mui/material";
+import { Button, CircularProgress, Grid, Typography } from "@mui/material";
 import LevelBox from "../../components/LevelBox";
 import { useGameContext } from "../../context/GameProvider";
-import { displayImage } from "../../utils";
 import ListIcon from "@mui/icons-material/List";
 import MultiplePersonsIcon from "../../components/svg/MultiplePersonsIcon";
 import RankingsList from "../../components/list/RankingList";

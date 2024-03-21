@@ -15,8 +15,11 @@ import { useGameContext } from "../../context/GameProvider";
 
 import moment from "moment";
 
-const RankingsList = () => {
+const RankingsList = ({ rankings }) => {
   const { topUserRanking } = useGameContext();
+
+  // Utilisez les classements passés en paramètre s'ils sont définis, sinon utilisez topUserRanking
+  const rankingData = rankings || topUserRanking;
 
   const [orderBy, setOrderBy] = useState("id");
   const [order, setOrder] = useState("asc");
@@ -27,7 +30,7 @@ const RankingsList = () => {
     setOrderBy(property);
   };
 
-  const sortedRankings = [...topUserRanking].sort((a, b) => {
+  const sortedRankings = [...rankingData].sort((a, b) => {
     // Convertir les pourcentages en nombres entiers pour la comparaison
     const percentA = parseInt(a.result_quiz);
     const percentB = parseInt(b.result_quiz);

@@ -16,7 +16,7 @@ const RouterOutlet = () => {
 
       <Route path={`/login`} element={<Login />} />
 
-      <Route path="/profil" element={<Profil />} />
+      <Route path="/profil/:id" element={<Profil />} />
 
       {/* Routes themes */}
       <Route path="/theme/:id" element={<Theme />} />

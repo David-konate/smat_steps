@@ -7,7 +7,7 @@ const WhiteButton = ({ children, onClick, isActive = false }) => {
       onClick={onClick}
       sx={{
         borderRadius: 20,
-        padding: 1,
+
         backgroundColor: "white",
         color: "var(--primary-color)",
         width: "fit-content",
