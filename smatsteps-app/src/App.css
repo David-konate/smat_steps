@@ -1,0 +1,539 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bangers:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Madimi+One&display=swap");
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+:root {
+  --primary-color: #6949ff;
+  --secondary-color: #ffc107;
+  --secondary-color-light: #f3f3f3;
+  --secondary-color-dark: #231f20;
+  --color-text-light: #ffffff;
+  --color-text-dark: #000000;
+}
+
+body,
+html,
+#root {
+  margin: 0;
+  padding: 0;
+}
+
+body.dark {
+  --color-text: var(--color-text-light);
+  background: var(--secondary-color-dark);
+  --primary-color-special: var(--primary-color);
+  --secondary-color-special: var(--secondary-color);
+  --proress-bar-bg: var(--secondary-color-light);
+}
+body.dark .index-sous-theme .text-field-sous-theme {
+  border-width: 0;
+  border: 1px solid var(--primary-color);
+  background-color: rgba(255, 193, 7, 0.4);
+  border-radius: 10px;
+  font-family: "Madimi One", sans-serif;
+}
+body.light {
+  --color-text: var(--color-text-dark);
+  background: var(--secondary-color-light);
+  --primary-color-special: var(--secondary-color);
+  --secondary-color-special: var(--primary-color);
+  --proress-bar-bg: var(--secondary-color-dark);
+}
+body.light .index-sous-theme .text-field-sous-theme {
+  border-width: 0;
+  border: 1px solid var(--secondary-color);
+  background-color: rgba(105, 73, 255, 0.5);
+  border-radius: 10px;
+  font-family: "Madimi One", sans-serif;
+}
+body .card-top-theme-home::-webkit-scrollbar {
+  display: none;
+  overflow-x: "auto";
+  border: 1px solid var(--secondary-color);
+  box-shadow: 0px 4px 8px rgba(105, 73, 255, 0.7);
+}
+body .answer-text {
+  font-family: "Madimi One", sans-serif;
+}
+body .question {
+  font-family: "Madimi One", sans-serif;
+  font-size: 2rem; /* Taille par défaut de la police */
+  /* Définir différentes tailles de police pour différents breakpoints */
+}
+@media (max-width: 600px) {
+  body .question {
+    font-size: 1.6rem; /* Taille de police pour les écrans extra-small (xs) */
+  }
+}
+@media (min-width: 601px) and (max-width: 960px) {
+  body .question {
+    font-size: 2rem; /* Taille de police pour les écrans small (sm) */
+  }
+}
+@media (min-width: 961px) and (max-width: 1280px) {
+  body .question {
+    font-size: 2rem; /* Taille de police pour les écrans medium (md) */
+  }
+}
+@media (min-width: 1281px) {
+  body .question {
+    font-size: 3rem; /* Taille de police pour les écrans large (lg) et supérieurs */
+  }
+}
+body .card-correction {
+  border: 2px solid rgba(255, 193, 7, 0.4);
+  box-shadow: 1px 1px 6px rgb(105, 73, 255);
+}
+body .card-correction .question-correction {
+  font-family: "Bangers", sans-serif;
+  color: var(--primary-color);
+  -webkit-text-stroke: 1px rgba(255, 193, 7, 0.4); /* Ajoute une bordure autour de chaque lettre */
+}
+body .card-correction .text-answer-correction {
+  font-family: "Madimi One", sans-serif;
+  border-radius: 20;
+}
+body .card-correction .stack-answer-correction {
+  font-family: "Madimi One", sans-serif;
+}
+body .card-correction .stack-answer-correction .text-good-answer-correction {
+  font-family: "Madimi One", sans-serif;
+}
+body .card-correction .stack-answer-correction .good-answer-correction {
+  padding: "15px";
+  background-color: rgb(255, 193, 7);
+  font-family: "Bangers", sans-serif;
+  color: var(--primary-color);
+  border: 2px solid rgba(105, 73, 255, 0.6);
+  box-shadow: 0px 1px 6px rgb(105, 73, 255);
+  -webkit-text-stroke: 1px var(--color-text-dark);
+}
+body .btn-log {
+  font-family: "Bangers", sans-serif;
+}
+body .form-connexion .title-connexion {
+  font-family: "Bangers", sans-serif;
+  color: var(--secondary-color-special);
+}
+body .form-connexion .input-connexion {
+  font-family: "Madimi One", sans-serif;
+  border-radius: 5px;
+  box-shadow: 0px 1px 6px rgba(105, 73, 255, 0.8);
+}
+body .form-connexion .btn-connexion {
+  color: var(--primary-color);
+  border: 2px solid rgba(105, 73, 255, 0.3);
+  box-shadow: 1px 1px 6px rgba(105, 73, 255, 0.3);
+}
+body .form-modif-user {
+  border: 1px solid var(--primary-color-special);
+  box-shadow: 1px 1px 6px var(--secondary-color-special);
+}
+body .form-modif-user .input-pseudo {
+  font-family: "Madimi One", sans-serif;
+  border-radius: 5px;
+  box-shadow: 0px 1px 6px var(--primary-color-special);
+}
+body .form-modif-user .btn-pseudo {
+  color: var(--primary-color);
+  border: 2px solid rgba(105, 73, 255, 0.3);
+  box-shadow: 1px 1px 6px var(--primary-color-special);
+}
+body .form-modif-user .text-img-profil {
+  font-family: "Bangers", sans-serif;
+  color: var(--secondary-color-special);
+  font-size: 1.2rem;
+}
+body .form-modif-user .text-img-select {
+  font-family: "Madimi One", sans-serif;
+  color: var(--color-text);
+}
+body .form-modif-user .text-btn {
+  font-family: "Madimi One", sans-serif;
+}
+body .form-modif-user .box-image-profil {
+  background-color: var(--primary-color-special);
+  color: var(--secondary-color-special);
+}
+body .form-modif-user .box-image-profil .typo-image-profil {
+  font-family: "Madimi One", sans-serif;
+}
+body .border-correction {
+  border: 2px solid rgba(105, 73, 255, 0.8);
+  box-shadow: 1px 1px 6px var(--primary-color);
+}
+body .box-correction .title-correction {
+  color: var(--primary-color);
+  font-family: "Bangers", sans-serif;
+  -webkit-text-stroke: 1px rgba(255, 193, 7, 0.6); /* Ajoute une bordure autour de chaque lettre */
+}
+body .completion-msg-card {
+  background-color: rgb(255, 193, 7);
+  border: 2px solid rgba(105, 73, 255, 0.8);
+  box-shadow: 0px 1px 6px var(--primary-color);
+}
+body .completion-msg-card .title {
+  color: var(--primary-color);
+  font-family: "Bangers", sans-serif;
+}
+body .completion-msg-card .text {
+  color: var(--color-text-dark);
+  font-family: "Madimi One", sans-serif;
+}
+body .completion-msg-card .card {
+  background-color: rgba(105, 73, 255, 0.4);
+}
+body .completion-msg-card .text-score {
+  color: var(--color-text-dark);
+  font-family: "Madimi One", sans-serif;
+}
+body .completion-msg-card .result {
+  color: var(--primary-color);
+  font-family: "Bangers", sans-serif;
+  font-size: 1.8rem;
+}
+body .completion-msg-card .btn-correction {
+  font-family: "Madimi One", sans-serif !important;
+  color: var(--color-text-dark);
+}
+body .completion-msg-card .btn-correction:hover {
+  filter: brightness(90%); /* Ajoute un filtre de luminosité au survol */
+}
+body .completion-msg-card .btn-fermer {
+  font-family: "Madimi One", sans-serif;
+  color: var(--color-text-dark);
+}
+body .completion-msg-card .btn-fermer:hover {
+  filter: brightness(90%); /* Ajoute un filtre de luminosité au survol */
+}
+body .theme-new-ranked {
+  background-color: rgba(255, 193, 7, 0.3);
+}
+body .theme-new-ranked .card-theme-new-ranked {
+  border: 1px solid var(--primary-color);
+  border-radius: "20px";
+  margin: "50px";
+}
+body .theme-new-ranked .card-theme-new-ranked .lancer-quiz {
+  margin: "50px";
+  color: #000000;
+  font-size: 0.8rem;
+  text-align: center;
+  font-family: "Madimi One", sans-serif !important;
+}
+body .theme-new-ranked .card-theme-new-ranked .title {
+  color: var(--primary-color);
+  font-family: "Bangers", sans-serif;
+  margin: "10px";
+  text-align: center;
+}
+body .theme-new-ranked .card-theme-new-ranked .title .text-with-shadow {
+  position: relative;
+  display: inline-block;
+  -webkit-text-stroke: 1px rgba(255, 193, 7, 0.3); /* Bordure autour du texte */
+}
+body .theme-new-ranked .card-theme-new-ranked .title .text-with-shadow::after {
+  content: attr(data-content);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  color: rgba(105, 73, 255, 0.9); /* Couleur de l'ombre */
+  text-shadow: 2px 2px 4px rgba(105, 73, 255, 0.9); /* Définition de l'ombre portée */
+}
+body .theme-new-ranked .card-theme-new-ranked .card {
+  width: "80%";
+  border: 1px solid rgba(105, 73, 255, 0.4);
+  background-color: #ffc107;
+  box-shadow: 0px 1px 6px rgba(105, 73, 255, 0.5);
+}
+body .theme-new-ranked .card-theme-new-ranked .text {
+  font-family: "Madimi One", sans-serif;
+  color: var(--color-text);
+}
+body .theme-new-ranked .card-theme-new-ranked .label {
+  font-family: "Bangers", sans-serif;
+  color: var(--primary-color);
+}
+body .theme-new-ranked .card-theme-new-ranked .level {
+  font-family: "Bangers", sans-serif;
+  color: var(--primary-color);
+}
+body .theme-new-ranked .card-theme-new-ranked .bouton {
+  font-family: "Madimi One", sans-serif;
+  color: var(--color-text);
+}
+body .theme-new-ranked .card-theme-new-ranked .ul {
+  padding: 0;
+  list-style: none;
+  text-align: center;
+  margin-top: 10px;
+}
+body .theme-new-ranked .card-theme-new-ranked .li {
+  padding: 3px;
+  color: #000000;
+  font-family: "Madimi One", sans-serif;
+}
+body .new-ranked {
+  background-color: rgba(255, 193, 7, 0.3);
+}
+body .new-ranked .card-new-ranked {
+  border: 1px solid var(--primary-color);
+  border-radius: "20px";
+  margin: "50px";
+}
+body .new-ranked .card-new-ranked .lancer-quiz {
+  margin: "50px";
+  color: #000000;
+  font-size: 0.8rem;
+  text-align: center;
+  font-family: "Madimi One", sans-serif !important;
+}
+body .new-ranked .card-new-ranked .title {
+  color: #000000;
+  font-family: "Bangers", sans-serif;
+  margin: "10px";
+  text-align: center;
+}
+body .new-ranked .card-new-ranked .sous-theme {
+  margin: "50px";
+  padding: 1;
+  color: #000000;
+  border-width: 0;
+  border: 1px solid var(--primary-color);
+  border-radius: 10px;
+  background-color: rgba(105, 73, 255, 0.5);
+  font-family: "Madimi One", sans-serif;
+}
+body .new-ranked .card-new-ranked .bouton {
+  font-family: "Madimi One", sans-serif;
+  color: var(--color-text);
+}
+body .new-ranked .card-new-ranked .ul {
+  padding: 0;
+  list-style: none;
+  text-align: center;
+  margin-top: 10px;
+}
+body .new-ranked .card-new-ranked .li {
+  padding: 3px;
+  color: #000000;
+  font-family: "Madimi One", sans-serif;
+}
+body .new-ranked .card-new-ranked {
+  border: 1px solid var(--primary-color);
+  border-radius: "20px";
+  margin: "50px";
+}
+body .new-ranked .card-new-ranked .lancer-quiz {
+  margin: "50px";
+  color: #000000;
+  font-size: 0.8rem;
+  text-align: center;
+  font-family: "Madimi One", sans-serif !important;
+}
+body .new-ranked .card-new-ranked .title {
+  color: #000000;
+  font-family: "Bangers", sans-serif;
+  margin: "10px";
+  text-align: center;
+}
+body .new-ranked .card-new-ranked .sous-theme {
+  margin: "50px";
+  padding: 1;
+  color: #000000;
+  border-width: 0;
+  border: 1px solid var(--primary-color);
+  border-radius: 10px;
+  background-color: rgba(105, 73, 255, 0.5);
+  font-family: "Madimi One", sans-serif;
+}
+body .new-ranked .card-new-ranked .bouton {
+  font-family: "Madimi One", sans-serif;
+  color: black;
+}
+body .new-ranked .card-new-ranked .ul {
+  padding: 0;
+  list-style: none;
+  text-align: center;
+  margin-top: 10px;
+}
+body .new-ranked .card-new-ranked .li {
+  padding: 3px;
+  color: #000000;
+  font-family: "Madimi One", sans-serif;
+}
+body .top-theme-title {
+  font-weight: "bold";
+  color: var(--color-text);
+  font-family: "Madimi One", sans-serif;
+}
+body .btn-resultat {
+  font-family: "Madimi One", sans-serif;
+  color: var(--color-text);
+}
+body .navbar_link {
+  padding: 0 8px;
+  display: flex;
+  position: relative;
+  text-decoration: none;
+  color: var(--color-text);
+  align-items: center;
+}
+body .navbar_link:hover::after, body .navbar_link.active::after {
+  content: "";
+  position: absolute;
+  bottom: -28px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 5px;
+  background-color: var(--primary-color);
+}
+body .navbar_link.active {
+  color: var(--primary-color);
+}
+body .custom-link {
+  color: var(--color-text-title) !important;
+  text-decoration: underline;
+}
+body .custom-link:hover {
+  color: var(--color-text) !important;
+}
+body .text-bar-question {
+  color: var(--color-text);
+  font-family: "Madimi One", sans-serif;
+}
+body .red-text {
+  color: red;
+  font-family: "Bangers", sans-serif;
+}
+body .card-new-ranking {
+  background-image: url("../public/fonfVilot.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+body .card-new-prived {
+  background-image: url("../public/fonfJaune.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+body .text-special {
+  font-family: "Bangers", sans-serif;
+  font-weight: bold;
+  font-size: "3em";
+}
+body .text-card-home {
+  font-weight: "bold";
+  font-family: "Madimi One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+body .top-theme-link {
+  font-family: "Madimi One", sans-serif !important;
+}
+body .text-top-home {
+  font-family: "Madimi One", sans-serif;
+}
+body .titre-theme {
+  font-family: "Bangers", sans-serif;
+  color: var(--primary-color);
+}
+body .title-box-level {
+  color: var(--secondary-color-special);
+  font-family: "Bangers", sans-serif !important;
+}
+body .box-image-profil {
+  box-shadow: 0px 1px 6px var(--secondary-color-special);
+  position: relative;
+  border-radius: 10px;
+}
+body .box-image-profil .input-image-profil {
+  opacity: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+body .player-card .player-info .player-pseudo {
+  color: var(--color-text);
+  font-family: "Madimi One", sans-serif;
+}
+body .player-card .player-info .player-top-ranking {
+  color: var(--color-text);
+  font-family: "Madimi One", sans-serif;
+}
+body .stack-nav-list-multi .btn-list {
+  background-color: var(--primary-color);
+  color: var(--color-text);
+  border-radius: 50%;
+  height: 60px;
+  box-shadow: 0px 1px 6px rgba(255, 193, 7, 0.6);
+}
+body .stack-nav-list-multi .btn-multi {
+  background-color: var(--secondary-color);
+  color: var(--color-text);
+  border-radius: 50%;
+  height: 60px;
+  box-shadow: 0px 1px 6px rgba(105, 73, 255, 0.5);
+}
+body .card-top-score .text-ranking-score {
+  font-family: "Bangers", sans-serif;
+}
+body .card-top-score .text-stack-score .text-stack-score {
+  font-family: "Madimi One", sans-serif;
+}
+body .card-top-score .text-stack-score .text-score {
+  font-family: "Bangers", sans-serif;
+}
+body .card-top-score .text-stack-score .text-stack {
+  font-family: "Madimi One", sans-serif;
+}
+body .container-result-profil {
+  box-shadow: 0px 1px 6px var(--secondary-color-special);
+  border: 1px solid var(--primary-color-special);
+}
+body .container-result-profil .cell-result-profil {
+  font-family: "Bangers", sans-serif;
+  color: var(--secondary-color-special);
+  font-size: 1.5rem;
+}
+body .container-result-profil .cell-other-profil {
+  font-family: "Madimi One", sans-serif;
+}
+body .container-result-profil .head-result-profil {
+  background-color: var(--primary-color-special);
+}
+body .container-result-profil .head-result-profil .label-result-profil {
+  font-family: "Bangers", sans-serif;
+  font-size: 1.3rem;
+}
+body .box-field {
+  box-shadow: 0px 1px 6px var(--secondary-color-special);
+}
+body .box-field input {
+  font-family: "Madimi One", sans-serif;
+}
+body .box-field label {
+  font-family: "Madimi One", sans-serif;
+  color: var(--secondary-color-special);
+}/*# sourceMappingURL=App.css.map */

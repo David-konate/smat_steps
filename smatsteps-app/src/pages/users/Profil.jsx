@@ -11,15 +11,20 @@ import {
   Avatar,
   Card,
   Button,
+  IconButton,
 } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { displayImage, firstLetterUppercase } from "../../utils";
 import { useGameContext } from "../../context/GameProvider";
 import LevelBox from "../../components/LevelBox";
 import { Stack } from "@mui/system";
-import CustomButton from "../../components/buttons/CustomButton";
+import EditIcon from "@mui/icons-material/Edit";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import RankingsList from "../../components/list/RankingList";
+import MessageUpdateProfil from "../../components/message/MessageUpdateProfil";
+import RankingsListProfil from "../../components/list/RankingListProfil";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import PersonAddDisabledIcon from "@mui/icons-material/PersonAddDisabled";
+import ConfirmationDialog from "../../components/message/ConfirmationDialog";
 
 const Profil = () => {
   const { id } = useParams();
@@ -28,6 +33,14 @@ const Profil = () => {
   const { currentLevel, currentTheme, currentSousTheme } = useGameContext();
   const [userProfil, setuserProfil] = useState();
   const [userRankings, setUserRankings] = useState();
+  const [friend, setFriend] = useState(false);
+  const [isDisableFriendConfirmationOpen, setIsDisableFriendConfirmationOpen] =
+    useState(false);
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [isEditOpen, setIsEditOpen] = useState(false);
+  const [isEditOpenAddFriend, setIsEditOpenAddFriend] = useState(false);
+  const [isEditOpenDisableFriend, setIsEditOpenDisableFriend] = useState(false);
 
   useEffect(() => {
     fetchData();
@@ -42,7 +55,10 @@ const Profil = () => {
           currentTheme: currentTheme,
         },
       });
-      console.log(res.data.rankings);
+      const friend = await axios.get(`users/${id}/is-friend-with/${user.id}`);
+      console.log(friend.data.friend);
+
+      setFriend(friend.data.friend);
       setuserProfil(res.data.user);
       setUserRankings(res.data.rankings);
     } catch (error) {
@@ -51,6 +67,23 @@ const Profil = () => {
       setIsBusy(false);
     }
   };
+  // Fonction pour ouvrir le composant MessageUpdateProfil
+  const handleEditClick = () => {
+    setIsEditOpen(true);
+  };
+  const handleDisableFriendClick = () => {
+    setIsDisableFriendConfirmationOpen(true);
+  };
+
+  const handleCloseDisableFriendConfirmation = () => {
+    setIsDisableFriendConfirmationOpen(false);
+  };
+  const handleAddFriendClick = () => {
+    setIsEditOpenDisableFriend(true);
+  };
+  const handleCloseEdit = () => {
+    setIsEditOpen(false);
+  };
 
   const shadowColors = [
     "rgba(218, 165, 32, 0.2)",
@@ -58,12 +91,43 @@ const Profil = () => {
     "rgba(205, 127, 50, 0.2)",
   ];
 
+  const toggleList = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <Paper elevation={3} style={{ padding: "20px", margin: "20px" }}>
       {isBusy ? (
         <CircularProgress />
       ) : (
         <Container>
+          <Box sx={{ position: "relative" }}>
+            {userProfil.id === user.id ? (
+              <IconButton
+                sx={{ position: "absolute", top: 0, right: 0 }}
+                onClick={handleEditClick}
+              >
+                <EditIcon style={{ color: "var(--secondary-color-special)" }} />
+              </IconButton>
+            ) : friend === true ? (
+              <IconButton
+                sx={{ position: "absolute", top: 0, right: 0 }}
+                onClick={handleDisableFriendClick}
+              >
+                <PersonAddDisabledIcon
+                  style={{ color: "var(--secondary-color-special)" }}
+                />
+              </IconButton>
+            ) : (
+              <IconButton
+                sx={{ position: "absolute", top: 0, right: 0 }}
+                onClick={handleAddFriendClick}
+              >
+                <PersonAddIcon
+                  style={{ color: "var(--secondary-color-special)" }}
+                />
+              </IconButton>
+            )}
+          </Box>
           {user ? (
             <Box
               sx={{
@@ -111,7 +175,8 @@ const Profil = () => {
                       variant="body1"
                       className="player-pseudo"
                     >
-                      {firstLetterUppercase(userProfil.user_pseudo)}
+                      {userProfil &&
+                        firstLetterUppercase(userProfil.user_pseudo)}
                     </Typography>
                   </CardContent>
                 </Card>
@@ -122,7 +187,7 @@ const Profil = () => {
               <Stack alignItems="center" direction={"row"} gap={3} mt={3}>
                 {userRankings.length > 0 ? (
                   userRankings
-                    .sort((a, b) => a.result_quiz - b.result_quiz) // Trie par ordre ascendant de result_quiz
+                    .sort((a, b) => b.result_quiz - a.result_quiz) // Trie par ordre ascendant de result_quiz
                     .slice(0, 3) // Récupère les trois premiers éléments
                     .map((ranking, index) => (
                       <Card
@@ -141,7 +206,7 @@ const Profil = () => {
                         <CardContent style={{ textAlign: "center" }}>
                           <Typography
                             className="text-ranking-score"
-                            variant="body1"
+                            variant="h5"
                           >
                             {ranking.sous_theme?.sous_theme ||
                               ranking.theme?.theme}
@@ -154,13 +219,15 @@ const Profil = () => {
                             gap={1}
                           >
                             {" "}
-                            <Typography className="text-stack">
+                            <Typography variant="h6" className="text-stack">
                               Score :
                             </Typography>
-                            <Typography className="text-score" variant="body1">
+                            <Typography className="text-score" variant="h5">
                               {ranking?.result_quiz}
                             </Typography>
-                            <Typography className="text-stack">%</Typography>
+                            <Typography variant="h6" className="text-stack">
+                              %
+                            </Typography>
                           </Stack>
                         </CardContent>
                       </Card>
@@ -169,21 +236,47 @@ const Profil = () => {
                   <Typography variant="body1">Aucun score trouvé</Typography>
                 )}
               </Stack>
-              <Box mt={1}>
+              <Box mt={2}>
                 {" "}
-                <Button>
+                <Button onClick={toggleList}>
                   <ExpandMoreIcon
                     style={{ color: "var(--secondary-color-special)" }}
                   />
                 </Button>
               </Box>
-              <RankingsList rankings={userRankings} />
+              <Box mt={2}>
+                {" "}
+                {isOpen && <RankingsListProfil rankings={userRankings} />}
+              </Box>
             </Box>
           ) : (
             <Typography variant="body1">Aucun utilisateur connecté</Typography>
           )}
         </Container>
       )}
+      {
+        <MessageUpdateProfil
+          userProfil={userProfil} // Passer les informations sur le profil de l'utilisateur
+          open={isEditOpen} // Indiquer si le composant doit être ouvert ou fermé
+          onClose={handleCloseEdit} // Gérer la fermeture du composant
+          redirection={null} // Ajouter une éventuelle redirection après la modification du profil
+          setuserProfil={setuserProfil} // Passer la fonction pour mettre à jour les informations du profil
+        />
+      }
+      <ConfirmationDialog
+        redirection={"/"}
+        open={isDisableFriendConfirmationOpen}
+        onClose={handleCloseDisableFriendConfirmation}
+        onConfirm={() => {
+          handleCloseDisableFriendConfirmation();
+          try {
+            // Supprimer l'ami
+            // await axios
+          } catch (error) {}
+        }}
+        title="Confirmation"
+        message={`Vous vous apprêtez à supprimer ${userProfil?.user_pseudo} de vos amis ?`}
+      />
     </Paper>
   );
 };

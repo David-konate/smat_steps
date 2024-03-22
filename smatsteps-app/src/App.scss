@@ -165,6 +165,41 @@ body {
       box-shadow: 1px 1px 6px rgba(105, 73, 255, 0.3);
     }
   }
+  .form-modif-user {
+    border: 1px solid var(--primary-color-special);
+    box-shadow: 1px 1px 6px var(--secondary-color-special);
+
+    .input-pseudo {
+      font-family: "Madimi One", sans-serif;
+      border-radius: 5px;
+      box-shadow: 0px 1px 6px var(--primary-color-special);
+    }
+    .btn-pseudo {
+      color: var(--primary-color);
+      border: 2px solid rgba(105, 73, 255, 0.3);
+      box-shadow: 1px 1px 6px var(--primary-color-special);
+    }
+    .text-img-profil {
+      font-family: "Bangers", sans-serif;
+      color: var(--secondary-color-special);
+      font-size: 1.2rem;
+    }
+    .text-img-select {
+      font-family: "Madimi One", sans-serif;
+      color: var(--color-text);
+    }
+    .text-btn {
+      font-family: "Madimi One", sans-serif;
+    }
+    .box-image-profil {
+      background-color: var(--primary-color-special);
+
+      color: var(--secondary-color-special);
+      .typo-image-profil {
+        font-family: "Madimi One", sans-serif;
+      }
+    }
+  }
   .border-correction {
     border: 2px solid rgba(105, 73, 255, 0.8);
     box-shadow: 1px 1px 6px var(--primary-color);
@@ -485,6 +520,22 @@ body {
     color: var(--secondary-color-special);
     font-family: "Bangers", sans-serif !important;
   }
+
+  .box-image-profil {
+    box-shadow: 0px 1px 6px var(--secondary-color-special);
+    position: relative;
+    border-radius: 10px;
+    .input-image-profil {
+      opacity: 0;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+    }
+  }
+
   .player-card {
     .player-info {
       .player-pseudo {
@@ -528,5 +579,35 @@ body {
         font-family: "Madimi One", sans-serif;
       }
     }
+  }
+  .container-result-profil {
+    box-shadow: 0px 1px 6px var(--secondary-color-special);
+    border: 1px solid var(--primary-color-special);
+    .cell-result-profil {
+      font-family: "Bangers", sans-serif;
+      color: var(--secondary-color-special);
+      font-size: 1.5rem;
+    }
+    .cell-other-profil {
+      font-family: "Madimi One", sans-serif;
+    }
+    .head-result-profil {
+      background-color: var(--primary-color-special);
+
+      .label-result-profil {
+        font-family: "Bangers", sans-serif;
+        font-size: 1.3rem;
+      }
+    }
+  }
+  .box-field {
+    box-shadow: 0px 1px 6px var(--secondary-color-special);
+  }
+  .box-field input {
+    font-family: "Madimi One", sans-serif;
+  }
+  .box-field label {
+    font-family: "Madimi One", sans-serif;
+    color: var(--secondary-color-special);
   }
 }

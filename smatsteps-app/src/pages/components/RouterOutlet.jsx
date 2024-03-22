@@ -16,7 +16,11 @@ const RouterOutlet = () => {
 
       <Route path={`/login`} element={<Login />} />
 
-      <Route path="/profil/:id" element={<Profil />} />
+      <Route
+        PrivateRouteGuard
+        path="/profil/:id"
+        element={<PrivateRouteGuard element={<Profil />} />}
+      />
 
       {/* Routes themes */}
       <Route path="/theme/:id" element={<Theme />} />

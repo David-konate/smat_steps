@@ -10,6 +10,7 @@ return new class extends Migration
     {
         Schema::create('friends', function (Blueprint $table) {
             $table->id();
+            $table->integer('status')->default(2);
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->bigInteger('friend_id')->unsigned()->nullable();
             $table->timestamps();

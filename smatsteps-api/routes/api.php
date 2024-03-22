@@ -14,6 +14,7 @@ use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\QuestionController;
 use App\Http\Controllers\Api\SecurityController;
 use App\Http\Controllers\Api\SousThemeController;
+use App\Models\Friend;
 
 /*
 |--------------------------------------------------------------------------
@@ -90,9 +91,10 @@ Route::prefix('themes')->group(function () {
 Route::prefix('users')->group(function () {
     Route::get('/', [UserController::class, 'index']);
     Route::get('{user}', [UserController::class, 'show']);
-    Route::put('{user}', [UserController::class, 'update']);
+    Route::post('{user}', [UserController::class, 'update']);
+    Route::post('{user}', [UserController::class, 'update']);
     Route::post('{friend}/add-friend/{user}', [UserController::class, 'addFriend']);
-    Route::get('{user}/is-friend-with/{friend}', [UserController::class, 'isFriendWith']);
+    Route::get('{user}/is-friend-with/{friend}', [UserController::class, 'friendshipExists']);
     Route::delete('{user}', [UserController::class, 'destroy']);
 });
 
@@ -102,8 +104,8 @@ Route::get('/me/{currentLevel}', function ($currentLevel) {
     // Assurez-vous que l'utilisateur est authentifié
     $user = Auth::user();
 
-    // Charger l'utilisateur avec la relation "rankings"
-    $userWithRankings = User::with('rankings')->find($user->id);
+
+
 
     // Récupérer les 3 meilleurs classements pour l'utilisateur spécifié et le niveau actuel
     $topRankings = Ranking::where('user_id', $user->id)
@@ -124,10 +126,11 @@ Route::get('/me/{currentLevel}', function ($currentLevel) {
         ->where('level', $currentLevel)
         ->count();
 
+
+
     // Retourner les données sous forme de tableau associatif
     return [
         'user' => $user,
-        'rankings' => $userWithRankings->rankings,
         'topRankings' => $topRankings,
         'latestRankings' => $latestRankings,
         'totalRankingsCount' => $totalRankingsCount,

@@ -10,7 +10,7 @@ const CustomButton = ({ onClick, children }) => {
       style={{
         color: "var(--secondary-color-special)",
         boxShadow: "1px 1px 6px var( --secondary-color-special)",
-        border: " 2px solid  --primary-color-special",
+        border: " 1px solid var( --primary-color-special)",
       }}
     >
       <Typography className="text-btn">{children}</Typography>

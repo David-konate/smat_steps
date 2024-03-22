@@ -12,14 +12,10 @@ import {
   TableSortLabel,
 } from "@mui/material";
 import { useGameContext } from "../../context/GameProvider";
-
 import moment from "moment";
 
-const RankingsList = ({ rankings }) => {
+const RankingsList = () => {
   const { topUserRanking } = useGameContext();
-
-  // Utilisez les classements passés en paramètre s'ils sont définis, sinon utilisez topUserRanking
-  const rankingData = rankings || topUserRanking;
 
   const [orderBy, setOrderBy] = useState("id");
   const [order, setOrder] = useState("asc");
@@ -30,12 +26,10 @@ const RankingsList = ({ rankings }) => {
     setOrderBy(property);
   };
 
-  const sortedRankings = [...rankingData].sort((a, b) => {
-    // Convertir les pourcentages en nombres entiers pour la comparaison
+  const sortedRankings = [...topUserRanking].sort((a, b) => {
     const percentA = parseInt(a.result_quiz);
     const percentB = parseInt(b.result_quiz);
 
-    // Comparaison des pourcentages
     if (percentA < percentB) {
       return order === "asc" ? -1 : 1;
     }
@@ -87,7 +81,6 @@ const RankingsList = ({ rankings }) => {
                   Joueur
                 </TableSortLabel>
               </TableCell>
-              {/* Ajout de la colonne "Niveau" */}
               <TableCell>
                 <TableSortLabel
                   active={orderBy === "created_at"}
@@ -100,24 +93,17 @@ const RankingsList = ({ rankings }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {sortedRankings.slice(3, 14).map(
-              (
-                ranking,
-                index // Utilisation de slice pour extraire de la 4ème à la 14ème itération
-              ) => (
-                <TableRow key={index}>
-                  <TableCell>{index + 4}</TableCell>{" "}
-                  {/* Pour afficher les numéros à partir de 4 */}
-                  <TableCell>{ranking.result_quiz}%</TableCell>
-                  <TableCell>{ranking.time_quiz}</TableCell>
-                  <TableCell>{ranking.user.user_pseudo}</TableCell>
-                  {/* Affichage du niveau dans la colonne "Niveau" */}
-                  <TableCell>
-                    {moment(ranking.created_at).format("D MMMM YYYY")}
-                  </TableCell>
-                </TableRow>
-              )
-            )}
+            {sortedRankings.slice(3, 14).map((ranking, index) => (
+              <TableRow key={index}>
+                <TableCell>{index + 4}</TableCell>
+                <TableCell>{ranking.result_quiz}%</TableCell>
+                <TableCell>{ranking.time_quiz}</TableCell>
+                <TableCell>{ranking.user.user_pseudo}</TableCell>
+                <TableCell>
+                  {moment(ranking.created_at).format("D MMMM YYYY")}
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </TableContainer>

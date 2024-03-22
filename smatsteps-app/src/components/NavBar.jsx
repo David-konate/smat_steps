@@ -11,22 +11,14 @@ import {
   IconButton,
   Drawer,
   List,
-  ListItem,
-  ListItemText,
 } from "@mui/material/";
 import { NavLink, useNavigate } from "react-router-dom";
-import {
-  firstLetterUppercase,
-  links,
-  linksLogged,
-  linksUnlogged,
-} from "../utils";
+import { firstLetterUppercase, links } from "../utils";
 import MenuIcon from "@mui/icons-material/Menu";
 
 import { useTheme } from "../context/ThemeContext";
 import Logo from "./Logo";
 import { useUserContext } from "../context/UserProvider"; // Importez le hook
-import { sizeWidth } from "@mui/system";
 import React from "react";
 
 function NavBar() {

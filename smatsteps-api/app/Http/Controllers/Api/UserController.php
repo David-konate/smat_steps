@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use App\Models\Friend;
 use App\Models\Ranking;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -28,27 +29,6 @@ class UserController extends Controller
     }
 
 
-    public function isFriendWith(User $user)
-    {
-        // Vérifiez si l'utilisateur est déjà ami avec l'utilisateur donné
-        return $this->friends()->where('friend_id', $user->id)->exists();
-    }
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        try {
-            $user = User::all();
-
-            return response()->json($user);
-        } catch (\Throwable $e) {
-            return response()->json([
-                'status' => false,
-                'message' =>  $e->getMessage(),
-            ], 403);
-        }
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -56,6 +36,36 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
+
+    public function friendshipExists($user_id, $friend_id)
+    {
+        try {
+            // Vérifie si une amitié existe entre les deux utilisateurs, peu importe l'ordre
+            $friendshipExists = Friend::where(function ($query) use ($user_id, $friend_id) {
+                $query->where('user_id', $user_id)
+                    ->where('friend_id', $friend_id);
+            })
+                ->orWhere(function ($query) use ($user_id, $friend_id) {
+                    $query->where('user_id', $friend_id)
+                        ->where('friend_id', $user_id);
+                })
+                ->where('status', 2)
+                ->exists();
+
+            return response()->json([
+                'status' => true,
+                'friend' => $friendshipExists,
+            ], 200);
+        } catch (\Throwable $e) {
+            // Gérez les erreurs ici, par exemple en enregistrant les erreurs dans les logs
+            // ou en renvoyant une réponse d'erreur appropriée
+            return response()->json([
+                'status' => false,
+                'message' => 'Erreur lors de la vérification de l\'amitié : ' . $e->getMessage(),
+            ], 500);
+        }
+    }
+
     public function show($user, Request $request)
     {
         $currentLevel = $request->query('currentLevel');
@@ -63,7 +73,7 @@ class UserController extends Controller
         $currentSousTheme = $request->query('currentSousTheme');
 
         try {
-            $user = User::findOrFail($user);
+            $user = User::with('friends')->findOrFail($user);
 
             if (!$user) {
                 return response()->json([
@@ -74,10 +84,10 @@ class UserController extends Controller
 
             $rankings = Ranking::where('user_id', $user->id)
                 ->where('level', $currentLevel)
-                ->with(['theme', 'sousTheme']);
+                ->with(['theme', 'sousTheme'])
+                ->orderBy('rankings.result_quiz', 'asc');
 
             $rankings = $rankings->orderByDesc('result_quiz')->get();
-
             // $latestReview = $user->receiverReviews->first(); // Assuming reviews are ordered by creation date
             return response()->json([
                 'status' => true,
@@ -131,18 +141,10 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user, $id)
+    public function update(Request $request, User $user)
     {
         try {
-            $validator = Validator::make($request->all(), [
-
-                'is_admin' => 'required|min:1|',
-                'to_subscribe' => 'required|min:1|',
-                'user_pseudo' => 'required|min:1|string|unique:users,user_pseudo,' . $id,
-                'user_email' => 'required|min:1|string|unique:users,user_email,' . $id,
-                'password' => 'required|string|min:8',
-                'user_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Ajout de règles pour l'image
-            ]);
+            $validator = Validator::make($request->all(), []);
 
             if ($validator->fails()) {
                 return response()->json([
@@ -150,8 +152,6 @@ class UserController extends Controller
                     'errors' => $validator->errors(),
                 ], 401);
             }
-
-            $user = User::findOrFail($id);
 
             // Vérifiez si un nouveau fichier image est téléchargé
             if ($request->hasFile('user_image')) {
@@ -166,19 +166,12 @@ class UserController extends Controller
                     Storage::delete('public/uploads/' . $user->image);
                 }
 
-                // // Attribuez le nom du fichier à l'utilisateur
+                // Attribuez le nom du fichier à l'utilisateur
                 $user->user_image = $filename;
             }
 
             $user->update([
-
                 'user_pseudo' => $request->user_pseudo,
-                'user_email' => $request->user_email,
-                'user_email' => $request->user_role,
-                'to_subscribe' => $request->user_role,
-
-                'password' => Hash::make($request->password),
-
             ]);
 
             return response()->json([
@@ -193,6 +186,7 @@ class UserController extends Controller
             ], 403);
         }
     }
+
     /**
      * Remove the specified resource from storage.
      */

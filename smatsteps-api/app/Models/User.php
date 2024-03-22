@@ -20,7 +20,6 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'user_pseudo',
-
         'password',
         'user_email',
         'is_admin',
@@ -62,5 +61,9 @@ class User extends Authenticatable
     public function smats()
     {
         return $this->belongsToMany(Smat::class, 'smat_user', 'user_id', 'smat_id');
+    }
+    public function friends()
+    {
+        return $this->belongsToMany(User::class, 'friends', 'user_id', 'friend_id');
     }
 }

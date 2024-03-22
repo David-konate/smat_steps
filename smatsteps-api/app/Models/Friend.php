@@ -9,7 +9,7 @@ class Friend extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'friend_id'];
+    protected $fillable = ['user_id', 'friend_id', 'status'];
 
     // Si vous ne souhaitez pas utiliser les timestamps 'created_at' et 'updated_at'
     // public $timestamps = false;
@@ -19,9 +19,8 @@ class Friend extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-
     public function friend()
     {
-        return $this->belongsTo(User::class, 'friend_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
