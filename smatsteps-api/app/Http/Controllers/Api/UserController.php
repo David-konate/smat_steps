@@ -16,19 +16,91 @@ use Illuminate\Support\Facades\Validator;
 class UserController extends Controller
 {
 
-    public function addFriend(User $friend, User $user)
-    {
-        // Vérifiez si l'ami n'est pas déjà ajouté
-        if (!$user->isFriendWith($friend)) {
-            // Ajoutez l'ami à la liste des amis de l'utilisateur actuel
-            $user->friends()->attach($friend->id);
 
-            // Ajoutez également l'utilisateur actuel à la liste d'amis de l'ami
-            $friend->friends()->attach($user->id);
+    public function addFriend(Request $request)
+    {
+        // Récupérer les IDs de l'utilisateur et de l'ami depuis la requête
+        $user_id = $request->user;
+        $friend_id = $request->friend;
+
+        // Vérifiez si l'ami n'est pas déjà ajouté dans les deux sens
+        $user = User::find($user_id);
+        $friend = User::find($friend_id);
+
+        if (
+            !$user->friends()->where('users.id', $friend_id)->exists() &&
+            !$friend->friends()->where('users.id', $user_id)->exists()
+        ) {
+            // Ajoutez l'ami à la liste des amis de l'utilisateur actuel
+            $user->friends()->attach($friend_id, ['status' => 1]);
+            // Retournez une réponse JSON indiquant que l'ami a été ajouté avec succès
+            return response()->json(['message' => 'Ami ajouté avec succès'], 200);
         }
+
+        // Si l'ami est déjà dans la liste dans l'un ou l'autre sens, retournez une réponse JSON indiquant qu'il est déjà présent
+        return response()->json(['message' => 'L\'ami est déjà dans la liste'], 400);
     }
 
 
+    public function acceptFriend(Request $request)
+    {
+        $user_id = $request->user;
+        $friend_id = $request->friend;
+        $user = User::find($user_id);
+        $friend = User::find($friend_id);
+        // Vérifiez si l'amitié existe dans le sens $user -> $friend
+        $existingFriendshipUser = $user->friends()->wherePivot('friend_id', $friend->id)->first();
+
+        // Vérifiez si l'amitié existe dans le sens $friend -> $user
+        $existingFriendshipFriend = $friend->friends()->wherePivot('friend_id', $user->id)->first();
+
+        // Mettez à jour la valeur de status à 2 si l'amitié existe dans l'un ou l'autre sens
+        if ($existingFriendshipUser) {
+            $user->friends()->updateExistingPivot($friend->id, ['status' => 2]);
+        }
+
+        if ($existingFriendshipFriend) {
+            $friend->friends()->updateExistingPivot($user->id, ['status' => 2]);
+        }
+
+        // Retournez une réponse JSON pour indiquer que l'amitié a été mise à jour avec succès
+        return response()->json(['message' => 'L\'amitié a été mise à jour'], 200);
+    }
+
+
+
+
+
+
+
+
+
+    //supprimé un lien d'amitié
+    public function deletedFriendship(Request $request)
+    {
+        $user_id = $request->user;
+        $friend_id = $request->friend;
+
+        //Recherche du lien d'amitié
+        $friendship = Friend::where(function ($query) use ($user_id, $friend_id) {
+            $query->where('user_id', $user_id)
+                ->where('friend_id', $friend_id);
+        })
+            ->orWhere(function ($query) use ($user_id, $friend_id) {
+                $query->where('user_id', $friend_id)
+                    ->where('friend_id', $user_id);
+            })
+            ->first();
+
+        if ($friendship) {
+            // L'enregistrement de l'amitié a été trouvé
+            $friendship->delete();
+            return response()->json(['message' => 'Amitié supprimé'], 200);
+        } else {
+            // L'amitié n'a pas été trouvée
+            return response()->json(['message' => 'Amitié non trouvé'], 404);
+        }
+    }
 
     /**
      * Store a newly created resource in storage.

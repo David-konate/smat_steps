@@ -15,17 +15,20 @@ import {
 import { NavLink, useNavigate } from "react-router-dom";
 import { firstLetterUppercase, links } from "../utils";
 import MenuIcon from "@mui/icons-material/Menu";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
 
 import { useTheme } from "../context/ThemeContext";
 import Logo from "./Logo";
 import { useUserContext } from "../context/UserProvider"; // Importez le hook
-import React from "react";
+import React, { useState } from "react";
+import MessageSendFriend from "./message/MessageSendFriend";
 
 function NavBar() {
   const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
-  const { user, setUser, authentification } = useUserContext(); // Utilisez le hook useUserContext pour obtenir l'état d'authentification
-  const [drawerOpen, setDrawerOpen] = React.useState(false);
+  const { user, setUser, friendPending, setFriendPending } = useUserContext(); // Utilisez le hook useUserContext pour obtenir l'état d'authentification
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [messageSendOpen, setMessageSendOpen] = useState(false); // État pour contrôler l'ouverture de MessageSendFriend
 
   const handleDrawerOpen = () => {
     setDrawerOpen(true);
@@ -33,6 +36,16 @@ function NavBar() {
 
   const handleDrawerClose = () => {
     setDrawerOpen(false);
+  };
+
+  // Fonction pour ouvrir MessageSendFriend
+  const openMessageSendFriend = () => {
+    setMessageSendOpen(true);
+  };
+
+  // Fonction pour fermer MessageSendFriend
+  const closeMessageSendFriend = () => {
+    setMessageSendOpen(false);
   };
 
   const onProfil = () => {
@@ -65,6 +78,16 @@ function NavBar() {
 
   return (
     <React.Fragment>
+      {messageSendOpen && (
+        <MessageSendFriend
+          open={messageSendOpen}
+          onClose={closeMessageSendFriend}
+          friendPending={friendPending}
+          updateFriendPending={setFriendPending} // Passer la fonction de mise à jour
+          user={user}
+          // Autres props si nécessaire
+        />
+      )}
       <AppBar position="sticky" sx={{ top: 0 }}>
         <Container maxWidth={"xl"}>
           <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -130,6 +153,28 @@ function NavBar() {
                 alignItems: "center",
               }}
             >
+              {friendPending?.length > 0 ? (
+                <IconButton sx={{}} onClick={openMessageSendFriend}>
+                  <PersonAddIcon
+                    style={{ color: "var(--secondary-color-special)" }}
+                  />
+                  <Typography
+                    className="numb-pending-friend"
+                    style={{
+                      position: "absolute", // Pour positionner l'élément de manière absolue
+                      top: 1, // Positionnement par rapport au haut de l'élément parent
+                      right: 0, // Positionnement par rapport à la droite de l'élément parent
+                      color: "var(--secondary-color-special)",
+                      fontSize: "0.7rem",
+                    }}
+                  >
+                    {friendPending.length}
+                  </Typography>
+                </IconButton>
+              ) : (
+                <Box></Box>
+              )}
+
               <Switch
                 checked={theme === "dark"}
                 onChange={toggleTheme}

@@ -115,6 +115,16 @@ body {
     }
   }
 
+  .card-sent-friend {
+    border: 1px solid var(--primary-color-special);
+    box-shadow: 1px 1px 6px var(--secondary-color-special);
+    border-radius: 20px;
+    background-color: var(--secondary-color-dark);
+    color: var(--primary-color-special);
+  }
+  .numb-pending-friend {
+    font-family: "Madimi One", sans-serif;
+  }
   .card-correction {
     border: 2px solid rgba(255, 193, 7, 0.4);
     box-shadow: 1px 1px 6px rgba(105, 73, 255, 1);
@@ -213,6 +223,9 @@ body {
     }
   }
 
+  .btn-confirmation {
+    font-family: "Madimi One", sans-serif;
+  }
   .completion-msg-card {
     background-color: rgba(255, 193, 7);
     border: 2px solid rgba(105, 73, 255, 0.8);
@@ -255,6 +268,9 @@ body {
     .btn-fermer:hover {
       filter: brightness(90%); /* Ajoute un filtre de luminosité au survol */
     }
+  }
+  .card-user-list-friend {
+    background-color: var(--primary-color-special);
   }
   .theme-new-ranked {
     background-color: rgba(255, 193, 7, 0.3);
@@ -539,7 +555,7 @@ body {
   .player-card {
     .player-info {
       .player-pseudo {
-        color: var(--color-text);
+        color: var(--secondary-color-special);
         font-family: "Madimi One", sans-serif;
       }
       .player-top-ranking {

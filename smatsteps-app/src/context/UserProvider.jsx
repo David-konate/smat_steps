@@ -7,10 +7,9 @@ const UserContext = createContext({});
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [userRankings, setUserRankings] = useState([]);
-  const [userTopRankings, setUserTopRankings] = useState(null);
-  const [userRankingsCount, setUserRankingsCount] = useState(null);
-  const [userLatestRankings, setUserLastetRankings] = useState(null);
+  const [friendPending, setFriendPending] = useState(null);
+  const [friendSent, setFriendSent] = useState(null);
+  const [friends, setFriends] = useState(null);
   const [isBusy, setIsBusy] = useState(true);
 
   const { currentLevel } = useGameContext();
@@ -18,16 +17,14 @@ export const UserProvider = ({ children }) => {
     return localStorage.getItem("token");
   }, [localStorage.getItem("token")]);
 
-  const shadowColors = [
-    "rgba(218, 165, 32, 0.2)",
-    "rgba(192, 192, 192, 0.2)",
-    "rgba(205, 127, 50, 0.2)",
-  ];
-
   function authentification() {
     try {
       axios.get(`/me/${currentLevel}`).then((res) => {
         setUser(res.data.user);
+        setFriendPending(res.data.friendPending);
+        setFriendSent(res.data.friendSent);
+        setFriends(res.data.friends);
+        console.log(res.data.friends);
       });
     } catch (error) {
       console.log(error);
@@ -39,12 +36,14 @@ export const UserProvider = ({ children }) => {
   return (
     <UserContext.Provider
       value={{
-        userLatestRankings,
-        userRankingsCount,
-        userTopRankings,
-        userRankings,
+        friendPending,
+        friendSent,
         user,
         userToken,
+        friends,
+        setFriends,
+        setFriendSent,
+        setFriendPending,
         setUser,
         authentification,
       }}

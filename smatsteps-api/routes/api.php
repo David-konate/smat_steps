@@ -92,9 +92,10 @@ Route::prefix('users')->group(function () {
     Route::get('/', [UserController::class, 'index']);
     Route::get('{user}', [UserController::class, 'show']);
     Route::post('{user}', [UserController::class, 'update']);
-    Route::post('{user}', [UserController::class, 'update']);
-    Route::post('{friend}/add-friend/{user}', [UserController::class, 'addFriend']);
+    Route::post('{user}/add-friend-with/{friend}', [UserController::class, 'addFriend']);
     Route::get('{user}/is-friend-with/{friend}', [UserController::class, 'friendshipExists']);
+    Route::post('{user}/accept-friend-with/{friend}', [UserController::class, 'acceptFriend']);
+    Route::delete('{user}/deleted-friend-with/{friend}', [UserController::class, 'deletedFriendship']);
     Route::delete('{user}', [UserController::class, 'destroy']);
 });
 
@@ -103,36 +104,35 @@ Route::prefix('users')->group(function () {
 Route::get('/me/{currentLevel}', function ($currentLevel) {
     // Assurez-vous que l'utilisateur est authentifié
     $user = Auth::user();
-
-
-
-
-    // Récupérer les 3 meilleurs classements pour l'utilisateur spécifié et le niveau actuel
-    $topRankings = Ranking::where('user_id', $user->id)
-        ->where('level', $currentLevel)
-        ->orderByDesc('result_quiz')
-        ->limit(3)
+    // Récupère les demandes d'ami en attente pour l'utilisateur actuel avec les données utilisateur associées chargées
+    $friendPending = Friend::with("user")
+        ->where("status", 1) // Filtrer où le statut est défini à 1 ( demandes en attente)
+        ->where("friend_id", $user->id) // Filtrer les demandes où l'ID de l'ami correspond à l'ID de l'utilisateur actuel
         ->get();
 
-    // Récupérer les 3 derniers résultats triés par ordre croissant de 'resultQuizz' pour l'utilisateur spécifié et le niveau actuel
-    $latestRankings = Ranking::where('user_id', $user->id)
-        ->where('level', $currentLevel)
-        ->orderByDesc('created_at') // Utilisation de orderByDesc pour trier par ordre décroissant
-        ->limit(3)
+    // Récupère les demandes d'ami envoyées par l'utilisateur actuel avec les données utilisateur associées chargées
+    $friendSent = Friend::with("friend")
+        ->where("status", 1) // Filtrer où le statut est défini à 1 ( demande envoyé)
+        ->where("user_id", $user->id) // Filtrer les demandes où l'ID de l'utilisateur correspond à l'ID de l'utilisateur actuel (demandes envoyées par l'utilisateur actuel)
         ->get();
 
-    // Compter le nombre total de classements de l'utilisateur
-    $totalRankingsCount = Ranking::where('user_id', $user->id)
-        ->where('level', $currentLevel)
-        ->count();
+    $userId = auth()->id(); // Supposons que vous récupériez l'ID de l'utilisateur connecté
 
 
-
+    $friends = Friend::where(function ($query) use ($userId) {
+        $query->where('user_id', $userId)
+            ->orWhere('friend_id', $userId);
+    })
+        ->where('status', 2)
+        ->with('user', 'friend') // Charger les relations user et friend en dehors de la fonction de rappel
+        ->get();
     // Retourner les données sous forme de tableau associatif
     return [
         'user' => $user,
-        'topRankings' => $topRankings,
-        'latestRankings' => $latestRankings,
-        'totalRankingsCount' => $totalRankingsCount,
+        "friendPending" => $friendPending,
+        'friendSent' => $friendSent,
+        'friends' => $friends,
+        // 'latestRankings' => $latestRankings,
+        // 'totalRankingsCount' => $totalRankingsCount,
     ];
 })->middleware('auth:sanctum');

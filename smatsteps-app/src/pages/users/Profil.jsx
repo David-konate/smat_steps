@@ -13,39 +13,43 @@ import {
   Button,
   IconButton,
 } from "@mui/material";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { displayImage, firstLetterUppercase } from "../../utils";
 import { useGameContext } from "../../context/GameProvider";
 import LevelBox from "../../components/LevelBox";
 import { Stack } from "@mui/system";
-import EditIcon from "@mui/icons-material/Edit";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MessageUpdateProfil from "../../components/message/MessageUpdateProfil";
 import RankingsListProfil from "../../components/list/RankingListProfil";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import PersonAddDisabledIcon from "@mui/icons-material/PersonAddDisabled";
 import ConfirmationDialog from "../../components/message/ConfirmationDialog";
+import SettingsAccessibilityIcon from "@mui/icons-material/SettingsAccessibility";
+import GroupIcon from "@mui/icons-material/Group";
+import MessageSentFriend from "../../components/message/MessageSentFriend";
+import MessageListFriend from "../../components/message/MessageListFriend";
 
 const Profil = () => {
   const { id } = useParams();
-  const { user } = useUserContext();
+  const { user, friendSent, friendSend, setFriendSent, friends, setFriends } =
+    useUserContext();
   const [isBusy, setIsBusy] = useState(true);
   const { currentLevel, currentTheme, currentSousTheme } = useGameContext();
   const [userProfil, setuserProfil] = useState();
   const [userRankings, setUserRankings] = useState();
   const [friend, setFriend] = useState(false);
-  const [isDisableFriendConfirmationOpen, setIsDisableFriendConfirmationOpen] =
-    useState(false);
 
   const [isOpen, setIsOpen] = useState(false);
+  const [isSentFriendDialogOpen, setIsSentFriendDialogOpen] = useState(false);
   const [isEditOpen, setIsEditOpen] = useState(false);
-  const [isEditOpenAddFriend, setIsEditOpenAddFriend] = useState(false);
   const [isEditOpenDisableFriend, setIsEditOpenDisableFriend] = useState(false);
+  const [isOpenListFriend, setIsOpenListFriend] = useState(false);
+  const navigate = useNavigate();
+  const params = useParams();
 
   useEffect(() => {
     fetchData();
-  }, [currentLevel]);
-
+  }, [currentLevel, params, friendSend, friendSent]);
   const fetchData = async () => {
     try {
       const res = await axios.get(`users/${id}`, {
@@ -57,7 +61,6 @@ const Profil = () => {
       });
       const friend = await axios.get(`users/${id}/is-friend-with/${user.id}`);
       console.log(friend.data.friend);
-
       setFriend(friend.data.friend);
       setuserProfil(res.data.user);
       setUserRankings(res.data.rankings);
@@ -67,22 +70,24 @@ const Profil = () => {
       setIsBusy(false);
     }
   };
-  // Fonction pour ouvrir le composant MessageUpdateProfil
-  const handleEditClick = () => {
-    setIsEditOpen(true);
-  };
-  const handleDisableFriendClick = () => {
-    setIsDisableFriendConfirmationOpen(true);
+
+  const handleCloseEdit = () => {
+    setIsEditOpen(false);
   };
 
-  const handleCloseDisableFriendConfirmation = () => {
-    setIsDisableFriendConfirmationOpen(false);
-  };
+  // ConfirmationDialog pour ajouter un ami
   const handleAddFriendClick = () => {
     setIsEditOpenDisableFriend(true);
   };
-  const handleCloseEdit = () => {
-    setIsEditOpen(false);
+
+  // MessageSentFriend
+  const handlesOpenListFriend = () => {
+    setIsOpenListFriend(!isOpenListFriend);
+  };
+
+  // MessageSentFriend
+  const handleSentFriendDialogToggle = () => {
+    setIsSentFriendDialogOpen(!isSentFriendDialogOpen);
   };
 
   const shadowColors = [
@@ -94,6 +99,33 @@ const Profil = () => {
   const toggleList = () => {
     setIsOpen(!isOpen);
   };
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const handleOpenDialog = () => {
+    setIsDialogOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setIsDialogOpen(false);
+  };
+  // Assurez-vous que la fonction deleteFriendRequest est correctement appelée dans le ConfirmationDialog
+
+  const addNewFriend = async () => {
+    try {
+      if (!friend) {
+        // Vérifie si l'utilisateur n'est pas déjà ami
+        const response = await axios.post(
+          `users/${user.id}/add-friend-with/${userProfil.id}`
+        );
+        setIsEditOpenDisableFriend(false);
+        navigate(`/profil/${user.id}`);
+        console.log(response.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Paper elevation={3} style={{ padding: "20px", margin: "20px" }}>
       {isBusy ? (
@@ -101,28 +133,64 @@ const Profil = () => {
       ) : (
         <Container>
           <Box sx={{ position: "relative" }}>
-            {userProfil.id === user.id ? (
-              <IconButton
-                sx={{ position: "absolute", top: 0, right: 0 }}
-                onClick={handleEditClick}
-              >
-                <EditIcon style={{ color: "var(--secondary-color-special)" }} />
-              </IconButton>
-            ) : friend === true ? (
-              <IconButton
-                sx={{ position: "absolute", top: 0, right: 0 }}
-                onClick={handleDisableFriendClick}
-              >
-                <PersonAddDisabledIcon
-                  style={{ color: "var(--secondary-color-special)" }}
-                />
-              </IconButton>
-            ) : (
+            <Stack
+              direction={"column"}
+              gap={1}
+              sx={{ position: "absolute", top: 0, left: 0 }}
+            >
+              <Stack>
+                {" "}
+                {userProfil.id === user.id && friendSent?.length > 0 ? (
+                  <IconButton onClick={handleSentFriendDialogToggle}>
+                    <SettingsAccessibilityIcon style={{ color: "red" }} />
+                    <Typography
+                      className="numb-pending-friend"
+                      style={{
+                        position: "absolute",
+                        top: 1,
+                        right: 0,
+                        color: "red",
+                        fontSize: "0.7rem",
+                      }}
+                    >
+                      {friendSent.length}
+                    </Typography>
+                  </IconButton>
+                ) : (
+                  <></>
+                )}
+              </Stack>
+              <Stack>
+                {" "}
+                {userProfil.id === user.id && friends?.length > 0 ? (
+                  <IconButton onClick={handlesOpenListFriend}>
+                    <GroupIcon
+                      style={{ color: "var(--secondary-color-special)" }}
+                    />
+                  </IconButton>
+                ) : (
+                  <></>
+                )}
+              </Stack>
+            </Stack>
+
+            {userProfil.id !== user.id && (
               <IconButton
                 sx={{ position: "absolute", top: 0, right: 0 }}
                 onClick={handleAddFriendClick}
               >
                 <PersonAddIcon
+                  style={{ color: "var(--secondary-color-special)" }}
+                />
+              </IconButton>
+            )}
+
+            {userProfil.id !== user.id && friend === true && (
+              <IconButton
+                sx={{ position: "absolute", top: 0, right: 0 }}
+                onClick={handleSentFriendDialogToggle}
+              >
+                <PersonAddDisabledIcon
                   style={{ color: "var(--secondary-color-special)" }}
                 />
               </IconButton>
@@ -254,6 +322,18 @@ const Profil = () => {
           )}
         </Container>
       )}
+      <MessageListFriend
+        open={isOpenListFriend}
+        onClose={handlesOpenListFriend}
+        friends={friends}
+      />
+      <MessageSentFriend
+        open={isSentFriendDialogOpen}
+        onClose={handleSentFriendDialogToggle} // Assurez-vous que la fonction onClose est correctement définie
+        friendSent={friendSent}
+        user={user}
+        updateFriendSent={setFriendSent}
+      />
       {
         <MessageUpdateProfil
           userProfil={userProfil} // Passer les informations sur le profil de l'utilisateur
@@ -263,19 +343,13 @@ const Profil = () => {
           setuserProfil={setuserProfil} // Passer la fonction pour mettre à jour les informations du profil
         />
       }
+
       <ConfirmationDialog
-        redirection={"/"}
-        open={isDisableFriendConfirmationOpen}
-        onClose={handleCloseDisableFriendConfirmation}
-        onConfirm={() => {
-          handleCloseDisableFriendConfirmation();
-          try {
-            // Supprimer l'ami
-            // await axios
-          } catch (error) {}
-        }}
+        open={isEditOpenDisableFriend}
+        onClose={() => setIsEditOpenDisableFriend(false)}
+        onConfirm={() => addNewFriend}
         title="Confirmation"
-        message={`Vous vous apprêtez à supprimer ${userProfil?.user_pseudo} de vos amis ?`}
+        message={`Vous vous apprêtez à ajouter ${userProfil?.user_pseudo} à vos amis ?`}
       />
     </Paper>
   );
