@@ -15,13 +15,19 @@ import WhiteButton from "../components/buttons/WhiteButton";
 import { displayImage } from "../utils";
 import { useGameContext } from "../context/GameProvider";
 import MessageNewRanged from "../components/message/MessageNewRanged";
+import MessageNewPrivate from "../components/message/MessageNewPrivate";
 
 const Home = () => {
   const { topSousThemes, topThemes, randomThemes } = useGameContext();
   const [isCardNewRankedOpen, setIsCardNewRankedOpen] = useState(false);
+  const [isCardNewPrivateOpen, setIsCardNewPrivateOpen] = useState(false);
 
   const handleOpenCardNewRanked = () => {
     setIsCardNewRankedOpen(true);
+  };
+
+  const handleOpenCardPrivate = () => {
+    setIsCardNewPrivateOpen(true);
   };
 
   return (
@@ -101,6 +107,12 @@ const Home = () => {
             onClose={() => setIsCardNewRankedOpen(false)}
           />
         )}
+        {isCardNewPrivateOpen && (
+          <MessageNewPrivate
+            open={isCardNewPrivateOpen}
+            onClose={() => setIsCardNewPrivateOpen(false)}
+          />
+        )}
         <Card
           className="card-new-prived"
           style={{ borderRadius: 20, marginTop: 10 }}
@@ -157,7 +169,9 @@ const Home = () => {
                       VS vos amis
                     </Typography>
                     <Box position={"absolute"} bottom={0}>
-                      <WhiteButton>C'est partie</WhiteButton>
+                      <WhiteButton onClick={handleOpenCardPrivate}>
+                        C'est partie
+                      </WhiteButton>
                     </Box>
                   </Stack>
                 </Stack>

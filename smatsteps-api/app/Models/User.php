@@ -66,4 +66,8 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(User::class, 'friends', 'user_id', 'friend_id');
     }
+    public function participatedTo()
+    {
+        return $this->belongsToMany(Smat::class, 'particepd_to', 'Id_Users', 'Id_Smat')->withPivot('score');
+    }
 }

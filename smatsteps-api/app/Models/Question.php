@@ -10,7 +10,10 @@ class Question extends Model
     use HasFactory;
 
     protected $fillable = ['question', 'sous_theme_id', 'theme_id', 'user_id', 'level_id', 'category_id', 'image_question'];
-
+    public function smats()
+    {
+        return $this->belongsToMany(Smat::class, 'question_smat', 'question_id', 'smat_id');
+    }
     public function user()
     {
         return $this->belongsTo(User::class);

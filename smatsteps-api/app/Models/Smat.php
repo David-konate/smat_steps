@@ -8,9 +8,25 @@ use Illuminate\Database\Eloquent\Model;
 class Smat extends Model
 {
     use HasFactory;
-
+    protected $fillable = ['smat_id', 'theme_id', 'sous_theme_id', 'level_id', 'status'];
+    public function questions()
+    {
+        return $this->belongsToMany(Question::class, 'question_smat', 'smat_id', 'question_id');
+    }
     public function users()
     {
         return $this->belongsToMany(User::class, 'smat_user', 'smat_id', 'user_id');
+    }
+    public function sousTheme()
+    {
+        return $this->belongsTo(SousTheme::class);
+    }
+    public function theme()
+    {
+        return $this->belongsTo(Theme::class);
+    }
+    public function level()
+    {
+        return $this->belongsTo(Level::class);
     }
 }

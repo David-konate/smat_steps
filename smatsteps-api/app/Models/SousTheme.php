@@ -14,4 +14,8 @@ class SousTheme extends Model
     {
         return $this->belongsTo(Theme::class);
     }
+    public function smats()
+    {
+        return $this->hasMany(Smat::class);
+    }
 }

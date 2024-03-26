@@ -13,12 +13,11 @@ return new class extends Migration
     {
         Schema::create('smat_user', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('smat_id')->unsigned()->nullable();
-            $table->bigInteger('user_id')->unsigned()->nullable();
-            $table->timestamps();
 
-            $table->foreign('smat_id')->references('id')->on('smats')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->decimal('result_smat', 5, 2);
+            $table->timestamps();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('smat_id')->constrained('smats')->onDelete('cascade');
         });
     }
 
