@@ -30,10 +30,5 @@ class SmatUserFactory extends Factory
             'user_id' => $user1Id,
             'smat_id' => $smatId,
         ];
-        [
-            'result_smat' => $this->faker->randomFloat(2, 0, 100), // Génère un résultat aléatoire entre 0 et 100 avec 2 décimales
-            'user_id' => $user2Id,
-            'smat_id' => $smatId,
-        ];
     }
 }

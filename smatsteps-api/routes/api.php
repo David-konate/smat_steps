@@ -13,8 +13,12 @@ use App\Http\Controllers\Api\RankingController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\QuestionController;
 use App\Http\Controllers\Api\SecurityController;
+use App\Http\Controllers\Api\SmatController;
 use App\Http\Controllers\Api\SousThemeController;
 use App\Models\Friend;
+use App\Models\Smat;
+use App\Models\SmatUser;
+use App\Models\Theme;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,7 +57,8 @@ Route::prefix('levels')->group(function () {
 
 //Route questions
 Route::controller(QuestionController::class)->group(function () {
-    Route::get('new-game/{currentLevel}', 'newGame');
+    Route::get('new-game/{currentLevel}', 'newRankedGame');
+    Route::get('new-private-game/{currentLevel}', 'newPrivateGame');
     Route::get('questions', 'index');
     Route::get('questions/{question}', 'show');
     Route::get('questions-random', 'random');
@@ -67,6 +72,13 @@ Route::prefix('rankings')->group(function () {
     Route::get('/top-collection', [RankingController::class, 'topCollection']);
     Route::get('welcome/{currentLevel}', [RankingController::class, 'welcome']);
     Route::post('/save-stats', [RankingController::class, 'saveStats']);
+});
+
+
+// Routes Smat
+Route::prefix('smats')->group(function () {
+    Route::post('/accept-dual/{smat}', [SmatController::class, 'acceptDual']);
+    Route::delete('{smat}', [SmatController::class, 'destroy']);
 });
 
 // Routes SousTheme
@@ -119,19 +131,66 @@ Route::get('/me/{currentLevel}', function ($currentLevel) {
     $userId = auth()->id(); // Supposons que vous récupériez l'ID de l'utilisateur connecté
 
 
-    $friends = Friend::where(function ($query) use ($userId) {
+    $datas = Friend::where(function ($query) use ($userId) {
         $query->where('user_id', $userId)
             ->orWhere('friend_id', $userId);
     })
         ->where('status', 2)
-        ->with('user', 'friend') // Charger les relations user et friend en dehors de la fonction de rappel
+        ->with('user', 'friend')
         ->get();
+
+    $friends = [];
+
+    foreach ($datas as $data) {
+        // Ajouter l'utilisateur à la liste des amis
+        $friends[] = $data->user_id == $userId ? $data->friend : $data->user;
+    }
+
+
+    $data = SmatUser::where('user_id', $userId)->get();
+
+    $newSmats = []; // Initialiser un tableau pour stocker les nouvelles données Smats
+
+    foreach ($data as $smatUser) {
+        $smatId = $smatUser->smat_id; // Accéder à l'ID du SmatUser
+        $relatedSmats = SmatUser::where('smat_id', $smatId)
+            ->with('user')
+            ->with('smat')
+            ->get();
+        // Récupérer le Smat associé à ce SmatUser avec les relations theme et sousTheme
+        $smat = Smat::where('id', $smatId)
+            ->where('status', 1) // Condition pour le statut égal à 1
+            ->with(['theme', 'sousTheme'])
+            ->first();
+
+        if ($smat) {
+            // Extraire le thème et le sous-thème
+            $theme = $smat->theme ? $smat->theme->theme : null;
+            $status = $smat->status;
+            $sousTheme = isset($smat->sousTheme) ? $smat->sousTheme->sous_theme : null;
+
+            // Ajouter les données de SmatUser associées à ce Smat dans $newSmats
+            $newSmats[] = [
+                'relatedSmats' => $relatedSmats,
+                'theme' => $theme,
+                'sousTheme' => $sousTheme,
+            ];
+        }
+    }
+
+
+
+
+
     // Retourner les données sous forme de tableau associatif
     return [
         'user' => $user,
         "friendPending" => $friendPending,
         'friendSent' => $friendSent,
         'friends' => $friends,
+        'newSmats' => $newSmats,
+
+
         // 'latestRankings' => $latestRankings,
         // 'totalRankingsCount' => $totalRankingsCount,
     ];

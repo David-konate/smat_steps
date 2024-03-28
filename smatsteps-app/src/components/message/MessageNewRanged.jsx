@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { useGameContext } from "../../context/GameProvider";
 import LevelBox from "../LevelBox";
 import axios from "axios";
+import { useUserContext } from "../../context/UserProvider";
 
 const MessageNewRanged = ({
   open,
@@ -45,15 +46,20 @@ const MessageNewRanged = ({
     fetchNewGame,
     resetGame,
   } = useGameContext();
-
+  const { user } = useUserContext();
   const [searchTextTheme, setSearchTextTheme] = useState("");
   const [searchTextSousTheme, setSearchTextSousTheme] = useState("");
   const [isBusy, setIsBusy] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    // Vérifie si l'utilisateur est connecté, sinon redirige vers la page de connexion
+    if (!user) {
+      navigate("/login");
+    } else {
+      fetchData();
+    }
+  }, [user]);
 
   const fetchData = async () => {
     try {

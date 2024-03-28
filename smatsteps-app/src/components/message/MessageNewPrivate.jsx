@@ -15,6 +15,8 @@ import { useGameContext } from "../../context/GameProvider";
 import LevelBox from "../LevelBox";
 import axios from "axios";
 import { useUserContext } from "../../context/UserProvider";
+import MessageDialog from "./MessageDialog";
+import { Redirect } from "react-router-dom";
 
 const MessageNewPrivate = ({
   open,
@@ -24,16 +26,7 @@ const MessageNewPrivate = ({
   redirection = "/partie-classe",
 }) => {
   const navigate = useNavigate();
-  const onClick = () => {
-    resetGame();
-    fetchNewGame();
-    onClose();
-    if (redirection) {
-      navigate(redirection);
-    }
-  };
-
-  // Contenu de la carte CardNewRanked
+  const [errorOpen, setErrorOpen] = useState(false); // State pour gérer l'affichage du MessageDialog
   const {
     themes,
     sousThemes,
@@ -43,22 +36,46 @@ const MessageNewPrivate = ({
     setCurrentTheme,
     currentSousTheme,
     currentTheme,
-    fetchNewGame,
-    resetGame,
+    fetchPrivateNewGame,
+    // resetGame,
   } = useGameContext();
+
+  const onClick = () => {
+    if (filteredPseudos.length > 0 && currentTheme && searchTextPseudo) {
+      const selectedFriendId = filteredPseudos.find(
+        (friend) => friend.user_pseudo === searchTextPseudo
+      )?.id;
+      // Si les conditions sont remplies, effectuez votre action normale
+      fetchPrivateNewGame(user.id, selectedFriendId);
+      onClose();
+      if (redirection) {
+        // navigate(redirection);
+      }
+    } else {
+      // Sinon, affichez le MessageDialog
+      setErrorOpen(true);
+    }
+  };
+
+  // Contenu de la carte CardNewRanked
 
   const [searchTextTheme, setSearchTextTheme] = useState("");
   const [searchTextSousTheme, setSearchTextSousTheme] = useState("");
   const [searchTextPseudo, setSearchTextPseudo] = useState("");
   const [isBusy, setIsBusy] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
-  const { friends } = useUserContext(); // Utilisez le hook useUserContext pour obtenir l'état d'authentification
-  const [currentFriends, setCurrentFriends] = useState([friends]);
+  const { friends, user } = useUserContext(); // Utilisez le hook useUserContext pour obtenir l'état d'authentification
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    // Vérifie si l'utilisateur est connecté, sinon redirige vers la page de connexion
+    if (!user) {
+      navigate("/login");
+    } else {
+      fetchData();
+    }
+  }, [user]);
 
+  console.log(friends);
   const fetchData = async () => {
     try {
       const resST = await axios.get(`sous-themes`);
@@ -73,14 +90,15 @@ const MessageNewPrivate = ({
   };
 
   const filteredPseudos = useMemo(() => {
-    return friends.filter(
+    return friends?.filter(
       (friend) =>
-        typeof searchTextTheme === "string" &&
-        friend.user.user_pseudo
+        typeof searchTextPseudo === "string" &&
+        friend.user_pseudo
           .toLowerCase()
-          .includes(searchTextTheme.toLowerCase())
+          .includes(searchTextPseudo.toLowerCase())
     );
-  }, [themes, searchTextTheme]);
+  }, [friends, searchTextPseudo]);
+
   const filteredThemes = useMemo(() => {
     return themes.filter(
       (theme) =>
@@ -118,20 +136,28 @@ const MessageNewPrivate = ({
     setCurrentSousTheme(sousTheme === currentSousTheme ? null : sousTheme);
   };
 
-  const handlePseudoChange = (friendId) => {
-    const friend = friends.find((friend) => friend.id === friendId);
-    if (friend) {
-      console.log(friend.user.user_pseudo);
-      // Faites ce que vous avez à faire avec friend.user.user_pseudo
-    } else {
-      console.log("Ami introuvable ou friends est vide");
-    }
+  const handlePseudoChange = (selectedPseudo) => {
+    setSearchTextPseudo(selectedPseudo);
   };
 
   const handleCloseDialog = () => {
     setOpenDialog(false);
   };
-  console.log(friends[0].user.user_pseudo);
+  const onConfirmNewPrivateGame = async (smatId) => {
+    try {
+      await axios.post(`/smats/accept-dual/${smatId}`, null, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+    } catch (error) {
+      console.error(
+        "Erreur lors de la confirmation de la nouvelle partie privée :",
+        error
+      );
+    }
+  };
+
   return (
     <Dialog className="new-ranked" open={open} onClose={onClose}>
       <Box sx={{ padding: 3 }} className="card-new-ranked">
@@ -193,17 +219,24 @@ const MessageNewPrivate = ({
           placeholder="Rechercher un adversaire..."
         />
         <Box className="ul" style={{ maxHeight: "80px", overflowY: "auto" }}>
-          {filteredPseudos.map((friend) => (
-            <Box
-              style={{ cursor: "pointer" }}
-              className="li"
-              key={friend.id}
-              onClick={() => handlePseudoChange(friend?.user.user_pseudo)} // Correction ici
-            >
-              {friend.user?.user_pseudo}
-            </Box>
-          ))}
+          {friends && filteredPseudos.length > 0 ? (
+            filteredPseudos.map((friend) => (
+              <Box
+                style={{ cursor: "pointer" }}
+                className="li"
+                key={friend.id}
+                onClick={() => handlePseudoChange(friend.user_pseudo)}
+              >
+                {friend.user_pseudo}
+              </Box>
+            ))
+          ) : (
+            <Typography className="li" variant="body2">
+              Pas d'amis trouvé
+            </Typography>
+          )}
         </Box>
+
         <Box sx={{ color: "black" }} mt={2}>
           <LevelBox />
         </Box>
@@ -226,11 +259,18 @@ const MessageNewPrivate = ({
             onClick={onClick}
             color="primary"
             autoFocus
+            disabled={filteredPseudos?.length === 0 || !currentTheme}
           >
             Inviter
           </Button>
         </DialogActions>
       </Box>
+      <MessageDialog
+        open={errorOpen}
+        onClose={() => setErrorOpen(false)} // Fermer le MessageDialog
+        title="Erreur"
+        message="Veuillez sélectionner un adversaire et un thème."
+      />
     </Dialog>
   );
 };

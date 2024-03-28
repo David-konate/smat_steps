@@ -159,6 +159,44 @@ body {
   .btn-log {
     font-family: "Bangers", sans-serif;
   }
+
+  .content-new-request {
+    border: 1px solid var(--secondary-color-special);
+    background-color: var(--primary-color-special);
+    box-shadow: 0px 1px 6px var(--secondary-color-special);
+    border-radius: 20px;
+  }
+  .text-new-request {
+    font-family: "Madimi One", sans-serif;
+    color: var(--secondary-color-special);
+  }
+  .theme-new-request {
+    background-color: var(--secondary-color-special);
+    color: var(--primary-color-special);
+    border-radius: 10px;
+  }
+  .btn-new-request {
+    font-family: "Madimi One", sans-serif;
+  }
+  .content-new-request2 {
+    border: 1px solid var(--primary-color-special);
+    background-color: var(--secondary-color-special);
+    box-shadow: 0px 1px 6px var(--primary-color-special);
+    border-radius: 20px;
+  }
+  .text-new-request2 {
+    font-family: "Madimi One", sans-serif;
+    color: var(--primary-color-special);
+  }
+  .theme-new-request2 {
+    background-color: var(--primary-color-special);
+    color: var(--secondary-color-special);
+    border-radius: 10px;
+  }
+  .btn-new-request2 {
+    font-family: "Madimi One", sans-serif;
+  }
+
   .form-connexion {
     .title-connexion {
       font-family: "Bangers", sans-serif;
@@ -222,7 +260,24 @@ body {
       -webkit-text-stroke: 1px rgba(255, 193, 7, 0.6); /* Ajoute une bordure autour de chaque lettre */
     }
   }
-
+  .text-btn {
+    color: var(--primary-color-special);
+    font-family: "Bangers", sans-serif !important;
+  }
+  .text-btn2 {
+    color: var(--secondary-color-special);
+    font-family: "Bangers", sans-serif !important;
+  }
+  .btn-custom {
+    color: var(--secondary-color-special);
+    box-shadow: 1px 1px 6px var(--primary-color-special);
+    border: 1px solid var(--secondary-color-special);
+  }
+  .btn-custom2 {
+    color: var(--secondary-color-special);
+    box-shadow: 1px 1px 6px var(--secondary-color-special);
+    border: 1px solid var(--primary-color-special);
+  }
   .btn-confirmation {
     font-family: "Madimi One", sans-serif;
   }
@@ -328,6 +383,10 @@ body {
         font-family: "Madimi One", sans-serif;
         color: var(--color-text);
       }
+      .bouton.disabled {
+        filter: brightness(80%) hue-rotate(10deg);
+      }
+
       .ul {
         padding: 0;
         list-style: none;
@@ -555,7 +614,7 @@ body {
   .player-card {
     .player-info {
       .player-pseudo {
-        color: var(--secondary-color-special);
+        color: var(--primary-color-special);
         font-family: "Madimi One", sans-serif;
       }
       .player-top-ranking {

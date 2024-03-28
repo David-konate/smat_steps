@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import React, { useState, useEffect } from "react";
 import {
   Typography,
   AppBar,
@@ -16,20 +16,38 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { firstLetterUppercase, links } from "../utils";
 import MenuIcon from "@mui/icons-material/Menu";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
-
-import { useTheme } from "../context/ThemeContext";
+import SmartToyIcon from "@mui/icons-material/SmartToy";
 import Logo from "./Logo";
-import { useUserContext } from "../context/UserProvider"; // Importez le hook
-import React, { useState } from "react";
+import ConfirmationNewPrivateGame from "./message/ConfirmationNewPrivateGame";
+import ConfirmationDialog from "./message/ConfirmationDialog";
+import { useTheme } from "../context/ThemeContext";
+import { useUserContext } from "../context/UserProvider";
 import MessageSendFriend from "./message/MessageSendFriend";
+import MessageDialog from "./message/MessageDialog";
 
 function NavBar() {
   const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
-  const { user, setUser, friendPending, setFriendPending } = useUserContext(); // Utilisez le hook useUserContext pour obtenir l'état d'authentification
+  const {
+    user,
+    setUser,
+    friendPending,
+    setFriendPending,
+    newSmats,
+    setNewSmats,
+    authentification,
+  } = useUserContext();
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [messageSendOpen, setMessageSendOpen] = useState(false); // État pour contrôler l'ouverture de MessageSendFriend
+  const [messageSendOpen, setMessageSendOpen] = useState(false);
+  const [messageNewGame, setMessageNewGame] = useState(false);
+  const [confirm, setConfirm] = useState(false);
+  const [message, setMessage] = useState("");
+  const [confirmData, setConfirmData] = useState(null);
+  const [numNewSmats, setNumNewSmats] = useState(0);
 
+  useEffect(() => {
+    setNumNewSmats(newSmats?.length);
+  }, [newSmats]);
   const handleDrawerOpen = () => {
     setDrawerOpen(true);
   };
@@ -38,54 +56,120 @@ function NavBar() {
     setDrawerOpen(false);
   };
 
-  // Fonction pour ouvrir MessageSendFriend
   const openMessageSendFriend = () => {
     setMessageSendOpen(true);
   };
 
-  // Fonction pour fermer MessageSendFriend
   const closeMessageSendFriend = () => {
     setMessageSendOpen(false);
   };
 
+  const openMessageNewPrivateGame = () => {
+    setMessageNewGame(true);
+  };
+
+  const closeMessageNewPrivateGame = () => {
+    setMessageNewGame(false);
+  };
+
+  const openConfirmDial = () => {
+    setConfirm(true);
+  };
+
+  const closeConfirmDial = () => {
+    setMessageNewGame(false);
+    setConfirm(false);
+  };
+
   const onProfil = () => {
     console.log("profil");
-    navigate(`/profil/${user.id}`);
+    if (user.id) {
+      navigate(`/profil/${user.id}`);
+    }
   };
+
+  const onConfirmNewPrivateGame = async (smatId) => {
+    try {
+      const response = await axios.post(`/smats/accept-dual/${smatId}`, null, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+
+      // Mettre à jour la liste de newSmats après la confirmation en utilisant setNewSmats
+      setNewSmats(response.data.updatedNewSmats);
+
+      setConfirmData(response.data);
+      authentification();
+    } catch (error) {
+      console.error(
+        "Erreur lors de la confirmation de la nouvelle partie privée :",
+        error
+      );
+      // setMessage(error.data.message);
+      // openConfirmDial();
+    } finally {
+      authentification();
+    }
+  };
+
+  const onDeleteNewPrivateGame = async (smatId) => {
+    try {
+      const response = await axios.delete(`smats/${smatId}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+
+      // Mettre à jour la liste de newSmats après la suppression en utilisant setNewSmats
+      setNewSmats(response.data.updatedNewSmats);
+
+      console.log(response.data);
+
+      // setMessage(response.data.message);
+      // openConfirmDial();
+    } catch (error) {
+      // setMessage(error.data.message);
+      // openConfirmDial();
+    } finally {
+      authentification();
+    }
+  };
+
   const handleLogout = async () => {
     console.log("logout");
     localStorage.removeItem("token");
-    try {
-      await axios.post(
-        "/security/logout",
 
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
-
-      // Réinitialiser l'utilisateur à null
-      setUser(null);
-
-      localStorage.removeItem("token");
-      navigate("/login");
-    } catch (error) {
-      console.error("Erreur lors de la déconnexion :", error);
-    }
+    setUser(null);
+    window.location.replace("/login");
   };
 
   return (
     <React.Fragment>
+      {confirm && (
+        <MessageDialog
+          open={confirm}
+          message={message}
+          onClose={closeConfirmDial}
+        />
+      )}
+
       {messageSendOpen && (
         <MessageSendFriend
           open={messageSendOpen}
           onClose={closeMessageSendFriend}
           friendPending={friendPending}
-          updateFriendPending={setFriendPending} // Passer la fonction de mise à jour
+          updateFriendPending={setFriendPending}
           user={user}
-          // Autres props si nécessaire
+        />
+      )}
+      {messageNewGame && (
+        <ConfirmationNewPrivateGame
+          open={messageNewGame}
+          onClose={closeMessageNewPrivateGame}
+          onConfirm={onConfirmNewPrivateGame}
+          onDelete={onDeleteNewPrivateGame}
+          newSmats={newSmats}
         />
       )}
       <AppBar position="sticky" sx={{ top: 0 }}>
@@ -153,7 +237,26 @@ function NavBar() {
                 alignItems: "center",
               }}
             >
-              {friendPending?.length > 0 ? (
+              {newSmats?.length > 0 && (
+                <IconButton sx={{}} onClick={openMessageNewPrivateGame}>
+                  <SmartToyIcon
+                    style={{ color: "var(--secondary-color-special)" }}
+                  />
+                  <Typography
+                    className="numb-pending-friend"
+                    style={{
+                      position: "absolute",
+                      top: 1,
+                      right: 0,
+                      color: "var(--secondary-color-special)",
+                      fontSize: "0.7rem",
+                    }}
+                  >
+                    {newSmats?.length}
+                  </Typography>
+                </IconButton>
+              )}
+              {friendPending?.length > 0 && (
                 <IconButton sx={{}} onClick={openMessageSendFriend}>
                   <PersonAddIcon
                     style={{ color: "var(--secondary-color-special)" }}
@@ -161,20 +264,17 @@ function NavBar() {
                   <Typography
                     className="numb-pending-friend"
                     style={{
-                      position: "absolute", // Pour positionner l'élément de manière absolue
-                      top: 1, // Positionnement par rapport au haut de l'élément parent
-                      right: 0, // Positionnement par rapport à la droite de l'élément parent
+                      position: "absolute",
+                      top: 1,
+                      right: 0,
                       color: "var(--secondary-color-special)",
                       fontSize: "0.7rem",
                     }}
                   >
-                    {friendPending.length}
+                    {friendPending?.length}
                   </Typography>
                 </IconButton>
-              ) : (
-                <Box></Box>
               )}
-
               <Switch
                 checked={theme === "dark"}
                 onChange={toggleTheme}

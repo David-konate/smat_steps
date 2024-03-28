@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
     {
         // création de l'administrateur
         User::create([
-            'user_pseudo' => 'R2D2',
+            'user_pseudo' => 'Daouda',
             'password' => Hash::make('Azerty@123'),
             'user_email' => 'admin@boss.fr',
             'user_image' => 'r2d2.jpg',

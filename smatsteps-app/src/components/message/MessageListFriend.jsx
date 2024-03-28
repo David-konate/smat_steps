@@ -3,13 +3,12 @@ import { Link } from "react-router-dom";
 import { Avatar, Dialog, Grid, Typography, TextField } from "@mui/material";
 import { Stack } from "@mui/system";
 import { displayImage } from "../../utils";
-import PlayerCard from "../cards/PlayerCars";
-
+import PlayerCard2 from "../cards/PlayerCars2 ";
 const MessageListFriend = ({ open, onClose, friends }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const filteredFriends = friends.filter((friend) =>
-    friend.user.user_pseudo.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredFriends = friends?.filter((friend) =>
+    friend.user_pseudo.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const handleLinkClick = () => {
@@ -55,14 +54,14 @@ const MessageListFriend = ({ open, onClose, friends }) => {
         sx={{ width: "100%", margin: "auto" }}
       />
       <Grid container p={1} spacing={2} justifyContent="center" mt={3}>
-        {filteredFriends.map((friend, index) => (
+        {filteredFriends?.map((friend, index) => (
           <Grid item xs={4} sm={2} md={3} key={index}>
             <Link
               to={`/profil/${friend.id}`}
               style={{ textDecoration: "none" }}
               onClick={handleLinkClick} // Appeler la fonction de fermeture de la fenêtre de dialogue lors du clic
             >
-              <PlayerCard
+              <PlayerCard2
                 userRanking={friend}
                 shadowColor="var(--primary-color-special)"
                 borderColor="var(--secondary-color-special)"

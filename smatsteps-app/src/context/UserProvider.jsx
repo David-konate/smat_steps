@@ -10,12 +10,14 @@ export const UserProvider = ({ children }) => {
   const [friendPending, setFriendPending] = useState(null);
   const [friendSent, setFriendSent] = useState(null);
   const [friends, setFriends] = useState(null);
+  const [newSmats, setNewSmats] = useState(null);
   const [isBusy, setIsBusy] = useState(true);
 
   const { currentLevel } = useGameContext();
   const userToken = useMemo(() => {
-    return localStorage.getItem("token");
-  }, [localStorage.getItem("token")]);
+    const token = localStorage.getItem("token");
+    return token ? token : null;
+  }, []);
 
   function authentification() {
     try {
@@ -24,7 +26,8 @@ export const UserProvider = ({ children }) => {
         setFriendPending(res.data.friendPending);
         setFriendSent(res.data.friendSent);
         setFriends(res.data.friends);
-        console.log(res.data.friends);
+        setNewSmats(res.data.newSmats);
+        console.log(res.data);
       });
     } catch (error) {
       console.log(error);
@@ -41,6 +44,8 @@ export const UserProvider = ({ children }) => {
         user,
         userToken,
         friends,
+        newSmats,
+
         setFriends,
         setFriendSent,
         setFriendPending,

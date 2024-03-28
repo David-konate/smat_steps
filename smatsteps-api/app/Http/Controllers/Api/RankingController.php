@@ -128,8 +128,8 @@ class RankingController extends Controller
                 'result_quiz' => 'required',
                 'time_quiz' => 'required',
                 'user_id' => 'required',
-                'sous_theme_id' => 'nullable', // Valider si elle peut être nulle
-                'theme_id' => 'required', // Valider si elle peut être nulle
+                'sous_theme_id' => 'nullable|integer', // Assurez-vous que sous_theme_id est un entier ou null
+                'theme_id' => 'required|integer', // Assurez-vous que theme_id est un entier
                 'level' => 'required',
             ]);
 

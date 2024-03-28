@@ -25,7 +25,7 @@ export const GameProvider = ({ children }) => {
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [countLevel1, setCountLevel1] = useState(0);
-  const [setCount] = useState(0);
+  const [count, setCount] = useState(0);
   const [totalTime, setTotalTime] = useState(0);
   const [badAnswers, setBadAnswers] = useState();
   const [isQuizFinished, setIsQuizFinished] = useState(true);
@@ -77,6 +77,7 @@ export const GameProvider = ({ children }) => {
   //récupération questionnaire
   const fetchNewGame = async () => {
     try {
+      resetGame();
       setIsBusy(true);
       if (currentTheme || currentSousTheme) {
         // Utilisation de || pour vérifier si au moins l'un des deux est défini
@@ -90,10 +91,38 @@ export const GameProvider = ({ children }) => {
 
         const res = await axios.get(`/new-game/${currentLevel}`, { params });
         setQuestionsRanked(res.data.questions);
-        console.log(res.data.questions);
+        console.log(res.data);
         setCountLevel1(res.data.countLevel1);
         setCountLevel2(res.data.countLevel2);
         setCountLevel3(res.data.countLeve2);
+      } else {
+        console.error("Neither currentTheme nor currentSousTheme is defined");
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsBusy(false);
+    }
+  };
+  const fetchPrivateNewGame = async (user1, user2) => {
+    try {
+      setIsBusy(true);
+      if (currentTheme || currentSousTheme) {
+        // Utilisation de || pour vérifier si au moins l'un des deux est défini
+        const params = {};
+        if (currentTheme) {
+          params.theme = currentTheme.id;
+        }
+        if (currentSousTheme) {
+          params.sousTheme = currentSousTheme.id;
+        }
+        params.user1 = user1;
+        params.user2 = user2;
+
+        const res = await axios.get(`/new-private-game/${currentLevel}`, {
+          params,
+        });
+        console.log(res);
       } else {
         console.error("Neither currentTheme nor currentSousTheme is defined");
       }
@@ -193,13 +222,16 @@ export const GameProvider = ({ children }) => {
   const gameFinished = async () => {
     try {
       setIsBusy(true);
+      const sousThemeId =
+        currentSousTheme !== null ? parseInt(currentSousTheme) : null;
+
       await axios.post(
         `rankings/save-stats`,
         {
           result_quiz: resultat,
           time_quiz: totalTime,
           user_id: user.id,
-          sous_theme_id: currentSousTheme, // 0 = all sous clas s du theme
+          sous_theme_id: sousThemeId,
           theme_id: currentTheme.id,
           level: currentLevel,
         },
@@ -255,6 +287,7 @@ export const GameProvider = ({ children }) => {
     theme,
     resultat,
     isQuizFinished,
+    fetchPrivateNewGame,
     gameFinished,
     setTheme,
     resetGame,

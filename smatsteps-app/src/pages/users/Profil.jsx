@@ -347,7 +347,7 @@ const Profil = () => {
       <ConfirmationDialog
         open={isEditOpenDisableFriend}
         onClose={() => setIsEditOpenDisableFriend(false)}
-        onConfirm={() => addNewFriend}
+        onConfirm={addNewFriend}
         title="Confirmation"
         message={`Vous vous apprêtez à ajouter ${userProfil?.user_pseudo} à vos amis ?`}
       />

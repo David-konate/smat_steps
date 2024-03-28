@@ -28,7 +28,7 @@ const LoginFormComponent = () => {
       setDialogTitle("Success");
       setDialogMessage(response.data.message);
       setOpenDialog(true);
-      navigate("/");
+      window.location.replace("/");
     } catch (error) {
       setDialogTitle("Erreur");
       setDialogMessage(

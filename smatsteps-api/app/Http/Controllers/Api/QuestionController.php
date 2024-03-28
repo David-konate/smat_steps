@@ -3,12 +3,18 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\Answer;
+use App\Models\Smat;
 
+use App\Models\User;
+use App\Models\Answer;
 use App\Models\Question;
+use App\Models\SmatUser;
+use App\Models\QuestionSmat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -68,7 +74,7 @@ class QuestionController extends Controller
     // }
 
 
-    public function newGame($currentLevel, Request $request)
+    public function newRankedGame($currentLevel, Request $request)
     {
         try {
             // Récupérer les thèmes et sous-thèmes spécifiés dans la requête
@@ -220,19 +226,333 @@ class QuestionController extends Controller
     }
 
 
+    // public function newPrivateGame($currentLevel, Request $request)
+    // {
+    //     try {
+    //         // Récupérer les données de la requête
+    //         $theme = $request->query('theme');
+    //         $sous_theme = $request->query('sousTheme');
+    //         $user1 = $request->query('user1');
+    //         $user2 = $request->query('user2');
+
+    //         // Convertir les valeurs en tableaux si elles ne le sont pas déjà
+    //         $theme = is_array($theme) ? $theme : ($theme ? [$theme] : null);
+    //         $sous_theme = is_array($sous_theme) ? $sous_theme : ($sous_theme ? [$sous_theme] : null);
+
+    //         // Initialiser une variable pour stocker les questions
+    //         $questions = collect();
+    //         $countLevel1 = 0;
+    //         $countLevel2 = 0;
+    //         $countLevel3 = 0;
+
+    //         switch ($currentLevel) {
+    //             case 1:
+    //                 // Récupérer 12 questions de niveau 1
+    //                 $questions = Question::where('level_id', 1)->limit(12);
+    //                 $countLevel1 = 12;
+    //                 break;
+    //             case 2:
+    //                 // Récupérer 6 questions de niveau 1 et 6 questions de niveau 2
+    //                 $questionsLevel1 = Question::where('level_id', 1)->limit(6);
+    //                 $questionsLevel2 = Question::where('level_id', 2)->limit(6);
+    //                 $questions = $questionsLevel1->union($questionsLevel2);
+    //                 $countLevel1 = 6;
+    //                 $countLevel2 = 6;
+    //                 break;
+    //             case 3:
+    //                 // Récupérer 4 questions de chaque niveau de 1 à 3
+    //                 $questionsLevel1 = Question::where('level_id', 1)->limit(4);
+    //                 $questionsLevel2 = Question::where('level_id', 2)->limit(4);
+    //                 $questionsLevel3 = Question::where('level_id', 3)->limit(4);
+    //                 $questions = $questionsLevel1->union($questionsLevel2)->union($questionsLevel3);
+    //                 $countLevel1 = 4;
+    //                 $countLevel2 = 4;
+    //                 $countLevel3 = 4;
+    //                 break;
+    //             default:
+    //                 // Récupérer 10 questions de niveau 1 et 10 questions de niveau 2 par défaut
+    //                 $questionsLevel1 = Question::where('level_id', 1)->limit(10);
+    //                 $questionsLevel2 = Question::where('level_id', 2)->limit(10);
+    //                 $questions = $questionsLevel1->union($questionsLevel2);
+    //                 $countLevel1 = 10;
+    //                 $countLevel2 = 10;
+    //                 break;
+    //         }
+
+    //         // Appliquer les filtres de thèmes et de sous-thèmes si disponibles
+    //         if (!is_null($theme)) {
+    //             $questions->whereIn('theme_id', $theme);
+    //         }
+    //         if (!is_null($sous_theme)) {
+    //             $questions->whereIn('sous_theme_id', $sous_theme);
+    //         }
+
+    //         // Exécuter la requête et récupérer les questions
+    //         $questions = $questions->inRandomOrder()->get();
+
+    //         // Créer un nouveau Smat
+    //         $smat = Smat::create([
+    //             'theme_id' => $theme,
+    //             'sous_theme_id' => $sous_theme,
+    //             'level_id' => $currentLevel,
+    //         ]);
+
+    //         // Associer les utilisateurs au Smat
+    //         $smat->users()->attach([$user1, $user2]);
+
+    //         // Associer les questions au Smat et mélanger les réponses
+    //         foreach ($questions as $question) {
+    //             $questionSmat = new QuestionSmat([
+    //                 'question_id' => $question->id,
+    //                 'smat_id' => $smat->id,
+    //                 'status' => 1, // Je suppose que vous voulez définir le statut à 1 par défaut
+    //             ]);
+    //             $questionSmat->save();
+    //         }
+
+    //         // Retourner un message de réussite
+    //         return response()->json([
+    //             'status' => true,
+    //             'message' => 'Partie crée, attente de la réponse de votre ami.',
+    //         ]);
+    //     } catch (\Throwable $e) {
+    //         // Logguer l'erreur pour le débogage
+    //         Log::error('Erreur lors de la création du Smat et de la récupération des questions: ' . $e->getMessage());
+
+    //         // Retourner une réponse JSON d'erreur avec des détails
+    //         return response()->json([
+    //             'status' => false,
+    //             'message' => 'Erreur lors de la création du Smat et de la récupération des questions. Veuillez réessayer ultérieurement.',
+    //             'error' => $e->getMessage(), // Ajouter le message d'erreur
+
+    //         ], 500); // Utiliser le code 500 pour les erreurs internes du serveur
+    //     }
+    // }
+    public function newPrivateGame($currentLevel, Request $request)
+    {
+        try {
+            // Récupérer les thèmes et sous-thèmes spécifiés dans la requête
+            $theme = $request->query('theme');
+            $sous_theme = $request->query('sousTheme');
+            $user1 = User::find($request->input('user1'));
+            $user2 = User::find($request->input('user2'));
 
 
 
 
+            // Convertir les valeurs en tableaux si elles ne sont pas nulles et ne sont pas déjà des tableaux
+            $theme = is_array($theme) ? $theme : ($theme ? [$theme] : null);
+            $sous_theme = is_array($sous_theme) ? $sous_theme : ($sous_theme ? [$sous_theme] : null);
+
+            // Initialiser une variable pour stocker les questions
+            $questions = collect();
+            $countLevel1 = 0;
+            $countLevel2 = 0;
+            $countLevel3 = 0;
+            switch ($currentLevel) {
+
+                case 1:
+                    // Récupérer 20 questions de niveau 1
+                    $questions = Question::with(['theme', 'sousTheme', 'answers'])
+                        ->where('level_id', 1)
+                        ->limit(10);
+                    if ($theme) {
+                        $questions->whereIn('theme_id', $theme);
+                    }
+                    // Ajouter un filtre par sous-thèmes si des sous-thèmes sont spécifiés
+                    if ($sous_theme) {
+                        $questions->whereIn('sous_theme_id', $sous_theme);
+                    }
+
+                    $countLevel1 = 20;
+
+                    break;
+                case 2:
+                    // Récupérer 10 questions de niveau 1 et 10 questions de niveau 2
+                    $questionsLevel1 = Question::with(['theme', 'sousTheme', 'answers'])
+                        ->where('level_id', 1)
+                        ->limit(5);
+                    if ($theme) {
+                        $questionsLevel1->whereIn('theme_id', $theme);
+                    }
+                    // Ajouter un filtre par sous-thèmes si des sous-thèmes sont spécifiés
+                    if ($sous_theme) {
+                        $questionsLevel1->whereIn('sous_theme_id', $sous_theme);
+                    }
+
+                    $questionsLevel2 = Question::with(['theme', 'sousTheme', 'answers'])
+                        ->where('level_id', 2)
+                        ->limit(5);
+                    if ($theme) {
+                        $questionsLevel2->whereIn('theme_id', $theme);
+                    }
+                    // Ajouter un filtre par sous-thèmes si des sous-thèmes sont spécifiés
+                    if ($sous_theme) {
+                        $questionsLevel2->whereIn('sous_theme_id', $sous_theme);
+                    }
+
+                    $questions = $questionsLevel1->union($questionsLevel2);
+                    $countLevel1 = 10;
+                    $countLevel2 = 10;
+                    break;
+                case 3:
+                    // Récupérer 7 questions de niveau 1, 7 questions de niveau 2 et 6 questions de niveau 3
+                    $questionsLevel1 = Question::with(['theme', 'sousTheme', 'answers'])
+                        ->where('level_id', 1)
+                        ->limit(3);
+                    if ($theme) {
+                        $questionsLevel1->whereIn('theme_id', $theme);
+                    }
+                    // Ajouter un filtre par sous-thèmes si des sous-thèmes sont spécifiés
+                    if ($sous_theme) {
+                        $questionsLevel1->whereIn('sous_theme_id', $sous_theme);
+                    }
+
+                    $questionsLevel2 = Question::with(['theme', 'sousTheme', 'answers'])
+                        ->where('level_id', 2)
+                        ->limit(3);
+                    if ($theme) {
+                        $questionsLevel2->whereIn('theme_id', $theme);
+                    }
+                    // Ajouter un filtre par sous-thèmes si des sous-thèmes sont spécifiés
+                    if ($sous_theme) {
+                        $questionsLevel2->whereIn('sous_theme_id', $sous_theme);
+                    }
+
+                    $questionsLevel3 = Question::with(['theme', 'sousTheme', 'answers'])
+                        ->where('level_id', 3)
+                        ->limit(4);
+                    if ($theme) {
+                        $questionsLevel3->whereIn('theme_id', $theme);
+                    }
+                    // Ajouter un filtre par sous-thèmes si des sous-thèmes sont spécifiés
+                    if ($sous_theme) {
+                        $questionsLevel3->whereIn('sous_theme_id', $sous_theme);
+                    }
+
+                    $questions = $questionsLevel1->union($questionsLevel2)->union($questionsLevel3);
+                    $countLevel1 = 7;
+                    $countLevel2 = 7;
+                    $countLevel3 = 6;
+                    break;
+                default:
+                    // Récupérer 10 questions de niveau 1 et 10 questions de niveau 2
+                    $questionsLevel1 = Question::with(['theme', 'sousTheme', 'answers'])
+                        ->where('level_id', 1)
+                        ->limit(10);
+                    $questionsLevel2 = Question::with(['theme', 'sousTheme', 'answers'])
+                        ->where('level_id', 2)
+                        ->limit(10);
+                    $questions = $questionsLevel1->union($questionsLevel2);
+                    $countLevel1 = 10;
+                    $countLevel2 = 10;
+                    break;
+            }
+
+            // Ajouter des conditions pour les thèmes et sous-thèmes si disponibles
+            if (!is_null($theme)) {
+                $questions->whereIn('theme_id', $theme);
+            }
+            if (!is_null($sous_theme)) {
+                $questions->whereIn('sous_theme_id', $sous_theme);
+            }
+
+            // Exécuter la requête et récupérer les questions
+            $questions = $questions->inRandomOrder()->get();
+
+            // Créez le Smat avec les données appropriées
+
+            // Créer le Smat avec les données appropriées
+            try {
+                $smat = Smat::create([
+                    'theme_id' => $theme ? $theme[0] : null, // Sélectionnez le premier thème s'il existe
+                    'sous_theme_id' => $sous_theme ? $sous_theme[0] : null, // Sélectionnez le premier sous-thème s'il existe
+                    'level_id' => $currentLevel,
+                    'status' => 1
+                ]);
+            } catch (\Throwable $e) {
+                // Logguer l'erreur
+                Log::error('Erreur lors de la création du Smat: ' . $e->getMessage());
+                // Retourner une réponse JSON d'erreur avec des détails
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Erreur lors de la création du Smat. Veuillez réessayer ultérieurement.',
+                    'error' => $e->getMessage(),
+                ], 500); // Utiliser le code 500 pour les erreurs internes du serveur
+            }
+
+            // Création des entrées user_smat pour chaque utilisateur dans un bloc try...catch
+            try {
+                $userSmatEntries = [];
+                foreach ([$user1, $user2] as $user) {
+                    $userSmatEntries[] = [
+                        'user_id' => $user->id,
+                        'smat_id' => $smat->id,
+                        'result_smat' => 0, // Vous pouvez définir la valeur par défaut ici si nécessaire
+                    ];
+                }
+                SmatUser::insert($userSmatEntries);
+            } catch (\Throwable $e) {
+                // Logguer l'erreur
+                Log::error('Erreur lors de la création des entrées user_smat: ' . $e->getMessage());
+                // Retourner une réponse JSON d'erreur avec des détails
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Erreur lors de la création des entrées user_smat. Veuillez réessayer ultérieurement.',
+                    'error' => $e->getMessage(),
+                ], 500); // Utiliser le code 500 pour les erreurs internes du serveur
+            }
+
+
+            // Associer les questions au Smat et mélanger les réponses
+            foreach ($questions as $question) {
+                $questionSmat = new QuestionSmat([
+                    'question_id' => $question->id,
+                    'smat_id' => $smat->id,
+                    'status' => 1, // Je suppose que vous voulez définir le statut à 1 par défaut
+                ]);
+                $questionSmat->save();
+            }
+
+            // Retourner un message de réussite
+            return response()->json([
+                'status' => true,
+                'message' => 'Partie créée, attente de la réponse de votre ami.',
+            ]);
+        } catch (\Throwable $e) {
+            // Logguer l'erreur pour le débogage
+            Log::error('Erreur lors de la création du Smat et de la récupération des questions: ' . $e->getMessage());
+
+            // Retourner une réponse JSON d'erreur avec des détails
+            return response()->json([
+                'status' => false,
+                'message' => 'Erreur lors de la création du Smat et de la récupération des questions. Veuillez réessayer ultérieurement.',
+                'error' => $e->getMessage(),
+            ], 500); // Utiliser le code 500 pour les erreurs internes du serveur
+        }
+    }
 
 
 
 
+    private function getQuestionsLimit($currentLevel)
+    {
+        switch ($currentLevel) {
+            case 1:
+                return 12;
+            case 2:
+                return 12;
+            case 3:
+                return 15;
+            default:
+                return 12;
+        }
+    }
 
-
-
-
-
+    private function getQuestionsCount($currentLevel, $level)
+    {
+        return $currentLevel === $level ? $this->getQuestionsLimit($currentLevel) : 0;
+    }
 
 
     public function index()
