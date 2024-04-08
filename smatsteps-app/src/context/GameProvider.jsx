@@ -1,6 +1,7 @@
 import { useEffect, useState, createContext, useContext } from "react";
 import axios from "axios";
 import {
+  LEVELS,
   QUESTION_TIMER_DURATION,
   calculatePercentage,
   calculatePoints,
@@ -13,6 +14,11 @@ const GameContext = createContext({});
 
 // Définition du composant fournisseur de contexte
 export const GameProvider = ({ children }) => {
+  const [smat, setSmat] = useState(null);
+  const [smatUsers, setSmatUsers] = useState(null);
+  const [currentSmatQuestion, setCurrentSmatQuestion] = useState(null);
+  const [currentSmatAnswers, setCurrentSmatAnswers] = useState(null);
+
   // Déclaration des états pour stocker les données du jeu
   const [topThemes, setTopThemes] = useState([]);
   const [topSousThemes, setTopSousThemes] = useState([]);
@@ -22,17 +28,18 @@ export const GameProvider = ({ children }) => {
   const [themes, setThemes] = useState([]);
   const [theme, setTheme] = useState();
   const [resultat, setResultat] = useState(0);
-
+  const [pointsMaxSmat, setPointsMaxSmat] = useState(null);
+  const [currentPointsSmat, setCurrentPointsSmat] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [countLevel1, setCountLevel1] = useState(0);
   const [count, setCount] = useState(0);
   const [totalTime, setTotalTime] = useState(0);
   const [badAnswers, setBadAnswers] = useState();
   const [isQuizFinished, setIsQuizFinished] = useState(true);
-
+  const [currentQuestionData, setCurrentQuestionData] = useState(null);
   const [countLevel2, setCountLevel2] = useState(0);
   const [countLevel3, setCountLevel3] = useState(0);
-  const [questionsRanked, setQuestionsRanked] = useState([]);
+  const [questionsRanked, setQuestionsRanked] = useState([null]);
   const [sousTheme, setSousTheme] = useState();
   const [sousThemes, setSousThemes] = useState([]);
   const [randomThemes, setRandomThemes] = useState([]);
@@ -42,7 +49,11 @@ export const GameProvider = ({ children }) => {
   const [currentSousTheme, setCurrentSousTheme] = useState(null);
   const [currentThemes, setCurrentThemes] = useState(null);
   const [currentAnswer, setCurrentAnswer] = useState(null);
+  const [currentAnswerSmat, setCurrentAnswerSmat] = useState(null);
   const [currentSousThemes, setCurrentSousThemes] = useState(null);
+  const [isSmatFinished, setIsSmatFinished] = useState(false);
+
+  const [currentSmatScore, setCurrentSmatScore] = useState(0);
   const [currentLevel, setCurrentLevel] = useState(() => {
     const storedLevel = localStorage.getItem("level");
     return storedLevel ? parseInt(storedLevel) : 2;
@@ -56,7 +67,7 @@ export const GameProvider = ({ children }) => {
 
   useEffect(() => {
     if (currentAnswer) {
-      onCalculPoint();
+      onCalculPointRanked();
     }
   }, [currentAnswer]);
   //Récupération theme et sous theme ds ordre dutilisation
@@ -66,7 +77,7 @@ export const GameProvider = ({ children }) => {
       const res = await axios.get(`/rankings/top-collection`);
       setTopThemes(res.data.themes);
       setTopSousThemes(res.data.sousThemes);
-      setRandomThemes(res.data.randoms);
+      setRandomThemes(res.data.randomSousThemes);
     } catch (error) {
       console.error(error);
     } finally {
@@ -137,7 +148,9 @@ export const GameProvider = ({ children }) => {
   const [timeRemaining, setTimeRemaining] = useState(
     QUESTION_TIMER_DURATION / 1000
   );
-
+  console.log({ topThemes });
+  console.log({ topSousThemes });
+  console.log({ randomThemes });
   const saveBadAnswer = (currentQuestionData, currentAnswer) => {
     setBadAnswers((prevBadAnswers) => ({
       ...prevBadAnswers,
@@ -148,9 +161,84 @@ export const GameProvider = ({ children }) => {
     }));
   };
 
+  // const onCalculPointSmat = () => {
+  //   let points = 0;
+  //   if (
+  //     currentAnswerSmat &&
+  //     currentAnswerSmat.is_correct === 1 &&
+  //     timeRemaining > 0
+  //   ) {
+  //     switch (currentSmatQuestion.level_id) {
+  //       case 1:
+  //         points = calculatePoints(timeRemaining, 1);
+  //         break;
+  //       case 2:
+  //         points = calculatePoints(timeRemaining, 2);
+  //         break;
+  //       default:
+  //         points = calculatePoints(timeRemaining, 3);
+  //         break;
+  //     }
+  //   }
+  //   setCurrentPointsSmat(points);
+  // };
+
+  const saveResultCurrentQuestionSmat = async (smat, answer) => {
+    console.log({ timeRemaining });
+    console.log({ answer }); // Afficher la réponse reçue
+    let res = 0; // Initialiser res
+
+    if (answer && answer.is_correct === 1 && timeRemaining > 0) {
+      console.log("ok");
+      switch (currentSmatQuestion.level_id) {
+        case 1:
+          res = calculatePoints(timeRemaining, 1);
+          break;
+        case 2:
+          res = calculatePoints(timeRemaining, 2);
+          break;
+        default:
+          res = calculatePoints(timeRemaining, 3);
+          break;
+      }
+    }
+
+    // Utilisation de la fonction de rappel pour s'assurer que la mise à jour de l'état est terminée
+    setCurrentPointsSmat((prevPointsSmat) => prevPointsSmat + res);
+    console.log({ currentPointsSmat });
+
+    // Appel de axios.post une fois que l'état est mis à jour
+    try {
+      axios.post(
+        `smats/${smat.id}/save-result/${user.id}`,
+        {
+          newScore: res, // Utilisation de currentPointsSmat mis à jour
+          newCurrentPointsMax: LEVELS[currentSmatQuestion.level_id],
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const resetSmat = () => {
+    setSmatUsers(null);
+    setSmat(null);
+    setIsSmatFinished(false);
+    setCurrentPointsSmat(0);
+
+    setTimeRemaining(QUESTION_TIMER_DURATION / 1000);
+    // setQuestions();
+    // fetchData();
+  };
+
   //Calcule des points gagné par questions
-  const onCalculPoint = () => {
-    const currentQuestionData = questionsRanked[currentQuestion];
+  const onCalculPointRanked = () => {
+    setCurrentQuestionData(questionsRanked[currentQuestion]);
     console.log({ currentQuestionData });
     console.log({ currentAnswer });
     if (currentAnswer.is_correct === 1 && timeRemaining > 0) {
@@ -287,6 +375,22 @@ export const GameProvider = ({ children }) => {
     theme,
     resultat,
     isQuizFinished,
+    smat,
+    currentPointsSmat,
+    setSmat,
+    currentAnswerSmat,
+    setCurrentAnswerSmat,
+    smatUsers,
+    currentSmatQuestion,
+    currentSmatAnswers,
+    pointsMaxSmat,
+    // onCalculPointSmat,
+    setPointsMaxSmat,
+    saveResultCurrentQuestionSmat,
+    setCurrentQuestionData,
+    setCurrentSmatAnswers,
+    setCurrentSmatQuestion,
+    setSmatUsers,
     fetchPrivateNewGame,
     gameFinished,
     setTheme,
@@ -303,6 +407,7 @@ export const GameProvider = ({ children }) => {
     setCurrentLevel,
     fetchNewGame,
     setTimeRemaining,
+    resetSmat,
   };
 
   // Rendu du fournisseur de contexte avec ses enfants

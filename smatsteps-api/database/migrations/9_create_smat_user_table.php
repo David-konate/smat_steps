@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
 
             $table->decimal('result_smat', 5, 2);
-            $table->decimal('current_question', 2)->default(0);
+            $table->integer('current_question')->default(0);
+            $table->integer('current_points_max')->default(0);
+
             $table->timestamps();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('smat_id')->constrained('smats')->onDelete('cascade');

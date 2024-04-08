@@ -11,6 +11,7 @@ import {
   IconButton,
   Drawer,
   List,
+  filledInputClasses,
 } from "@mui/material/";
 import { NavLink, useNavigate } from "react-router-dom";
 import { firstLetterUppercase, links } from "../utils";
@@ -24,6 +25,7 @@ import { useTheme } from "../context/ThemeContext";
 import { useUserContext } from "../context/UserProvider";
 import MessageSendFriend from "./message/MessageSendFriend";
 import MessageDialog from "./message/MessageDialog";
+import { useGameContext } from "../context/GameProvider";
 
 function NavBar() {
   const navigate = useNavigate();
@@ -37,6 +39,7 @@ function NavBar() {
     setNewSmats,
     authentification,
   } = useUserContext();
+  const { setSmat, setSmatUsers } = useGameContext();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [messageSendOpen, setMessageSendOpen] = useState(false);
   const [messageNewGame, setMessageNewGame] = useState(false);
@@ -97,8 +100,8 @@ function NavBar() {
       });
 
       // Mettre à jour la liste de newSmats après la confirmation en utilisant setNewSmats
-      setNewSmats(response.data.updatedNewSmats);
-
+      // setNewSmats(response.data.updatedNewSmats);
+      setSmat(response.data.smat);
       setConfirmData(response.data);
       authentification();
     } catch (error) {
@@ -109,13 +112,22 @@ function NavBar() {
       // setMessage(error.data.message);
       // openConfirmDial();
     } finally {
-      authentification();
+      try {
+        const responseSmatUsers = await axios.get(
+          `smat-users/show-by/${smatId}`
+        );
+        setSmatUsers(responseSmatUsers.data.smatUsers);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        navigate(`partie-privee/${smatId}`);
+      }
     }
   };
 
   const onDeleteNewPrivateGame = async (smatId) => {
     try {
-      const response = await axios.delete(`smats/${smatId}`, {
+      const response = await axios.delete(`smats/${smatId}/`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -238,17 +250,19 @@ function NavBar() {
               }}
             >
               {newSmats?.length > 0 && (
-                <IconButton sx={{}} onClick={openMessageNewPrivateGame}>
-                  <SmartToyIcon
-                    style={{ color: "var(--secondary-color-special)" }}
-                  />
+                <IconButton
+                  sx={{}}
+                  onClick={openMessageNewPrivateGame}
+                  title="Cliquez ici pour ouvrir vos invitations de partie privée"
+                >
+                  <SmartToyIcon style={{ color: "red" }} />
                   <Typography
                     className="numb-pending-friend"
                     style={{
                       position: "absolute",
                       top: 1,
                       right: 0,
-                      color: "var(--secondary-color-special)",
+                      color: "red",
                       fontSize: "0.7rem",
                     }}
                   >
@@ -257,7 +271,11 @@ function NavBar() {
                 </IconButton>
               )}
               {friendPending?.length > 0 && (
-                <IconButton sx={{}} onClick={openMessageSendFriend}>
+                <IconButton
+                  sx={{}}
+                  onClick={openMessageSendFriend}
+                  title="Cliquez ici pour ouvrir vos invitations d'amitié"
+                >
                   <PersonAddIcon
                     style={{ color: "var(--secondary-color-special)" }}
                   />

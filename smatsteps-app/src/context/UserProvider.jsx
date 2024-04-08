@@ -11,6 +11,7 @@ export const UserProvider = ({ children }) => {
   const [friendSent, setFriendSent] = useState(null);
   const [friends, setFriends] = useState(null);
   const [newSmats, setNewSmats] = useState(null);
+  const [openSmats, setOpenSmats] = useState(null);
   const [isBusy, setIsBusy] = useState(true);
 
   const { currentLevel } = useGameContext();
@@ -19,22 +20,25 @@ export const UserProvider = ({ children }) => {
     return token ? token : null;
   }, []);
 
-  function authentification() {
+  const authentification = async () => {
     try {
-      axios.get(`/me/${currentLevel}`).then((res) => {
-        setUser(res.data.user);
-        setFriendPending(res.data.friendPending);
-        setFriendSent(res.data.friendSent);
-        setFriends(res.data.friends);
-        setNewSmats(res.data.newSmats);
-        console.log(res.data);
-      });
+      const res = await axios.get(`/me/${currentLevel}`);
+      setUser(res.data.user);
+      setFriendPending(res.data.friendPending);
+      setFriendSent(res.data.friendSent);
+      setFriends(res.data.friends);
+      setNewSmats(res.data.newSmats);
+      setOpenSmats(res.data.openSmats);
+      console.log(res.data);
     } catch (error) {
       console.log(error);
+      if (error.status === 401) {
+        console.log("true");
+      }
     } finally {
       setIsBusy(false);
     }
-  }
+  };
 
   return (
     <UserContext.Provider
@@ -45,7 +49,7 @@ export const UserProvider = ({ children }) => {
         userToken,
         friends,
         newSmats,
-
+        openSmats,
         setFriends,
         setFriendSent,
         setFriendPending,

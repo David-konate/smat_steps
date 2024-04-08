@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Models\Friend;
 use App\Models\Ranking;
+use App\Models\Smat;
+use App\Models\SmatUser;
+use App\Notifications\RequestNexFriendNotification;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -25,15 +28,16 @@ class UserController extends Controller
 
         // Vérifiez si l'ami n'est pas déjà ajouté dans les deux sens
         $user = User::find($user_id);
-        $friend = User::find($friend_id);
+        $user2 = User::find($friend_id);
 
         if (
             !$user->friends()->where('users.id', $friend_id)->exists() &&
-            !$friend->friends()->where('users.id', $user_id)->exists()
+            !$user2->friends()->where('users.id', $user_id)->exists()
         ) {
             // Ajoutez l'ami à la liste des amis de l'utilisateur actuel
             $user->friends()->attach($friend_id, ['status' => 1]);
             // Retournez une réponse JSON indiquant que l'ami a été ajouté avec succès
+            $user2->notify(new RequestNexFriendNotification($user, $request->all()));
             return response()->json(['message' => 'Ami ajouté avec succès'], 200);
         }
 
@@ -138,14 +142,14 @@ class UserController extends Controller
         }
     }
 
-    public function show($user, Request $request)
+    public function show($userId, Request $request)
     {
         $currentLevel = $request->query('currentLevel');
         $currentTheme = $request->query('currentTheme');
         $currentSousTheme = $request->query('currentSousTheme');
 
         try {
-            $user = User::with('friends')->findOrFail($user);
+            $user = User::with('friends')->findOrFail($userId);
 
             if (!$user) {
                 return response()->json([
@@ -157,15 +161,18 @@ class UserController extends Controller
             $rankings = Ranking::where('user_id', $user->id)
                 ->where('level', $currentLevel)
                 ->with(['theme', 'sousTheme'])
-                ->orderBy('rankings.result_quiz', 'asc');
+                ->orderBy('rankings.result_quiz', 'asc')
+                ->orderByDesc('result_quiz')
+                ->get();
 
-            $rankings = $rankings->orderByDesc('result_quiz')->get();
+            $SmatsFinish = Smat::where('status', 3)->with('userSmats')->with('users')->get();
+
             // $latestReview = $user->receiverReviews->first(); // Assuming reviews are ordered by creation date
             return response()->json([
                 'status' => true,
                 'user' => $user,
-                'rankings' => $rankings // Envoyer les classements dans la réponse JSON
-                // 'latestReview' => $latestReview
+                'rankings' => $rankings, // Envoyer les classements dans la réponse JSON
+                'SmatsFinish' => $SmatsFinish
             ], 200);
         } catch (\Exception $e) {
             return response()->json([
@@ -174,6 +181,7 @@ class UserController extends Controller
             ], 500);
         }
     }
+
 
 
     public function multi($userIds)

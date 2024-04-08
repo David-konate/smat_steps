@@ -5,8 +5,10 @@ import {
   DialogContent,
   DialogActions,
   Button,
+  Typography,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import CustomButton from "../buttons/CustomButton";
 
 const MessageDialog = ({
   open,
@@ -24,13 +26,23 @@ const MessageDialog = ({
   };
 
   return (
-    <Dialog open={open} onClose={onClose}>
-      <DialogTitle>{title}</DialogTitle>
-      <DialogContent>{message}</DialogContent>
+    <Dialog className="message-dialog" open={open} onClose={onClose}>
+      <DialogTitle className="message-title">
+        <Typography variant="h4"> {title}</Typography>
+      </DialogTitle>
+
+      <DialogContent sx={{ mt: 5 }}>
+        <Typography className="message-text"> {message}</Typography>
+      </DialogContent>
       <DialogActions>
-        <Button onClick={onClick} color="primary" autoFocus>
+        <CustomButton
+          className="message-btn"
+          onClick={onClick}
+          color="primary"
+          autoFocus
+        >
           OK
-        </Button>
+        </CustomButton>
       </DialogActions>
     </Dialog>
   );

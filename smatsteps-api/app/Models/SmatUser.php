@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class SmatUser extends Model
 {
     use HasFactory;
-    protected $fillable = ['smat_id', 'user_id', 'result_smat', 'current_question'];
+    protected $fillable = ['smat_id', 'user_id', 'result_smat', 'current_question', 'current_points_max'];
     protected $table = 'smat_user';
 
     public function user()

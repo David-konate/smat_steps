@@ -1,24 +1,27 @@
 <?php
 
+use App\Models\Smat;
 use App\Models\User;
+use App\Models\Theme;
+use App\Models\Friend;
 use App\Models\Ranking;
+use App\Models\SmatUser;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Services\EmailVerificationService;
+use App\Http\Controllers\Api\SmatController;
 use App\Http\Controllers\Api\UserController;
-
 use App\Http\Controllers\Api\LevelController;
 use App\Http\Controllers\Api\ThemeController;
 use App\Http\Controllers\Api\RankingController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\QuestionController;
 use App\Http\Controllers\Api\SecurityController;
-use App\Http\Controllers\Api\SmatController;
+use App\Http\Controllers\Api\UserSmatController;
 use App\Http\Controllers\Api\SousThemeController;
-use App\Models\Friend;
-use App\Models\Smat;
-use App\Models\SmatUser;
-use App\Models\Theme;
+use App\Http\Controllers\Api\QuestionSmatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,7 +81,19 @@ Route::prefix('rankings')->group(function () {
 // Routes Smat
 Route::prefix('smats')->group(function () {
     Route::post('/accept-dual/{smat}', [SmatController::class, 'acceptDual']);
+    Route::post('{smat}/save-result/{user}', [SmatController::class, 'saveResult']);
+    Route::post('{smat}/finish/', [SmatController::class, 'Finish']);
     Route::delete('{smat}', [SmatController::class, 'destroy']);
+});
+
+// Routes Smat_users
+Route::prefix('smat-users')->group(function () {
+    Route::get('show-by/{smatId}', [UserSmatController::class, 'showBySmatId']);
+});
+
+// Routes questions-smat
+Route::prefix('questions-smat')->group(function () {
+    Route::get('{smatId}/question/{questionId}', [QuestionSmatController::class, 'currentQuestion']);
 });
 
 // Routes SousTheme
@@ -112,6 +127,8 @@ Route::prefix('users')->group(function () {
 });
 
 
+Route::get(('email-verify'), [EmailVerificationService::class, 'emailVerify']);
+
 
 Route::get('/me/{currentLevel}', function ($currentLevel) {
     // Assurez-vous que l'utilisateur est authentifié
@@ -140,18 +157,19 @@ Route::get('/me/{currentLevel}', function ($currentLevel) {
         ->get();
 
     $friends = [];
-
+    $openSmats = [];
     foreach ($datas as $data) {
         // Ajouter l'utilisateur à la liste des amis
         $friends[] = $data->user_id == $userId ? $data->friend : $data->user;
     }
 
 
-    $data = SmatUser::where('user_id', $userId)->get();
+    $dataSU = SmatUser::where('user_id', $userId)->get();
 
     $newSmats = []; // Initialiser un tableau pour stocker les nouvelles données Smats
 
-    foreach ($data as $smatUser) {
+    foreach ($dataSU as $smatUser) {
+        $users = [];
         $smatId = $smatUser->smat_id; // Accéder à l'ID du SmatUser
         $relatedSmats = SmatUser::where('smat_id', $smatId)
             ->with('user')
@@ -162,6 +180,21 @@ Route::get('/me/{currentLevel}', function ($currentLevel) {
             ->where('status', 1) // Condition pour le statut égal à 1
             ->with(['theme', 'sousTheme'])
             ->first();
+        // Récupérer smat2 avec ses données associées dans la table UserSmat
+        $smat2 = Smat::where('id', $smatId)
+            ->where('status', 2) // Condition pour le statut égal à 2
+            ->with('userSmats')
+            ->with(['theme', 'sousTheme']) // Charger les données associées dans UserSmat
+            ->first();
+
+        if ($smat2) {
+            // Ajouter les données de SmatUser associées à ce Smat2 dans le tableau $openSmats
+            $openSmats[] = [
+                'relatedSmats' => $relatedSmats,
+                'smat' => $smat2,
+                // Les données associées dans UserSmat
+            ];
+        }
 
         if ($smat) {
             // Extraire le thème et le sous-thème
@@ -174,13 +207,10 @@ Route::get('/me/{currentLevel}', function ($currentLevel) {
                 'relatedSmats' => $relatedSmats,
                 'theme' => $theme,
                 'sousTheme' => $sousTheme,
+
             ];
         }
     }
-
-
-
-
 
     // Retourner les données sous forme de tableau associatif
     return [
@@ -189,9 +219,6 @@ Route::get('/me/{currentLevel}', function ($currentLevel) {
         'friendSent' => $friendSent,
         'friends' => $friends,
         'newSmats' => $newSmats,
-
-
-        // 'latestRankings' => $latestRankings,
-        // 'totalRankingsCount' => $totalRankingsCount,
+        'openSmats' => $openSmats,
     ];
 })->middleware('auth:sanctum');

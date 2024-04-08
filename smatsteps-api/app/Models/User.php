@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Notifications\EmailVerificationNotification;
+use App\Notifications\ResetPasswordNotification;
 use Cviebrock\EloquentSluggable\Sluggable;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -69,5 +71,19 @@ class User extends Authenticatable
     public function participatedTo()
     {
         return $this->belongsToMany(Smat::class, 'particepd_to', 'Id_Users', 'Id_Smat')->withPivot('score');
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $url = config('app.url') . '/password/forgot' .  "?token=" . $token;
+
+        $this->notify(new ResetPasswordNotification($url));
+    }
+
+    public function sendEmailVerificationNotification()
+    {
+        $url = config('app.url') . '/email/verify';
+
+        $this->notify(new EmailVerificationNotification($url));
     }
 }

@@ -11,6 +11,7 @@ return new class extends Migration
     {
         Schema::create('question_smats', function (Blueprint $table) {
             $table->id();
+            $table->integer('current_question')->default();
             $table->foreignId('question_id')->constrained()->onDelete('cascade');
             $table->foreignId('smat_id')->constrained()->onDelete('cascade');
             // Ajoutez d'autres colonnes si nécessaire

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import {
   Box,
@@ -16,12 +16,16 @@ import { displayImage } from "../utils";
 import { useGameContext } from "../context/GameProvider";
 import MessageNewRanged from "../components/message/MessageNewRanged";
 import MessageNewPrivate from "../components/message/MessageNewPrivate";
+import { useUserContext } from "../context/UserProvider";
 
 const Home = () => {
   const { topSousThemes, topThemes, randomThemes } = useGameContext();
   const [isCardNewRankedOpen, setIsCardNewRankedOpen] = useState(false);
   const [isCardNewPrivateOpen, setIsCardNewPrivateOpen] = useState(false);
-
+  const { authentification } = useUserContext();
+  useEffect(() => {
+    authentification();
+  });
   const handleOpenCardNewRanked = () => {
     setIsCardNewRankedOpen(true);
   };
@@ -193,7 +197,7 @@ const Home = () => {
           mt={1}
           sx={{ overflowX: "auto" }}
         >
-          {topThemes.length ? (
+          {topThemes ? (
             topThemes.slice(0, 5).map((topTheme, index) => (
               <Card sx={{ minWidth: 200, height: "100px" }} key={index}>
                 <NavLink
@@ -233,7 +237,9 @@ const Home = () => {
               </Card>
             ))
           ) : (
-            <></>
+            <Typography className="text-no-theme">
+              Pas encore assez de parties effectuées
+            </Typography>
           )}
         </Stack>
         <Stack
@@ -254,7 +260,7 @@ const Home = () => {
           mt={1}
           sx={{ overflowX: "auto" }}
         >
-          {topSousThemes.length ? (
+          {topSousThemes ? (
             topSousThemes.slice(0, 5).map((topSousTheme, index) => (
               <Card sx={{ minWidth: 200, height: "100px" }} key={index}>
                 <NavLink
@@ -294,7 +300,9 @@ const Home = () => {
               </Card>
             ))
           ) : (
-            <></>
+            <Typography className="text-no-theme">
+              Pas encore assez de parties effectuées
+            </Typography>
           )}
         </Stack>
         <Stack

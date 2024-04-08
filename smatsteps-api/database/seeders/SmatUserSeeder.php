@@ -12,6 +12,6 @@ class SmatUserSeeder extends Seeder
      */
     public function run(): void
     {
-        SmatUser::factory(30)->create();
+        SmatUser::factory(60)->create();
     }
 }

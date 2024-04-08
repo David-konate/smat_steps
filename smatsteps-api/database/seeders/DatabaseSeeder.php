@@ -21,8 +21,8 @@ class DatabaseSeeder extends Seeder
             SousThemeSeeder::class,
             QuestionSeeder::class,
             SmatSeeder::class,
-            SmatUserSeeder::class,
-            RankingSeeder::class,
+            // SmatUserSeeder::class,
+            // RankingSeeder::class,
             FriendSeeder::class,
         ]);
     }

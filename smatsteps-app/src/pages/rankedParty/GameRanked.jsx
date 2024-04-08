@@ -7,7 +7,7 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import { Container, Stack, useMediaQuery } from "@mui/system";
+import { Container, Stack } from "@mui/system";
 import { useGameContext } from "../../context/GameProvider";
 import {
   QUESTION_TIMER_DURATION,

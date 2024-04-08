@@ -84,24 +84,23 @@ const ConfirmationNewPrivateGame = ({
               }}
               src={displayImage(
                 smatData.relatedSmats[
-                  smatData.relatedSmats[1]?.user_id !== user?.id ? 1 : 0
+                  smatData.relatedSmats[1]?.user_id !== user.id
                 ]?.user.user_image
               )}
             />
             <Typography
+              mt={1}
               className={
                 smatData.relatedSmats[1]?.user_id !== user.id
                   ? "text-new-request"
                   : "text-new-request2"
               }
-              mt={1}
             >
-              {firstLetterUppercase(
-                smatData.relatedSmats[
-                  smatData.relatedSmats[1]?.user_id !== user.id ? 1 : 0
-                ].user.user_pseudo
-              )}
+              {smatData.relatedSmats[1]?.user_id !== user.id
+                ? smatData.relatedSmats[1]?.user.user_pseudo
+                : smatData.relatedSmats[0]?.user.user_pseudo}
             </Typography>
+
             <Typography
               p={1}
               mt={1}
@@ -129,13 +128,29 @@ const ConfirmationNewPrivateGame = ({
             <Stack mt={1} direction="row" gap={3}>
               {smatData.relatedSmats[1]?.user_id !== user.id ? (
                 <>
+                  <CustomButton
+                    className={
+                      smatData.relatedSmats[1]?.user_id !== user.id
+                        ? "btn-custom"
+                        : "btn-custom2"
+                    }
+                    onClick={() => onDelete(smatData.relatedSmats[1]?.smat_id)}
+                  >
+                    Annuler
+                  </CustomButton>
+                </>
+              ) : (
+                <>
                   <CustomButton2
                     className={
                       smatData.relatedSmats[1]?.user_id !== user.id
                         ? "btn-custom"
                         : "btn-custom2"
                     }
-                    onClick={() => onConfirm(smatData.relatedSmats[1]?.smat_id)}
+                    onClick={() => {
+                      onConfirm(smatData.relatedSmats[1]?.smat_id);
+                      onClose();
+                    }}
                   >
                     Accepter
                   </CustomButton2>
@@ -149,19 +164,6 @@ const ConfirmationNewPrivateGame = ({
                   >
                     Annuler
                   </CustomButton2>
-                </>
-              ) : (
-                <>
-                  <CustomButton
-                    className={
-                      smatData.relatedSmats[1]?.user_id !== user.id
-                        ? "btn-custom"
-                        : "btn-custom2"
-                    }
-                    onClick={() => onDelete(smatData.relatedSmats[1]?.smat_id)}
-                  >
-                    Annuler
-                  </CustomButton>
                 </>
               )}
             </Stack>

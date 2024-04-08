@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('level_id');
             $table->timestamps();
             $table->integer('status')->default(1);
+            $table->integer('totals_point')->default(0);
 
             $table->foreign('theme_id')->references('id')->on('themes')->onDelete('cascade');
             $table->foreign('sous_theme_id')->references('id')->on('sous_themes')->onDelete('cascade');

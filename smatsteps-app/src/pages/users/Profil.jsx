@@ -28,15 +28,33 @@ import SettingsAccessibilityIcon from "@mui/icons-material/SettingsAccessibility
 import GroupIcon from "@mui/icons-material/Group";
 import MessageSentFriend from "../../components/message/MessageSentFriend";
 import MessageListFriend from "../../components/message/MessageListFriend";
+import SmartToyIcon from "@mui/icons-material/SmartToy";
+import MessagePrivateParty from "../../components/message/MessagePrivateParty";
+import PlaylistAddCheckCircleIcon from "@mui/icons-material/PlaylistAddCheckCircle";
+import MessagePrivatePartyFinish from "../../components/message/MessagePrivatePartyFinish";
 
 const Profil = () => {
   const { id } = useParams();
-  const { user, friendSent, friendSend, setFriendSent, friends, setFriends } =
-    useUserContext();
+  const {
+    user,
+    friendSent,
+    friendSend,
+    setFriendSent,
+    friends,
+    setFriends,
+    openSmats,
+  } = useUserContext();
   const [isBusy, setIsBusy] = useState(true);
-  const { currentLevel, currentTheme, currentSousTheme } = useGameContext();
+  const {
+    currentLevel,
+    currentTheme,
+    currentSousTheme,
+    setSmatUsers,
+    setSmat,
+  } = useGameContext();
   const [userProfil, setuserProfil] = useState();
   const [userRankings, setUserRankings] = useState();
+  const [smatsFinish, setSmatsFinish] = useState();
   const [friend, setFriend] = useState(false);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -44,9 +62,25 @@ const Profil = () => {
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isEditOpenDisableFriend, setIsEditOpenDisableFriend] = useState(false);
   const [isOpenListFriend, setIsOpenListFriend] = useState(false);
+  const [isMessagePrivatePartyOpen, setIsMessagePrivatePartyOpen] =
+    useState(false); // Nouvel état pour contrôler l'ouverture de MessagePrivateParty
+  const [isMessagePrivatePartyFinish, setIsMessagePrivatePartyFinish] =
+    useState(false); // Nouvel état pour contrôler l'ouverture de MessagePrivateParty
+
   const navigate = useNavigate();
   const params = useParams();
-
+  // Fonction pour ouvrir/fermer MessagePrivateParty
+  const toggleMessagePrivateParty = () => {
+    setIsMessagePrivatePartyOpen(!isMessagePrivatePartyOpen);
+  };
+  const toggleMessagePrivateFinish = () => {
+    setIsMessagePrivatePartyFinish(!isMessagePrivatePartyFinish);
+  };
+  const handlePlayPrivateParty = (currentUser) => {
+    setSmatUsers(currentUser);
+    setSmat(currentUser.smat);
+    navigate(`/partie-privee/${currentUser.smat_id}`);
+  };
   useEffect(() => {
     fetchData();
   }, [currentLevel, params, friendSend, friendSent]);
@@ -64,6 +98,8 @@ const Profil = () => {
       setFriend(friend.data.friend);
       setuserProfil(res.data.user);
       setUserRankings(res.data.rankings);
+      setSmatsFinish(res.data.SmatsFinish);
+      console.log(res.data.SmatsFinish);
     } catch (error) {
       console.error(error);
     } finally {
@@ -109,7 +145,7 @@ const Profil = () => {
     setIsDialogOpen(false);
   };
   // Assurez-vous que la fonction deleteFriendRequest est correctement appelée dans le ConfirmationDialog
-
+  console.log({ smatsFinish });
   const addNewFriend = async () => {
     try {
       if (!friend) {
@@ -162,11 +198,55 @@ const Profil = () => {
               </Stack>
               <Stack>
                 {" "}
+                {userProfil.id === user.id && smatsFinish?.length > 0 ? (
+                  <IconButton
+                    onClick={toggleMessagePrivateFinish}
+                    title="Cliquez ici pour ouvrir vôtre liste d'amis"
+                  >
+                    <PlaylistAddCheckCircleIcon
+                      style={{ color: "var(--secondary-color-special)" }}
+                    />
+                  </IconButton>
+                ) : (
+                  <></>
+                )}
+              </Stack>
+              <Stack>
+                {" "}
                 {userProfil.id === user.id && friends?.length > 0 ? (
-                  <IconButton onClick={handlesOpenListFriend}>
+                  <IconButton
+                    onClick={handlesOpenListFriend}
+                    title="Cliquez ici pour ouvrir vôtre liste d'amis"
+                  >
                     <GroupIcon
                       style={{ color: "var(--secondary-color-special)" }}
                     />
+                  </IconButton>
+                ) : (
+                  <></>
+                )}
+              </Stack>
+              <Stack>
+                {userProfil.id === user.id && openSmats?.length ? (
+                  <IconButton
+                    title="Cliquez ici pour ouvrir vos parties privées en cours"
+                    onClick={toggleMessagePrivateParty}
+                  >
+                    <SmartToyIcon
+                      style={{ color: "var(--secondary-color-special)" }}
+                    />
+                    <Typography
+                      className="numb-pending-friend"
+                      style={{
+                        position: "absolute",
+                        top: 1,
+                        right: 0,
+                        color: "var(--secondary-color-special)",
+                        fontSize: "0.7rem",
+                      }}
+                    >
+                      {openSmats?.length}
+                    </Typography>
                   </IconButton>
                 ) : (
                   <></>
@@ -333,6 +413,19 @@ const Profil = () => {
         friendSent={friendSent}
         user={user}
         updateFriendSent={setFriendSent}
+      />
+
+      <MessagePrivateParty
+        open={isMessagePrivatePartyOpen}
+        onClose={toggleMessagePrivateParty}
+        openSmats={openSmats}
+        handlePlayPrivateParty={handlePlayPrivateParty}
+      />
+      <MessagePrivatePartyFinish
+        open={isMessagePrivatePartyFinish}
+        onClose={toggleMessagePrivateFinish}
+        smatsFinish={smatsFinish}
+        handlePlayPrivateParty={handlePlayPrivateParty}
       />
       {
         <MessageUpdateProfil

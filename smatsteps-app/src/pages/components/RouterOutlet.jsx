@@ -8,6 +8,9 @@ import IndexSousTheme from "../sousThemes/IndexSousTheme";
 import IndexTheme from "../themes/IndexTheme";
 import GameRanked from "../rankedParty/GameRanked";
 import PrivateRouteGuard from "../../guards/PrivateRouteGuard";
+import { GameProvider } from "../../context/GameProvider";
+import Gameprivate from "../privateParty/GamePrivate";
+import EmailVerifyPage from "../VerifyEmail";
 
 const RouterOutlet = () => {
   return (
@@ -15,6 +18,7 @@ const RouterOutlet = () => {
       <Route path="/" element={<Home />} />
 
       <Route path={`/login`} element={<Login />} />
+      <Route path={`/email/verify`} element={<EmailVerifyPage />} />
 
       <Route
         PrivateRouteGuard
@@ -32,6 +36,10 @@ const RouterOutlet = () => {
       <Route
         path="/partie-classe"
         element={<PrivateRouteGuard element={<GameRanked />} />}
+      />
+      <Route
+        path="/partie-privee/:id"
+        element={<PrivateRouteGuard element={<Gameprivate />} />}
       />
     </Routes>
   );
