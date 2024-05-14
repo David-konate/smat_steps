@@ -1,23 +1,22 @@
 import React, { useState } from "react";
-import { Container, Typography, TextField, Box, Button } from "@mui/material";
+import { Container, Typography, TextField, Box } from "@mui/material";
 import axios from "axios";
 import MessageDialog from "../message/MessageDialog";
 import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../../context/UserProvider";
-import CustomButton from "../buttons/CustomButton";
 import { useForm } from "react-hook-form";
 import { Stack } from "@mui/system";
+import CustomButton2 from "../buttons/CustomButton2";
 
 const LoginFormComponent = () => {
-  const { setUser, authentication } = useUserContext();
-  const navigate = useNavigate();
+  const { setUser } = useUserContext();
   const [openDialog, setOpenDialog] = useState(false);
   const [dialogTitle, setDialogTitle] = useState("");
   const [dialogMessage, setDialogMessage] = useState("");
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm();
 
   const onSubmit = async (data) => {
@@ -89,7 +88,8 @@ const LoginFormComponent = () => {
             helperText={errors.password && "Ce champ est requis"}
           />
           <Box mt={3}>
-            <Button
+            {/* Utiliser CustomButton correctement */}
+            <CustomButton2
               className="btn-connexion"
               type="submit"
               fullWidth
@@ -97,12 +97,11 @@ const LoginFormComponent = () => {
               sx={{ mt: 3, mb: 2 }}
             >
               Connexion
-            </Button>{" "}
+            </CustomButton2>
           </Box>
         </Stack>
       </Box>
       <Box>
-        {" "}
         <MessageDialog
           open={openDialog}
           onClose={handleDialogClose}

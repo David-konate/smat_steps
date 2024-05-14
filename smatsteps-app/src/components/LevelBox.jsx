@@ -33,7 +33,8 @@ const LevelBox = ({}) => {
   const handleLevelChange = (event) => {
     // Assurez-vous que la valeur est bien un nombre
     const levelValue = parseInt(event.target.value);
-    setCurrentLevel(levelValue); // Met à jour la valeur de currentLevel avec la nouvelle valeur sélectionnée
+    // Met à jour la valeur de currentLevel avec la nouvelle valeur sélectionnée
+    setCurrentLevel(levelValue);
   };
   return (
     <Box sx={levelBoxStyles}>

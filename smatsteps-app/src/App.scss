@@ -38,11 +38,10 @@ body {
   &.dark {
     --color-text: var(--color-text-light);
     background: var(--secondary-color-dark);
-
     --primary-color-special: var(--primary-color);
     --secondary-color-special: var(--secondary-color);
     --proress-bar-bg: var(--secondary-color-light);
-    // gestion rgba
+    --background-color: rgba(255, 193, 7, 0.4);
     .index-sous-theme {
       .text-field-sous-theme {
         border-width: 0;
@@ -59,8 +58,7 @@ body {
     --primary-color-special: var(--secondary-color);
     --secondary-color-special: var(--primary-color);
     --proress-bar-bg: var(--secondary-color-dark);
-
-    // gestion rgba
+    --background-color: rgba(105, 73, 255, 0.5);
     .index-sous-theme {
       .text-field-sous-theme {
         border-width: 0;
@@ -71,6 +69,7 @@ body {
       }
     }
   }
+
   .card-top-theme-home::-webkit-scrollbar {
     display: none;
 
@@ -537,6 +536,7 @@ body {
   }
   .navbar_link {
     padding: 0 8px;
+    font-family: "Madimi One", sans-serif;
     display: flex;
     position: relative;
     text-decoration: none;

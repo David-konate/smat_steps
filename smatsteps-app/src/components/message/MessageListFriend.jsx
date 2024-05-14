@@ -4,14 +4,18 @@ import { Avatar, Dialog, Grid, Typography, TextField } from "@mui/material";
 import { Stack } from "@mui/system";
 import { displayImage } from "../../utils";
 import PlayerCard2 from "../cards/PlayerCars2 ";
+import { useNavigate } from "react-router-dom";
+
 const MessageListFriend = ({ open, onClose, friends }) => {
   const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
 
   const filteredFriends = friends?.filter((friend) =>
     friend.user_pseudo.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handleLinkClick = () => {
+  const onClick = (friend) => {
+    navigate(`/profil/${friend.slug}`);
     onClose(); // Fermer la fenêtre de dialogue
   };
 
@@ -55,18 +59,20 @@ const MessageListFriend = ({ open, onClose, friends }) => {
       />
       <Grid container p={1} spacing={2} justifyContent="center" mt={3}>
         {filteredFriends?.map((friend, index) => (
-          <Grid item xs={4} sm={2} md={3} key={index}>
-            <Link
-              to={`/profil/${friend.id}`}
-              style={{ textDecoration: "none" }}
-              onClick={handleLinkClick} // Appeler la fonction de fermeture de la fenêtre de dialogue lors du clic
-            >
-              <PlayerCard2
-                userRanking={friend}
-                shadowColor="var(--primary-color-special)"
-                borderColor="var(--secondary-color-special)"
-              />
-            </Link>
+          <Grid
+            item
+            xs={4}
+            sm={2}
+            md={3}
+            key={index}
+            onClick={() => onClick(friend)}
+          >
+            {/* Utilisation correcte de onClick */}
+            <PlayerCard2
+              userRanking={friend}
+              shadowColor="var(--primary-color-special)"
+              borderColor="var(--secondary-color-special)"
+            />
           </Grid>
         ))}
       </Grid>

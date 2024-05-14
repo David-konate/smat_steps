@@ -6,6 +6,7 @@ import CustomButton from "../buttons/CustomButton";
 import { displayImage } from "../../utils";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import CustomButton2 from "../buttons/CustomButton2";
 
 const MessageSendFriend = ({
   open,
@@ -26,7 +27,7 @@ const MessageSendFriend = ({
       await axios.post(`users/${friendId}/accept-friend-with/${user.id}`, null);
       onClose(); // Fermer le dialogue après avoir accepté l'ami
       updateFriendPending(); // Mettre à jour friendPending après l'acceptation
-      navigate(`/profil/${user.id}`);
+      navigate(`/profil/${user.slug}`);
     } catch (error) {
       console.log(error);
     }
@@ -37,7 +38,7 @@ const MessageSendFriend = ({
       await axios.delete(`users/${friendId}/deleted-friend-with/${user.id}`);
       onClose(); // Fermer le dialogue après avoir refusé l'ami
       updateFriendPending(); // Mettre à jour friendPending après le refus
-      navigate(`/profil/${user.id}`);
+      navigate(`/profil/${user.slug}`);
     } catch (error) {
       console.log(error);
     }
@@ -111,18 +112,18 @@ const MessageSendFriend = ({
                 {friend.user.user_pseudo}
               </Typography>
               <Stack direction={"row"} gap={3}>
-                <CustomButton
+                <CustomButton2
                   onClick={() => handleOpenConfirmation(friend.user.id)}
                 >
                   {" "}
                   {/* Pass friend's id to handleOpenConfirmation */}
                   Accepter
-                </CustomButton>
-                <CustomButton onClick={() => handleOpenRefuse(friend.user.id)}>
+                </CustomButton2>
+                <CustomButton2 onClick={() => handleOpenRefuse(friend.user.id)}>
                   {" "}
                   {/* Pass friend's id to handleOpenConfirmation */}
                   Refuser
-                </CustomButton>
+                </CustomButton2>
               </Stack>
             </Stack>
           </Stack>

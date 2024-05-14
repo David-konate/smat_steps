@@ -20,7 +20,6 @@ import {
   displayImage,
 } from "../../utils";
 import CompletionMessageSmat from "../../components/message/CompletionMessageSmat";
-import CustomButton from "../../components/buttons/CustomButton";
 import CustomButton2 from "../../components/buttons/CustomButton2";
 
 const Gameprivate = () => {
@@ -40,43 +39,35 @@ const Gameprivate = () => {
     setCurrentAnswerSmat,
     setCurrentQuestionData,
   } = useGameContext();
-  const [scorePlayer, setScorePlayer] = useState(0);
+
+  // État local pour le score du joueur et de l'adversaire, et autres variables d'état
   const [isBusy, setIsBusy] = useState(false);
-  const [dialogMessage, setDialogMessage] = useState("");
-  const [scoreOpponent, setScoreOpponent] = useState(0);
 
   const [currentPointsMaxSmat, setCurrentPointsMaxSmat] = useState(null);
   const [itIsTurn, setItIsTurn] = useState(true);
-  const [isTimeUpDialogOpen, setIsTimeUpDialogOpen] = useState(false);
   const [intervalId, setIntervalId] = useState(null);
   const navigate = useNavigate();
+
+  // État local pour gérer l'ouverture du dialogue
+  const [openDialog, setOpenDialog] = useState(false);
+
+  // État local pour stocker une image (commentée car non utilisée dans le code)
   const [image] = useState(() => {
-    // if (currentSmatQuestion.image_question) {
-    //   return currentSmatQuestion.image_question;
-    // } else if (
-    //   currentSmatQuestion.sous_theme &&
-    //   currentSmatQuestion.sous_theme.sous_theme_image
-    // ) {
-    //   return currentSmatQuestion.sous_theme.sous_theme_image;
-    // } else if (
-    //   currentSmatQuestion.theme &&
-    //   currentSmatQuestion.theme.theme_image
-    // ) {
-    //   return currentSmatQuestion.theme.theme_image;
-    // } else {
-    //   return null; // Défaut à null si aucune image n'est trouvée
-    // }
+    // Commenté : Logique pour récupérer une image
   });
+
+  // Effet pour récupérer les données de la question actuelle lors du montage initial
   useEffect(() => {
     fetchDataCurrentQuestion();
-    // Réinitialiser le chronomètre
   }, []);
+
+  // Effet pour mettre à jour currentPointsMaxSmat lorsque pointsMaxSmat change
   useEffect(() => {
-    setCurrentPointsMaxSmat(pointsMaxSmat); // Mettre à jour currentPointsMaxSmat
+    setCurrentPointsMaxSmat(pointsMaxSmat);
   }, [pointsMaxSmat]);
 
+  // Fonction asynchrone pour récupérer les données de la question actuelle depuis le serveur
   const fetchDataCurrentQuestion = async () => {
-    console.log(smat.id);
     setIsBusy(true);
     try {
       const res = await axios.get(
@@ -86,14 +77,6 @@ const Gameprivate = () => {
       setCurrentSmatAnswers(res.data.currentAnswers);
       setPointsMaxSmat(res.data.smat.pointsMaxSmat);
       setCurrentPointsMaxSmat(res.data.smat.currentPointsMax);
-      // if (res.data.scorePlayer[0]) {
-
-      // } else {
-
-      // }
-
-      console.log(res.data);
-      console.log(res.data.currentAnswers);
     } catch (error) {
       if (error.code === 409) {
         setItIsTurn(false);
@@ -103,44 +86,44 @@ const Gameprivate = () => {
     }
   };
 
-  // Modifiez la fonction stopTimer
+  // Effet pour démarrer le chronomètre lors du montage initial
+  useEffect(() => {
+    // Intervalle qui se déclenche toutes les 1000 millisecondes (1 seconde)
+    const time = setInterval(() => {
+      // À chaque déclenchement de l'intervalle, met à jour le temps restant en décrémentant d'une seconde
+      // La fonction Math.max est utilisée pour s'assurer que le temps restant ne devient jamais négatif
+      setTimeRemaining((prevTime) => Math.max(prevTime - 1, 0));
+    }, 1000);
+
+    // Stocke le temps de l'intervalle pour pouvoir le nettoyer plus tard
+    setIntervalId(time);
+
+    // Cette fonction de nettoyage est exécutée lors du démontage du composant
+    return () => clearInterval(time);
+  }, []);
+
+  // Fonction pour arrêter le chronomètre
   const stopTimer = () => {
     clearInterval(intervalId);
   };
 
-  const [openDialog, setOpenDialog] = useState(false);
-
-  //récupération reponse utilisateur
+  // Gestion de la logique lorsque l'utilisateur sélectionne une réponse
   const handleCardClick = async (answer) => {
     stopTimer();
-    console.log(answer);
+    setTimeRemaining(timeRemaining);
+    setCurrentAnswerSmat(answer);
 
-    setTimeRemaining(timeRemaining); // Cette ligne semble inutile, elle met à jour timeRemaining avec sa propre valeur
-
-    setCurrentAnswerSmat(answer); // Définir currentAnswerSmat avant d'appeler saveResultCurrentQuestionSmat
-
-    // Appeler saveResultCurrentQuestionSmat après avoir défini currentAnswerSmat
     await saveResultCurrentQuestionSmat(smat, answer);
 
     setOpenDialog(true);
   };
 
-  useEffect(() => {
-    // Démarrer le chronomètre et stocker l'identifiant de l'intervalle
-    const id = setInterval(() => {
-      setTimeRemaining((prevTime) => Math.max(prevTime - 1, 0));
-    }, 1000);
-    setIntervalId(id);
-
-    // Nettoie le minuteur lors du changement de question
-    return () => clearInterval(id);
-  }, []);
-
+  // Fonction pour fermer le dialogue
   const handleClose = () => {
     navigate("/");
   };
 
-  // Logique pour définir le fond et la bordure en fonction de l'index
+  // Fonction pour définir le style des cartes en fonction de l'index
   const getCardStyle = (index) => {
     let backgroundColor, color, shadow;
     switch (index % 4) {
@@ -174,19 +157,6 @@ const Gameprivate = () => {
       color: color,
     };
   };
-  const currentScorePercentagePlayer = calculatePercentage(
-    scorePlayer,
-    pointsMaxSmat
-  );
-  const currentScorePercentageOpponent = calculatePercentage(
-    scoreOpponent,
-    pointsMaxSmat
-  );
-  const currentScoreMaxPercentage = calculatePercentage(
-    currentPointsMaxSmat,
-    pointsMaxSmat
-  );
-  console.log({ currentSmatAnswers });
 
   return isBusy ? (
     <Box sx={{ display: "flex" }}>
@@ -243,61 +213,7 @@ const Gameprivate = () => {
                 <Typography className="text-bar-question">
                   {smatUsers.current_question + 1} /9
                 </Typography>
-                <Box sx={{ width: "60%" }}>
-                  <Box
-                    sx={{
-                      position: "relative",
-                      height: 8,
-                      backgroundColor: "var(--proress-bar-bg)",
-                      borderRadius: 4,
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        position: "absolute",
-                        left: 0,
-                        top: 0,
-                        bottom: 0,
-                        width: `${currentScorePercentagePlayer}%`,
-                        backgroundColor: "var(--secondary-color)",
-                        borderRadius: "4px 0 0 4px",
-                        zIndex:
-                          currentScorePercentagePlayer <
-                          currentScorePercentageOpponent
-                            ? 2
-                            : 1, // Mettre en premier plan si le score est inférieur
-                      }}
-                    />
-                    {/* Barre de pourcentage de l'adversaire */}
-                    <Box
-                      sx={{
-                        position: "absolute",
-                        left: 0,
-                        top: 0,
-                        bottom: 0,
-                        width: `${currentScorePercentageOpponent}%`,
-                        backgroundColor: "var(--primary-color)",
-                        borderRadius: "4px 0 0 4px",
-                        zIndex:
-                          currentScorePercentageOpponent <
-                          currentScorePercentagePlayer
-                            ? 2
-                            : 1, // Mettre en premier plan si le score est inférieur
-                      }}
-                    />
-                    <Box
-                      sx={{
-                        position: "absolute",
-                        left: 0,
-                        top: 0,
-                        bottom: 0,
-                        width: `${currentScorePercentageOpponent}%`,
-                        backgroundColor: "var(--primary-color)",
-                        borderRadius: "4px 0 0 4px",
-                      }}
-                    />
-                  </Box>
-                </Box>
+                <Box sx={{ width: "60%" }}></Box>
                 <Typography
                   className={
                     timeRemaining <= 5 ? "red-text" : "text-bar-question"

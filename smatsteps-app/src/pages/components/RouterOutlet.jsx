@@ -1,3 +1,4 @@
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "../Home";
 import Login from "../Login";
@@ -7,40 +8,57 @@ import SousTheme from "../sousThemes/SousTheme";
 import IndexSousTheme from "../sousThemes/IndexSousTheme";
 import IndexTheme from "../themes/IndexTheme";
 import GameRanked from "../rankedParty/GameRanked";
-import PrivateRouteGuard from "../../guards/PrivateRouteGuard";
-import { GameProvider } from "../../context/GameProvider";
+import UserRouteGuard from "./UserRouteGard";
 import Gameprivate from "../privateParty/GamePrivate";
-import EmailVerifyPage from "../VerifyEmail";
+import EmailVerifyPage from "../users/EmailVerifyPage";
+import IndexUsers from "../users/IndexUsers";
+import NotFound from "../NotFound";
+import Dashboard from "../dashBoard/DashBoard";
+import AdminRouteGuard from "./AdminRouteGuard";
+import PasswordForgotPage from "../users/ChangePassword";
 
 const RouterOutlet = () => {
   return (
     <Routes>
+      {/* Routes home */}
       <Route path="/" element={<Home />} />
-
-      <Route path={`/login`} element={<Login />} />
-      <Route path={`/email/verify`} element={<EmailVerifyPage />} />
-
+      {/* Routes login */}
+      <Route path="/login" element={<Login />} />
+      {/* Routes parties */}
+      <Route path="/email/verify" element={<EmailVerifyPage />} />
+      {/* Routes user */}
       <Route
-        PrivateRouteGuard
-        path="/profil/:id"
-        element={<PrivateRouteGuard element={<Profil />} />}
+        element={<UserRouteGuard element={<Profil />} />} // Utilisez UserRouteGuard pour la route Profil
+        path="/profil/:slug"
       />
-
+      <Route
+        element={<UserRouteGuard element={<IndexUsers />} />} // Utilisez UserRouteGuard pour la route IndexUsers
+        path="/joueurs"
+      />
       {/* Routes themes */}
       <Route path="/theme/:id" element={<Theme />} />
       <Route path="/theme" element={<IndexTheme />} />
       {/* Routes sous-themes */}
       <Route path="/sous-theme/:id" element={<SousTheme />} />
       <Route path="/sous-theme" element={<IndexSousTheme />} />
-      {/* Routes ranking */}
+      {/* Routes parties */}
       <Route
         path="/partie-classe"
-        element={<PrivateRouteGuard element={<GameRanked />} />}
+        element={<UserRouteGuard element={<GameRanked />} />}
       />
       <Route
         path="/partie-privee/:id"
-        element={<PrivateRouteGuard element={<Gameprivate />} />}
+        element={<UserRouteGuard element={<Gameprivate />} />}
       />
+      <Route
+        path="/dashboard"
+        element={<AdminRouteGuard element={<Dashboard />} />}
+      />
+      {/* Routes confirm email */}
+      <Route path={`/email/verify`} element={<EmailVerifyPage />} />
+      <Route path="/password/forgot" element={<PasswordForgotPage />} />
+      {/* Ajoutez la route pour la page 404 */}
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };

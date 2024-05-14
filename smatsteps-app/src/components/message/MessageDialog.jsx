@@ -12,16 +12,17 @@ import CustomButton from "../buttons/CustomButton";
 
 const MessageDialog = ({
   open,
-  onClose,
+  onClose = null,
   title,
   message,
   redirection = null,
 }) => {
   const navigate = useNavigate();
   const onClick = () => {
-    onClose();
     if (redirection) {
       navigate(redirection);
+    } else {
+      onClose();
     }
   };
 

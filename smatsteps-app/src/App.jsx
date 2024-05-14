@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import NavBar from "./components/NavBar";
 import RouterOutlet from "./pages/components/RouterOutlet";
 import { useUserContext } from "./context/UserProvider";
-import axios from "axios";
 import { CircularProgress } from "@mui/material";
 
 function App() {

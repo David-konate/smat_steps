@@ -1,17 +1,20 @@
 import { create, test, enforce } from "vest";
-// import { cleanHtmlText } from ".";
 
 const IS_REQUIRED_MESSAGE = "Ce champ est requis";
 const IS_NOT_REGEX_VALID_MESSAGE = "Le format est invalide";
 const IS_NOT_SAME_VALUE_MESSAGE = "Les mots de passe ne correspondent pas";
 const PSEUDO_REGEX = /^[a-zA-Z0-9_.]+$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+const LEVEL_LIMIT_MESSAGE = "Le niveau doit être 1, 2 ou 3";
+const PASSWORD_MESSAGE = "Password invalide";
+const PASSWORD_REGEX =
+  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-export const maxLength = (length) =>
+const maxLength = (length) =>
   `Le champ ne doit pas dépasser ${length} caractères.`;
-export const minLength = (length) =>
+const minLength = (length) =>
   `Le champ doit avoir au minimum ${length} caractères.`;
-export const minNumber = (number) => `Minimum ${number}`;
+const minNumber = (number) => `Minimum ${number}`;
 
 export const validationRegister = create((data = {}) => {
   test("user_pseudo", IS_REQUIRED_MESSAGE, () => {
@@ -24,11 +27,11 @@ export const validationRegister = create((data = {}) => {
     enforce(data.user_pseudo).shorterThanOrEquals(20);
   });
 
-  test("user_email", IS_REQUIRED_MESSAGE, () => {
-    enforce(data.user_email).isNotEmpty();
+  test("email", IS_REQUIRED_MESSAGE, () => {
+    enforce(data.email).isNotEmpty();
   });
-  test("user_email", IS_NOT_REGEX_VALID_MESSAGE, () => {
-    enforce(data.user_email).matches(EMAIL_REGEX);
+  test("email", IS_NOT_REGEX_VALID_MESSAGE, () => {
+    enforce(data.email).matches(EMAIL_REGEX);
   });
 
   test("password", IS_REQUIRED_MESSAGE, () => {
@@ -47,11 +50,11 @@ export const validationRegister = create((data = {}) => {
 });
 
 export const validationLogin = create((data = {}) => {
-  test("user_email", IS_REQUIRED_MESSAGE, () => {
-    enforce(data.user_email).isNotEmpty();
+  test("email", IS_REQUIRED_MESSAGE, () => {
+    enforce(data.email).isNotEmpty();
   });
-  test("user_email", IS_NOT_REGEX_VALID_MESSAGE, () => {
-    enforce(data.user_email).matches(EMAIL_REGEX);
+  test("email", IS_NOT_REGEX_VALID_MESSAGE, () => {
+    enforce(data.email).matches(EMAIL_REGEX);
   });
 
   test("password", IS_REQUIRED_MESSAGE, () => {
@@ -59,35 +62,71 @@ export const validationLogin = create((data = {}) => {
   });
 });
 
-// export const validationForgotPassword = create((data = {}) => {
-//   test('user_email', IS_REQUIRED_MESSAGE, () => {enforce(data.user_email).isNotEmpty()});
-//   test('user_email', IS_NOT_REGEX_VALID_MESSAGE, () => {enforce(data.user_email).matches(EMAIL_REGEX)});
-// })
+export const validationQuestion = create((data = {}) => {
+  test("question", IS_REQUIRED_MESSAGE, () => {
+    enforce(data.question).isNotEmpty();
+  });
 
-// export const validationChangePassword = create((data = {}) => {
-//   test('user_email', IS_REQUIRED_MESSAGE, () => {enforce(data.user_email).isNotEmpty()});
-//   test('user_email', IS_NOT_REGEX_VALID_MESSAGE, () => {enforce(data.user_email).matches(EMAIL_REGEX)});
+  test("sous_theme_id", IS_REQUIRED_MESSAGE, () => {
+    enforce(data.sous_theme_id).isNotEmpty();
+  });
 
-//   test('password', IS_REQUIRED_MESSAGE, () => {enforce(data.password).isNotEmpty()});
-//   test('password', minLength(6), () => {enforce(data.password).longerThanOrEquals(6)});
+  test("theme_id", IS_REQUIRED_MESSAGE, () => {
+    enforce(data.theme_id).isNotEmpty();
+  });
 
-//   test('confirmPassword', IS_REQUIRED_MESSAGE, () => {enforce(data.confirmPassword).isNotEmpty()});
-//   test('confirmPassword', IS_NOT_SAME_VALUE_MESSAGE, () => {
-//     enforce(data.confirmPassword).equals(data.password);
-//   });
+  test("user_id", IS_REQUIRED_MESSAGE, () => {
+    enforce(data.user_id).isNotEmpty();
+  });
 
-// })
+  test("level_id", IS_REQUIRED_MESSAGE, () => {
+    enforce(data.level_id)
+      .isNotEmpty()
+      .matches(/^(1|2|3)$/)
+      .message(LEVEL_LIMIT_MESSAGE);
+  });
 
-// export const validationProfil = create((data = {}) => {
-//   test('introduction', maxLength(250), () => {enforce(data.introduction).shorterThanOrEquals(250)});
-//   test('hobby', maxLength(50), () => {enforce(data.hobby).shorterThanOrEquals(50)});
-//   test('occupation', maxLength(50), () => {enforce(data.occupation).shorterThanOrEquals(50)});
-//   test('facebook', maxLength(20), () => {enforce(data.facebook).shorterThanOrEquals(20)});
-//   test('youtube', maxLength(20), () => {enforce(data.youtube).shorterThanOrEquals(20)});
-//   test('instagram', maxLength(20), () => {enforce(data.instagram).shorterThanOrEquals(20)});
-//   test('tiktok', maxLength(20), () => {enforce(data.tiktok).shorterThanOrEquals(20)});
-//   test('kakao', maxLength(20), () => {enforce(data.kakao).shorterThanOrEquals(20)});
-// })
+  test("category_id", IS_REQUIRED_MESSAGE, () => {
+    enforce(data.category_id).isNotEmpty();
+  });
+
+  test("image_question", IS_REQUIRED_MESSAGE, () => {
+    enforce(data.image_question).isNotEmpty();
+  });
+});
+
+export const validationForgotPassword = create((data = {}) => {
+  console.log({ data });
+  test("email", IS_REQUIRED_MESSAGE, () => {
+    enforce(data.email).isNotEmpty();
+  });
+  test("email", IS_NOT_REGEX_VALID_MESSAGE, () => {
+    enforce(data.email).matches(EMAIL_REGEX);
+  });
+});
+
+export const validationChangePassword = create((data = {}) => {
+  test("email", IS_REQUIRED_MESSAGE, () => {
+    enforce(data.email).isNotEmpty();
+  });
+  test("email", IS_NOT_REGEX_VALID_MESSAGE, () => {
+    enforce(data.email).matches(EMAIL_REGEX);
+  });
+
+  test("password", IS_REQUIRED_MESSAGE, () => {
+    enforce(data.password).isNotEmpty();
+  });
+  test("password", PASSWORD_MESSAGE, () => {
+    enforce(data.password).matches(PASSWORD_REGEX);
+  });
+
+  test("password_confirmation", IS_REQUIRED_MESSAGE, () => {
+    enforce(data.password_confirmation).isNotEmpty();
+  });
+  test("password_confirmation", IS_NOT_SAME_VALUE_MESSAGE, () => {
+    enforce(data.password_confirmation).equals(data.password);
+  });
+});
 
 export const errorField = (error) => {
   return {

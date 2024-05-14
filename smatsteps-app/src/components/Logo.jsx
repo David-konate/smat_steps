@@ -14,7 +14,7 @@ const Logo = () => {
           marginTop: 5,
         }}
         className="logo"
-        src={displayImage("1.png")}
+        src={displayImage("SmatSteps.png")}
         alt="Logo du site"
       />
     </Link>

@@ -22,22 +22,38 @@ import { border } from "@mui/system";
 
 const IndexTheme = () => {
   const [isBusy, setIsBusy] = useState(true);
-  const { topThemes } = useGameContext();
+  const [themes, setThemes] = useState([]);
+
   const [searchText, setSearchText] = useState(""); // État pour stocker le texte de recherche
 
   // Utilisation de useEffect pour mettre à jour isBusy une fois les données chargées
   useEffect(() => {
+    fetchData();
     setIsBusy(false);
-  }, [topThemes]);
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      setIsBusy(true);
+      const res = await axios.get(`/themes`);
+
+      console.log(res.data);
+      setThemes(res.data);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsBusy(false);
+    }
+  };
 
   const filteredThemes = useMemo(() => {
-    const theme = [...topThemes];
+    const theme = [...themes];
     return searchText?.length
       ? theme.filter((theme) =>
           theme.theme.toLowerCase().includes(searchText.toLowerCase())
         )
-      : topThemes;
-  }, [searchText, topThemes]);
+      : themes;
+  }, [searchText, themes]);
 
   return (
     <Container className="index-sous-theme">

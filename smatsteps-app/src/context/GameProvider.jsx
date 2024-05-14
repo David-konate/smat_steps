@@ -148,9 +148,7 @@ export const GameProvider = ({ children }) => {
   const [timeRemaining, setTimeRemaining] = useState(
     QUESTION_TIMER_DURATION / 1000
   );
-  console.log({ topThemes });
-  console.log({ topSousThemes });
-  console.log({ randomThemes });
+
   const saveBadAnswer = (currentQuestionData, currentAnswer) => {
     setBadAnswers((prevBadAnswers) => ({
       ...prevBadAnswers,
@@ -184,12 +182,11 @@ export const GameProvider = ({ children }) => {
   // };
 
   const saveResultCurrentQuestionSmat = async (smat, answer) => {
-    console.log({ timeRemaining });
-    console.log({ answer }); // Afficher la réponse reçue
-    let res = 0; // Initialiser res
+    let res = 0; // Initialiser le résultat
 
+    // Vérifier si une réponse a été donnée, si elle est correcte et si le temps restant est supérieur à 0
     if (answer && answer.is_correct === 1 && timeRemaining > 0) {
-      console.log("ok");
+      // Calculer les points en fonction du niveau de la question et du temps restant
       switch (currentSmatQuestion.level_id) {
         case 1:
           res = calculatePoints(timeRemaining, 1);
@@ -203,28 +200,28 @@ export const GameProvider = ({ children }) => {
       }
     }
 
-    // Utilisation de la fonction de rappel pour s'assurer que la mise à jour de l'état est terminée
+    // Mettre à jour l'état des points actuels du SMAT en utilisant la fonction de rappel
     setCurrentPointsSmat((prevPointsSmat) => prevPointsSmat + res);
-    console.log({ currentPointsSmat });
 
-    // Appel de axios.post une fois que l'état est mis à jour
+    // Appeler axios pour enregistrer le résultat de la question
     try {
-      axios.post(
+      await axios.put(
         `smats/${smat.id}/save-result/${user.id}`,
         {
-          newScore: res, // Utilisation de currentPointsSmat mis à jour
-          newCurrentPointsMax: LEVELS[currentSmatQuestion.level_id],
+          newScore: res, // Utiliser les points calculés
+          newCurrentPointsMax: LEVELS[currentSmatQuestion.level_id], // Mettre à jour les points max possibles
         },
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${localStorage.getItem("token")}`, // Ajouter le jeton d'authentification dans l'en-tête
           },
         }
       );
     } catch (error) {
-      console.error(error);
+      console.error(error); // Gérer les erreurs en cas de problème lors de la requête
     }
   };
+
   const resetSmat = () => {
     setSmatUsers(null);
     setSmat(null);
@@ -302,8 +299,6 @@ export const GameProvider = ({ children }) => {
   //modifcaton resulat
   useEffect(() => {
     setResultat(calculatePercentage(points, pointsMax));
-    console.log("Total points", points + " / " + pointsMax);
-    console.log("Total : ", resultat, "%");
   }, [points, pointsMax, resultat]);
 
   //Sauvergarde d'une partie classés

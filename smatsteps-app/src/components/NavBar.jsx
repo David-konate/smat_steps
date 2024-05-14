@@ -87,7 +87,7 @@ function NavBar() {
   const onProfil = () => {
     console.log("profil");
     if (user.id) {
-      navigate(`/profil/${user.id}`);
+      navigate(`/profil/${user.slug}`);
     }
   };
 

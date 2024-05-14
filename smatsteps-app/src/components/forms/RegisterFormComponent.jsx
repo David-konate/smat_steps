@@ -43,7 +43,7 @@ const RegisterFormComponent = () => {
     try {
       const response = await axios.post("security/register", {
         user_pseudo: data.user_pseudo.trim(),
-        user_email: data.user_email,
+        email: data.email,
         password: data.password,
         password_confirmation: data.confirmPassword,
       });
@@ -57,11 +57,12 @@ const RegisterFormComponent = () => {
       setOpenDialog(true);
       reset();
     } catch (error) {
-      console.log(error);
-      //recup les meesage back
-      setDialogTitle(error.data.status);
-      setDialogMessage(error.data.message);
+      setDialogTitle("Erreur");
+      setDialogMessage(
+        error.response?.data?.message || "Une erreur s'est produite"
+      );
       setOpenDialog(true);
+      console.log(error);
     }
   };
   const handleDialogClose = () => {
@@ -84,12 +85,6 @@ const RegisterFormComponent = () => {
         </Typography>
         <Stack justifyContent="center" alignItems="center">
           <Stack spacing={5} mt={5}>
-            {/* <TitleSectionText
-            variant="h5"
-            alignSelf="center"
-            startText="Je crée"
-            endText="mon compte"
-          /> */}
             <Stack
               component="form"
               onSubmit={handleSubmit(onSubmit)}
@@ -116,8 +111,8 @@ const RegisterFormComponent = () => {
               />
               <TextField
                 className="input-connexion"
-                {...register("user_email")}
-                {...errorField(errors?.user_email)}
+                {...register("email")}
+                {...errorField(errors?.email)}
                 fullWidth
                 label="Adresse email"
                 required

@@ -91,13 +91,11 @@ const MessagePrivateParty = ({ open, onClose, openSmats }) => {
             smat.relatedSmats[0].user_id === user.id ? 0 : 1;
           const currentUser = smat.relatedSmats[currentUserIndex];
           const opponent = smat.relatedSmats[1 - currentUserIndex];
-          console.log(currentUser.current_question);
-          console.log(opponent.current_question);
+
           // Vérifier si c'est au tour de l'utilisateur actuel de jouer
           const isCurrentUserTurn =
             currentUser.current_question - opponent.current_question <= 1;
-          console.log(currentUser.current_question - opponent.current_question);
-          console.log({ isCurrentUserTurn });
+
           // Initialiser les données pour le graphique en camembert
           let data = [];
 
@@ -106,13 +104,13 @@ const MessagePrivateParty = ({ open, onClose, openSmats }) => {
             // Calculer les pourcentages si les deux joueurs ont répondu
             const currentUserPercentage = parseFloat(
               (
-                (currentUser.result_smat / currentUser.smat.totals_point) *
+                (currentUser.result_smat / currentUser.current_points_max) *
                 100
               ).toFixed(2)
             );
             const opponentPercentage = parseFloat(
               (
-                (opponent.result_smat / opponent.smat.totals_point) *
+                (opponent.result_smat / opponent.current_points_max) *
                 100
               ).toFixed(2)
             );
@@ -136,8 +134,8 @@ const MessagePrivateParty = ({ open, onClose, openSmats }) => {
               ];
               console.log("2");
             } else if (
-              currentUser.result_smat == 0.0 &&
-              opponent.result_smat != 0.0
+              currentUser.result_smat === 0.0 &&
+              opponent.result_smat !== 0.0
             ) {
               // Cas où seul l'adversaire a répondu
               data = [
@@ -212,10 +210,9 @@ const MessagePrivateParty = ({ open, onClose, openSmats }) => {
                                   (outerRadius - innerRadius) * 0.5;
                                 const x =
                                   cx +
-                                  (radius + 10) * Math.cos(-midAngle * RADIAN); // Ajout d'un espacement de 10 unités
+                                  (radius + 10) * Math.cos(-midAngle * RADIAN);
                                 const y =
-                                  cy +
-                                  (radius + 10) * Math.sin(-midAngle * RADIAN); // Ajout d'un espacement de 10 unités
+                                  cy + radius * Math.sin(-midAngle * RADIAN);
                                 return (
                                   <text
                                     className="text-camembert"

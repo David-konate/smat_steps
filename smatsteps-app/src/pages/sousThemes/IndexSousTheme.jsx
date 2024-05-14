@@ -7,21 +7,35 @@ import CardTheme from "../../components/cards/CardTheme";
 
 const IndexSousTheme = () => {
   const [isBusy, setIsBusy] = useState(true);
-  const { topSousThemes } = useGameContext();
   const [searchText, setSearchText] = useState("");
+  const [sousThemes, setSousThemes] = useState([]);
 
   useEffect(() => {
-    setIsBusy(false);
-  }, [topSousThemes]);
+    fetchData();
+  }, []); // Removed sousThemes from dependency array to prevent infinite loop
+
+  const fetchData = async () => {
+    try {
+      setIsBusy(true);
+      const res = await axios.get(`/sous-themes`);
+
+      console.log(res.data);
+      setSousThemes(res.data);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsBusy(false);
+    }
+  };
 
   const filteredThemes = useMemo(() => {
-    const sous_theme = [...topSousThemes];
+    const sous_theme = [...sousThemes];
     return searchText?.length
       ? sous_theme.filter((theme) =>
           theme.sous_theme.toLowerCase().includes(searchText.toLowerCase())
         )
-      : topSousThemes;
-  }, [searchText, topSousThemes]);
+      : sousThemes;
+  }, [searchText, sousThemes]);
 
   return (
     <Container className="index-sous-theme">

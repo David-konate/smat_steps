@@ -40,19 +40,24 @@ const MessageNewPrivate = ({
     // resetGame,
   } = useGameContext();
 
+  // Fonction appelée lors du clic sur le bouton d'invitation à une partie privée.
   const onClick = () => {
+    // Vérifie si des amis filtrés sont disponibles, si un thème est sélectionné et si un pseudo est saisi.
     if (filteredPseudos.length > 0 && currentTheme && searchTextPseudo) {
+      // Récupère l'identifiant de l'ami sélectionné à partir du pseudo saisi.
       const selectedFriendId = filteredPseudos.find(
         (friend) => friend.user_pseudo === searchTextPseudo
       )?.id;
-      // Si les conditions sont remplies, effectuez votre action normale
+      // Lance la création d'une nouvelle partie privée avec l'utilisateur et l'ami sélectionné.
       fetchPrivateNewGame(user.id, selectedFriendId);
+      // Ferme la boîte de dialogue.
       onClose();
+      // Redirige l'utilisateur vers une page spécifiée après la création de la partie, si spécifiée.
       if (redirection) {
         // navigate(redirection);
       }
     } else {
-      // Sinon, affichez le MessageDialog
+      // Si une condition n'est pas remplie, affiche le MessageDialog d'erreur.
       setErrorOpen(true);
     }
   };
@@ -69,34 +74,46 @@ const MessageNewPrivate = ({
   useEffect(() => {
     // Vérifie si l'utilisateur est connecté, sinon redirige vers la page de connexion
     if (!user) {
-      navigate("/login");
+      navigate("/login"); // Redirection vers la page de connexion si l'utilisateur n'est pas connecté
     } else {
-      fetchData();
+      fetchData(); // Appel de la fonction fetchData pour récupérer les données
     }
-  }, [user]);
+  }, [user]); // Déclenche cet effet à chaque changement de la variable user
 
-  console.log(friends);
   const fetchData = async () => {
     try {
+      // Récupère les sous-thèmes depuis l'API
       const resST = await axios.get(`sous-themes`);
+      // Récupère les thèmes depuis l'API
       const resT = await axios.get(`themes`);
+      // Met à jour l'état des thèmes avec les données récupérées
       setThemes(resT.data);
+      // Met à jour l'état des sous-thèmes avec les données récupérées
       setSousThemes(resST.data);
     } catch (error) {
-      console.error(error);
+      console.error(error); // Affiche une erreur en cas d'échec de la récupération des données
     } finally {
-      setIsBusy(false);
+      setIsBusy(false); // Définit isBusy sur false une fois que la récupération des données est terminée
     }
   };
 
+  // Utilisation de useMemo pour mémoriser le résultat de la filtration
+  // des amis en fonction du texte de recherche pseudo.
+  // Cela permet d'éviter de recalculer la liste filtrée à chaque rendu,
+  // sauf si friends ou searchTextPseudo changent.
   const filteredPseudos = useMemo(() => {
+    // Filtre les amis en fonction du texte de recherche pseudo
     return friends?.filter(
       (friend) =>
+        // Vérifie si le texte de recherche est une chaîne de caractères
         typeof searchTextPseudo === "string" &&
         friend.user_pseudo
+          // Convertit le pseudo de l'ami en minuscules
           .toLowerCase()
+          // Vérifie si le pseudo de l'ami contient le texte de recherche
           .includes(searchTextPseudo.toLowerCase())
     );
+    // Recalculer uniquement lorsque friends ou searchTextPseudo changent
   }, [friends, searchTextPseudo]);
 
   const filteredThemes = useMemo(() => {
