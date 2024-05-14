@@ -22,7 +22,7 @@ class ResendValidationEmailRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'user_email:filter', 'max:255'],
+            'email' => ['required', 'email:filter', 'max:255'],
         ];
     }
 }

@@ -9,11 +9,13 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, Sluggable;
+
 
     /**
      * The attributes that are mass assignable.
@@ -23,8 +25,9 @@ class User extends Authenticatable
     protected $fillable = [
         'user_pseudo',
         'password',
-        'user_email',
+        'email',
         'is_admin',
+        'email_verified_at',
         'to_subscribe',
         'user_image',
         'slug',
@@ -75,8 +78,10 @@ class User extends Authenticatable
 
     public function sendPasswordResetNotification($token)
     {
-        $url = config('app.url') . '/password/forgot' .  "?token=" . $token;
+        // Créer l'URL de réinitialisation du mot de passe
+        $url = config('app.url') . '/password/forgot/' . "?token=" . $token;
 
+        // Envoyer la notification
         $this->notify(new ResetPasswordNotification($url));
     }
 

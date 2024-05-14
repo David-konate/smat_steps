@@ -18,11 +18,10 @@ class UserSeeder extends Seeder
         User::create([
             'user_pseudo' => 'Daouda',
             'password' => Hash::make('Azerty@123'),
-            'user_email' => 'admin@boss.fr',
+            'email' => 'admin@boss.fr',
             'user_image' => 'r2d2.jpg',
             'is_admin' => true,
             'slug' => Str::slug('r2d2'),
-            'email_verified_at' => now(),
             'remember_token' => Str::random(10),
         ]);
 
@@ -30,15 +29,14 @@ class UserSeeder extends Seeder
         User::create([
             'user_pseudo' => 'Mara',
             'password' => Hash::make('Azerty@123'),
-            'user_email' => 'utilisateur@use.fr',
+            'email' => 'utilisateur@use.fr',
             'user_image' => 'mara.jpg',
             'is_admin' => false,
             'slug' => Str::slug('mara'),
-            'email_verified_at' => now(),
             'remember_token' => Str::random(10),
         ]);
 
         // création de 6 utilisateurs aléatoires
-        User::factory(20)->create();
+        User::factory(10)->create();
     }
 }

@@ -15,54 +15,41 @@ class QuestionSmatController extends Controller
 
     public function currentQuestion($smatId, $questionId)
     {
+        // Récupération des utilisateurs de Smat avec l'identifiant spécifié
         $smatUsers = SmatUser::where('smat_id', $smatId)->get();
 
+        // Vérification s'il y a suffisamment de joueurs pour répondre à la question
         if ($smatUsers->count() < 2) {
+            // Retourne une réponse JSON avec un message d'erreur et le code d'erreur 400
             return response()->json([
                 'error' => true,
                 'message' => 'Il n\'y a pas assez de joueurs pour répondre à la question.',
-                'code' => 400 // Utilisation du code d'erreur 400 Bad Request
+                'code' => 400
             ]);
         }
-
-        $player1 = $smatUsers->first();
-        $player2 = $smatUsers->last();
-
-        // if (abs($player1->current_question - $player2->current_question) >= 1) {
-        //     return response()->json([
-        //         'error' => true,
-        //         'message' => 'Ce n\'est pas encore votre tour de jouer.',
-        //         'code' => 409 // Utilisation du code d'erreur 409 Conflict
-        //     ]);
-        // } else {
+        // Recherche de la question Smat avec l'identifiant spécifié
         $question = QuestionSmat::where('smat_id', $smatId)
             ->where('current_question', $questionId)
             ->first();
-
+        // Vérification si la question est trouvée
         if ($question) {
-            // Récupérer la question avec ses réponses associées
+            // Récupération de la question avec ses réponses associées
             $currentQuestion = Question::where('id', $question->question_id)->with('answers')->first();
-            // Récupérer les réponses associées à la question actuelle
+            // Récupération des réponses associées à la question actuelle
             $currentAnswers = Answer::where('question_id', $question->question_id)->get();
         } else {
+            // Retourne une réponse JSON avec un message d'erreur et le code d'erreur 404
             return response()->json([
                 'error' => true,
                 'message' => 'Question non trouvée.',
-                'code' => 404 // Utilisation du code d'erreur 404 Not Found
+                'code' => 404
             ]);
         }
-        try {
-            $players = SmatUser::where('smat_id', $smatId);
-        } catch (\Throwable $th) {
-            return response()->json([
-                'error' => true,
-                'message' => 'Joueurs non trouvées.',
-                'code' => 404 // Utilisation du code d'erreur 404 Not Found
-            ]);
-        }
+        // Récupération des joueurs de Smat avec l'identifiant spécifié
+        $players = SmatUser::where('smat_id', $smatId)->get();
+        // Recherche du Smat avec l'identifiant spécifié et chargement des thèmes associés
         $smat = Smat::where('id', $smatId)->with(['theme', 'sousTheme'])->first();
-
-
+        // Retourne une réponse JSON avec les données récupérées et le code 200 pour succès
         return response()->json([
             'status' => true,
             'currentQuestion' => $currentQuestion,
@@ -72,8 +59,8 @@ class QuestionSmatController extends Controller
             'smat' => $smat,
             'code' => 200
         ]);
-        // }
     }
+
 
 
     /*;

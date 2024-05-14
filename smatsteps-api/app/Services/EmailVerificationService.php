@@ -14,13 +14,15 @@ class EmailVerificationService
 
     public function sendVerificationLink(object $user): void
     {
+        $user['email'] = $user->email;
+
         Notification::send($user, new EmailVerificationNotification($this->generateVerificationActionLink($user->email)));
     }
 
     public function sendForgotPasswordLink(object $user): void
     {
 
-        $url = config('app.url') . '/password/forgot' . "?token=$user->token" . "&email=$user->user_email";
+        $url = config('app.url') . '/password/forgot' . "?token=$user->token" . "&email=$user->email";
 
         Notification::send($user, new EmailForgotPasswordNotification($url));
     }
@@ -53,8 +55,9 @@ class EmailVerificationService
         }
     }
 
-    public function verifyEmail(string $email, string $token)
+    public function verifyEmail(string $token, string $email)
     {
+
         $user = User::where('email', $email)->first();
 
         if (!$user) {
@@ -97,7 +100,6 @@ class EmailVerificationService
     public function verifyToken(string $email, string $token)
     {
         $tokenModel = EmailVerificationTokens::where('email', $email)->where('token', $token)->first();
-
         if ($tokenModel) {
             if ($tokenModel->expired_at >= now()) {
                 return $tokenModel;

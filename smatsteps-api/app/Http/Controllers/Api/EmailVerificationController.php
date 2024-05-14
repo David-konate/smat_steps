@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
-use EmailVerificationService;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ResendValidationEmailRequest;
 use App\Http\Requests\VerifyUserEmailRequest;
@@ -18,11 +16,11 @@ class EmailVerificationController extends Controller
 
     public function emailVerify(VerifyUserEmailRequest $request)
     {
-        return $this->emailVerificationService->verifyEmail($request->user_email, $request->token);
+        return $this->emailVerificationService->verifyEmail($request->token, $request->email,);
     }
 
     public function resendEmailVerificationLink(ResendValidationEmailRequest $request)
     {
-        return $this->emailVerificationService->resendEmailVerificationLink($request->user_email);
+        return $this->emailVerificationService->resendEmailVerificationLink($request->email);
     }
 }

@@ -10,7 +10,6 @@ use Faker\Factory as Faker;
 
 class UserFactory extends Factory
 {
-    protected $model = User::class;
     protected static ?string $password;
 
     public function definition(): array
@@ -19,14 +18,14 @@ class UserFactory extends Factory
 
         // Liste des noms de fichiers d'images possibles
         $imageOptions = ['1.png', 'banreduite.jpg', 'carter.jpg', 'frien.jpg', 'Lightsaber.webp', 'link.jpg',];
-
+        $pseudo = $faker->userName;
         return [
-            'user_pseudo' => $faker->userName,
+            'user_pseudo' => $pseudo,
             'password' => static::$password ??= Hash::make('Azerty@123'),
-            'user_email' => $faker->unique()->safeEmail,
+            'email' => $faker->unique()->safeEmail,
             'user_image' => $faker->randomElement($imageOptions), // Choix aléatoire parmi les images disponibles
             'is_admin' => false,
-            'slug' => Str::slug($faker->userName),
+            'slug' => Str::slug($pseudo),
             'remember_token' => Str::random(10),
         ];
     }

@@ -17,6 +17,8 @@ use App\Http\Controllers\Api\LevelController;
 use App\Http\Controllers\Api\ThemeController;
 use App\Http\Controllers\Api\RankingController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\EmailVerificationController;
+use App\Http\Controllers\API\NewPasswordController;
 use App\Http\Controllers\Api\QuestionController;
 use App\Http\Controllers\Api\SecurityController;
 use App\Http\Controllers\Api\UserSmatController;
@@ -41,6 +43,14 @@ Route::prefix('/security')->group(function () {
     Route::post('/logout', [SecurityController::class, 'logout'])->middleware('auth:sanctum');
 });
 
+//email-verify
+Route::post('/email-verify', [EmailVerificationController::class, 'emailVerify']);
+
+// Reset password
+Route::post('/forgot-password', [NewPasswordController::class, 'forgotPassword'])->middleware('guest');
+Route::post('/reset-password', [NewPasswordController::class, 'reset']);
+
+
 //Route Categories
 Route::prefix('categories')->group(function () {
     Route::get('/', [CategoryController::class, 'index']);
@@ -60,13 +70,14 @@ Route::prefix('levels')->group(function () {
 
 //Route questions
 Route::controller(QuestionController::class)->group(function () {
-    Route::get('new-game/{currentLevel}', 'newRankedGame');
-    Route::get('new-private-game/{currentLevel}', 'newPrivateGame');
+    Route::get('new-game/{currentLevel}', 'newRankedGame')->middleware('auth:sanctum');;
+    Route::get('new-private-game/{currentLevel}', 'newPrivateGame')->middleware('auth:sanctum');;
     Route::get('questions', 'index');
     Route::get('questions/{question}', 'show');
     Route::get('questions-random', 'random');
     Route::post('questions/', 'store')->middleware('auth:sanctum');
-    Route::post('questions/{question}', 'update')->middleware('auth:sanctum');
+    Route::put('questions/{question}', 'update')->middleware('auth:sanctum');
+    Route::delete('questions/{question}', 'delete')->middleware('auth:sanctum');
 });
 
 // Routes Ranking
@@ -74,16 +85,16 @@ Route::prefix('rankings')->group(function () {
     Route::get('/', [RankingController::class, 'index']);
     Route::get('/top-collection', [RankingController::class, 'topCollection']);
     Route::get('welcome/{currentLevel}', [RankingController::class, 'welcome']);
-    Route::post('/save-stats', [RankingController::class, 'saveStats']);
+    Route::post('/save-stats', [RankingController::class, 'saveStats'])->middleware('auth:sanctum');
 });
 
 
 // Routes Smat
 Route::prefix('smats')->group(function () {
-    Route::post('/accept-dual/{smat}', [SmatController::class, 'acceptDual']);
-    Route::post('{smat}/save-result/{user}', [SmatController::class, 'saveResult']);
-    Route::post('{smat}/finish/', [SmatController::class, 'Finish']);
-    Route::delete('{smat}', [SmatController::class, 'destroy']);
+    Route::post('/accept-dual/{smat}', [SmatController::class, 'acceptDual'])->middleware('auth:sanctum');;
+    Route::put('{smat}/save-result/{user}', [SmatController::class, 'saveResult'])->middleware('auth:sanctum');;
+    Route::put('{smat}/finish/', [SmatController::class, 'Finish'])->middleware('auth:sanctum');;
+    Route::delete('{smat}', [SmatController::class, 'destroy'])->middleware('auth:sanctum');
 });
 
 // Routes Smat_users
@@ -127,16 +138,18 @@ Route::prefix('users')->group(function () {
 });
 
 
-Route::get(('email-verify'), [EmailVerificationService::class, 'emailVerify']);
 
 
 Route::get('/me/{currentLevel}', function ($currentLevel) {
     // Assurez-vous que l'utilisateur est authentifié
     $user = Auth::user();
-    // Récupère les demandes d'ami en attente pour l'utilisateur actuel avec les données utilisateur associées chargées
+    // Récupère les demandes d'ami en attente pour l'utilisateur
+    //actuel avec les données utilisateur associées chargées
     $friendPending = Friend::with("user")
-        ->where("status", 1) // Filtrer où le statut est défini à 1 ( demandes en attente)
-        ->where("friend_id", $user->id) // Filtrer les demandes où l'ID de l'ami correspond à l'ID de l'utilisateur actuel
+        // Filtrer où le statut est défini à 1 ( demandes en attente)
+        ->where("status", 1)
+        // Filtrer les demandes où l'ID de l'ami correspond à l'ID de l'utilisateur actuel
+        ->where("friend_id", $user->id)
         ->get();
 
     // Récupère les demandes d'ami envoyées par l'utilisateur actuel avec les données utilisateur associées chargées

@@ -11,7 +11,7 @@ class VerifyUserEmailRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,7 @@ class VerifyUserEmailRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_email' => ['required', 'user_email:filter', 'max:255'],
+            'email' => ['required', 'email:filter', 'max:255'],
             'token' => ['required', 'string', 'max:255']
         ];
     }

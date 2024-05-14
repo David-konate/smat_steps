@@ -51,26 +51,33 @@ class ThemeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+
     public function show(string $id, Request $request)
     {
-        $currentLevel = $request->query('currentLevel');
+        try {
+            $currentLevel = $request->query('currentLevel');
 
-        // Récupérer les trois meilleurs résultats de la table Rankings avec les utilisateurs associés
-        $topRankings = Ranking::with('user')
-            ->where('theme_id', $id)
-            ->where('level', $currentLevel)
-            ->orderBy('result_quiz', 'desc')
-            ->get();
+            // Récupérer les trois meilleurs résultats de la table Rankings avec les utilisateurs associés
+            $topRankings = Ranking::with('user')
+                ->where('theme_id', $id)
+                ->where('level', $currentLevel)
+                ->orderBy('result_quiz', 'desc')
+                ->get();
 
-        // Récupérer le thème correspondant
-        $theme = Theme::findOrFail($id);
+            // Récupérer le thème correspondant
+            $theme = Theme::findOrFail($id);
 
-        // Retourner les données
-        return response()->json([
-            'theme' => $theme,
-            'topRankings' => $topRankings
-        ]);
+            // Retourner les données
+            return response()->json([
+                'theme' => $theme,
+                'topRankings' => $topRankings
+            ]);
+        } catch (\Exception $e) {
+            // Gérer l'erreur
+            return response()->json(['error' => 'Une erreur est survenue lors de la récupération des données.'], 500);
+        }
     }
+
 
     /**
      * Update the specified resource in storage.

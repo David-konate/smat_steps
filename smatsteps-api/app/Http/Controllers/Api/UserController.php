@@ -19,6 +19,12 @@ use Illuminate\Support\Facades\Validator;
 class UserController extends Controller
 {
 
+    public function index()
+    {
+        // Récupérer tous les utilisateurs et les retourner sous forme de réponse JSON
+        $users = User::all();
+        return response()->json($users);
+    }
 
     public function addFriend(Request $request)
     {
@@ -41,7 +47,8 @@ class UserController extends Controller
             return response()->json(['message' => 'Ami ajouté avec succès'], 200);
         }
 
-        // Si l'ami est déjà dans la liste dans l'un ou l'autre sens, retournez une réponse JSON indiquant qu'il est déjà présent
+        // Si l'ami est déjà dans la liste dans l'un ou l'autre sens,
+        // retournez une réponse JSON indiquant qu'il est déjà présent
         return response()->json(['message' => 'L\'ami est déjà dans la liste'], 400);
     }
 
@@ -126,6 +133,7 @@ class UserController extends Controller
                         ->where('friend_id', $user_id);
                 })
                 ->where('status', 2)
+                ->orWhere('status', 1)
                 ->exists();
 
             return response()->json([
@@ -142,14 +150,13 @@ class UserController extends Controller
         }
     }
 
-    public function show($userId, Request $request)
+    public function show($user, Request $request)
     {
         $currentLevel = $request->query('currentLevel');
-        $currentTheme = $request->query('currentTheme');
-        $currentSousTheme = $request->query('currentSousTheme');
+
 
         try {
-            $user = User::with('friends')->findOrFail($userId);
+            $user = User::with('friends')->where('user_pseudo', $user)->first();
 
             if (!$user) {
                 return response()->json([
@@ -252,6 +259,7 @@ class UserController extends Controller
 
             $user->update([
                 'user_pseudo' => $request->user_pseudo,
+                'slug' => $request->user_pseudo,
             ]);
 
             return response()->json([

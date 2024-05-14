@@ -28,7 +28,7 @@ class EmailVerificationNotification extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['user_mail'];
+        return ['mail'];
     }
 
     /**

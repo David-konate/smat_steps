@@ -19,9 +19,10 @@ class ThemeSeeder extends Seeder
             ['theme' => 'Serie', 'theme_image' => 'serie.jpg'],
             ['theme' => 'Sport', 'theme_image' => 'sport.png'],
             ['theme' => 'Histoire', 'theme_image' => 'marianne.jpeg'],
+            //5
             ['theme' => 'Musique', 'theme_image' => 'musique.avif'],
-            ['theme' => 'Géographie', 'theme_image' => 'geo.webp'],
             ['theme' => 'Jeux vidéo', 'theme_image' => 'jvd.jpg'],
+            ['theme' => 'Géographie', 'theme_image' => 'geo.webp'],
         ]);
     }
 }

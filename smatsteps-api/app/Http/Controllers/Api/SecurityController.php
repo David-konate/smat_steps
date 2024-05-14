@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Services\EmailVerificationService;
+
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -11,13 +13,17 @@ use Illuminate\Support\Facades\Validator;
 
 class SecurityController extends Controller
 {
+
+    public function __construct(private EmailVerificationService $emailVerificationService)
+    {
+    }
     public function login(Request $request)
     {
 
         try {
             $validation = Validator::make(request()->all(), [
-                // 'user_pseudo' => 'required|user_pseudo',
-                // 'password' => 'required'
+                'user_pseudo' => 'required|min:1|string',
+                'password' => 'required|min:1|string',
             ]);
 
             if ($validation->fails()) {
@@ -56,9 +62,8 @@ class SecurityController extends Controller
     {
         try {
             $validation = Validator::make(request()->all(), [
-
                 'user_pseudo' => 'required|min:1|string|unique:users,user_pseudo,',
-                'user_email' => 'required|min:1|string|unique:users,user_email,',
+                'email' => 'required|min:1|string|unique:users,email,',
                 'password' => 'required|string|min:8',
 
             ]);
@@ -71,12 +76,15 @@ class SecurityController extends Controller
                 ], 401);
             }
 
-            $user = User::create([
-                'user_pseudo' => request('user_pseudo'),
-                'user_email' => request('user_email'),
-                'is_admin' => false,
-                'password' => Hash::make(request('password')),
-            ]);
+            // Si la validation réussit, vous pouvez créer l'utilisateur
+            $user = User::create(array_merge(
+                $validation->validated(),
+                [
+                    'password' => Hash::make($request->password),
+                    'is_admin' => 0,
+                ]
+            ));
+            $this->emailVerificationService->sendVerificationLink($user);
 
             return response()->json([
                 'status' => 'success',
