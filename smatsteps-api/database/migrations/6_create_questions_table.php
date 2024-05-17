@@ -23,7 +23,6 @@ return new class extends Migration
             $table->foreignId('theme_id')->constrained('themes');
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('level_id')->constrained('levels');
-            $table->foreignId('category_id')->constrained('categories');
         });
     }
 

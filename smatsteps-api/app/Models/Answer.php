@@ -9,7 +9,7 @@ class Answer extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['answer', 'is_correct', 'question_id'];
+    protected $fillable = ['answer', 'is_correct', 'question_id', 'updated_at'];
 
     // Si vous ne souhaitez pas utiliser les timestamps 'created_at' et 'updated_at'
     // public $timestamps = false;

@@ -24,7 +24,7 @@ class QuestionSeeder extends Seeder
             //rapUS200
             [
                 'title' => "Quel duo a sorti l'album 'Speakerboxxx/The Love Below' en 2003 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -38,7 +38,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel rappeur est connu pour son single 'Hot in Herre' en 2002 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -52,7 +52,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Qui est l'artiste derrière l'album 'The College Dropout' en 2004 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -66,7 +66,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle chanson de 50 Cent a été un énorme succès en 2003 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -80,7 +80,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le vrai nom du rappeur Eminem ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -94,7 +94,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel rappeur a sorti l'album 'Get Rich or Die Tryin'' en 2003 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -108,7 +108,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Qui est souvent surnommé 'The King of Crunk' ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -122,7 +122,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel rappeur a été tué à Las Vegas en 1996 mais a continué à sortir des albums posthumes dans les années 2000 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -136,7 +136,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel artiste a sorti l'album 'The Blueprint' en 2001 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -150,7 +150,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du premier single de Kanye West ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -164,7 +164,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel rappeur a sorti l'album 'Encore' en 2004 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -178,7 +178,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle chanson de Ludacris a remporté le Grammy Award de la meilleure chanson rap en 2007 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -192,7 +192,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel groupe a sorti l'album 'Stankonia' en 2000 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -206,7 +206,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du rappeur derrière l'album 'The Massacre' en 2005 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -220,7 +220,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel rappeur est connu pour son single 'In Da Club' en 2003 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -234,7 +234,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel artiste a sorti l'album 'The Eminem Show' en 2002 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -248,7 +248,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Qui est le leader du groupe OutKast ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -262,7 +262,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel rappeur est également connu sous le nom de Hova ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -276,7 +276,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle chanson de Kanye West a été un succès en 2004 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -290,7 +290,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le vrai nom du rappeur 50 Cent ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -304,7 +304,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel duo a sorti l'album 'Hell: The Sequel' en 2011 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -318,7 +318,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle chanson de Jay-Z contient les paroles 'H.O.V.A.' ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -332,7 +332,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel rappeur a sorti l'album 'The Documentary 2.5' en 2015 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -346,7 +346,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle chanson de Lil Wayne a été un hit en 2009 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -361,7 +361,7 @@ class QuestionSeeder extends Seeder
             //save ok
             [
                 'title' => "Quel artiste a sorti l'album 'Tha Carter III' en 2008 ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -375,7 +375,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel rappeur a sorti l'album 'Tha Carter II' en 2005 ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -389,7 +389,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel artiste a sorti l'album 'Graduation' en 2007 ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -403,7 +403,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle chanson de Missy Elliott a été un succès en 2002 ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -417,7 +417,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel rappeur est également connu sous le nom de Slim Shady ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -431,7 +431,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du groupe derrière la chanson 'Yeah!' en 2004 ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -445,7 +445,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel artiste a sorti l'album 'The Black Album' en 2003 ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -459,7 +459,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle chanson de Jay-Z a été un énorme succès en 2001 ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -473,7 +473,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel rappeur a sorti l'album 'The Documentary' en 2005 ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -487,7 +487,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle chanson de Nelly a été un hit en 2001 ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -501,7 +501,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du duo de rappeurs constitué de Big Boi et André 3000 ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -515,7 +515,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel rappeur a sorti l'album 'Straight Outta Cashville' en 2004 ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -529,7 +529,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel artiste a sorti l'album 'Food & Liquor' en 2006 ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -543,7 +543,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle chanson de T.I. a été un succès en 2008 ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -557,7 +557,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel rappeur est connu pour sa chanson 'Lose Yourself' en 2002 ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -571,7 +571,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le vrai nom du rappeur 50 Cent ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -586,7 +586,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel rappeur a sorti l'album 'Late Registration' en 2005 ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -600,7 +600,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle chanson de Kanye West a remporté le Grammy Award de la meilleure chanson rap en 2005 ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -614,7 +614,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel artiste a sorti l'album 'The Documentary 2' en 2015 ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -628,7 +628,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel rappeur a sorti l'album 'Kingdom Come' en 2006 ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -642,7 +642,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du label fondé par Jay-Z en 1995 ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -656,7 +656,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel rappeur a sorti l'album 'The Massacre' en 2005 ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -670,7 +670,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle chanson de OutKast a remporté le Grammy Award de la meilleure chanson rap en 2004 ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -684,7 +684,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le vrai nom du rappeur T.I. ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -698,7 +698,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel rappeur a sorti l'album 'The Carter III' en 2008 ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -712,7 +712,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle chanson de Lil Wayne a été un succès en 2008 ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -726,7 +726,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel artiste a sorti l'album 'The Blueprint 2: The Gift & The Curse' en 2002 ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -740,7 +740,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du groupe de rap fondé par Dr. Dre ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -754,7 +754,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel rappeur a sorti l'album 'Trilla' en 2008 ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -768,7 +768,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle chanson de Kanye West contient les paroles 'I wanna scream so loud for you, 'cause I'm so proud of you' ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -782,7 +782,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le vrai nom du rappeur Ludacris ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -796,7 +796,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel rappeur a sorti l'album 'Release Therapy' en 2006 ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -810,7 +810,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle chanson de Jay-Z contient les paroles 'I got 99 problems but a b**** ain't one' ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -824,7 +824,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du duo de rappeurs constitué de Lloyd Banks et Tony Yayo ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -838,7 +838,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel rappeur est également connu sous le nom de 'Mr. Carter' ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -852,7 +852,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle chanson de 2Pac a été un succès posthume en 2002 ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -866,7 +866,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du groupe derrière l'album 'The Eminem Show' en 2002 ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -880,7 +880,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle chanson de Common a été nominée pour un Oscar en 2007 ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -894,7 +894,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel rappeur a sorti l'album 'Lupe Fiasco's The Cool' en 2007 ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -908,7 +908,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle chanson de Lil Jon & The East Side Boyz a été un hit en 2004 ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -922,7 +922,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du producteur derrière l'album 'The College Dropout' de Kanye West ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -936,7 +936,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle chanson de 50 Cent contient les paroles 'Go, go, go, go, go, go, go, go, go, go, shawty' ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -950,7 +950,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel rappeur a sorti l'album 'Finding Forever' en 2007 ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -964,7 +964,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle chanson de Nas a été un succès en 2002 ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -978,7 +978,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du groupe de rap fondé par Eminem ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -992,7 +992,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle chanson de Dr. Dre a été un succès en 2001 ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 5,
                 'theme_id' => 5,
@@ -1007,7 +1007,7 @@ class QuestionSeeder extends Seeder
             //rp fr 2010
             [
                 'title' => "Quel rappeur français a sorti l'album 'La fête est finie' en 2017 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1021,7 +1021,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Qui est le fondateur du groupe IAM ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1035,7 +1035,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel rappeur a popularisé le terme 'Wesh' dans ses chansons ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1049,7 +1049,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle chanson de Maître Gims a été un succès international en 2013 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1063,7 +1063,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "De quel quartier de Paris est originaire le rappeur Nekfeu ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1077,7 +1077,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le titre du premier album solo de PNL, sorti en 2015 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1091,7 +1091,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle rappeuse française a remporté le Prix Constantin en 2018 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1105,7 +1105,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Qui a été surnommé 'Le Duc de Boulogne' dans le monde du rap français ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1119,7 +1119,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le groupe de rap français derrière les albums 'Fantasy' et 'Paradise' ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1133,7 +1133,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle chanson de Jul a été un hit en 2016 avec son refrain 'Elle te balade, t'es à l'ouest, elle te vide de ton cash' ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1147,7 +1147,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "De quelle ville vient le groupe de rap 1995 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1162,7 +1162,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui a été surnommé 'Le Duc de Boulogne' dans le monde du rap français ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1176,7 +1176,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le groupe de rap français derrière les albums 'Fantasy' et 'Paradise' ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1190,7 +1190,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle chanson de Jul a été un hit en 2016 avec son refrain 'Elle te balade, t'es à l'ouest, elle te vide de ton cash' ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1204,7 +1204,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "De quelle ville vient le groupe de rap 1995 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1219,7 +1219,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui est le membre féminin du groupe de rap Sexion d'Assaut ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1233,7 +1233,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le titre de la chanson de Niska qui a popularisé la danse du 'Charo' ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1247,7 +1247,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel rappeur français est connu pour son album 'Feu' sorti en 2015 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1261,7 +1261,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "De quel collectif de rap français le rappeur Gradur est-il membre ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1275,7 +1275,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le titre du premier album solo de SCH, sorti en 2015 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1289,7 +1289,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom de scène du rappeur français Karim Zenoud ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1303,7 +1303,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel duo de rappeurs français a sorti l'album 'Le monde Chico' en 2015 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1317,7 +1317,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel rappeur français a sorti l'album 'Y&W' en 2017 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1331,7 +1331,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "De quel département français est originaire le rappeur Jul ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1345,7 +1345,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom de la marque de vêtements créée par le rappeur Booba ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1359,7 +1359,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle est la ville d'origine du rappeur Orelsan ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1373,7 +1373,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel rappeur français a sorti l'album 'Zifukoro' en 2015 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1387,7 +1387,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle est la ville d'origine du groupe de rap 1995 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1401,7 +1401,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le titre de la chanson de Damso qui a été un succès en 2017 avec son refrain 'Nwaar Is The New Black' ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1415,7 +1415,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel rappeur français a été en tête des ventes d'albums en 2019 avec 'Les étoiles vagabondes' ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1429,7 +1429,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le vrai nom du rappeur Orelsan ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1443,7 +1443,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le titre du premier album studio de PNL, sorti en 2015 ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1457,7 +1457,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle est la ville d'origine du groupe de rap NTM ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1471,7 +1471,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel duo de rappeurs est connu pour les albums 'L'École du micro d'argent' et 'Sol Invictus' ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1485,7 +1485,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom de la tournée de concerts qui a suivi la sortie de l'album 'Je suis en vie' de Akhenaton en 2014 ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1499,7 +1499,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel rappeur français a sorti l'album 'L'Everest' en 2016 ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1513,7 +1513,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle rappeuse française a sorti l'album 'Souldier' en 2018 ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1527,7 +1527,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le titre du premier album solo de Black M, sorti en 2016 ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1541,7 +1541,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du groupe formé par Youssoupha, Médine et Kery James ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1555,7 +1555,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel rappeur français a sorti l'album 'Egomaniac' en 2016 ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1569,7 +1569,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du label fondé par le rappeur Booba en 2004 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1583,7 +1583,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le titre de l'album posthume de Népal, sorti en 2019 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1597,7 +1597,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel rappeur français a sorti l'album 'Ceinture noire' en 2018 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1611,7 +1611,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle chanson de Vald a été nominée aux Victoires de la Musique en 2017 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1625,7 +1625,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel rappeur français a sorti l'album 'Ceinture noire' en 2018 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1639,7 +1639,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le vrai nom du rappeur Nekfeu ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1653,7 +1653,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le titre du premier album studio de Maître Gims, sorti en 2013 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1667,7 +1667,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle est la ville d'origine du groupe de rap Sniper ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1681,7 +1681,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel duo de rappeurs français est connu pour les albums 'Deux frères' et 'La vraie vie' ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1695,7 +1695,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom de la tournée de concerts qui a suivi la sortie de l'album 'Dans ma paranoïa' de Jul en 2015 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1709,7 +1709,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel rappeur français a sorti l'album 'Commando' en 2017 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1723,7 +1723,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle rappeuse française est également connue sous le nom de Shaolin Shadow ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1737,7 +1737,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le titre du premier album solo de Niska, sorti en 2017 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1751,7 +1751,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du groupe formé par Soprano, Alonzo, Vincenzo, Sya Styles et DJ Djel ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1765,7 +1765,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel rappeur français a sorti l'album 'Mentalité pirate' en 2016 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1779,7 +1779,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du label fondé par le rappeur MHD en 2016 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1793,7 +1793,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le titre de l'album de Lomepal sorti en 2018 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1807,7 +1807,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel rappeur français a sorti l'album 'Egomaniac' en 2016 ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1821,7 +1821,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle chanson de Vald a été nominée aux Victoires de la Musique en 2018 avec son refrain 'Qu'est-ce qui fait mal aux chiens ?'",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 6,
                 'theme_id' => 5,
@@ -1836,7 +1836,7 @@ class QuestionSeeder extends Seeder
             //Zelda
             [
                 'title' => "Quel est le nom du héros principal de la saga Zelda ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -1850,7 +1850,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Qui est la princesse emblématique de la série ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -1864,7 +1864,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du royaume dans lequel se déroulent la plupart des jeux Zelda ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -1878,7 +1878,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est l'objet récurrent que Link utilise pour se défendre ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -1892,7 +1892,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom de l'antagoniste principal dans de nombreux jeux Zelda ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -1906,7 +1906,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du premier jeu de la série, sorti sur la console NES ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -1920,7 +1920,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du village où Link commence souvent son aventure ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -1934,7 +1934,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du célèbre instrument musical que Link utilise dans 'The Legend of Zelda: Ocarina of Time' ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -1948,7 +1948,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du compagnon féminin de Link dans 'The Legend of Zelda: Twilight Princess' ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -1962,7 +1962,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle est la devise récurrente de la série Zelda ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -1976,7 +1976,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du méchant sorcier qui apparaît dans 'The Legend of Zelda: A Link to the Past' ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -1990,7 +1990,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom de la monture de Link dans 'The Legend of Zelda: Twilight Princess' ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2004,7 +2004,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom de la princesse de la tribu Zora dans 'The Legend of Zelda: Ocarina of Time' ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2018,7 +2018,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du personnage qui donne souvent des conseils à Link sous forme de texte dans 'The Legend of Zelda: Ocarina of Time' ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2032,7 +2032,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du premier donjon dans 'The Legend of Zelda: Link's Awakening' sur Game Boy ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2046,7 +2046,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom de l'ocarina magique que Link utilise dans 'The Legend of Zelda: Ocarina ****' ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2060,7 +2060,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Dans 'The Legend of Zelda: Breath of the Wild', quelle est la principale menace qui a dévasté le royaume d'Hyrule avant le début du jeu ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2074,7 +2074,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Qui est le marchand ambulant récurrent dans la série Zelda, souvent représenté par un squelette ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2088,7 +2088,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du temple dans 'The Legend of Zelda: Majora's Mask' où Link doit réveiller les quatre géants pour sauver Termina ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2102,7 +2102,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Dans 'The Legend of Zelda: The Wind Waker', quel est le nom de la déesse des sables, gardienne du désert Gerudo ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2116,7 +2116,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du village où Link grandit dans \'The Legend of Zelda: A Link to the Past\' ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2130,7 +2130,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Dans 'The Legend of Zelda: Twilight Princess', quel est le nom du peuple ailé qui protège les cieux ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2144,7 +2144,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom de la forêt mystérieuse où Link rencontre Skull Kid dans 'The Legend of Zelda: Majora's Mask' ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2158,7 +2158,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Dans 'The Legend of Zelda: Skyward Sword', quel est le nom de l'oiseau géant qui sert de monture à Link ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2172,7 +2172,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle est la devise inscrite sur la Triforce dans la série Zelda ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2186,7 +2186,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Dans 'The Legend of Zelda: Oracle of Seasons', quel est le nom de la sorcière qui a jeté un sort sur le royaume de Holodrum ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2200,7 +2200,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du royaume voisin de Hyrule, souvent en conflit avec celui-ci ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2214,7 +2214,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Dans 'The Legend of Zelda: The Wind Waker', quel est le nom de l'océan qui sépare les différentes îles ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2228,7 +2228,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom de l'antagoniste principal dans 'The Legend of Zelda: A Link Between Worlds' ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2242,7 +2242,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Dans \'The Legend of Zelda: Link's Awakening\', quel est le nom de l\'île sur laquelle Link se retrouve échoué ?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2256,7 +2256,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du méchant principal dans 'The Legend of Zelda: Majora's Mask' ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2270,7 +2270,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom de la divinité qui guide Link dans 'The Legend of Zelda: Skyward Sword' ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2284,7 +2284,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du royaume des ombres parallèle à Hyrule dans 'The Legend of Zelda: Twilight Princess' ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2298,7 +2298,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom de la légendaire épée que Link cherche à retrouver dans de nombreux jeux ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2312,7 +2312,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Dans quel jeu Zelda Link peut-il se transformer en loup ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2326,7 +2326,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du navire fantôme dans 'The Legend of Zelda: The Wind Waker' ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2340,7 +2340,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du peuple volant habitant le ciel dans 'The Legend of Zelda: Skyward Sword' ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2354,7 +2354,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du royaume englouti dans 'The Legend of Zelda: The Wind Waker' ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2368,7 +2368,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom de la monture de Link dans 'The Legend of Zelda: Breath of the Wild' ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2382,7 +2382,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du masque maudit principal dans 'The Legend of Zelda: Majora's Mask' ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2396,7 +2396,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom de la fée qui accompagne Link dans 'The Legend of Zelda: Ocarina of Time' ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2410,7 +2410,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom de la race habitant la forêt de Korok dans 'The Legend of Zelda: Breath of the Wild' ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2424,7 +2424,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du démon qui apparaît comme boss final dans 'The Legend of Zelda: Twilight Princess' ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2438,7 +2438,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Dans 'The Legend of Zelda: A Link to the Past', quel est le nom du monde parallèle à Hyrule où Link doit se rendre ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2452,7 +2452,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom de la déesse du temps dans 'The Legend of Zelda: Majora's Mask' ?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2466,7 +2466,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du roi d'Hyrule dans 'The Legend of Zelda: Ocarina of Time' ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2480,7 +2480,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Dans 'The Legend of Zelda: Twilight Princess', quel est le nom du personnage qui se révèle être l'alter-ego maléfique de Zelda ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2494,7 +2494,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du personnage mystérieux qui guide Link dans 'The Legend of Zelda: Breath of the Wild' ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2508,7 +2508,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Dans 'The Legend of Zelda: Skyward Sword', quel est le nom de la terre en dessous des nuages où Link doit se rendre ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2522,7 +2522,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du temple dans 'The Legend of Zelda: Ocarina of Time' où Link obtient la Master Sword ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2536,7 +2536,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Dans 'The Legend of Zelda: Majora's Mask', quel est le nom de l'horloge géante au centre de Termina ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2550,7 +2550,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du bateau parlant dans 'The Legend of Zelda: Phantom Hourglass' ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2565,7 +2565,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Dans 'The Legend of Zelda: The Wind Waker', quel est le nom de la princesse pirate qui accompagne Link ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2579,7 +2579,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du boss final dans 'The Legend of Zelda: Skyward Sword' ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2593,7 +2593,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Dans 'The Legend of Zelda: A Link to the Past', quel est le nom du sorcier qui manipule Agahnim et est le vrai antagoniste ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2607,7 +2607,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du cheval légendaire qui apparaît dans plusieurs jeux Zelda aux côtés de Link ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2621,7 +2621,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Dans 'The Legend of Zelda: Oracle of Ages', quel est le nom de la sorcière qui manipule le temps ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2635,7 +2635,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom de l'épée divine donnée à Link par la déesse Hylia dans 'The Legend of Zelda: Skyward Sword' ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2649,7 +2649,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Dans 'The Legend of Zelda: Breath of the Wild', quel est le nom de la tribu Sheikah qui a développé la technologie ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2663,7 +2663,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom de la mascotte récurrente de la série Zelda, un petit être ailé similaire à une fée ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2677,7 +2677,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom de la race des sorcières ailées qui apparaissent dans plusieurs jeux Zelda ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2691,7 +2691,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Dans 'The Legend of Zelda: Twilight Princess', quel est le nom de la monture de Link lors de sa transformation en loup ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2705,7 +2705,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du royaume parallèle à Hyrule dans 'The Legend of Zelda: A Link Between Worlds' ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2719,7 +2719,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Dans 'The Legend of Zelda: Skyward Sword', quel est le nom de l'antagoniste principal qui cherche à obtenir le pouvoir absolu ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2733,7 +2733,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom de la tribu qui a créé les masques magiques dans 'The Legend of Zelda: Majora's Mask' ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2747,7 +2747,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Dans 'The Legend of Zelda: Oracle of Ages', quel est le nom de la divinité gardienne de la saison hivernale ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2761,7 +2761,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom de l'épée légendaire qui remplace la Master Sword dans 'The Legend of Zelda: The Adventure of Link' ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2775,7 +2775,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Dans 'The Legend of Zelda: Twilight Princess', quel est le nom de la créature araignée géante qui hante les cavernes ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2790,7 +2790,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel est le nom du bateau volant contrôlé par Ciela dans 'The Legend of Zelda: Phantom Hourglass' ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2804,7 +2804,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Dans 'The Legend of Zelda: Oracle of Seasons', quel est le nom de la divinité gardienne de la saison estivale ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2818,7 +2818,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du sage des sables qui apparaît dans 'The Legend of Zelda: The Wind Waker' ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2832,7 +2832,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Dans 'The Legend of Zelda: A Link to the Past', quel est le nom de la sorcière qui transforme le roi d'Hyrule en monstre ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2846,7 +2846,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom de la monture de Link dans 'The Legend of Zelda: Skyward Sword' ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2860,7 +2860,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Dans 'The Legend of Zelda: The Wind Waker', quel est le nom du royaume des dieux situé au-dessus des nuages ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2874,7 +2874,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du peuple ailé qui habite dans les Cieux dans 'The Legend of Zelda: Skyward Sword' ?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 7,
                 'theme_id' => 6,
@@ -2896,7 +2896,7 @@ class QuestionSeeder extends Seeder
             //friends
             [
                 'title' => "Quel est le nom complet de Ross?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 2,
                 'theme_id' => 2,
@@ -2911,7 +2911,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui est le colocataire de Joey?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 2,
                 'theme_id' => 2,
@@ -2926,7 +2926,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quelle est la profession de Monica?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 2,
                 'theme_id' => 2,
@@ -2939,7 +2939,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le métier de Chandler?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -2954,7 +2954,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Quelle est la passion de Ross pour la paléontologie?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -2969,7 +2969,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Quelle est la chanson emblématique de la série?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -2984,7 +2984,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Qui est la meilleure amie de Rachel?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -2999,7 +2999,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Comment s'appelle le café où ils se retrouvent souvent?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3014,7 +3014,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Quel est le nom du singe de Ross?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3029,7 +3029,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Quelle est la peur irrationnelle de Monica?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3044,7 +3044,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel acteur joue le rôle de Ross dans la série?",
-                    'category_id' => 1,
+
                     'level_id' => 2,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3059,7 +3059,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Quelle est la célèbre réplique de Joey pour draguer les femmes?",
-                    'category_id' => 1,
+
                     'level_id' => 2,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3074,7 +3074,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Quel est le nom du personnage fictif de la série préféré de Joey?",
-                    'category_id' => 1,
+
                     'level_id' => 2,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3089,7 +3089,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Dans quel épisode Ross prononce-t-il accidentellement le nom de Rachel pendant son mariage?",
-                    'category_id' => 1,
+
                     'level_id' => 2,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3104,7 +3104,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Quel est le nom du personnage de Brad Pitt dans la série?",
-                    'category_id' => 1,
+
                     'level_id' => 2,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3119,7 +3119,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Qui est le créateur de la série \"Friends\"?",
-                    'category_id' => 1,
+
                     'level_id' => 2,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3134,7 +3134,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Quelle est la devise de Joey pour partager de la nourriture?",
-                    'category_id' => 1,
+
                     'level_id' => 2,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3149,7 +3149,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Quel est le nom du café où Rachel travaille au début de la série?",
-                    'category_id' => 1,
+
                     'level_id' => 2,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3164,7 +3164,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Qui est le pire cauchemar de Chandler lorsqu'il s'agit de mariage?",
-                    'category_id' => 1,
+
                     'level_id' => 2,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3179,7 +3179,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Quel est le nom de l'actrice qui joue le rôle de Phoebe?",
-                    'category_id' => 1,
+
                     'level_id' => 2,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3193,7 +3193,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel acteur joue le rôle de Ross dans la série?",
-                    'category_id' => 1,
+
                     'level_id' => 3,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3207,7 +3207,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quelle est la célèbre réplique de Joey pour draguer les femmes?",
-                    'category_id' => 1,
+
                     'level_id' => 3,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3221,7 +3221,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le nom du personnage fictif de la série préféré de Joey?",
-                    'category_id' => 1,
+
                     'level_id' => 3,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3235,7 +3235,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Dans quel épisode Ross prononce-t-il accidentellement le nom de Rachel pendant son mariage?",
-                    'category_id' => 1,
+
                     'level_id' => 3,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3249,7 +3249,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le nom du personnage de Brad Pitt dans la série?",
-                    'category_id' => 1,
+
                     'level_id' => 3,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3263,7 +3263,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Qui est le créateur de la série 'Friends'?",
-                    'category_id' => 1,
+
                     'level_id' => 3,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3277,7 +3277,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quelle est la devise de Joey pour partager de la nourriture?",
-                    'category_id' => 1,
+
                     'level_id' => 3,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3291,7 +3291,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le nom du café où Rachel travaille au début de la série?",
-                    'category_id' => 1,
+
                     'level_id' => 3,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3305,7 +3305,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Qui est le pire cauchemar de Chandler lorsqu'il s'agit de mariage?",
-                    'category_id' => 1,
+
                     'level_id' => 3,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3319,7 +3319,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le nom de l'actrice qui joue le rôle de Phoebe?",
-                    'category_id' => 1,
+
                     'level_id' => 3,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3333,7 +3333,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Dans combien de saisons 'Friends' a-t-elle été diffusée?",
-                    'category_id' => 1,
+
                     'level_id' => 4,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3347,7 +3347,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quelle est la signification du tatouage de Phoebe?",
-                    'category_id' => 1,
+
                     'level_id' => 4,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3361,7 +3361,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quelle est la marque du canapé que Ross et Chandler portent jusqu'à l'appartement?",
-                    'category_id' => 1,
+
                     'level_id' => 4,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3375,7 +3375,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quelle est la véritable raison pour laquelle Monica et Chandler décident d'adopter un enfant?",
-                    'category_id' => 1,
+
                     'level_id' => 4,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3389,7 +3389,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le nom de l'acteur invité qui joue le père de Ross et Monica?",
-                    'category_id' => 1,
+
                     'level_id' => 4,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3403,7 +3403,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quelle est la théorie populaire sur les personnages de 'Friends' concernant la série 'Mad About You'?",
-                    'category_id' => 1,
+
                     'level_id' => 4,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3417,7 +3417,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Qui est la personne qui fait le plus de caméos dans la série?",
-                    'category_id' => 1,
+
                     'level_id' => 4,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3431,7 +3431,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le nom du personnage que Phoebe prétend être pour aider Joey à surmonter ses peurs?",
-                    'category_id' => 1,
+
                     'level_id' => 4,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3445,7 +3445,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le titre du dernier épisode de la série?",
-                    'category_id' => 1,
+
                     'level_id' => 4,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3459,7 +3459,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le nom du livre que Joey a mis dans le congélateur?",
-                    'category_id' => 1,
+
                     'level_id' => 4,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3473,7 +3473,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Qui a chanté la chanson du générique de 'Friends'?",
-                    'category_id' => 1,
+
                     'level_id' => 2,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3487,7 +3487,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Où se déroule principalement l'action de la série?",
-                    'category_id' => 1,
+
                     'level_id' => 2,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3501,7 +3501,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le premier mot de Ben, le fils de Ross?",
-                    'category_id' => 1,
+
                     'level_id' => 2,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3515,7 +3515,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le plat préféré de Joey?",
-                    'category_id' => 1,
+
                     'level_id' => 2,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3529,7 +3529,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le nom de la danse de Ross qui est devenue célèbre?",
-                    'category_id' => 1,
+
                     'level_id' => 2,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3543,7 +3543,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le nom du personnage joué par Jon Favreau dans la série?",
-                    'category_id' => 1,
+
                     'level_id' => 2,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3557,7 +3557,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le nom de la sœur de Phoebe qui apparaît occasionnellement dans la série?",
-                    'category_id' => 1,
+
                     'level_id' => 2,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3571,7 +3571,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Dans quel État américain Monica, Ross, Rachel, Chandler, Joey, et Phoebe ont-ils grandi?",
-                    'category_id' => 1,
+
                     'level_id' => 2,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3585,7 +3585,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le nom de la femme qui donne naissance au fils de Monica et Chandler?",
-                    'category_id' => 1,
+
                     'level_id' => 2,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3599,7 +3599,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le nom de la pièce secrète de Monica et Chandler dans leur nouvel appartement?",
-                    'category_id' => 1,
+
                     'level_id' => 2,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3613,7 +3613,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le nom du père de Ross et Monica?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3627,7 +3627,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quelle est la profession de Rachel au début de la série?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3641,7 +3641,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le nom de l'ex-femme de Ross?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3655,7 +3655,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Comment s'appelle la sœur jumelle de Phoebe?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3669,7 +3669,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le nom du personnage joué par Jon Favreau dans la série?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3683,7 +3683,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Qui est la première personne à découvrir la relation secrète entre Monica et Chandler?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3697,7 +3697,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le prénom de la petite amie de Ross qui a une voix particulièrement aiguë?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3711,7 +3711,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le nom de la chanson que Ross déteste mais que les autres adorent?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3725,7 +3725,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Qui est l'architecte de la maison où Monica et Chandler veulent emménager?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3739,7 +3739,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le nom du personnage qui gagne une médaille d'or dans la compétition de gladiateurs?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3753,7 +3753,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le surnom de Chandler dans la saison 4?",
-                    'category_id' => 1,
+
                     'level_id' => 2,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3767,7 +3767,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Comment s'appelle la fille que Ross embrasse pendant un blackout?",
-                    'category_id' => 1,
+
                     'level_id' => 2,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3781,7 +3781,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le nom du psychologue que Phoebe rencontre pour aider ses amis?",
-                    'category_id' => 1,
+
                     'level_id' => 2,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3795,7 +3795,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le nom du personnage joué par Bruce Willis dans la série?",
-                    'category_id' => 1,
+
                     'level_id' => 2,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3809,7 +3809,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quelle est la profession du petit ami de Phoebe, David?",
-                    'category_id' => 1,
+
                     'level_id' => 2,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3823,7 +3823,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le nom du producteur de télévision qui engage Joey pour son propre show?",
-                    'category_id' => 1,
+
                     'level_id' => 2,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3837,7 +3837,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le plat spécial de Monica?",
-                    'category_id' => 1,
+
                     'level_id' => 2,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3853,7 +3853,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Dans quel épisode Ross et Rachel rompent-ils officiellement?",
-                    'category_id' => 1,
+
                     'level_id' => 2,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3867,7 +3867,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quelle est la signification du cadre violet sur la porte de Monica et Chandler?",
-                    'category_id' => 1,
+
                     'level_id' => 3,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3881,7 +3881,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le nom du groupe de rock dans lequel jouait Phoebe?",
-                    'category_id' => 1,
+
                     'level_id' => 3,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3895,7 +3895,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le nom de la mère porteuse de l'enfant de Monica et Chandler?",
-                    'category_id' => 1,
+
                     'level_id' => 3,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3909,7 +3909,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quelle est la première phrase complète de Janice, la petite amie de Chandler?",
-                    'category_id' => 1,
+
                     'level_id' => 3,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3923,7 +3923,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Dans quel épisode Chandler et Monica se rendent-ils compte qu'ils ne peuvent pas concevoir d'enfants naturellement?",
-                    'category_id' => 1,
+
                     'level_id' => 3,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3937,7 +3937,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le nom du personnage que Ross joue au réveillon du Nouvel An?",
-                    'category_id' => 1,
+
                     'level_id' => 3,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3951,7 +3951,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le nom de l'acteur qui joue Richard, l'ex-petit ami de Monica?",
-                    'category_id' => 1,
+
                     'level_id' => 3,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3965,7 +3965,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le nom de la société pour laquelle Chandler travaille?",
-                    'category_id' => 1,
+
                     'level_id' => 3,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3979,7 +3979,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le prénom de la sœur de Rachel?",
-                    'category_id' => 1,
+
                     'level_id' => 3,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -3993,7 +3993,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le titre de la chanson interprétée par Phoebe dans le Central Perk?",
-                    'category_id' => 1,
+
                     'level_id' => 3,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -4007,7 +4007,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Qui est l'auteur de la chanson 'Smelly Cat'?",
-                    'category_id' => 1,
+
                     'level_id' => 3,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -4021,7 +4021,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quelle est la phobie de Rachel?",
-                    'category_id' => 1,
+
                     'level_id' => 3,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -4035,7 +4035,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel acteur célèbre joue le rôle du 'mariage' de Phoebe dans un épisode?",
-                    'category_id' => 1,
+
                     'level_id' => 3,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -4049,7 +4049,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le nom du personnage joué par Jennifer Coolidge, la colocataire de Phoebe?",
-                    'category_id' => 1,
+
                     'level_id' => 3,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -4063,7 +4063,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le nom du personnage interprété par Sean Penn dans la série?",
-                    'category_id' => 1,
+
                     'level_id' => 3,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -4077,7 +4077,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quelle est la marque de la machine à café dans le bureau de Chandler et Rachel?",
-                    'category_id' => 1,
+
                     'level_id' => 3,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -4091,7 +4091,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le nom du restaurant où Monica travaille comme chef?",
-                    'category_id' => 1,
+
                     'level_id' => 3,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -4105,7 +4105,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le prénom du fils adoptif de Monica et Chandler?",
-                    'category_id' => 1,
+
                     'level_id' => 3,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -4119,7 +4119,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quelle est la première ligne de la chanson du générique de 'Friends'?",
-                    'category_id' => 1,
+
                     'level_id' => 3,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -4133,7 +4133,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Quel est le nom du réalisateur de la série 'Friends'?",
-                    'category_id' => 1,
+
                     'level_id' => 3,
                     'sous_theme_id' => 2,
                     'theme_id' => 2,
@@ -4147,7 +4147,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Qui a remporté le titre de Rookie de l'Année en 2020?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 3,
                     'theme_id' => 3,
@@ -4162,7 +4162,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Quel joueur de la NBA est également connu sous le surnom 'The Unicorn'?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 3,
                     'theme_id' => 3,
@@ -4177,7 +4177,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Combien d'équipes participent aux séries éliminatoires de la NBA?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 3,
                     'theme_id' => 3,
@@ -4192,7 +4192,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Quel joueur est souvent appelé 'The King'?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 3,
                     'theme_id' => 3,
@@ -4207,7 +4207,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Quelle équipe de la NBA est basée à Philadelphie?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 3,
                     'theme_id' => 3,
@@ -4222,7 +4222,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Qui détient le record du plus grand nombre de tirs à trois points réussis en une seule saison régulière?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 3,
                     'theme_id' => 3,
@@ -4237,7 +4237,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Combien de fois Stephen Curry a-t-il remporté le titre de MVP de la saison régulière?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 3,
                     'theme_id' => 3,
@@ -4252,7 +4252,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Quel joueur a été choisi en deuxième position lors de la draft NBA en 2017?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 3,
                     'theme_id' => 3,
@@ -4267,7 +4267,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Quelle équipe a remporté le premier match de la NBA en 1946?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 3,
                     'theme_id' => 3,
@@ -4282,7 +4282,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Combien de fois les Bulls de Chicago ont-ils remporté le championnat dans les années 1990?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 3,
                     'theme_id' => 3,
@@ -4297,7 +4297,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Quelle équipe a remporté le plus de championnats NBA?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 3,
                     'theme_id' => 3,
@@ -4312,7 +4312,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Qui est le meilleur marqueur de tous les temps en NBA?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 3,
                     'theme_id' => 3,
@@ -4327,7 +4327,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Quel joueur est surnommé 'The Greek Freak'?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 3,
                     'theme_id' => 3,
@@ -4341,7 +4341,7 @@ class QuestionSeeder extends Seeder
                 ],
                 [
                     'title' => "Combien de temps dure un quart-temps dans un match de la NBA?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 3,
                     'theme_id' => 3,
@@ -4356,7 +4356,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Qui a remporté le MVP de la saison régulière en 2021?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 3,
                     'theme_id' => 3,
@@ -4371,7 +4371,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Quelle équipe de la NBA est basée à Boston?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 3,
                     'theme_id' => 3,
@@ -4386,7 +4386,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Quel joueur est souvent associé au terme 'The Process'?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 3,
                     'theme_id' => 3,
@@ -4401,7 +4401,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Combien de joueurs composent une équipe de la NBA sur le terrain à un moment donné?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 3,
                     'theme_id' => 3,
@@ -4416,7 +4416,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Qui détient le record du plus grand nombre de points marqués en un seul match de la NBA?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 3,
                     'theme_id' => 3,
@@ -4431,7 +4431,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Quel joueur est surnommé 'The Brow'?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 3,
                     'theme_id' => 3,
@@ -4446,7 +4446,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Quelle équipe a remporté le championnat NBA le plus récemment avant la rédaction de cette question?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 3,
                     'theme_id' => 3,
@@ -4461,7 +4461,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Quel joueur a été surnommé 'The Answer'?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 3,
                     'theme_id' => 3,
@@ -4476,7 +4476,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Combien de franchises de la NBA sont basées en Floride?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 3,
                     'theme_id' => 3,
@@ -4491,7 +4491,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Qui détient le record du plus grand nombre de paniers à trois points en carrière?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 3,
                     'theme_id' => 3,
@@ -4506,7 +4506,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Quelle équipe a remporté le plus grand nombre de titres de la NBA dans les années 1980?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 3,
                     'theme_id' => 3,
@@ -4521,7 +4521,7 @@ class QuestionSeeder extends Seeder
 
                 [
                     'title' => "Qui est le seul joueur à avoir marqué 100 points dans un match de la NBA?",
-                    'category_id' => 1,
+
                     'level_id' => 1,
                     'sous_theme_id' => 3,
                     'theme_id' => 3,
@@ -4536,7 +4536,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel joueur a été le premier choix de la draft NBA en 2020?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -4551,7 +4551,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Combien de fois LeBron James a-t-il remporté le titre de MVP des Finales NBA?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -4566,7 +4566,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel joueur est souvent associé au terme 'Splash Brothers'?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -4581,7 +4581,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quelle équipe de la NBA est basée à Toronto?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -4596,7 +4596,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui détient le record du plus grand nombre de rebonds en carrière en saison régulière?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -4611,7 +4611,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel entraîneur de la NBA est également surnommé 'Pop'?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -4626,7 +4626,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Combien de fois Shaquille O'Neal a-t-il remporté le titre de MVP de la saison régulière?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -4641,7 +4641,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui est le seul joueur à avoir remporté le titre de MVP de la saison régulière avec les Bulls de Chicago autre que Michael Jordan?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -4656,7 +4656,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel joueur a remporté le plus grand nombre de trophées de Défenseur de l'année?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -4670,7 +4670,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Qui est le joueur actuel avec le plus grand nombre de triple-doubles en carrière?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -4685,7 +4685,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quelle équipe a connu la plus longue série de victoires consécutives en NBA?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -4700,7 +4700,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel joueur a remporté le plus grand nombre de titres de NBA Finals MVP avec les Lakers de Los Angeles?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -4715,7 +4715,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Combien de points Michael Jordan a-t-il marqués dans son dernier match en NBA?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -4730,7 +4730,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui a remporté le trophée de Joueur le Plus Amélioré (MIP) en 2021?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -4745,7 +4745,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel joueur est surnommé 'The Joker'?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -4760,7 +4760,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Combien de fois les Spurs de San Antonio ont-ils remporté le championnat NBA sous l'entraîneur Gregg Popovich?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -4775,7 +4775,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui détient le record du plus grand nombre de contres en une seule saison?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -4790,7 +4790,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel joueur a remporté le premier Slam Dunk Contest de la NBA?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -4805,7 +4805,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Combien de fois les Miami Heat ont-ils remporté le championnat NBA?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -4820,7 +4820,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Combien de titres NBA les Houston Rockets ont-ils remportés?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -4835,7 +4835,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui est le seul joueur à avoir remporté le titre de Rookie de l'Année et le MVP de la saison régulière la même année?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -4850,7 +4850,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel joueur a été sélectionné en première position lors de la draft de la NBA en 2009?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -4865,7 +4865,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Combien de fois Kobe Bryant a-t-il été sélectionné dans l'équipe All-NBA au cours de sa carrière?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -4880,7 +4880,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quelle équipe a remporté le plus grand nombre de titres de division dans l'histoire de la NBA?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -4895,7 +4895,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui détient le record du plus grand nombre de triple-doubles en une seule saison?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -4910,7 +4910,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Combien de points Michael Jordan a-t-il marqués en moyenne par match au cours de sa carrière?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -4925,7 +4925,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quelle équipe a remporté le plus grand nombre de championnats NBA dans les années 1960?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -4939,7 +4939,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Qui est le seul joueur à avoir remporté le MVP des Finales NBA avec trois équipes différentes?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -4954,7 +4954,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Combien de points a marqué Kobe Bryant dans son dernier match en carrière?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -4969,7 +4969,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel joueur a détenu le record du plus grand nombre de points marqués en une seule saison avant Wilt Chamberlain?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -4984,7 +4984,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui est le seul joueur à avoir remporté le titre de MVP de la saison régulière avec les Warriors de Golden State?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -4999,7 +4999,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Combien de fois Larry Bird a-t-il remporté le titre de MVP des Finales NBA?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5014,7 +5014,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui a remporté le NBA Finals MVP en 2019?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5029,7 +5029,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quelle équipe détient le record du plus grand nombre de victoires en une saison régulière?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5044,7 +5044,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel joueur a remporté le plus grand nombre de titres de NBA Finals MVP?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5059,7 +5059,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Combien de points a marqué Wilt Chamberlain lors de son célèbre match où il a marqué 100 points?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5074,7 +5074,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel joueur a été choisi en première position lors de la draft de la NBA en 2003?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5089,7 +5089,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Combien de franchises NBA ont remporté au moins un championnat?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5103,7 +5103,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Qui détient le record du plus grand nombre de rebonds en carrière en saison régulière?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5118,7 +5118,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel joueur a été surnommé 'The Dream' et a remporté deux championnats NBA avec les Rockets de Houston?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5133,7 +5133,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "En quelle année Michael Jordan a-t-il pris sa retraite pour la première fois?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5148,7 +5148,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quelle équipe a remporté le premier championnat de la NBA?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5163,7 +5163,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui a remporté le trophée de Joueur le Plus Amélioré (MIP) en 2020?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5178,7 +5178,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Combien de fois LeBron James a-t-il remporté le titre de MVP de la saison régulière?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5192,7 +5192,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel joueur a remporté le plus grand nombre de trophées de Défenseur de l'année?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5207,7 +5207,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel joueur de la NBA détient le record du plus grand nombre de triple-doubles en carrière?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5222,7 +5222,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Combien de titres NBA Michael Jordan a-t-il remportés avec les Chicago Bulls?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5237,7 +5237,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui détient le record du plus grand nombre de paniers à trois points marqués en une seule saison?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5252,7 +5252,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quelle équipe a remporté le premier championnat NBA après le changement de nom de la ligue?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5267,7 +5267,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Combien de fois Kobe Bryant a-t-il remporté le titre de MVP des Finales NBA?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5282,7 +5282,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel joueur a remporté le plus grand nombre de titres de meilleur marqueur de la saison?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5297,7 +5297,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "En quelle année la NBA a-t-elle introduit la règle des 24 secondes pour les possessions offensives?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5312,7 +5312,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui détient le record du plus grand nombre de passes décisives en une seule saison?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5326,7 +5326,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel joueur a été surnommé 'The Mailman' et a joué la majeure partie de sa carrière avec le Jazz de l'Utah?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5341,7 +5341,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Combien de fois Bill Russell a-t-il remporté le MVP des Finales NBA au cours de sa carrière?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5356,7 +5356,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel joueur a remporté le plus grand nombre de titres de MVP de la saison régulière?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5371,7 +5371,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui détient le record du plus grand nombre de points marqués en une seule saison en moyenne par match?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5386,7 +5386,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Combien de fois Michael Jordan a-t-il été sélectionné dans l'équipe All-NBA au cours de sa carrière?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5401,7 +5401,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel joueur a remporté le plus grand nombre de titres de MVP de la saison régulière consécutifs?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5416,7 +5416,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui détient le record du plus grand nombre de tirs à trois points réussis en une seule saison?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5431,7 +5431,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Combien de fois Karl Malone a-t-il mené la NBA en points par match au cours de sa carrière?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5446,7 +5446,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quelle équipe a remporté le plus grand nombre de titres de la division Nord-Ouest?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5461,7 +5461,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui détient le record du plus grand nombre de points marqués en une seule mi-temps de playoffs?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5476,7 +5476,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Combien de fois Shaquille O'Neal a-t-il remporté le titre de MVP de la saison régulière?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5491,7 +5491,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel joueur a remporté le plus grand nombre de titres de MVP des Finales NBA consécutifs?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5506,7 +5506,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Combien de fois Russell Westbrook a-t-il mené la NBA en triple-doubles en une saison?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5521,7 +5521,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui détient le record du plus grand nombre de points marqués en un seul quart-temps?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5537,7 +5537,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Combien de fois Michael Jordan a-t-il remporté le titre de MVP des Finales NBA?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5552,7 +5552,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel joueur a remporté le plus grand nombre de titres de MVP de la saison régulière en carrière?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5566,7 +5566,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Combien de fois LeBron James a-t-il mené la NBA en points par match en saison régulière?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5581,7 +5581,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui détient le record du plus grand nombre de rebonds en carrière en playoffs NBA?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5596,7 +5596,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Combien de fois Larry Bird a-t-il remporté le titre de MVP des Finales NBA?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5611,7 +5611,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quelle équipe a remporté le plus grand nombre de titres de la division Atlantique?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5626,7 +5626,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui détient le record du plus grand nombre de points marqués en un seul quart-temps de playoffs?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5641,7 +5641,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Combien de fois Kareem Abdul-Jabbar a-t-il remporté le titre de MVP de la saison régulière?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5656,7 +5656,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel joueur a remporté le plus grand nombre de titres de Défenseur de l'année en NBA?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5671,7 +5671,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Combien de fois Kevin Durant a-t-il remporté le titre de meilleur marqueur de la saison régulière?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5686,7 +5686,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui détient le record du plus grand nombre de points marqués en un seul match de playoffs?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5701,7 +5701,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Combien de fois Kobe Bryant a-t-il mené la NBA en points par match en saison régulière?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 3,
                 'theme_id' => 3,
@@ -5715,7 +5715,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Qui est le protagoniste principal de la trilogie originale?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -5730,7 +5730,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel droïde accompagne Luke Skywalker tout au long de son aventure?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -5745,7 +5745,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quelle planète désertique sert de lieu de résidence à Anakin Skywalker?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -5760,7 +5760,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Comment s'appelle le mentor de Luke Skywalker dans la trilogie originale?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -5775,7 +5775,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel est le nom du vaisseau spatial piloté par Han Solo?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -5790,7 +5790,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui est le maître Jedi qui entraîne Obi-Wan Kenobi?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -5805,7 +5805,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quelle créature verte de petite taille parle de manière singulière?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -5820,7 +5820,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel côté de la Force représente Darth Vader initialement?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -5834,7 +5834,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom de la princesse de la planète Alderaan?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -5849,7 +5849,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quelle organisation criminelle Jabba the Hutt dirige-t-il?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -5864,7 +5864,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui est le bras droit de l'Empereur dans la trilogie originale?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -5879,7 +5879,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Comment s'appelle le Wookiee qui est le copilote du Faucon Millenium?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -5894,7 +5894,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel personnage porte un masque respiratoire en forme de sablier?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -5909,7 +5909,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quelle station spatiale massive est détruite à la fin de l'épisode IV?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -5924,7 +5924,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel Jedi est surnommé 'le Maître Yoda'?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -5938,7 +5938,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom de famille d'Anakin Skywalker avant sa transformation?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -5953,7 +5953,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel est le nom de la course de contrebandiers dans l'épisode I?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -5968,7 +5968,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui est le père de Luke Skywalker?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -5983,7 +5983,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel type de créature est Chewbacca?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -5998,7 +5998,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Comment s'appelle le désert de glace dans l'épisode V?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6012,7 +6012,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du chasseur de primes qui capture Han Solo dans l'épisode V?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6027,7 +6027,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "De quelle espèce est le chasseur de primes Bossk?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6042,7 +6042,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui est le commandant suprême des forces droïdes dans la prélogie?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6057,7 +6057,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel Jedi est le Padawan d'Anakin Skywalker?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6072,7 +6072,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Comment s'appelle la planète natale de Chewbacca?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6087,7 +6087,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui est le contrebandier qui se sacrifie dans l'épisode VI?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6102,7 +6102,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel est le nom du vaisseau spatial utilisé par les Sith dans la prélogie?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6116,7 +6116,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle est la planète d'origine de Mace Windu?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6131,7 +6131,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel Sith se fait passer pour un sénateur dans l'épisode I?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6146,7 +6146,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui interprète le rôle de Han Solo dans la trilogie originale?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6161,7 +6161,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quelle est la race du chasseur de primes IG-88?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6176,7 +6176,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel Jedi est connu pour utiliser un double sabre laser rouge?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6191,7 +6191,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel est le nom du mentor de Han Solo dans sa jeunesse?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6205,7 +6205,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Qui dirige la Cité des Nuages dans l'épisode V?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6220,7 +6220,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel droïde accompagne Rey dans la trilogie de la postlogie?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6235,7 +6235,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quelle planète est détruite par la super arme Starkiller dans l'épisode VII?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6250,7 +6250,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui est le leader de la Résistance dans la postlogie?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6265,7 +6265,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Comment s'appelle la planète désertique dans l'épisode VII?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6280,7 +6280,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel personnage dirige la Guilde des chasseurs de primes dans la série 'The Mandalorian'?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6295,7 +6295,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel acteur joue le rôle de Kylo Ren dans la postlogie?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6309,7 +6309,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel est le nom du droïde astromécano qui accompagne Padmé Amidala dans la prélogie?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6324,7 +6324,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel Sith est connu pour son double sabre laser à lame croisée?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6339,7 +6339,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quelle est la véritable identité du chasseur de primes Mandalorien?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6354,7 +6354,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel Jedi est le grand-père de Rey?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6369,7 +6369,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel est le nom du droïde impérial qui torture Leia dans l'épisode IV?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6384,7 +6384,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel est le nom du bataillon de clones dirigé par Cody dans la prélogie?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6399,7 +6399,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui est le concepteur du Faucon Millenium?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6413,7 +6413,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle organisation dirigée par Saw Gerrera lutte contre l'Empire dans la prélogie?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6428,7 +6428,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel est le nom du casino de Canto Bight dans l'épisode VIII?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6443,7 +6443,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quelle planète est le berceau des Jedi dans la prélogie?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6458,7 +6458,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel personnage de la postlogie est également une ancienne Stormtrooper de l'Empire?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6473,7 +6473,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui est le mentor de Qui-Gon Jinn?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6488,7 +6488,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel est le nom de famille de la famille de sang royal sur Naboo?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6502,7 +6502,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Comment s'appelle le peuple guerrier sur la planète Mandalore?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6517,7 +6517,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel Sith a manipulé Anakin Skywalker pour devenir Dark Vador?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6532,7 +6532,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quelle organisation criminelle est dirigée par Dryden Vos dans 'Solo: A Star Wars Story'?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6547,7 +6547,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui est le créateur de l'armée droïde dans la prélogie?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6562,7 +6562,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quelle actrice joue le rôle de la vice-amirale Holdo dans l'épisode VIII?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6577,7 +6577,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel est le nom du droïde impérial qui accompagne Krennic dans 'Rogue One'?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6592,7 +6592,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quelle est la planète natale de Poe Dameron dans la postlogie?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6606,7 +6606,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quelle planète désertique apparaît dans les deux trilogies, abritant des droïdes et Anakin Skywalker?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6621,7 +6621,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Comment s'appelle le vaisseau spatial personnel de Dark Vador dans la trilogie originale?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6636,7 +6636,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui est le maître Jedi qui entraîne Anakin Skywalker dans la prélogie?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6651,7 +6651,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel contrebandier dirige la Cité des Nuages dans l'épisode V?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6666,7 +6666,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel droïde accompagne Rey tout au long de la trilogie de la postlogie?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6681,7 +6681,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui est le chef suprême du Premier Ordre dans la postlogie?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6696,7 +6696,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel personnage emblématique est interprété par Harrison Ford dans la trilogie originale?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6711,7 +6711,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel Jedi est surnommé 'le Juste' et est également le maître d'Obi-Wan Kenobi?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6726,7 +6726,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Comment s'appelle le mentor de Luke Skywalker dans la postlogie?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6741,7 +6741,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quelle espèce est Yoda?",
-                'category_id' => 1,
+
                 'level_id' => 1,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6755,7 +6755,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel personnage mandalorien reçoit l'ordre de tuer Grogu dans la série 'The Mandalorian'?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6770,7 +6770,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui est le leader de la Résistance dans l'épisode VII?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6785,7 +6785,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quelle planète est détruite par la première Étoile de la Mort dans l'épisode IV?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6800,7 +6800,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Comment s'appelle le droïde astromécano qui accompagne Obi-Wan Kenobi dans la prélogie?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6815,7 +6815,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui est le créateur de l'armée de clones dans la prélogie?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6830,7 +6830,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel Jedi perd sa main droite lors d'un duel au sabre laser dans l'épisode V?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6845,7 +6845,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel personnage de la postlogie est également une ancienne Stormtrooper de l'Empire?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6860,7 +6860,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Comment s'appelle la planète océanique où se cache le peuple Gungan dans l'épisode I?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6875,7 +6875,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel Jedi utilise un sabre laser violet dans la trilogie prélogique?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6890,7 +6890,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel chasseur de primes mandalorien apparaît dans 'The Clone Wars' et 'Rebels'?",
-                'category_id' => 1,
+
                 'level_id' => 2,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6904,7 +6904,7 @@ class QuestionSeeder extends Seeder
             ],
             [
                 'title' => "Quel Sith est responsable de la création du virus de l'ombre noire dans la série animée 'The Clone Wars'?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6919,7 +6919,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel est le nom du vaisseau spatial commandé par General Grievous?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6934,7 +6934,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Qui est le père de la pilote de chasse Ahsoka Tano?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6949,7 +6949,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel ancien Jedi devient le leader du Mouvement de résistance après la chute de l'Empire?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6964,7 +6964,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel Jedi, bien que brièvement, succède à Mace Windu comme maître de l'ordre Jedi?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6979,7 +6979,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Comment s'appelle la planète natale de Maz Kanata?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -6994,7 +6994,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel est le nom du groupe extrémiste sur Jedha dans 'Rogue One'?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -7009,7 +7009,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel Sith est tué par Mace Windu lors du combat dans le bureau du Chancelier dans la prélogie?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -7024,7 +7024,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Comment s'appelle le réseau criminel dirigé par Dryden Vos dans 'Solo: A Star Wars Story'?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -7039,7 +7039,7 @@ class QuestionSeeder extends Seeder
 
             [
                 'title' => "Quel Sith est responsable de la création de l'armée droïde dans la prélogie?",
-                'category_id' => 1,
+
                 'level_id' => 3,
                 'sous_theme_id' => 1,
                 'theme_id' => 1,
@@ -7054,7 +7054,7 @@ class QuestionSeeder extends Seeder
         ];
 
         foreach ($questionsData as $questionData) {
-            $category = Category::where('id', $questionData['category_id'])->firstOrFail();
+
             $level = Level::find($questionData['level_id']);
             $sous_theme = SousTheme::where('id', $questionData['sous_theme_id'])->firstOrFail();
             $theme = Theme::where('id', $questionData['theme_id'])->firstOrFail();
@@ -7063,7 +7063,7 @@ class QuestionSeeder extends Seeder
             $createdQuestion = Question::create([
                 'question' => $questionData['title'],
                 'level_id' => $level->id,
-                'category_id' => $category->id,
+
                 'sous_theme_id' => $sous_theme->id,
                 'theme_id' => $theme->id,
                 'user_id' => $user->id,

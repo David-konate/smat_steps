@@ -432,12 +432,11 @@ class QuestionController extends Controller
             $validator = Validator::make($request->all(), [
                 'question' => 'required',
                 'level_id' => 'required',
-                'category_id' => 'required',
-                'sous_theme_id' => 'required',
+                'theme_id' => 'required',
+                'sous_theme_id' => 'nullable',
                 'user_id' => 'required',
                 'image_question' => 'nullable|image|mimes:jpeg,png,jpg,gif',
-                'answers' => 'required|array|min:1', // Assurez-vous qu'il y a au moins une réponse
-
+                'answers' => 'required|array|min:4|max:4', // 4 reponses
             ]);
 
 
@@ -463,22 +462,29 @@ class QuestionController extends Controller
             $question = Question::create([
                 'question' => request('question'),
                 'level_id' => request('level_id'),
-                'category_id' => request('category_id'),
                 'sous_theme_id' => request('sous_theme_id'),
+                'theme_id' => request('sous_theme_id'),
                 'user_id' => request('user_id'),
                 'image_question' => $filename,
-
             ]);
 
             // Ajout des réponses à la question nouvellement créée
+            // Initialise un tableau vide pour stocker les réponses
             $answers = [];
+            // Parcours de chaque réponse envoyée par l'utilisateur
             foreach (request('answers') as $answerData) {
+                // Crée une nouvelle instance de modèle Answer avec les données de la réponse
                 $answers[] = new Answer([
-                    'answerText' => $answerData['answerText'],
-                    'is_correct' => $answerData['is_correct'] ? 1 : 0, // Convertir en entier
+                    'answer' => $answerData['answerText'],
+                    // Convertit en entier (1 pour vrai, 0 pour faux) si la réponse est correcte
+                    'is_correct' => $answerData['is_correct'] ? 1 : 0,
+                    'question_id' => $question->id,
                 ]);
             }
+
+            // Enregistre toutes les réponses créées en une seule fois dans la base de données
             $question->answers()->saveMany($answers);
+
 
 
             return response()->json([
@@ -601,8 +607,9 @@ class QuestionController extends Controller
             $answers = [];
             foreach ($request->answers as $answerData) {
                 $answers[] = [
-                    'answerText' => $answerData['answerText'],
-                    'is_correct' => $answerData['is_correct'] ? 1 : 0, // Convertir en entier
+                    'answer' => $answerData['answer'], // Assurez-vous que chaque réponse a une valeur pour 'answer'
+                    'is_correct' => $answerData['is_correct'] ? 1 : 0,
+                    'question_id' => $question->id,
                 ];
             }
             $question->answers()->delete(); // Supprimer les réponses existantes

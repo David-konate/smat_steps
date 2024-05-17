@@ -88,9 +88,9 @@ class SecurityController extends Controller
 
             return response()->json([
                 'status' => 'success',
-                'message' => 'Merci pour votre inscription',
+                'message' => 'Merci pour votre inscription, véri!fier vos mails pour confirmer votre inscription',
                 'user' => $user,
-                'token' => $user->createToken('API TOKEN')->plainTextToken
+                // 'token' => $user->createToken('API TOKEN')->plainTextToken
             ], 200);
         } catch (\Throwable $e) {
             return response()->json([
