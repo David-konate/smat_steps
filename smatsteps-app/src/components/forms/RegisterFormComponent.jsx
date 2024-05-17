@@ -48,13 +48,11 @@ const RegisterFormComponent = () => {
         password_confirmation: data.confirmPassword,
       });
 
-      localStorage.setItem("token", response.data.token);
-      console.log(response.data);
-      setUser(response.data.user);
       //recup les meesage back
       setDialogTitle(response.data.status);
       setDialogMessage(response.data.message);
       setOpenDialog(true);
+
       reset();
     } catch (error) {
       setDialogTitle("Erreur");

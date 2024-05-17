@@ -7,14 +7,21 @@ import {
   FormControl,
   TextField,
   FormHelperText,
+  Select,
+  MenuItem,
+  RadioGroup,
+  FormControlLabel,
+  Radio,
 } from "@mui/material";
 import { vestResolver } from "@hookform/resolvers/vest";
 import { Controller, useForm } from "react-hook-form";
 import { validationQuestion, errorField } from "../../utils/formValidator";
 import axios from "axios";
 import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css"; // Styles par défaut de ReactQuill
-import { Stack } from "@mui/system";
+import "react-quill/dist/quill.snow.css";
+import { Stack, color } from "@mui/system";
+import CustomButton2 from "../buttons/CustomButton2";
+import { useUserContext } from "../../context/UserProvider";
 
 const QuestionForm = ({ questionId = null }) => {
   const [isBusy, setIsBusy] = useState(true);
@@ -23,11 +30,16 @@ const QuestionForm = ({ questionId = null }) => {
   const [levels, setLevels] = useState([]);
   const [searchTextTheme, setSearchTextTheme] = useState("");
   const [searchTextSousTheme, setSearchTextSousTheme] = useState("");
-  const [searchLevel, setSearchLevel] = useState(null); // Modifié
+  const [searchLevel, setSearchLevel] = useState(null);
   const [selectedTheme, setSelectedTheme] = useState(null);
   const [listVisibleTheme, setListVisibleTheme] = useState(false);
   const [listVisibleSousTheme, setListVisibleSousTheme] = useState(false);
   const [listVisibleLevel, setListVisibleLevel] = useState(false);
+  const [answers, setAnswers] = useState(Array(4).fill(""));
+  const [correctAnswerIndex, setCorrectAnswerIndex] = useState(null);
+  const [correctAnswers, setCorrectAnswers] = useState(Array(4).fill(false));
+
+  const { user } = useUserContext();
 
   const {
     register,
@@ -39,6 +51,10 @@ const QuestionForm = ({ questionId = null }) => {
     mode: "onBlur",
     resolver: vestResolver(validationQuestion),
   });
+
+  useEffect(() => {
+    console.log(errors);
+  }, [errors]);
 
   useEffect(() => {
     const fetchDataThemes = async () => {
@@ -111,12 +127,37 @@ const QuestionForm = ({ questionId = null }) => {
       console.error("Erreur lors de la récupération de la question :", error);
     }
   };
-
-  const onSubmit = (data) => {
-    console.log(data); // Placeholder for actual form submission
+  const handleSelectCorrect = (index) => {
+    // Mettre à jour l'index de la réponse correcte
+    setCorrectAnswerIndex(index);
   };
 
-  // Fonction générique pour gérer les changements de recherche
+  const onSubmit = async (data) => {
+    // Créer un tableau pour stocker les réponses au format attendu
+    const formattedAnswers = answers.map((answer, index) => ({
+      answerText: answer,
+      is_correct: index === correctAnswerIndex ? 1 : 0,
+    }));
+
+    // Ajouter les réponses formatées aux données à soumettre
+    data.answers = formattedAnswers;
+
+    // Ajoutez l'ID de l'utilisateur connecté
+    data.user_id = user.id;
+    console.log(data);
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.post("/questions", data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.error("Erreur lors de la soumission de la question :", error);
+    }
+  };
+
   const handleChange = (e, setValue, setSearchText, setListVisible) => {
     const inputValue = e.target.value.toLowerCase();
     setSearchText(inputValue);
@@ -126,11 +167,19 @@ const QuestionForm = ({ questionId = null }) => {
   const handleChangeTheme = (e) =>
     handleChange(e, setValue, setSearchTextTheme, setListVisibleTheme);
 
-  const handleSelectTheme = (theme) => {
+  const handleSelectTheme = async (theme) => {
     setSelectedTheme(theme);
     setValue("theme_id", theme.id);
     setSearchTextTheme(theme.theme);
     setListVisibleTheme(false);
+
+    // Filtrer les sous-thèmes en fonction du thème sélectionné
+    const filteredSousThemes = sousThemes.filter(
+      (sousTheme) => sousTheme.theme_id === theme.id
+    );
+
+    // Mettre à jour l'état des sous-thèmes avec la liste filtrée
+    setSousThemes(filteredSousThemes);
   };
 
   const handleChangeSousTheme = (e) =>
@@ -144,23 +193,38 @@ const QuestionForm = ({ questionId = null }) => {
   };
 
   const handleChangeLevel = (e) =>
-    setSearchLevel(e.target.value !== "" ? parseInt(e.target.value) : null); // Modifié
+    setSearchLevel(e.target.value !== "" ? parseInt(e.target.value) : null);
 
   const handleSelectLevel = (level) => {
-    setValue("level_id", level);
-    setSearchLevel(level);
+    setValue("level_id", level.id);
+    setSearchLevel(level.level);
     setListVisibleLevel(false);
   };
-
+  console.log(sousThemes);
   return (
     <Container>
       {isBusy ? (
         <CircularProgress />
       ) : (
-        <Box>
-          <Typography> Gestion question</Typography>
-          <Box component="form" onSubmit={handleSubmit(onSubmit)}>
-            <FormControl>
+        <Box p={2} className="form-question" maxWidth={"sm"} margin={"auto"}>
+          <Typography
+            variant="h2"
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            className="title"
+          >
+            Gestion question
+          </Typography>
+          <Box
+            mt={4}
+            component="form"
+            onSubmit={handleSubmit(onSubmit)}
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+          >
+            <FormControl margin="auto">
               <Controller
                 control={control}
                 name="question"
@@ -182,7 +246,6 @@ const QuestionForm = ({ questionId = null }) => {
               {Boolean(errors?.question) && (
                 <FormHelperText>{errors?.question?.message}</FormHelperText>
               )}
-
               <TextField
                 {...register("theme_id", { required: true })}
                 {...errorField(errors?.theme_id)}
@@ -246,7 +309,7 @@ const QuestionForm = ({ questionId = null }) => {
                 variant="standard"
                 fullWidth
                 type="number"
-                value={searchLevel !== null ? searchLevel : ""} // Modifié
+                value={searchLevel !== null ? searchLevel : ""}
                 onChange={handleChangeLevel}
                 placeholder="Niveau de la question 1, 2 ou 3"
               />
@@ -256,7 +319,7 @@ const QuestionForm = ({ questionId = null }) => {
                     .filter(
                       (level) =>
                         searchLevel !== null &&
-                        level.level.toString().includes(searchLevel)
+                        level.level.toString().includes(searchLevel.toString())
                     )
                     .map((level) => (
                       <div
@@ -268,71 +331,48 @@ const QuestionForm = ({ questionId = null }) => {
                     ))}
                 </Box>
               )}
-              <Stack direction={"row"}>
-                <TextField
-                  {...register("answer1")} // Reliez le champ de réponse au formulaire
-                  margin="normal"
-                  variant="standard"
-                  fullWidth
-                  label="Réponse 1"
-                />
-                {/* Ajoutez le bouton radio pour la première réponse */}
-                <input
-                  type="radio"
-                  name="correctAnswer"
-                  value="1"
-                  onChange={(e) => setValue("correctAnswer", e.target.value)} // Mettez à jour la valeur de la réponse correcte
-                />
-              </Stack>
-              <Stack direction={"row"}>
-                {/* Répétez les étapes pour les trois autres réponses */}
-                <TextField
-                  {...register("answer2")}
-                  margin="normal"
-                  variant="standard"
-                  fullWidth
-                  label="Réponse 2"
-                />
-                <input
-                  type="radio"
-                  name="correctAnswer"
-                  value="2"
-                  onChange={(e) => setValue("correctAnswer", e.target.value)}
-                />
-              </Stack>
-              <Stack direction={"row"}>
-                {" "}
-                <TextField
-                  {...register("answer3")}
-                  margin="normal"
-                  variant="standard"
-                  fullWidth
-                  label="Réponse 3"
-                />
-                <input
-                  type="radio"
-                  name="correctAnswer"
-                  value="3"
-                  onChange={(e) => setValue("correctAnswer", e.target.value)}
-                />
-              </Stack>
+              {answers.map((answer, index) => (
+                <Box key={index} mt={2} display="flex" alignItems="center">
+                  <TextField
+                    {...register(`answers[${index}]`)}
+                    {...errorField(errors?.answers && errors.answers[index])}
+                    margin="normal"
+                    variant="standard"
+                    fullWidth
+                    label={`Réponse ${index + 1}`}
+                    value={answer}
+                    onChange={(e) => {
+                      const newAnswers = [...answers];
+                      newAnswers[index] = e.target.value;
+                      setAnswers(newAnswers);
+                    }}
+                  />
+                  <RadioGroup
+                    aria-label={`correct-answer-${index}`}
+                    name={`correct-answer-${index}`}
+                    value={index === correctAnswerIndex ? index.toString() : ""}
+                    onChange={() => handleSelectCorrect(index)}
+                  >
+                    <FormControlLabel
+                      value={index.toString()}
+                      control={<Radio />}
+                      sx={{ marginLeft: "auto" }} // Pour placer le bouton radio à droite
+                    />
+                  </RadioGroup>
+                </Box>
+              ))}
 
-              <Stack direction={"row"}>
-                {" "}
-                <TextField
-                  {...register("answer4")}
-                  margin="normal"
-                  variant="standard"
+              <Box mt={3}>
+                <CustomButton2
+                  className="btn-connexion"
+                  type="submit"
                   fullWidth
-                  label="Réponse 4"
-                />
-                <input
-                  type="radio"
-                  name="correctAnswer"
-                  value="4"
-                  onChange={(e) => setValue("correctAnswer", e.target.value)}
-                />
-              </Stack>
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2 }}
+                >
+                  Enregistrer
+                </CustomButton2>
+              </Box>
             </FormControl>
           </Box>
         </Box>

@@ -32,7 +32,8 @@ axios.interceptors.response.use(
   },
   function (error) {
     console.log(error);
-    // Si le code de statut de la réponse est 401 (Non autorisé), supprime le jeton d'authentification du stockage local
+    // Si le code de statut de la réponse est 401 (Non autorisé),
+    // supprime le jeton d'authentification du stockage local
     if (error.response.status === 401) {
       localStorage.removeItem("token");
     }

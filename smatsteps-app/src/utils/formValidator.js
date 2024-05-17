@@ -75,23 +75,11 @@ export const validationQuestion = create((data = {}) => {
     enforce(data.theme_id).isNotEmpty();
   });
 
-  test("user_id", IS_REQUIRED_MESSAGE, () => {
-    enforce(data.user_id).isNotEmpty();
-  });
-
   test("level_id", IS_REQUIRED_MESSAGE, () => {
     enforce(data.level_id)
       .isNotEmpty()
       .matches(/^(1|2|3)$/)
       .message(LEVEL_LIMIT_MESSAGE);
-  });
-
-  test("category_id", IS_REQUIRED_MESSAGE, () => {
-    enforce(data.category_id).isNotEmpty();
-  });
-
-  test("image_question", IS_REQUIRED_MESSAGE, () => {
-    enforce(data.image_question).isNotEmpty();
   });
 });
 

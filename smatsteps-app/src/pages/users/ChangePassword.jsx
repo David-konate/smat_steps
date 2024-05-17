@@ -32,6 +32,7 @@ const ChangePassword = () => {
   }, [errors]);
 
   const onSubmit = async (data) => {
+    console.log(data);
     try {
       await axios.post("/reset-password", {
         password: data.password,
@@ -71,10 +72,12 @@ const ChangePassword = () => {
                     value={value}
                     onChange={onChange}
                     margin="normal"
+                    {...register("password", { required: true })}
                     {...errorField(errors?.password)}
                     fullWidth
                     label="Mot de passe"
                     required
+                    type="password"
                     placeholder="6+ caractères requis"
                   />
                 );
@@ -86,6 +89,7 @@ const ChangePassword = () => {
               render={({ field: { value, onChange } }) => {
                 return (
                   <Input
+                    {...register("password_confirmation ", { required: true })}
                     {...errorField(errors?.password_confirmation)}
                     fullWidth
                     value={value}

@@ -18,25 +18,25 @@ const Dashboard = () => {
     {
       id: 1,
       isOpen: false,
-      buttonLabel: "Liste évènements",
+      buttonLabel: "Liste questions",
       component: QuestionsList,
     },
     {
       id: 2,
       isOpen: false,
-      buttonLabel: "Liste lieux",
+      buttonLabel: "Liste themes",
       component: QuestionsList,
     },
     {
       id: 3,
       isOpen: false,
-      buttonLabel: "Liste entreprises",
+      buttonLabel: "Liste sous-themes",
       component: QuestionsList,
     },
     {
       id: 4,
       isOpen: false,
-      buttonLabel: "Liste candidats",
+      buttonLabel: "Liste joueur",
       component: QuestionsList,
     },
   ]);
