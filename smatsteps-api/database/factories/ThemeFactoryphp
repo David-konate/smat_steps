@@ -1,0 +1,30 @@
+<?php
+// database/factories/ThemeFactory.php
+
+namespace Database\Factories;
+
+use App\Models\Theme;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class ThemeFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Theme::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'theme' => $this->faker->word, // Utilisation d'un mot aléatoire pour le thème
+            'theme_image' => $this->faker->imageUrl(), // Utilisation d'une URL d'image aléatoire pour l'image du thème
+        ];
+    }
+}

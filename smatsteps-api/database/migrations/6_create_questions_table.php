@@ -19,7 +19,7 @@ return new class extends Migration
 
             $table->timestamps();
 
-            $table->foreignId('sous_theme_id')->constrained('sous_themes');
+            $table->foreignId('sous_theme_id')->constrained('sous_themes')->nullable();
             $table->foreignId('theme_id')->constrained('themes');
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('level_id')->constrained('levels');
