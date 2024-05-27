@@ -40,9 +40,7 @@ class SecurityController extends Controller
                     'message' => "Le pseudo ou le mot de passe ne sont pas correct"
                 ], 401);
             }
-
             $user = User::where("user_pseudo", $request->user_pseudo)->first();
-
             return response()->json([
                 "status" => true,
                 "message" => "User connecté",
@@ -90,7 +88,7 @@ class SecurityController extends Controller
                 'status' => 'success',
                 'message' => 'Merci pour votre inscription, véri!fier vos mails pour confirmer votre inscription',
                 'user' => $user,
-                // 'token' => $user->createToken('API TOKEN')->plainTextToken
+
             ], 200);
         } catch (\Throwable $e) {
             return response()->json([

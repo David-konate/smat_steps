@@ -9,7 +9,15 @@ class Question extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['question', 'sous_theme_id', 'theme_id', 'user_id', 'level_id', 'category_id', 'image_question'];
+    protected $fillable = [
+        'question',
+        'sous_theme_id',
+        'theme_id',
+        'user_id',
+        'level_id',
+        'category_id',
+        'image_question'
+    ];
 
     public function smats()
     {

@@ -68,23 +68,12 @@ Route::prefix('levels')->group(function () {
     Route::delete('/{level}', [LevelController::class, 'destroy'])->middleware('auth:sanctum');;
 });
 
-//Route questions
-// Route::controller(QuestionController::class)->group(function () {
-//     Route::get('questions', 'index');
-//     Route::get('questions/{question}', 'show');
-//     Route::get('questions-random', 'random');
-//     Route::post('questions/', 'store')->middleware('auth:sanctum');
-//     Route::put('questions/{question}', 'update')->middleware('auth:sanctum')->middleware('auth:sanctum');
-//     Route::delete('questions/{question}', 'delete')->middleware('auth:sanctum');
-//     Route::get('new-game/{currentLevel}', 'newRankedGame')->middleware('auth:sanctum');
-//     Route::get('new-private-game/{currentLevel}', 'newPrivateGame')->middleware('auth:sanctum');
-// });
+
 Route::controller(QuestionController::class)->group(function () {
     Route::get('questions', 'index');
     Route::get('questions/{question}', 'show');
     Route::get('questions-random', 'random');
-    Route::post('questions/', 'store')->name('questions.store');;
-
+    Route::post('questions/', 'store')->name('questions.store');
     Route::put('questions/{question}', 'update')->middleware('auth:sanctum');
     Route::delete('questions/{question}', 'delete')->middleware('auth:sanctum');
     Route::get('new-game/{currentLevel}', 'newRankedGame')->middleware('auth:sanctum');

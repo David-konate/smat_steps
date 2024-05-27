@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
             'email' => 'admin@boss.fr',
             'user_image' => 'r2d2.jpg',
             'is_admin' => true,
-            'slug' => Str::slug('r2d2'),
+            'slug' => Str::slug('daouda'),
             'remember_token' => Str::random(10),
         ]);
 

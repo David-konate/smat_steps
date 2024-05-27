@@ -1,13 +1,117 @@
 {
     "info": {
-        "_postman_id": "65ef1d8a3c9c3",
-        "name": "testPostman",
+        "_postman_id": "664c7dd264cd8",
+        "name": "testApi",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
     },
     "item": [
         {
             "name": "api",
             "item": [
+                {
+                    "name": "email-verify [Post] [App\\Http\\Controllers\\Api\\EmailVerificationController] emailVerify",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "email",
+                                    "value": "test",
+                                    "type": "default"
+                                },
+                                {
+                                    "key": "token",
+                                    "value": "test",
+                                    "type": "default"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/email-verify",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api/email-verify"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "forgot-password [Post] [App\\Http\\Controllers\\API\\NewPasswordController] forgotPassword",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": []
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/forgot-password",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api/forgot-password"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "reset-password [Post] [App\\Http\\Controllers\\API\\NewPasswordController] reset",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": []
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/reset-password",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api/reset-password"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
                 {
                     "name": "categories [Get] [App\\Http\\Controllers\\Api\\CategoryController] index",
                     "request": {
@@ -645,39 +749,6 @@
                     ]
                 },
                 {
-                    "name": "new-game",
-                    "item": [
-                        {
-                            "name": "{currentLevel} [Get] [App\\Http\\Controllers\\Api\\QuestionController] newGame",
-                            "request": {
-                                "auth": {
-                                    "type": "bearer",
-                                    "bearer": [
-                                        {
-                                            "key": "token",
-                                            "value": "{{token}}",
-                                            "type": "string"
-                                        }
-                                    ]
-                                },
-                                "method": "GET",
-                                "header": [],
-                                "body": [],
-                                "url": {
-                                    "raw": "{{base_url}}/api/new-game/{currentLevel}",
-                                    "host": [
-                                        "{{base_url}}"
-                                    ],
-                                    "path": [
-                                        "api/new-game/{currentLevel}"
-                                    ]
-                                }
-                            },
-                            "response": []
-                        }
-                    ]
-                },
-                {
                     "name": "questions",
                     "item": [
                         {
@@ -709,7 +780,7 @@
                             "response": []
                         },
                         {
-                            "name": "{question} [Post] [App\\Http\\Controllers\\Api\\QuestionController] update",
+                            "name": "{question} [Put] [App\\Http\\Controllers\\Api\\QuestionController] update",
                             "request": {
                                 "auth": {
                                     "type": "bearer",
@@ -721,12 +792,46 @@
                                         }
                                     ]
                                 },
-                                "method": "POST",
+                                "method": "PUT",
                                 "header": [],
                                 "body": {
                                     "mode": "formdata",
-                                    "formdata": []
+                                    "formdata": [
+                                        {
+                                            "key": "_method",
+                                            "value": "PUT",
+                                            "type": "default"
+                                        }
+                                    ]
                                 },
+                                "url": {
+                                    "raw": "{{base_url}}/api/questions/{question}",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "api/questions/{question}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "{question} [Delete] [App\\Http\\Controllers\\Api\\QuestionController] delete",
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "header": [],
+                                "body": [],
                                 "url": {
                                     "raw": "{{base_url}}/api/questions/{question}",
                                     "host": [
@@ -742,8 +847,102 @@
                     ]
                 },
                 {
+                    "name": "new-game",
+                    "item": [
+                        {
+                            "name": "{currentLevel} [Get] [App\\Http\\Controllers\\Api\\QuestionController] newRankedGame",
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [],
+                                "body": [],
+                                "url": {
+                                    "raw": "{{base_url}}/api/new-game/{currentLevel}",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "api/new-game/{currentLevel}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        }
+                    ]
+                },
+                {
+                    "name": "new-private-game",
+                    "item": [
+                        {
+                            "name": "{currentLevel} [Get] [App\\Http\\Controllers\\Api\\QuestionController] newPrivateGame",
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [],
+                                "body": [],
+                                "url": {
+                                    "raw": "{{base_url}}/api/new-private-game/{currentLevel}",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "api/new-private-game/{currentLevel}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        }
+                    ]
+                },
+                {
                     "name": "rankings",
                     "item": [
+                        {
+                            "name": "top-collection [Get] [App\\Http\\Controllers\\Api\\RankingController] topCollection",
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [],
+                                "body": [],
+                                "url": {
+                                    "raw": "{{base_url}}/api/rankings/top-collection",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "api/rankings/top-collection"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
                         {
                             "name": "save-stats [Post] [App\\Http\\Controllers\\Api\\RankingController] saveStats",
                             "request": {
@@ -805,6 +1004,240 @@
                                         }
                                     },
                                     "response": []
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "smats",
+                    "item": [
+                        {
+                            "name": "{smat} [Delete] [App\\Http\\Controllers\\Api\\SmatController] destroy",
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "DELETE",
+                                "header": [],
+                                "body": [],
+                                "url": {
+                                    "raw": "{{base_url}}/api/smats/{smat}",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "api/smats/{smat}"
+                                    ]
+                                }
+                            },
+                            "response": []
+                        },
+                        {
+                            "name": "accept-dual",
+                            "item": [
+                                {
+                                    "name": "{smat} [Post] [App\\Http\\Controllers\\Api\\SmatController] acceptDual",
+                                    "request": {
+                                        "auth": {
+                                            "type": "bearer",
+                                            "bearer": [
+                                                {
+                                                    "key": "token",
+                                                    "value": "{{token}}",
+                                                    "type": "string"
+                                                }
+                                            ]
+                                        },
+                                        "method": "POST",
+                                        "header": [],
+                                        "body": {
+                                            "mode": "formdata",
+                                            "formdata": []
+                                        },
+                                        "url": {
+                                            "raw": "{{base_url}}/api/smats/accept-dual/{smat}",
+                                            "host": [
+                                                "{{base_url}}"
+                                            ],
+                                            "path": [
+                                                "api/smats/accept-dual/{smat}"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                }
+                            ]
+                        },
+                        {
+                            "name": "{smat}",
+                            "item": [
+                                {
+                                    "name": "finish [Put] [App\\Http\\Controllers\\Api\\SmatController] Finish",
+                                    "request": {
+                                        "auth": {
+                                            "type": "bearer",
+                                            "bearer": [
+                                                {
+                                                    "key": "token",
+                                                    "value": "{{token}}",
+                                                    "type": "string"
+                                                }
+                                            ]
+                                        },
+                                        "method": "PUT",
+                                        "header": [],
+                                        "body": {
+                                            "mode": "formdata",
+                                            "formdata": [
+                                                {
+                                                    "key": "_method",
+                                                    "value": "PUT",
+                                                    "type": "default"
+                                                }
+                                            ]
+                                        },
+                                        "url": {
+                                            "raw": "{{base_url}}/api/smats/{smat}/finish",
+                                            "host": [
+                                                "{{base_url}}"
+                                            ],
+                                            "path": [
+                                                "api/smats/{smat}/finish"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                },
+                                {
+                                    "name": "save-result",
+                                    "item": [
+                                        {
+                                            "name": "{user} [Put] [App\\Http\\Controllers\\Api\\SmatController] saveResult",
+                                            "request": {
+                                                "auth": {
+                                                    "type": "bearer",
+                                                    "bearer": [
+                                                        {
+                                                            "key": "token",
+                                                            "value": "{{token}}",
+                                                            "type": "string"
+                                                        }
+                                                    ]
+                                                },
+                                                "method": "PUT",
+                                                "header": [],
+                                                "body": {
+                                                    "mode": "formdata",
+                                                    "formdata": [
+                                                        {
+                                                            "key": "_method",
+                                                            "value": "PUT",
+                                                            "type": "default"
+                                                        }
+                                                    ]
+                                                },
+                                                "url": {
+                                                    "raw": "{{base_url}}/api/smats/{smat}/save-result/{user}",
+                                                    "host": [
+                                                        "{{base_url}}"
+                                                    ],
+                                                    "path": [
+                                                        "api/smats/{smat}/save-result/{user}"
+                                                    ]
+                                                }
+                                            },
+                                            "response": []
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "smat-users",
+                    "item": [
+                        {
+                            "name": "show-by",
+                            "item": [
+                                {
+                                    "name": "{smatId} [Get] [App\\Http\\Controllers\\Api\\UserSmatController] showBySmatId",
+                                    "request": {
+                                        "auth": {
+                                            "type": "bearer",
+                                            "bearer": [
+                                                {
+                                                    "key": "token",
+                                                    "value": "{{token}}",
+                                                    "type": "string"
+                                                }
+                                            ]
+                                        },
+                                        "method": "GET",
+                                        "header": [],
+                                        "body": [],
+                                        "url": {
+                                            "raw": "{{base_url}}/api/smat-users/show-by/{smatId}",
+                                            "host": [
+                                                "{{base_url}}"
+                                            ],
+                                            "path": [
+                                                "api/smat-users/show-by/{smatId}"
+                                            ]
+                                        }
+                                    },
+                                    "response": []
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "questions-smat",
+                    "item": [
+                        {
+                            "name": "{smatId}",
+                            "item": [
+                                {
+                                    "name": "question",
+                                    "item": [
+                                        {
+                                            "name": "{questionId} [Get] [App\\Http\\Controllers\\Api\\QuestionSmatController] currentQuestion",
+                                            "request": {
+                                                "auth": {
+                                                    "type": "bearer",
+                                                    "bearer": [
+                                                        {
+                                                            "key": "token",
+                                                            "value": "{{token}}",
+                                                            "type": "string"
+                                                        }
+                                                    ]
+                                                },
+                                                "method": "GET",
+                                                "header": [],
+                                                "body": [],
+                                                "url": {
+                                                    "raw": "{{base_url}}/api/questions-smat/{smatId}/question/{questionId}",
+                                                    "host": [
+                                                        "{{base_url}}"
+                                                    ],
+                                                    "path": [
+                                                        "api/questions-smat/{smatId}/question/{questionId}"
+                                                    ]
+                                                }
+                                            },
+                                            "response": []
+                                        }
+                                    ]
                                 }
                             ]
                         }
@@ -1038,7 +1471,7 @@
                             "response": []
                         },
                         {
-                            "name": "{user} [Put] [App\\Http\\Controllers\\Api\\UserController] update",
+                            "name": "{user} [Post] [App\\Http\\Controllers\\Api\\UserController] update",
                             "request": {
                                 "auth": {
                                     "type": "bearer",
@@ -1050,17 +1483,11 @@
                                         }
                                     ]
                                 },
-                                "method": "PUT",
+                                "method": "POST",
                                 "header": [],
                                 "body": {
                                     "mode": "formdata",
-                                    "formdata": [
-                                        {
-                                            "key": "_method",
-                                            "value": "PUT",
-                                            "type": "default"
-                                        }
-                                    ]
+                                    "formdata": []
                                 },
                                 "url": {
                                     "raw": "{{base_url}}/api/users/{user}",
@@ -1103,13 +1530,13 @@
                             "response": []
                         },
                         {
-                            "name": "{friend}",
+                            "name": "{user}",
                             "item": [
                                 {
-                                    "name": "add-friend",
+                                    "name": "add-friend-with",
                                     "item": [
                                         {
-                                            "name": "{user} [Post] [App\\Http\\Controllers\\Api\\UserController] addFriend",
+                                            "name": "{friend} [Post] [App\\Http\\Controllers\\Api\\UserController] addFriend",
                                             "request": {
                                                 "auth": {
                                                     "type": "bearer",
@@ -1128,29 +1555,24 @@
                                                     "formdata": []
                                                 },
                                                 "url": {
-                                                    "raw": "{{base_url}}/api/users/{friend}/add-friend/{user}",
+                                                    "raw": "{{base_url}}/api/users/{user}/add-friend-with/{friend}",
                                                     "host": [
                                                         "{{base_url}}"
                                                     ],
                                                     "path": [
-                                                        "api/users/{friend}/add-friend/{user}"
+                                                        "api/users/{user}/add-friend-with/{friend}"
                                                     ]
                                                 }
                                             },
                                             "response": []
                                         }
                                     ]
-                                }
-                            ]
-                        },
-                        {
-                            "name": "{user}",
-                            "item": [
+                                },
                                 {
                                     "name": "is-friend-with",
                                     "item": [
                                         {
-                                            "name": "{friend} [Get] [App\\Http\\Controllers\\Api\\UserController] isFriendWith",
+                                            "name": "{friend} [Get] [App\\Http\\Controllers\\Api\\UserController] friendshipExists",
                                             "request": {
                                                 "auth": {
                                                     "type": "bearer",
@@ -1178,8 +1600,110 @@
                                             "response": []
                                         }
                                     ]
+                                },
+                                {
+                                    "name": "accept-friend-with",
+                                    "item": [
+                                        {
+                                            "name": "{friend} [Post] [App\\Http\\Controllers\\Api\\UserController] acceptFriend",
+                                            "request": {
+                                                "auth": {
+                                                    "type": "bearer",
+                                                    "bearer": [
+                                                        {
+                                                            "key": "token",
+                                                            "value": "{{token}}",
+                                                            "type": "string"
+                                                        }
+                                                    ]
+                                                },
+                                                "method": "POST",
+                                                "header": [],
+                                                "body": {
+                                                    "mode": "formdata",
+                                                    "formdata": []
+                                                },
+                                                "url": {
+                                                    "raw": "{{base_url}}/api/users/{user}/accept-friend-with/{friend}",
+                                                    "host": [
+                                                        "{{base_url}}"
+                                                    ],
+                                                    "path": [
+                                                        "api/users/{user}/accept-friend-with/{friend}"
+                                                    ]
+                                                }
+                                            },
+                                            "response": []
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "deleted-friend-with",
+                                    "item": [
+                                        {
+                                            "name": "{friend} [Delete] [App\\Http\\Controllers\\Api\\UserController] deletedFriendship",
+                                            "request": {
+                                                "auth": {
+                                                    "type": "bearer",
+                                                    "bearer": [
+                                                        {
+                                                            "key": "token",
+                                                            "value": "{{token}}",
+                                                            "type": "string"
+                                                        }
+                                                    ]
+                                                },
+                                                "method": "DELETE",
+                                                "header": [],
+                                                "body": [],
+                                                "url": {
+                                                    "raw": "{{base_url}}/api/users/{user}/deleted-friend-with/{friend}",
+                                                    "host": [
+                                                        "{{base_url}}"
+                                                    ],
+                                                    "path": [
+                                                        "api/users/{user}/deleted-friend-with/{friend}"
+                                                    ]
+                                                }
+                                            },
+                                            "response": []
+                                        }
+                                    ]
                                 }
                             ]
+                        }
+                    ]
+                },
+                {
+                    "name": "me",
+                    "item": [
+                        {
+                            "name": "{currentLevel} [Get] [] ",
+                            "request": {
+                                "auth": {
+                                    "type": "bearer",
+                                    "bearer": [
+                                        {
+                                            "key": "token",
+                                            "value": "{{token}}",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "method": "GET",
+                                "header": [],
+                                "body": [],
+                                "url": {
+                                    "raw": "{{base_url}}/api/me/{currentLevel}",
+                                    "host": [
+                                        "{{base_url}}"
+                                    ],
+                                    "path": [
+                                        "api/me/{currentLevel}"
+                                    ]
+                                }
+                            },
+                            "response": []
                         }
                     ]
                 }

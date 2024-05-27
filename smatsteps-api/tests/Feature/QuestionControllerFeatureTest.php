@@ -33,8 +33,5 @@ class QuestionControllerFeatureTest extends TestCase
             'countLevel2',
             'countLevel3',
         ]);
-
-        // Vérification du contenu de la réponse
-        // (vous pouvez ajouter d'autres assertions pour vérifier le contenu de la réponse si nécessaire)
     }
 }

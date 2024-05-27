@@ -16,7 +16,6 @@ return new class extends Migration
             $table->text('question');
             $table->text('image_question')->nullable();
 
-
             $table->timestamps();
 
             $table->foreignId('sous_theme_id')->constrained('sous_themes')->nullable();

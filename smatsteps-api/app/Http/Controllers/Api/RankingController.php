@@ -78,41 +78,49 @@ class RankingController extends Controller
 
     public function topCollection()
     {
-        // Récupérer les données de classement avec les thèmes et les sous-thèmes associés
-        $rankings = Ranking::with(['theme', 'sousTheme'])->get();
+        try {
+            // Récupérer les données de classement avec les thèmes et les sous-thèmes associés
+            $rankings = Ranking::with(['theme', 'sousTheme'])->get();
 
-        // Compter le nombre d'occurrences de chaque ID de thème
-        $themeCounts = $rankings->groupBy('theme_id')->map->count();
+            // Compter le nombre d'occurrences de chaque ID de thème
+            $themeCounts = $rankings->groupBy('theme_id')->map->count();
 
-        // Compter le nombre d'occurrences de chaque ID de sous-thème
-        $sousThemeCounts = $rankings->groupBy('sous_theme_id')->map->count();
+            // Compter le nombre d'occurrences de chaque ID de sous-thème
+            $sousThemeCounts = $rankings->groupBy('sous_theme_id')->map->count();
 
-        // Récupérer les thèmes les plus utilisés
-        $topThemes = $themeCounts->sortDesc()->keys()->take(5);
+            // Récupérer les thèmes les plus utilisés
+            $topThemes = $themeCounts->sortDesc()->keys()->take(5);
 
-        // Récupérer les sous-thèmes les plus utilisés
-        $topSousThemes = $sousThemeCounts->sortDesc()->keys()->take(5);
+            // Récupérer les sous-thèmes les plus utilisés
+            $topSousThemes = $sousThemeCounts->sortDesc()->keys()->take(5);
 
-        // Récupérer les images et les noms des thèmes
-        $themesData = Theme::whereIn('id', $topThemes)->get()->keyBy('id');
+            // Récupérer les images et les noms des thèmes
+            $themesData = Theme::whereIn('id', $topThemes)->get()->keyBy('id');
 
-        // Récupérer les sous-thèmes les plus utilisés avec leurs thèmes associés
-        $topSousThemesData = SousTheme::with('theme')
-            ->whereIn('id', $topSousThemes)
-            ->get();
+            // Récupérer les sous-thèmes les plus utilisés avec leurs thèmes associés
+            $topSousThemesData = SousTheme::with('theme')
+                ->whereIn('id', $topSousThemes)
+                ->get();
 
-        // Sélectionner trois sous-thèmes aléatoires
-        $randomSousThemes = SousTheme::inRandomOrder()->limit(5)->get();
+            // Sélectionner trois sous-thèmes aléatoires
+            $randomSousThemes = SousTheme::inRandomOrder()->limit(5)->get();
 
-        // Formattez les résultats dans un tableau associatif
-        $result = [
-            'topThemes' => $themesData,
-            'topSousThemes' => $topSousThemesData,
-            'randomSousThemes' => $randomSousThemes,
-        ];
+            // Formattez les résultats dans un tableau associatif
+            $result = [
+                'topThemes' => $themesData,
+                'topSousThemes' => $topSousThemesData,
+                'randomSousThemes' => $randomSousThemes,
+            ];
 
-        return $result;
+            return response()->json($result);
+        } catch (\Throwable $e) {
+            return response()->json([
+                'status' => false,
+                'message' => $e->getMessage(),
+            ], 403);
+        }
     }
+
 
 
 

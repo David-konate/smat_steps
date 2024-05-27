@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -181,6 +182,22 @@ class QuestionController extends Controller
 
     public function newPrivateGame($currentLevel, Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'theme' => 'nullable|array',
+            'theme.*' => 'integer|exists:themes,id',
+            'sousTheme' => 'nullable|array',
+            'sousTheme.*' => 'integer|exists:sous_themes,id',
+            'user1' => 'required|integer|exists:users,id',
+            'user2' => 'required|integer|exists:users,id',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Validation error',
+                'errors' => $validator->errors(),
+            ], 422); // Unprocessable Entity
+        }
         try {
             // Récupérer les thèmes et sous-thèmes spécifiés dans la requête
             $theme = $request->query('theme');
@@ -198,7 +215,6 @@ class QuestionController extends Controller
             $countLevel2 = 0;
             $countLevel3 = 0;
             switch ($currentLevel) {
-
                 case 1:
                     // Récupérer 20 questions de niveau 1
                     $questions = Question::with(['theme', 'sousTheme', 'answers'])
@@ -211,9 +227,7 @@ class QuestionController extends Controller
                     if ($sous_theme) {
                         $questions->whereIn('sous_theme_id', $sous_theme);
                     }
-
                     $countLevel1 = 20;
-
                     break;
                 case 2:
                     // Récupérer 10 questions de niveau 1 et 10 questions de niveau 2
@@ -242,7 +256,9 @@ class QuestionController extends Controller
                     $questions = $questionsLevel1->union($questionsLevel2);
 
                     break;
-                case 3:
+
+
+                default:
                     // Récupérer 7 questions de niveau 1, 7 questions de niveau 2 et 6 questions de niveau 3
                     $questionsLevel1 = Question::with(['theme', 'sousTheme', 'answers'])
                         ->where('level_id', 1)
@@ -282,20 +298,7 @@ class QuestionController extends Controller
                     $countLevel2 = 7;
                     $countLevel3 = 6;
                     break;
-                default:
-                    // Récupérer 10 questions de niveau 1 et 10 questions de niveau 2
-                    $questionsLevel1 = Question::with(['theme', 'sousTheme', 'answers'])
-                        ->where('level_id', 1)
-                        ->limit(10);
-                    $questionsLevel2 = Question::with(['theme', 'sousTheme', 'answers'])
-                        ->where('level_id', 2)
-                        ->limit(10);
-                    $questions = $questionsLevel1->union($questionsLevel2);
-                    $countLevel1 = 10;
-                    $countLevel2 = 10;
-                    break;
             }
-
             // Ajouter des conditions pour les thèmes et sous-thèmes si disponibles
             if (!is_null($theme)) {
                 $questions->whereIn('theme_id', $theme);
@@ -303,12 +306,8 @@ class QuestionController extends Controller
             if (!is_null($sous_theme)) {
                 $questions->whereIn('sous_theme_id', $sous_theme);
             }
-
             // Exécuter la requête et récupérer les questions
             $questions = $questions->inRandomOrder()->get();
-
-            // Créez le Smat avec les données appropriées
-
             // Créer le Smat avec les données appropriées
             try {
                 $smat = Smat::create([
@@ -328,7 +327,6 @@ class QuestionController extends Controller
                     'error' => $e->getMessage(),
                 ], 500); // Utiliser le code 500 pour les erreurs internes du serveur
             }
-
             // Création des entrées user_smat pour chaque utilisateur dans un bloc try...catch
             try {
                 $userSmatEntries = [];
@@ -350,8 +348,6 @@ class QuestionController extends Controller
                     'error' => $e->getMessage(),
                 ], 500); // Utiliser le code 500 pour les erreurs internes du serveur
             }
-
-
             // Associer les questions au Smat et mélanger les réponses
             $questions->shuffle();
             $index = 0;
@@ -364,7 +360,6 @@ class QuestionController extends Controller
                 ]);
                 $questionSmat->save();
             }
-
             // Retourner un message de réussite
             return response()->json([
                 'status' => true,
@@ -634,6 +629,35 @@ class QuestionController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            // Trouver la question par ID
+            $question = Question::findOrFail($id);
+
+            // Supprimer les réponses associées à la question
+            $question->answers()->delete();
+
+            // Supprimer l'image associée si elle existe
+            if ($question->image_question) {
+                Storage::delete('public/uploads/' . $question->image_question);
+            }
+
+            // Supprimer la question
+            $question->delete();
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Question supprimée avec succès',
+            ], 200);
+        } catch (\Throwable $e) {
+            // Logguer l'erreur pour le débogage
+            Log::error('Erreur lors de la suppression de la question : ' . $e->getMessage());
+
+            // Retourner une réponse JSON d'erreur
+            return response()->json([
+                'status' => false,
+                'message' => 'Erreur lors de la suppression de la question. Veuillez réessayer ultérieurement.',
+                'error' => $e->getMessage(),
+            ], 500);
+        }
     }
 }
