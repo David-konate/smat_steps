@@ -3,8 +3,7 @@ import { Card, CardActionArea, CardMedia, Typography } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import { displayImage } from "../../utils";
 
-const CardTheme = ({ theme, theme_id, theme_image }) => {
-  console.log(theme_id);
+const CardSousTheme = ({ theme, theme_id, theme_image }) => {
   return (
     <Card
       sx={{
@@ -12,7 +11,7 @@ const CardTheme = ({ theme, theme_id, theme_image }) => {
         boxShadow: "0px 4px 8px rgba(105, 73, 255, 0.7)",
       }}
     >
-      <NavLink to={`/theme/${theme_id}`}>
+      <NavLink to={`/sous-theme/${theme_id}`}>
         <CardActionArea style={{ width: "100%" }}>
           <CardMedia
             className="image-theme-home"
@@ -47,4 +46,4 @@ const CardTheme = ({ theme, theme_id, theme_image }) => {
   );
 };
 
-export default CardTheme;
+export default CardSousTheme;

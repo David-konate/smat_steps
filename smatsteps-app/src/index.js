@@ -13,6 +13,7 @@ import "./App.scss";
 import { UserProvider } from "./context/UserProvider";
 import { FilterProvider } from "./context/FilterProvider";
 import { GameProvider } from "./context/GameProvider";
+import { HelmetProvider } from "react-helmet-async";
 
 moment.locale("fr");
 
@@ -25,9 +26,6 @@ axios.defaults.withCredentials = true;
 // Interception des réponses Axios pour la gestion des erreurs d'authentification
 axios.interceptors.response.use(
   function (response) {
-    // Toute réponse avec un code de statut compris dans la plage 2xx déclenche cette fonction
-    // Faites quelque chose avec les données de la réponse
-
     return response;
   },
   function (error) {
@@ -56,11 +54,13 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <BrowserRouter>
       <CustomThemeProvider>
         <FilterProvider>
-          <UserProvider>
-            <GameProvider>
-              <App />
-            </GameProvider>
-          </UserProvider>
+          <HelmetProvider>
+            <UserProvider>
+              <GameProvider>
+                <App />
+              </GameProvider>
+            </UserProvider>
+          </HelmetProvider>
         </FilterProvider>
       </CustomThemeProvider>
     </BrowserRouter>

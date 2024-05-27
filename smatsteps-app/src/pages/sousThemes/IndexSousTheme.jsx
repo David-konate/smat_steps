@@ -4,6 +4,8 @@ import { Box, Container, Grid, InputBase, Typography } from "@mui/material";
 import { CircularProgress } from "@mui/material";
 import { useGameContext } from "../../context/GameProvider";
 import CardTheme from "../../components/cards/CardTheme";
+import CardSousTheme from "../../components/cards/CardSousTheme";
+import { Helmet } from "react-helmet-async";
 
 const IndexSousTheme = () => {
   const [isBusy, setIsBusy] = useState(true);
@@ -39,6 +41,13 @@ const IndexSousTheme = () => {
 
   return (
     <Container className="index-sous-theme">
+      <Helmet>
+        <title>Page index sous themes -SmatSteps</title>
+        <meta
+          name="description"
+          content="Bienvenue sur la page sous themes de SmatSteps, une application de quiz interactive, conviviale et enrichissante. Explorez et élargissez vos connaissances avec SmatSteps !"
+        />
+      </Helmet>
       {isBusy ? (
         <Box
           sx={{
@@ -83,7 +92,7 @@ const IndexSousTheme = () => {
               filteredThemes.map((topSousTheme, index) => (
                 <Grid item key={index} md={3} sm={4} xs={6}>
                   {/* Utiliser le composant CardTheme */}
-                  <CardTheme
+                  <CardSousTheme
                     theme={topSousTheme.sous_theme}
                     theme_id={topSousTheme.id}
                     theme_image={topSousTheme.sous_theme_image}

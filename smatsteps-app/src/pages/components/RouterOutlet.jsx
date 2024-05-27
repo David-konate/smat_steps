@@ -16,6 +16,8 @@ import NotFound from "../NotFound";
 import Dashboard from "../dashBoard/DashBoard";
 import AdminRouteGuard from "./AdminRouteGuard";
 import PasswordForgotPage from "../users/ChangePassword";
+import LegalMentions from "../LegalMentions";
+import PrivacyPolicy from "../politique";
 
 const RouterOutlet = () => {
   return (
@@ -54,6 +56,10 @@ const RouterOutlet = () => {
         path="/dashboard"
         element={<AdminRouteGuard element={<Dashboard />} />}
       />
+      {/* Routes politique */}
+      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+      {/* Routes mentions */}
+      <Route path="/legal-mentions" element={<LegalMentions />} />
       {/* Routes confirm email */}
       <Route path={`/email/verify`} element={<EmailVerifyPage />} />
       <Route path="/password/forgot" element={<PasswordForgotPage />} />

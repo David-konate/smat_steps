@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { Box, Container, Stack } from "@mui/system";
-import { Button, CircularProgress, Grid, Typography } from "@mui/material";
+import {
+  Box,
+  Container,
+  Stack,
+  Button,
+  CircularProgress,
+  Grid,
+  Typography,
+} from "@mui/material";
 import LevelBox from "../../components/LevelBox";
 import { useGameContext } from "../../context/GameProvider";
 import ListIcon from "@mui/icons-material/List";
@@ -10,9 +17,8 @@ import MultiplePersonsIcon from "../../components/svg/MultiplePersonsIcon";
 import RankingsList from "../../components/list/RankingList";
 import MessageThemeNewRanged from "../../components/message/MessageThemeNewRanged";
 import PlayerCard from "../../components/cards/PlayerCars";
-
 const Theme = () => {
-  const { id } = useParams();
+  const { id } = useParams(); // Use useParams to get the ID from the URL
   const [isCardNewRankedOpen, setIsCardNewRankedOpen] = useState(false);
   const [isBusy, setIsBusy] = useState(true);
   const {

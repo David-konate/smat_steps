@@ -121,11 +121,15 @@ const QuestionsList = () => {
         <CircularProgress />
       ) : (
         <>
+          <Box mt={3} mb={3}>
+            {isFormOpen && <QuestionForm onClose={handleCloseForm} />}
+          </Box>
+
           <Typography variant="h5" gutterBottom>
             Liste des questions
           </Typography>
           {/* Afficher le formulaire QuestionForm si isFormOpen est vrai */}
-          {isFormOpen && <QuestionForm onClose={handleCloseForm} />}
+
           <Box
             display="flex"
             justifyContent="space-between"
@@ -172,6 +176,7 @@ const QuestionsList = () => {
           </Box>
           {filteredQuestions.map((question, index) => (
             <Box
+              className={"list-question"}
               key={index}
               display="flex"
               alignItems="center"

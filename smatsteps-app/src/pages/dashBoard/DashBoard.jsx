@@ -96,7 +96,10 @@ const Dashboard = () => {
               className={tab.id === tabSelected?.id ? "activeButton" : ""}
               style={{ margin: "2px" }}
             >
-              <Typography color={"red"}> {tab.buttonLabel}</Typography>
+              <Typography color={"var(--primary-color)"}>
+                {" "}
+                {tab.buttonLabel}
+              </Typography>
             </Button>
           ))}
         </Box>

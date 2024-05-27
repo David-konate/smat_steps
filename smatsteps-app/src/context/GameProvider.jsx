@@ -70,6 +70,7 @@ export const GameProvider = ({ children }) => {
       onCalculPointRanked();
     }
   }, [currentAnswer]);
+
   //Récupération theme et sous theme ds ordre dutilisation
   const fetchTopCollection = async () => {
     try {
@@ -115,31 +116,41 @@ export const GameProvider = ({ children }) => {
       setIsBusy(false);
     }
   };
+
   const fetchPrivateNewGame = async (user1, user2) => {
     try {
+      // Indique que le processus est en cours
       setIsBusy(true);
+      // Vérifier si currentTheme ou currentSousTheme est défini
       if (currentTheme || currentSousTheme) {
         // Utilisation de || pour vérifier si au moins l'un des deux est défini
         const params = {};
+        // Si currentTheme est défini, ajouter son id aux paramètres
         if (currentTheme) {
           params.theme = currentTheme.id;
         }
+        // Si currentSousTheme est défini, ajouter son id aux paramètres
         if (currentSousTheme) {
           params.sousTheme = currentSousTheme.id;
         }
+        // Ajouter les identifiants des utilisateurs aux paramètres
         params.user1 = user1;
         params.user2 = user2;
-
+        // Effectuer une requête GET vers l'endpoint /new-private-game avec les paramètres
         const res = await axios.get(`/new-private-game/${currentLevel}`, {
           params,
         });
+        // Afficher la réponse dans la console
         console.log(res);
       } else {
+        // Si ni currentTheme ni currentSousTheme ne sont définis, afficher une erreur dans la console
         console.error("Neither currentTheme nor currentSousTheme is defined");
       }
     } catch (error) {
+      // En cas d'erreur, l'afficher dans la console
       console.log(error);
     } finally {
+      // Indiquer que le processus est terminé
       setIsBusy(false);
     }
   };
@@ -199,24 +210,14 @@ export const GameProvider = ({ children }) => {
           break;
       }
     }
-
     // Mettre à jour l'état des points actuels du SMAT en utilisant la fonction de rappel
     setCurrentPointsSmat((prevPointsSmat) => prevPointsSmat + res);
-
     // Appeler axios pour enregistrer le résultat de la question
     try {
-      await axios.put(
-        `smats/${smat.id}/save-result/${user.id}`,
-        {
-          newScore: res, // Utiliser les points calculés
-          newCurrentPointsMax: LEVELS[currentSmatQuestion.level_id], // Mettre à jour les points max possibles
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`, // Ajouter le jeton d'authentification dans l'en-tête
-          },
-        }
-      );
+      await axios.put(`smats/${smat.id}/save-result/${user.id}`, {
+        newScore: res, // Utiliser les points calculés
+        newCurrentPointsMax: LEVELS[currentSmatQuestion.level_id], // Mettre à jour les points max possibles
+      });
     } catch (error) {
       console.error(error); // Gérer les erreurs en cas de problème lors de la requête
     }

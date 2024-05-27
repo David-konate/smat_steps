@@ -96,9 +96,7 @@ const MessageNewPrivate = ({
       setIsBusy(false); // Définit isBusy sur false une fois que la récupération des données est terminée
     }
   };
-
-  // Utilisation de useMemo pour mémoriser le résultat de la filtration
-  // des amis en fonction du texte de recherche pseudo.
+  // Utilisation de useMemo pour mémoriser le résultat de la filtration.
   // Cela permet d'éviter de recalculer la liste filtrée à chaque rendu,
   // sauf si friends ou searchTextPseudo changent.
   const filteredPseudos = useMemo(() => {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import {
   Box,
   Typography,
@@ -10,7 +10,7 @@ import {
   CardMedia,
   CardActionArea,
 } from "@mui/material";
-
+import { Helmet } from "react-helmet-async";
 import WhiteButton from "../components/buttons/WhiteButton";
 import { displayImage } from "../utils";
 import { useGameContext } from "../context/GameProvider";
@@ -33,10 +33,36 @@ const Home = () => {
   const handleOpenCardPrivate = () => {
     setIsCardNewPrivateOpen(true);
   };
+  const navigate = useNavigate();
+  const handleThemes = () => {
+    navigate("/theme");
+  };
 
+  const handleSousThemes = () => {
+    navigate("/sous-theme");
+  };
+
+  const handleRandom = () => {
+    navigate("/random-theme");
+  };
   return (
     <Container>
-      <Box mt={5} width={"100%"} justifyContent={"center"}>
+      <Helmet>
+        <title>Page d'accueil -SmatSteps</title>
+        <meta
+          name="description"
+          content="Bienvenue sur la page d'accueil de SmatSteps, une application de quiz interactive, conviviale et enrichissante. Explorez et élargissez vos connaissances avec SmatSteps !"
+        />
+      </Helmet>
+      <Typography
+        sx={{ color: "var(--primary-color)" }}
+        mt={2}
+        textAlign={"center"}
+        variant="h3"
+      >
+        PAGE D'ACCEUIL
+      </Typography>
+      <Box mt={2} width={"100%"} justifyContent={"center"}>
         <Card
           className="card-new-ranking"
           sx={{
@@ -186,9 +212,16 @@ const Home = () => {
         </Card>
         <Stack mt={5} direction={"row"} justifyContent={"space-between"}>
           <Typography className="top-theme-title">TOP THEMES</Typography>
-          <Link to={`/theme`} className="top-theme-link">
+          <Typography
+            sx={{
+              cursor: "pointer",
+              fontWeight: "bold",
+              color: "var(--secondary-color-special)",
+            }}
+            onClick={handleThemes}
+          >
             Tous voir
-          </Link>
+          </Typography>
         </Stack>
         <Stack
           className="card-top-theme-home"
@@ -211,8 +244,9 @@ const Home = () => {
                       height="100px"
                       width="350px"
                       image={displayImage(topTheme.theme_image)}
-                      alt="Image description"
+                      alt={"Image " + topTheme.theme}
                     />
+
                     <Typography
                       variant="body2"
                       component="div"
@@ -249,9 +283,16 @@ const Home = () => {
           justifyItems={"end"}
         >
           <Typography className="top-theme-title">TOP SOUS THEMES</Typography>
-          <Link to={`/sous-theme`} className="top-theme-link">
+          <Typography
+            sx={{
+              cursor: "pointer",
+              fontWeight: "bold",
+              color: "var(--secondary-color-special)",
+            }}
+            onClick={handleSousThemes}
+          >
             Tous voir
-          </Link>
+          </Typography>
         </Stack>
         <Stack
           className="card-top-theme-home"
@@ -274,7 +315,7 @@ const Home = () => {
                       height="100px"
                       width="350px"
                       image={displayImage(topSousTheme.sous_theme_image)}
-                      alt="Image description"
+                      alt={"Image " + topSousTheme.sous_theme}
                     />
                     <Typography
                       variant="body2"
@@ -312,9 +353,16 @@ const Home = () => {
           justifyItems={"end"}
         >
           <Typography className="top-theme-title">ALEATOIRE</Typography>
-          <Link to={`/sous-theme`} className="top-theme-link">
+          <Typography
+            sx={{
+              cursor: "pointer",
+              fontWeight: "bold",
+              color: "var(--secondary-color-special)",
+            }}
+            onClick={handleRandom}
+          >
             Tous voir
-          </Link>
+          </Typography>
         </Stack>
         <Stack
           className="card-top-theme-home"
@@ -337,7 +385,7 @@ const Home = () => {
                       height="100px"
                       width="350px"
                       image={displayImage(randomTheme.sous_theme_image)}
-                      alt="Image description"
+                      alt={"Image " + randomTheme.theme}
                     />
                     <Typography
                       variant="body2"

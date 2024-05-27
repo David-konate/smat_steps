@@ -4,6 +4,8 @@ import NavBar from "./components/NavBar";
 import RouterOutlet from "./pages/components/RouterOutlet";
 import { useUserContext } from "./context/UserProvider";
 import { CircularProgress } from "@mui/material";
+import Footer from "./components/Footer";
+import { Box } from "@mui/system";
 
 function App() {
   const { authentification, userToken } = useUserContext();
@@ -26,7 +28,10 @@ function App() {
   return isLoaded ? (
     <>
       <NavBar />
-      <RouterOutlet />
+      <Box component={"main"}>
+        <RouterOutlet />
+      </Box>
+      <Footer />
     </>
   ) : (
     <>

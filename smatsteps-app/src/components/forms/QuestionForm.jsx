@@ -235,7 +235,6 @@ const QuestionForm = ({ questionId = null }) => {
                       toolbar: [
                         [{ header: [1, 2, false] }],
                         ["bold", "italic", "underline"],
-                        ["image", "code-block"],
                       ],
                     }}
                     value={value}

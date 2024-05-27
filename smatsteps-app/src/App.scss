@@ -120,6 +120,28 @@ body {
     }
   }
 
+  .politique h1,
+  .politique h2,
+  .politique h3,
+  .politique h4,
+  .politique h5,
+  .politique h6 {
+    color: var(--secondary-color-special);
+  }
+  .politique p {
+    color: var(--color-text);
+    font-weight: bold;
+    font-family: "Madimi One", sans-serif;
+  }
+
+  .list-question {
+    font-family: "Bangers", sans-serif;
+    color: var(--primary-color-special);
+    background-color: var(--secondary-color-special);
+    box-shadow: var(--primaty-color-special);
+    border-radius: 5px;
+    font-weight: bold;
+  }
   .text-no-theme {
     color: var(--secondary-color-special);
     font-family: "Bangers", sans-serif;
@@ -142,6 +164,9 @@ body {
     }
   }
 
+  main {
+    min-height: calc(100vh - 199px);
+  }
   .card-sent-friend {
     border: 1px solid var(--primary-color-special);
     box-shadow: 1px 1px 6px var(--secondary-color-special);

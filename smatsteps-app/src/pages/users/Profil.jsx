@@ -148,11 +148,7 @@ const Profil = () => {
   const toggleList = () => {
     setIsOpen(!isOpen);
   };
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  const handleOpenDialog = () => {
-    setIsDialogOpen(true);
-  };
   // Function to delete friendship
   const deleteFriendship = async () => {
     try {
@@ -164,9 +160,6 @@ const Profil = () => {
     }
   };
 
-  const handleCloseDialog = () => {
-    setIsDialogOpen(false);
-  };
   // Assurez-vous que la fonction deleteFriendRequest est correctement appelée dans le ConfirmationDialog
   const addNewFriend = async () => {
     try {
@@ -193,10 +186,10 @@ const Profil = () => {
         <CircularProgress />
       ) : (
         <Container>
-          <Typography className="numb-pending-friend">
+          {/* <Typography className="numb-pending-friend">
             {" "}
             Profil de {userProfil?.user_pseudo}
-          </Typography>
+          </Typography> */}
           <Box sx={{ position: "relative" }}>
             <Stack
               direction={"column"}
@@ -361,7 +354,14 @@ const Profil = () => {
               <Typography mt={3} variant="h4">
                 Top scores
               </Typography>
-              <Stack alignItems="center" direction={"row"} gap={3} mt={3}>
+              <Stack
+                alignItems="center"
+                flexWrap={"wrap"}
+                justifyContent={"center"}
+                direction={"row"}
+                gap={3}
+                mt={3}
+              >
                 {userRankings.length > 0 ? (
                   userRankings
                     .sort((a, b) => b.result_quiz - a.result_quiz) // Trie par ordre ascendant de result_quiz
