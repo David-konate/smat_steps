@@ -13,6 +13,7 @@ import {
   List,
   filledInputClasses,
 } from "@mui/material/";
+import Cookies from "js-cookie";
 import { NavLink, useNavigate } from "react-router-dom";
 import { firstLetterUppercase, links } from "../utils";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -95,7 +96,7 @@ function NavBar() {
     try {
       const response = await axios.post(`/smats/accept-dual/${smatId}`, null, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${Cookies.get("token")}`,
         },
       });
 
@@ -129,7 +130,7 @@ function NavBar() {
     try {
       const response = await axios.delete(`smats/${smatId}/`, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${Cookies.get("token")}`,
         },
       });
 

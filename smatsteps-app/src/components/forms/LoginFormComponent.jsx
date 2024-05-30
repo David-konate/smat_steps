@@ -7,7 +7,7 @@ import { useUserContext } from "../../context/UserProvider";
 import { useForm } from "react-hook-form";
 import { Stack } from "@mui/system";
 import CustomButton2 from "../buttons/CustomButton2";
-
+import Cookies from "js-cookie";
 const LoginFormComponent = () => {
   const { setUser } = useUserContext();
   const [openDialog, setOpenDialog] = useState(false);
@@ -22,7 +22,11 @@ const LoginFormComponent = () => {
   const onSubmit = async (data) => {
     try {
       const response = await axios.post("/security/login", data);
-      localStorage.setItem("token", response.data.token);
+      Cookies.set("token", response.data.token, {
+        expires: 1,
+        secure: true,
+        sameSite: "Strict",
+      });
       setUser(response.data.user);
       setDialogTitle("Success");
       setDialogMessage(response.data.message);

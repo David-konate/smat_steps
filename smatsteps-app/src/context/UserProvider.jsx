@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { createContext, useContext, useMemo, useState } from "react";
 import { useGameContext } from "./GameProvider"; // Import du contexte du jeu, utilisé pour obtenir le niveau actuel du joueur
+import Cookies from "js-cookie";
 
 // Création du contexte utilisateur
 const UserContext = createContext({});
@@ -21,7 +22,7 @@ export const UserProvider = ({ children }) => {
 
   // Récupération du token utilisateur depuis le stockage local, s'il existe
   const userToken = useMemo(() => {
-    const token = localStorage.getItem("token");
+    const token = Cookies.get("token");
     return token ? token : null;
   }, []);
 

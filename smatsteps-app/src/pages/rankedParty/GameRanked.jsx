@@ -32,6 +32,7 @@ const GameRanked = () => {
     countLevel2,
     countLevel3,
     isQuizFinished,
+    setCurrentQuestionData,
   } = useGameContext();
 
   const totalQuestions = questionsRanked.length;
@@ -44,13 +45,13 @@ const GameRanked = () => {
   // Fonction pour calculer la largeur de la carte en fonction de la taille de l'écran
 
   const [image, setImage] = useState(() => {
-    if (questionsRanked[currentQuestion].image_question) {
+    if (questionsRanked[currentQuestion]?.image_question) {
       return questionsRanked[currentQuestion].image_question;
     } else if (
-      questionsRanked[currentQuestion].sous_theme &&
-      questionsRanked[currentQuestion].sous_theme.sous_theme_image
+      questionsRanked[currentQuestion]?.sous_theme &&
+      questionsRanked[currentQuestion]?.sous_theme.sous_theme_image
     ) {
-      return questionsRanked[currentQuestion].sous_theme.sous_theme_image;
+      return questionsRanked[currentQuestion]?.sous_theme.sous_theme_image;
     } else if (
       questionsRanked[currentQuestion].theme &&
       questionsRanked[currentQuestion].theme.theme_image
@@ -104,6 +105,7 @@ const GameRanked = () => {
     stopTimer();
     setTimeRemaining(timeRemaining); // Réinitialiser le chronomètre
     setCurrentAnswer(answer);
+    setCurrentQuestionData(questionsRanked[currentQuestion]);
   };
 
   // Logique pour définir le fond et la bordure en fonction de l'index

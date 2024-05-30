@@ -14,6 +14,7 @@ import { UserProvider } from "./context/UserProvider";
 import { FilterProvider } from "./context/FilterProvider";
 import { GameProvider } from "./context/GameProvider";
 import { HelmetProvider } from "react-helmet-async";
+import Cookies from "js-cookie";
 
 moment.locale("fr");
 
@@ -33,7 +34,7 @@ axios.interceptors.response.use(
     // Si le code de statut de la réponse est 401 (Non autorisé),
     // supprime le jeton d'authentification du stockage local
     if (error.response.status === 401) {
-      localStorage.removeItem("token");
+      Cookies.remove("token");
     }
     // Tout code de statut qui ne tombe pas dans la plage 2xx déclenche cette fonction
     // Faites quelque chose avec l'erreur de réponse
@@ -41,8 +42,8 @@ axios.interceptors.response.use(
   }
 );
 
-// Récupération du jeton d'authentification depuis le stockage local
-const TOKEN = localStorage.getItem("token");
+// Récupération du jeton d'authentification depuis le Cookie
+const TOKEN = Cookies.get("token");
 
 // Si un jeton est présent, l'ajouter aux en-têtes des requêtes Axios
 if (TOKEN) {

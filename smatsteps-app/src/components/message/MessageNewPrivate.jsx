@@ -9,7 +9,7 @@ import {
   Typography,
   Box,
 } from "@mui/material";
-
+import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { useGameContext } from "../../context/GameProvider";
 import LevelBox from "../LevelBox";
@@ -162,7 +162,7 @@ const MessageNewPrivate = ({
     try {
       await axios.post(`/smats/accept-dual/${smatId}`, null, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${Cookies.get("token")}`,
         },
       });
     } catch (error) {

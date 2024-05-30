@@ -13,6 +13,7 @@ import {
   FormControlLabel,
   Radio,
 } from "@mui/material";
+import Cookies from "js-cookie";
 import { vestResolver } from "@hookform/resolvers/vest";
 import { Controller, useForm } from "react-hook-form";
 import { validationQuestion, errorField } from "../../utils/formValidator";
@@ -146,7 +147,7 @@ const QuestionForm = ({ questionId = null }) => {
     data.user_id = user.id;
     console.log(data);
     try {
-      const token = localStorage.getItem("token");
+      const token = Cookies.get("token");
       const response = await axios.post("/questions", data, {
         headers: {
           Authorization: `Bearer ${token}`,

@@ -8,6 +8,7 @@ import {
 } from "../utils";
 import { useNavigate } from "react-router-dom";
 import { useUserContext } from "./UserProvider";
+import Cookies from "js-cookie";
 
 // Création du contexte de jeu
 const GameContext = createContext({});
@@ -55,7 +56,7 @@ export const GameProvider = ({ children }) => {
 
   const [currentSmatScore, setCurrentSmatScore] = useState(0);
   const [currentLevel, setCurrentLevel] = useState(() => {
-    const storedLevel = localStorage.getItem("level");
+    const storedLevel = Cookies.get("level");
     return storedLevel ? parseInt(storedLevel) : 2;
   });
   const { user } = useUserContext();
@@ -170,28 +171,6 @@ export const GameProvider = ({ children }) => {
     }));
   };
 
-  // const onCalculPointSmat = () => {
-  //   let points = 0;
-  //   if (
-  //     currentAnswerSmat &&
-  //     currentAnswerSmat.is_correct === 1 &&
-  //     timeRemaining > 0
-  //   ) {
-  //     switch (currentSmatQuestion.level_id) {
-  //       case 1:
-  //         points = calculatePoints(timeRemaining, 1);
-  //         break;
-  //       case 2:
-  //         points = calculatePoints(timeRemaining, 2);
-  //         break;
-  //       default:
-  //         points = calculatePoints(timeRemaining, 3);
-  //         break;
-  //     }
-  //   }
-  //   setCurrentPointsSmat(points);
-  // };
-
   const saveResultCurrentQuestionSmat = async (smat, answer) => {
     let res = 0; // Initialiser le résultat
 
@@ -236,9 +215,6 @@ export const GameProvider = ({ children }) => {
 
   //Calcule des points gagné par questions
   const onCalculPointRanked = () => {
-    setCurrentQuestionData(questionsRanked[currentQuestion]);
-    console.log({ currentQuestionData });
-    console.log({ currentAnswer });
     if (currentAnswer.is_correct === 1 && timeRemaining > 0) {
       console.log("Tu as suivi la voie de la Force! Bonne réponse!");
       let res;
@@ -321,7 +297,7 @@ export const GameProvider = ({ children }) => {
         },
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${Cookies.get("token")}`,
           },
         }
       );
