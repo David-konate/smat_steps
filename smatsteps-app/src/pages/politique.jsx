@@ -142,9 +142,9 @@ const PrivacyPolicy = () => {
         <Typography variant="body1">
           David Konaté
           <br />
-          Email : [votre email de contact]
+          Email : da.konate@gmail.com
           <br />
-          Adresse : [votre adresse]
+          Adresse : 4 avenue richelieu 44100 Nantes
         </Typography>
       </Box>
 

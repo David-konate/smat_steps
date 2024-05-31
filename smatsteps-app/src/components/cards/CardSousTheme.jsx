@@ -19,7 +19,7 @@ const CardSousTheme = ({ theme, theme_id, theme_image }) => {
             height="100px"
             width="350px"
             image={displayImage(theme_image)}
-            alt="Image description"
+            alt={`Image ${theme}`}
           />
           <Typography
             variant="body2"

@@ -215,6 +215,8 @@ export const GameProvider = ({ children }) => {
 
   //Calcule des points gagné par questions
   const onCalculPointRanked = () => {
+    console.log({ currentQuestionData });
+    console.log({ currentAnswer });
     if (currentAnswer.is_correct === 1 && timeRemaining > 0) {
       console.log("Tu as suivi la voie de la Force! Bonne réponse!");
       let res;

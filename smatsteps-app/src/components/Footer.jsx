@@ -21,17 +21,33 @@ function Footer() {
   const handleConf = () => {
     navigate("/privacy-policy");
   };
+  const handleRules = () => {
+    navigate("/rules");
+  };
 
   return (
-    <Box variant="footer" sx={{ flexGrow: 1 }} mt={5}>
+    <Box variant="footer" sx={{ flexGrow: 1 }} mt={5} className="footer">
+      {" "}
       <AppBar position="static" bottom="0">
         <Toolbar>
-          <Stack spacing={2} p={1} direction="row" justifyContent="center">
-            <Typography sx={{ cursor: "pointer" }} onClick={handleMention}>
+          <Stack spacing={3} p={1} direction="row" justifyContent="center">
+            <Typography
+              className="footer-typography" // Ajouter la classe "footer-typography"
+              onClick={handleMention}
+            >
               Mentions Légales
             </Typography>
-            <Typography sx={{ cursor: "pointer" }} onClick={handleConf}>
+            <Typography
+              className="footer-typography" // Ajouter la classe "footer-typography"
+              onClick={handleConf}
+            >
               Politique de confidentialité
+            </Typography>
+            <Typography
+              className="footer-typography" // Ajouter la classe "footer-typography"
+              onClick={handleRules}
+            >
+              Règles du jeu
             </Typography>
           </Stack>
         </Toolbar>

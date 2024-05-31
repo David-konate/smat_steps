@@ -1,5 +1,3 @@
-// RegisterFormComponent.js
-
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import {
@@ -8,17 +6,15 @@ import {
   TextField,
   Typography,
   InputAdornment,
+  IconButton,
+  Box,
 } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import axios from "axios";
 import { errorField, validationRegister } from "../../utils/formValidator";
 import { vestResolver } from "@hookform/resolvers/vest";
-
-import { getViolationField } from "../../utils";
-import { useUserContext } from "../../context/UserProvider";
 import LoadingButton from "@mui/lab/LoadingButton";
 import MessageDialog from "../message/MessageDialog";
-import { Box } from "@mui/system";
-import CustomButton from "../buttons/CustomButton";
 
 const RegisterFormComponent = () => {
   const {
@@ -33,11 +29,12 @@ const RegisterFormComponent = () => {
     resolver: vestResolver(validationRegister),
   });
 
-  // const onSubmit = (data) => console.log(data)
-  const { setUser } = useUserContext();
   const [dialogTitle, setDialogTitle] = useState("");
   const [dialogMessage, setDialogMessage] = useState("");
   const [openDialog, setOpenDialog] = useState(false);
+
+  const [showPassword, setShowPassword] = useState(false); // État pour gérer l'affichage du mot de passe
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false); // État pour gérer l'affichage du mot de passe de confirmation
 
   const onSubmit = async (data) => {
     try {
@@ -48,7 +45,6 @@ const RegisterFormComponent = () => {
         password_confirmation: data.confirmPassword,
       });
 
-      //recup les meesage back
       setDialogTitle(response.data.status);
       setDialogMessage(response.data.message);
       setOpenDialog(true);
@@ -63,8 +59,19 @@ const RegisterFormComponent = () => {
       console.log(error);
     }
   };
+
   const handleDialogClose = () => {
     setOpenDialog(false);
+  };
+
+  const handleClickShowPassword = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+
+  const handleClickShowConfirmPassword = () => {
+    setShowConfirmPassword(
+      (prevShowConfirmPassword) => !prevShowConfirmPassword
+    );
   };
 
   return (
@@ -125,7 +132,20 @@ const RegisterFormComponent = () => {
                 label="Mot de passe"
                 required
                 placeholder="6+ caractères requis"
-                type="password"
+                type={showPassword ? "text" : "password"} // Changer le type en fonction de l'état
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        edge="end"
+                      >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
               />
               <TextField
                 className="input-connexion"
@@ -135,7 +155,24 @@ const RegisterFormComponent = () => {
                 label="Confirmez votre mot de passe"
                 required
                 placeholder="6+ caractères requis"
-                type="password"
+                type={showConfirmPassword ? "text" : "password"} // Changer le type en fonction de l'état
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle confirm password visibility"
+                        onClick={handleClickShowConfirmPassword}
+                        edge="end"
+                      >
+                        {showConfirmPassword ? (
+                          <VisibilityOff />
+                        ) : (
+                          <Visibility />
+                        )}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
               />
               <Box mt={3}>
                 <LoadingButton

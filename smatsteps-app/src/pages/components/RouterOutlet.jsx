@@ -18,6 +18,7 @@ import AdminRouteGuard from "./AdminRouteGuard";
 import PasswordForgotPage from "../users/ChangePassword";
 import LegalMentions from "../LegalMentions";
 import PrivacyPolicy from "../politique";
+import RulesPage from "../RulesPage";
 
 const RouterOutlet = () => {
   return (
@@ -60,6 +61,7 @@ const RouterOutlet = () => {
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       {/* Routes mentions */}
       <Route path="/legal-mentions" element={<LegalMentions />} />
+      <Route path="/rules" element={<RulesPage />} />
       {/* Routes confirm email */}
       <Route path={`/email/verify`} element={<EmailVerifyPage />} />
       <Route path="/password/forgot" element={<PasswordForgotPage />} />

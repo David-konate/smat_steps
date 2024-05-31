@@ -109,6 +109,17 @@ const MessageNewRanged = ({
       sousTheme === currentSousTheme ? "" : sousTheme.sous_theme
     );
     setCurrentSousTheme(sousTheme === currentSousTheme ? null : sousTheme);
+    findAssociatedTheme(sousTheme);
+  };
+
+  const findAssociatedTheme = (selectedSousTheme) => {
+    if (selectedSousTheme) {
+      const associatedTheme = themes.find(
+        (theme) => theme.id === selectedSousTheme.theme_id
+      );
+      setCurrentTheme(associatedTheme);
+      setSearchTextTheme(associatedTheme ? associatedTheme.theme : "");
+    }
   };
 
   const handleCloseDialog = () => {

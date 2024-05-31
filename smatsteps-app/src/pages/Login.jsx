@@ -2,18 +2,14 @@
 import LoginFormComponent from "../components/forms/LoginFormComponent";
 import RegisterFormComponent from "../components/forms/RegisterFormComponent";
 import React, { useState } from "react";
-import CustomButton from "../components/buttons/CustomButton";
-
 import { Box, Container } from "@mui/material";
 import { Stack } from "@mui/system";
 import CustomButton2 from "../components/buttons/CustomButton2";
 import ResetPasswordForm from "../components/forms/ResetPasswordForm";
-import { useUserContext } from "../context/UserProvider";
 
 const Login = () => {
   const [tabSelected, setTabSelected] = useState("loginForm");
   const [showResetPasswordForm, setShowResetPasswordForm] = useState(false); // Ajoutez un état pour contrôler l'affichage du formulaire de réinitialisation
-  const { user } = useUserContext();
   return (
     <Container>
       <Stack mt={3} direction={"row"} gap={5} justifyContent={"center"}>

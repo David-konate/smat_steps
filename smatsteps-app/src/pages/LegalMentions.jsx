@@ -1,6 +1,5 @@
 import React from "react";
 import { Container, Typography, Box, Link } from "@mui/material";
-import { color } from "@mui/system";
 
 const LegalMentions = () => {
   return (

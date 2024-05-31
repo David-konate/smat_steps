@@ -1,6 +1,5 @@
 import {
   Box,
-  Card,
   CardActionArea,
   CardContent,
   CardMedia,
@@ -44,14 +43,14 @@ const GameRanked = () => {
   const currentScoreMaxPercentage = calculatePercentage(pointsMax, totalPoints);
   // Fonction pour calculer la largeur de la carte en fonction de la taille de l'écran
 
-  const [image, setImage] = useState(() => {
-    if (questionsRanked[currentQuestion]?.image_question) {
+  const [image] = useState(() => {
+    if (questionsRanked[currentQuestion].image_question) {
       return questionsRanked[currentQuestion].image_question;
     } else if (
-      questionsRanked[currentQuestion]?.sous_theme &&
-      questionsRanked[currentQuestion]?.sous_theme.sous_theme_image
+      questionsRanked[currentQuestion].sous_theme &&
+      questionsRanked[currentQuestion].sous_theme.sous_theme_image
     ) {
-      return questionsRanked[currentQuestion]?.sous_theme.sous_theme_image;
+      return questionsRanked[currentQuestion].sous_theme.sous_theme_image;
     } else if (
       questionsRanked[currentQuestion].theme &&
       questionsRanked[currentQuestion].theme.theme_image

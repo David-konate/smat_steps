@@ -26,7 +26,7 @@ const MessageNewPrivate = ({
   redirection = "/partie-classe",
 }) => {
   const navigate = useNavigate();
-  const [errorOpen, setErrorOpen] = useState(false); // State pour gérer l'affichage du MessageDialog
+  const [errorOpen, setErrorOpen] = useState(false);
   const {
     themes,
     sousThemes,
@@ -37,81 +37,44 @@ const MessageNewPrivate = ({
     currentSousTheme,
     currentTheme,
     fetchPrivateNewGame,
-    // resetGame,
   } = useGameContext();
-
-  // Fonction appelée lors du clic sur le bouton d'invitation à une partie privée.
-  const onClick = () => {
-    // Vérifie si des amis filtrés sont disponibles, si un thème est sélectionné et si un pseudo est saisi.
-    if (filteredPseudos.length > 0 && currentTheme && searchTextPseudo) {
-      // Récupère l'identifiant de l'ami sélectionné à partir du pseudo saisi.
-      const selectedFriendId = filteredPseudos.find(
-        (friend) => friend.user_pseudo === searchTextPseudo
-      )?.id;
-      // Lance la création d'une nouvelle partie privée avec l'utilisateur et l'ami sélectionné.
-      fetchPrivateNewGame(user.id, selectedFriendId);
-      // Ferme la boîte de dialogue.
-      onClose();
-      // Redirige l'utilisateur vers une page spécifiée après la création de la partie, si spécifiée.
-      if (redirection) {
-        // navigate(redirection);
-      }
-    } else {
-      // Si une condition n'est pas remplie, affiche le MessageDialog d'erreur.
-      setErrorOpen(true);
-    }
-  };
-
-  // Contenu de la carte CardNewRanked
+  const { friends, user } = useUserContext();
 
   const [searchTextTheme, setSearchTextTheme] = useState("");
   const [searchTextSousTheme, setSearchTextSousTheme] = useState("");
   const [searchTextPseudo, setSearchTextPseudo] = useState("");
   const [isBusy, setIsBusy] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
-  const { friends, user } = useUserContext(); // Utilisez le hook useUserContext pour obtenir l'état d'authentification
 
   useEffect(() => {
-    // Vérifie si l'utilisateur est connecté, sinon redirige vers la page de connexion
     if (!user) {
-      navigate("/login"); // Redirection vers la page de connexion si l'utilisateur n'est pas connecté
+      navigate("/login");
     } else {
-      fetchData(); // Appel de la fonction fetchData pour récupérer les données
+      fetchData();
     }
-  }, [user]); // Déclenche cet effet à chaque changement de la variable user
+  }, [user]);
 
   const fetchData = async () => {
     try {
-      // Récupère les sous-thèmes depuis l'API
       const resST = await axios.get(`sous-themes`);
-      // Récupère les thèmes depuis l'API
       const resT = await axios.get(`themes`);
-      // Met à jour l'état des thèmes avec les données récupérées
       setThemes(resT.data);
-      // Met à jour l'état des sous-thèmes avec les données récupérées
       setSousThemes(resST.data);
     } catch (error) {
-      console.error(error); // Affiche une erreur en cas d'échec de la récupération des données
+      console.error(error);
     } finally {
-      setIsBusy(false); // Définit isBusy sur false une fois que la récupération des données est terminée
+      setIsBusy(false);
     }
   };
-  // Utilisation de useMemo pour mémoriser le résultat de la filtration.
-  // Cela permet d'éviter de recalculer la liste filtrée à chaque rendu,
-  // sauf si friends ou searchTextPseudo changent.
+
   const filteredPseudos = useMemo(() => {
-    // Filtre les amis en fonction du texte de recherche pseudo
     return friends?.filter(
       (friend) =>
-        // Vérifie si le texte de recherche est une chaîne de caractères
         typeof searchTextPseudo === "string" &&
         friend.user_pseudo
-          // Convertit le pseudo de l'ami en minuscules
           .toLowerCase()
-          // Vérifie si le pseudo de l'ami contient le texte de recherche
           .includes(searchTextPseudo.toLowerCase())
     );
-    // Recalculer uniquement lorsque friends ou searchTextPseudo changent
   }, [friends, searchTextPseudo]);
 
   const filteredThemes = useMemo(() => {
@@ -149,28 +112,40 @@ const MessageNewPrivate = ({
       sousTheme === currentSousTheme ? "" : sousTheme.sous_theme
     );
     setCurrentSousTheme(sousTheme === currentSousTheme ? null : sousTheme);
+    findAssociatedTheme(sousTheme);
   };
 
   const handlePseudoChange = (selectedPseudo) => {
     setSearchTextPseudo(selectedPseudo);
   };
 
+  const findAssociatedTheme = (selectedSousTheme) => {
+    if (selectedSousTheme) {
+      const associatedTheme = themes.find(
+        (theme) => theme.id === selectedSousTheme.theme_id
+      );
+      setCurrentTheme(associatedTheme);
+      setSearchTextTheme(associatedTheme ? associatedTheme.theme : "");
+    }
+  };
+
+  const onClick = () => {
+    if (filteredPseudos.length > 0 && currentTheme && searchTextPseudo) {
+      const selectedFriendId = filteredPseudos.find(
+        (friend) => friend.user_pseudo === searchTextPseudo
+      )?.id;
+      fetchPrivateNewGame(user.id, selectedFriendId);
+      onClose();
+      if (redirection) {
+        navigate(redirection);
+      }
+    } else {
+      setErrorOpen(true);
+    }
+  };
+
   const handleCloseDialog = () => {
     setOpenDialog(false);
-  };
-  const onConfirmNewPrivateGame = async (smatId) => {
-    try {
-      await axios.post(`/smats/accept-dual/${smatId}`, null, {
-        headers: {
-          Authorization: `Bearer ${Cookies.get("token")}`,
-        },
-      });
-    } catch (error) {
-      console.error(
-        "Erreur lors de la confirmation de la nouvelle partie privée :",
-        error
-      );
-    }
   };
 
   return (

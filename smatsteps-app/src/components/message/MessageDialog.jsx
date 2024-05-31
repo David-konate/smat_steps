@@ -4,11 +4,10 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
-  Button,
   Typography,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import CustomButton from "../buttons/CustomButton";
+import CustomButton2 from "../buttons/CustomButton2";
 
 const MessageDialog = ({
   open,
@@ -36,14 +35,14 @@ const MessageDialog = ({
         <Typography className="message-text"> {message}</Typography>
       </DialogContent>
       <DialogActions>
-        <CustomButton
+        <CustomButton2
           className="message-btn"
           onClick={onClick}
           color="primary"
           autoFocus
         >
           OK
-        </CustomButton>
+        </CustomButton2>
       </DialogActions>
     </Dialog>
   );

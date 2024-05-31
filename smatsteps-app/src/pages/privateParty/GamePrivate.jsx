@@ -13,12 +13,7 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import {
-  LEVELS,
-  calculatePercentage,
-  convertToRoman,
-  displayImage,
-} from "../../utils";
+import { convertToRoman, displayImage } from "../../utils";
 import CompletionMessageSmat from "../../components/message/CompletionMessageSmat";
 import CustomButton2 from "../../components/buttons/CustomButton2";
 
@@ -37,7 +32,6 @@ const Gameprivate = () => {
     saveResultCurrentQuestionSmat,
     currentAnswerSmat,
     setCurrentAnswerSmat,
-    setCurrentQuestionData,
   } = useGameContext();
 
   // État local pour le score du joueur et de l'adversaire, et autres variables d'état

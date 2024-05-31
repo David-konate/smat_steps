@@ -109,7 +109,6 @@ const CompletionMessage = ({ open, onClose }) => {
                 sx={{
                   border: "2px solid rgba(255, 193, 7)",
                   marginTop: 2,
-                  background: "var(--primary-color-special)",
                 }}
               >
                 {Object.keys(badAnswers).map((questionIndex, index) => (

@@ -14,7 +14,6 @@ const maxLength = (length) =>
   `Le champ ne doit pas dépasser ${length} caractères.`;
 const minLength = (length) =>
   `Le champ doit avoir au minimum ${length} caractères.`;
-const minNumber = (number) => `Minimum ${number}`;
 
 export const validationRegister = create((data = {}) => {
   test("user_pseudo", IS_REQUIRED_MESSAGE, () => {
@@ -49,11 +48,39 @@ export const validationRegister = create((data = {}) => {
   });
 });
 
+export const validationProfile = create((data = {}) => {
+  test("user_pseudo", IS_NOT_REGEX_VALID_MESSAGE, () => {
+    if (data.user_pseudo) {
+      enforce(data.user_pseudo).matches(/^[a-zA-Z0-9_]+$/); // Remplacez par votre regex
+    }
+  });
+
+  test("user_pseudo", maxLength(20), () => {
+    if (data.user_pseudo) {
+      enforce(data.user_pseudo).shorterThanOrEquals(20);
+    }
+  });
+
+  test("user_image", "Le format de l'image n'est pas valide.", () => {
+    if (data.user_image && data.user_image.length > 0) {
+      const allowedFormats = ["image/jpeg", "image/png"]; // Ajoutez les formats autorisés
+      const image = data.user_image[0];
+      enforce(allowedFormats).includes(image.type);
+    }
+  });
+
+  test("either_field", "Au moins un des champs doit être rempli.", () => {
+    enforce(
+      data.user_pseudo || (data.user_image && data.user_image.length > 0)
+    ).isTruthy();
+  });
+});
+
 export const validationLogin = create((data = {}) => {
-  test("email", IS_REQUIRED_MESSAGE, () => {
+  test("mail", IS_REQUIRED_MESSAGE, () => {
     enforce(data.email).isNotEmpty();
   });
-  test("email", IS_NOT_REGEX_VALID_MESSAGE, () => {
+  test("mail", IS_NOT_REGEX_VALID_MESSAGE, () => {
     enforce(data.email).matches(EMAIL_REGEX);
   });
 

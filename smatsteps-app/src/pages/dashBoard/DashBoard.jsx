@@ -7,13 +7,11 @@ import {
 } from "@mui/material";
 import { useEffect, useState, useRef } from "react";
 
-import axios from "axios";
 import QuestionsList from "../../components/list/QuestionsList";
-import CustomButton from "../../components/buttons/CustomButton";
 
 const Dashboard = () => {
   const [isBusy, setIsBusy] = useState(false);
-  const [data, setData] = useState();
+
   const [tabs, setTabs] = useState([
     {
       id: 1,

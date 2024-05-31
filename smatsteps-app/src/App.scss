@@ -96,6 +96,13 @@ body {
     // }
   }
 
+  // footer.scss
+
+  .footer-typography {
+    cursor: pointer;
+    font-family: "Madimi One", sans-serif;
+  }
+
   .card-finish-private {
     background-color: var(--secondary-color-special);
     .card-content-finish-private {
@@ -208,6 +215,35 @@ body {
       }
     }
   }
+
+  /* General drawer styles */
+  .drawer {
+    width: 100%;
+    .drawer-list {
+      width: 100%;
+      .drawer-item {
+        display: flex; /* Ajoutez cela pour permettre la manipulation des éléments enfants en tant que flexbox */
+        align-items: center; /* Cela va centrer verticalement le contenu */
+        width: 100%;
+        padding: 5px; /* Ajout de padding pour plus d'espace autour des éléments */
+        .drawer-link {
+          text-decoration: none;
+          &.active {
+            width: 100%;
+            /* Utilisez border-bottom pour ajouter un soulignement de la même couleur que le fond */
+            border-bottom: 2px solid var(--primary-color-special);
+            color: var(--color-text);
+          }
+          .drawer-text {
+            color: var(--secondary-color-special);
+            font-family: "Madimi One", sans-serif !important;
+            font-weight: bold !important; /* Ajoute cette ligne pour rendre le texte en gras */
+          }
+        }
+      }
+    }
+  }
+
   .btn-log {
     font-family: "Bangers", sans-serif;
   }
@@ -274,6 +310,39 @@ body {
       box-shadow: 1px 1px 6px rgba(105, 73, 255, 0.3);
     }
   }
+  .form-profile {
+    .title-connexion {
+      font-family: "Bangers", sans-serif;
+      color: var(--secondary-color-special);
+    }
+    .input-profil {
+      font-family: "Madimi One", sans-serif;
+      border-radius: 5px;
+      box-shadow: 0px 1px 6px rgba(105, 73, 255, 0.8);
+      margin-bottom: 16px; /* Ajout de marge en bas */
+    }
+    .btn-profil {
+      color: var(--primary-color);
+      border: 2px solid rgba(105, 73, 255, 0.3);
+      box-shadow: 1px 1px 6px rgba(105, 73, 255, 0.3);
+    }
+  }
+  .regles {
+    text-align: center;
+    padding: 20px; /* Ajoutez un espacement intérieur pour aérer le contenu */
+    .body {
+      font-family: "Madimi One", sans-serif;
+      color: var(--color-text);
+      font-size: 1.3rem;
+      margin-bottom: 20px; /* Ajoutez une marge en bas pour séparer les paragraphes */
+      line-height: 1.5; /* Augmentez l'espacement entre les lignes pour une meilleure lisibilité */
+    }
+    h2,
+    h1 {
+      color: var(--secondary-color-special); /* Couleur du titre principal */
+    }
+  }
+
   .form-modif-user {
     border: 1px solid var(--primary-color-special);
     box-shadow: 1px 1px 6px var(--secondary-color-special);

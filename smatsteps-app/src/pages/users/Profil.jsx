@@ -26,25 +26,16 @@ import PersonAddDisabledIcon from "@mui/icons-material/PersonAddDisabled";
 import ConfirmationDialog from "../../components/message/ConfirmationDialog";
 import SettingsAccessibilityIcon from "@mui/icons-material/SettingsAccessibility";
 import GroupIcon from "@mui/icons-material/Group";
-import MessageSentFriend from "../../components/message/MessageSentFriend";
 import MessageListFriend from "../../components/message/MessageListFriend";
 import SmartToyIcon from "@mui/icons-material/SmartToy";
 import MessagePrivateParty from "../../components/message/MessagePrivateParty";
 import PlaylistAddCheckCircleIcon from "@mui/icons-material/PlaylistAddCheckCircle";
 import MessagePrivatePartyFinish from "../../components/message/MessagePrivatePartyFinish";
+import ProfileDialog from "../../components/message/ProfilDialog";
+import SettingsIcon from "@mui/icons-material/Settings";
 
 const Profil = () => {
-  const { id } = useParams();
-  const {
-    user,
-    friendSent,
-    friendSend,
-    setFriendSent,
-    friends,
-    setFriends,
-    openSmats,
-    friendPending,
-  } = useUserContext();
+  const { user, friendSent, friendSend, friends, openSmats } = useUserContext();
   const [isBusy, setIsBusy] = useState(true);
   const {
     currentLevel,
@@ -65,7 +56,6 @@ const Profil = () => {
   const [friend, setFriend] = useState(false);
   const [isDeleteFriendDialogOpen, setIsDeleteFriendDialogOpen] =
     useState(false);
-
   const [isOpen, setIsOpen] = useState(false);
   const [isSentFriendDialogOpen, setIsSentFriendDialogOpen] = useState(false);
   const [isEditOpen, setIsEditOpen] = useState(false);
@@ -75,7 +65,13 @@ const Profil = () => {
     useState(false); // Nouvel état pour contrôler l'ouverture de MessagePrivateParty
   const [isMessagePrivatePartyFinish, setIsMessagePrivatePartyFinish] =
     useState(false); // Nouvel état pour contrôler l'ouverture de MessagePrivateParty
-
+  const [isProfileDialogOpen, setIsProfileDialogOpen] = useState(false);
+  const handleOpenProfileDialog = () => {
+    setIsProfileDialogOpen(true);
+  };
+  const handleCloseProfileDialog = () => {
+    setIsProfileDialogOpen(false);
+  };
   const navigate = useNavigate();
   const params = useParams();
   // Fonction pour ouvrir/fermer MessagePrivateParty
@@ -137,7 +133,6 @@ const Profil = () => {
   const handleSentFriendDialogToggle = () => {
     setIsSentFriendDialogOpen(!isSentFriendDialogOpen);
   };
-  const handleDeleteFriendDialogToggle = () => {};
 
   const shadowColors = [
     "rgba(218, 165, 32, 0.2)",
@@ -165,9 +160,7 @@ const Profil = () => {
     try {
       if (!friend) {
         // Vérifie si l'utilisateur n'est pas déjà ami
-        const response = await axios.post(
-          `users/${user.id}/add-friend-with/${userProfil.id}`
-        );
+        await axios.post(`users/${user.id}/add-friend-with/${userProfil.id}`);
         setIsEditOpenDisableFriend(false);
         navigate(`/profil/${user.id}`);
       }
@@ -175,11 +168,7 @@ const Profil = () => {
       console.log(error);
     }
   };
-  console.log(user);
-  console.log(userProfil);
-  console.log({ friendSent });
-  console.log({ friendPending });
-  console.log({ friends });
+
   return (
     <Paper elevation={3} style={{ padding: "20px", margin: "20px" }}>
       {isBusy ? (
@@ -293,6 +282,16 @@ const Profil = () => {
                 onClick={() => setIsDeleteFriendDialogOpen(true)} // Ouvre la boîte de dialogue de confirmation
               >
                 <PersonAddDisabledIcon
+                  style={{ color: "var(--secondary-color-special)" }}
+                />
+              </IconButton>
+            )}
+            {userProfil.id === user.id && (
+              <IconButton
+                sx={{ position: "absolute", top: 0, right: 0 }}
+                onClick={handleOpenProfileDialog} // Ouvre la boîte de dialogue de profil
+              >
+                <SettingsIcon
                   style={{ color: "var(--secondary-color-special)" }}
                 />
               </IconButton>
@@ -465,7 +464,10 @@ const Profil = () => {
         title="Confirmation"
         message={`Vous vous apprêtez à supprimer ${userProfil?.user_pseudo} de votre liste d'amis. Êtes-vous sûr ?`}
       />
-
+      <ProfileDialog
+        open={isProfileDialogOpen}
+        onClose={handleCloseProfileDialog}
+      />
       <ConfirmationDialog
         open={isEditOpenDisableFriend}
         onClose={() => setIsEditOpenDisableFriend(false)}

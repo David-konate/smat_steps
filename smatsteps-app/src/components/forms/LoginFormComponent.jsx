@@ -1,18 +1,27 @@
 import React, { useState } from "react";
-import { Container, Typography, TextField, Box } from "@mui/material";
+import {
+  Container,
+  Typography,
+  TextField,
+  Box,
+  IconButton,
+  InputAdornment,
+} from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import axios from "axios";
-import MessageDialog from "../message/MessageDialog";
-import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../../context/UserProvider";
 import { useForm } from "react-hook-form";
 import { Stack } from "@mui/system";
 import CustomButton2 from "../buttons/CustomButton2";
 import Cookies from "js-cookie";
+import InformationDialog from "../message/InformationDialog";
+
 const LoginFormComponent = () => {
   const { setUser } = useUserContext();
   const [openDialog, setOpenDialog] = useState(false);
   const [dialogTitle, setDialogTitle] = useState("");
   const [dialogMessage, setDialogMessage] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // État pour gérer l'affichage du mot de passe
   const {
     register,
     handleSubmit,
@@ -45,6 +54,10 @@ const LoginFormComponent = () => {
     setOpenDialog(false);
   };
 
+  const handleClickShowPassword = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+
   return (
     <Container component="main" maxWidth="xs">
       <Box
@@ -73,11 +86,11 @@ const LoginFormComponent = () => {
             margin="normal"
             required
             fullWidth
-            id="user_pseudo"
-            label="Pseudo"
-            {...register("user_pseudo", { required: true })}
-            error={!!errors.user_pseudo}
-            helperText={errors.user_pseudo && "Ce champ est requis"}
+            id="email"
+            label="email"
+            {...register("email", { required: true })}
+            error={!!errors.email}
+            helperText={errors.email && "Ce champ est requis"}
           />
           <TextField
             className="input-connexion"
@@ -86,10 +99,23 @@ const LoginFormComponent = () => {
             fullWidth
             name="password"
             label="Mot de passe"
-            type="password"
+            type={showPassword ? "text" : "password"} // Changer le type en fonction de l'état
             {...register("password", { required: true })}
             error={!!errors.password}
             helperText={errors.password && "Ce champ est requis"}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    edge="end"
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
           />
           <Box mt={3}>
             {/* Utiliser CustomButton correctement */}
@@ -106,7 +132,7 @@ const LoginFormComponent = () => {
         </Stack>
       </Box>
       <Box>
-        <MessageDialog
+        <InformationDialog
           open={openDialog}
           onClose={handleDialogClose}
           title={dialogTitle}

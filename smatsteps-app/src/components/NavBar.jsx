@@ -11,7 +11,8 @@ import {
   IconButton,
   Drawer,
   List,
-  filledInputClasses,
+  ListItem,
+  ListItemText,
 } from "@mui/material/";
 import Cookies from "js-cookie";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -21,12 +22,12 @@ import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import SmartToyIcon from "@mui/icons-material/SmartToy";
 import Logo from "./Logo";
 import ConfirmationNewPrivateGame from "./message/ConfirmationNewPrivateGame";
-import ConfirmationDialog from "./message/ConfirmationDialog";
 import { useTheme } from "../context/ThemeContext";
 import { useUserContext } from "../context/UserProvider";
 import MessageSendFriend from "./message/MessageSendFriend";
 import MessageDialog from "./message/MessageDialog";
 import { useGameContext } from "../context/GameProvider";
+import { margin, width } from "@mui/system";
 
 function NavBar() {
   const navigate = useNavigate();
@@ -110,8 +111,6 @@ function NavBar() {
         "Erreur lors de la confirmation de la nouvelle partie privée :",
         error
       );
-      // setMessage(error.data.message);
-      // openConfirmDial();
     } finally {
       try {
         const responseSmatUsers = await axios.get(
@@ -294,38 +293,81 @@ function NavBar() {
                   </Typography>
                 </IconButton>
               )}
-              <Switch
-                checked={theme === "dark"}
-                onChange={toggleTheme}
-                inputProps={{ "aria-label": "toggle theme" }}
-              />
+              <Hidden smDown>
+                <Switch
+                  checked={theme === "dark"}
+                  onChange={toggleTheme}
+                  inputProps={{ "aria-label": "toggle theme" }}
+                />
+              </Hidden>
             </Box>
           </Toolbar>
         </Container>
       </AppBar>
-
-      <Drawer anchor="left" open={drawerOpen} onClose={handleDrawerClose}>
-        <List>
+      <Drawer
+        anchor="left"
+        open={drawerOpen}
+        onClose={handleDrawerClose}
+        className="drawer"
+      >
+        <List className="drawer-list">
           {links.map((link) => (
-            <NavLink className="navbar_link" key={link.label} to={link.path}>
-              {firstLetterUppercase(link.label)}
-            </NavLink>
-          ))}
-
-          {user ? (
-            <Typography
-              sx={{ fontSize: "0.8rem" }}
-              className="navbar_link"
-              onClick={handleLogout}
+            <ListItem
+              key={link.label}
+              onClick={handleDrawerClose}
+              className="drawer-item"
             >
-              Logout
-            </Typography>
+              <NavLink to={link.path} className="drawer-link">
+                <ListItemText
+                  sx={{ padding: 1 }}
+                  className="drawer-text"
+                  primary={
+                    link.label.charAt(0).toUpperCase() + link.label.slice(1)
+                  }
+                />
+              </NavLink>
+            </ListItem>
+          ))}
+          {user && (
+            <ListItem onClick={handleDrawerClose} className="drawer-item">
+              <NavLink to={`profil/${user.slug}`} className="drawer-link">
+                <ListItemText
+                  sx={{ padding: 1 }}
+                  className="drawer-text"
+                  primary="Profil"
+                />
+              </NavLink>
+            </ListItem>
+          )}
+          {user ? (
+            <ListItem onClick={handleLogout} className="drawer-item">
+              <ListItemText
+                sx={{ padding: 1 }}
+                className="drawer-text"
+                primary="Logout"
+              />
+            </ListItem>
           ) : (
-            <NavLink className="navbar_link" to={"/login"}>
-              Login
-            </NavLink>
+            <ListItem onClick={handleDrawerClose} className="drawer-item">
+              <NavLink to="/login" className="drawer-link">
+                <ListItemText
+                  sx={{ padding: 1, fontWeight: "bold" }}
+                  className="drawer-text"
+                  primary="Login"
+                />
+              </NavLink>
+            </ListItem>
           )}
         </List>
+        <Box className="drawer-theme-switch">
+          <IconButton
+            onClick={toggleTheme}
+            aria-label="toggle theme"
+            className="icon-button"
+          >
+            <Switch checked={theme === "dark"} />
+          </IconButton>
+        </Box>
       </Drawer>
     </React.Fragment>
   );

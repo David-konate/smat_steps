@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { CircularProgress, Typography, Box } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 import { useUserContext } from "../../context/UserProvider";
 
 const AdminRouteGuard = ({ element }) => {

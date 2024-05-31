@@ -25,7 +25,7 @@ const Home = () => {
   const { authentification } = useUserContext();
   useEffect(() => {
     authentification();
-  });
+  }, []);
   const handleOpenCardNewRanked = () => {
     setIsCardNewRankedOpen(true);
   };
@@ -60,7 +60,7 @@ const Home = () => {
         textAlign={"center"}
         variant="h3"
       >
-        PAGE D'ACCEUIL
+        Bienvenue
       </Typography>
       <Box mt={2} width={"100%"} justifyContent={"center"}>
         <Card
@@ -121,7 +121,7 @@ const Home = () => {
 
                     <Box mt={2} position={"absolute"} bottom={0}>
                       <WhiteButton onClick={handleOpenCardNewRanked}>
-                        C'est partie
+                        C'est parti
                       </WhiteButton>
                     </Box>
                   </Stack>
@@ -200,7 +200,7 @@ const Home = () => {
                     </Typography>
                     <Box position={"absolute"} bottom={0}>
                       <WhiteButton onClick={handleOpenCardPrivate}>
-                        C'est partie
+                        C'est parti
                       </WhiteButton>
                     </Box>
                   </Stack>
@@ -220,7 +220,7 @@ const Home = () => {
             }}
             onClick={handleThemes}
           >
-            Tous voir
+            tout voir
           </Typography>
         </Stack>
         <Stack
@@ -237,14 +237,14 @@ const Home = () => {
                   to={`/theme/${topTheme.theme_id}`}
                   key={topTheme.theme_id}
                 >
-                  <CardActionArea style={{ width: "100%" }}>
+                  <CardActionArea component="span" style={{ width: "100%" }}>
                     <CardMedia
                       className="image-theme-home"
                       component="img"
                       height="100px"
                       width="350px"
                       image={displayImage(topTheme.theme_image)}
-                      alt={"Image " + topTheme.theme}
+                      alt={`Image cccc ${topTheme?.theme}`}
                     />
 
                     <Typography
@@ -291,7 +291,7 @@ const Home = () => {
             }}
             onClick={handleSousThemes}
           >
-            Tous voir
+            tout voir
           </Typography>
         </Stack>
         <Stack
@@ -315,7 +315,7 @@ const Home = () => {
                       height="100px"
                       width="350px"
                       image={displayImage(topSousTheme.sous_theme_image)}
-                      alt={"Image " + topSousTheme.sous_theme}
+                      alt={`Image ${topSousTheme?.sous_theme}`}
                     />
                     <Typography
                       variant="body2"
@@ -361,7 +361,7 @@ const Home = () => {
             }}
             onClick={handleRandom}
           >
-            Tous voir
+            tout voir
           </Typography>
         </Stack>
         <Stack
@@ -385,7 +385,7 @@ const Home = () => {
                       height="100px"
                       width="350px"
                       image={displayImage(randomTheme.sous_theme_image)}
-                      alt={"Image " + randomTheme.theme}
+                      alt={`Image ${randomTheme?.sous_theme}`}
                     />
                     <Typography
                       variant="body2"

@@ -128,7 +128,7 @@ const ConfirmationNewPrivateGame = ({
             <Stack mt={1} direction="row" gap={3}>
               {smatData.relatedSmats[1]?.user_id !== user.id ? (
                 <>
-                  <CustomButton
+                  <CustomButton2
                     className={
                       smatData.relatedSmats[1]?.user_id !== user.id
                         ? "btn-custom"
@@ -137,7 +137,7 @@ const ConfirmationNewPrivateGame = ({
                     onClick={() => onDelete(smatData.relatedSmats[1]?.smat_id)}
                   >
                     Annuler
-                  </CustomButton>
+                  </CustomButton2>
                 </>
               ) : (
                 <>

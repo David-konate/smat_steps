@@ -1,10 +1,10 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { CircularProgress, Typography, Box } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 import { useUserContext } from "../../context/UserProvider";
 
 const UserRouteGuard = ({ element }) => {
-  const { user, authentification } = useUserContext();
+  const { user } = useUserContext();
 
   if (!user) {
     // Si l'utilisateur n'est pas connecté, redirigez-le vers la page de connexion

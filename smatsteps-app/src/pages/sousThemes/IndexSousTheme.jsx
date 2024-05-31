@@ -2,8 +2,6 @@ import React, { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import { Box, Container, Grid, InputBase, Typography } from "@mui/material";
 import { CircularProgress } from "@mui/material";
-import { useGameContext } from "../../context/GameProvider";
-import CardTheme from "../../components/cards/CardTheme";
 import CardSousTheme from "../../components/cards/CardSousTheme";
 import { Helmet } from "react-helmet-async";
 
