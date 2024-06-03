@@ -231,13 +231,16 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         try {
-            $validator = Validator::make($request->all(), []);
+            $validator = Validator::make($request->all(), [
+                'user_pseudo' => 'nullable|string|max:255',
+                'user_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Ajoutez des règles de validation pour l'image
+            ]);
 
             if ($validator->fails()) {
                 return response()->json([
                     'status' => false,
                     'errors' => $validator->errors(),
-                ], 401);
+                ], 400); // Utilisez le code de statut 400 pour les erreurs de validation
             }
 
             // Vérifiez si un nouveau fichier image est téléchargé
@@ -250,17 +253,21 @@ class UserController extends Controller
 
                 // Supprimez l'ancien fichier image s'il existe
                 if ($user->user_image && Storage::exists('public/uploads/' . $user->user_image)) {
-                    Storage::delete('public/uploads/' . $user->image);
+                    Storage::delete('public/uploads/' . $user->user_image);
                 }
 
                 // Attribuez le nom du fichier à l'utilisateur
                 $user->user_image = $filename;
             }
 
-            $user->update([
-                'user_pseudo' => $request->user_pseudo,
-                'slug' => $request->user_pseudo,
-            ]);
+            // Mettez à jour le pseudo uniquement si le champ est rempli
+            if ($request->filled('user_pseudo')) {
+                $user->user_pseudo = $request->user_pseudo;
+                $user->slug = $request->user_pseudo;
+            }
+
+            // Sauvegardez les modifications de l'utilisateur
+            $user->save();
 
             return response()->json([
                 'data' => $user,
@@ -271,9 +278,10 @@ class UserController extends Controller
             return response()->json([
                 'status' => false,
                 'message' => 'Erreur lors de la modification de l\'utilisateur : ' . $e->getMessage(),
-            ], 403);
+            ], 500); // Utilisez le code de statut 500 pour les erreurs internes du serveur
         }
     }
+
 
     /**
      * Remove the specified resource from storage.

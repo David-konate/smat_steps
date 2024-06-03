@@ -77,7 +77,7 @@ Route::controller(QuestionController::class)->group(function () {
     Route::put('questions/{question}', 'update')->middleware('auth:sanctum');
     Route::delete('questions/{question}', 'delete')->middleware('auth:sanctum');
     Route::get('new-game/{currentLevel}', 'newRankedGame')->middleware('auth:sanctum');
-    Route::get('new-private-game/{currentLevel}', 'newPrivateGame')->middleware('auth:sanctum');
+    Route::post('new-private-game/{currentLevel}', 'newPrivateGame')->middleware('auth:sanctum');
 });
 
 
@@ -130,10 +130,11 @@ Route::prefix('themes')->group(function () {
 Route::prefix('users')->group(function () {
     Route::get('/', [UserController::class, 'index']);
     Route::get('{user}', [UserController::class, 'show']);
-    Route::post('{user}', [UserController::class, 'update']);
-    Route::post('{user}/add-friend-with/{friend}', [UserController::class, 'addFriend']);
     Route::get('{user}/is-friend-with/{friend}', [UserController::class, 'friendshipExists']);
+    Route::post('/{user}', [UserController::class, 'update']);
+    Route::post('{user}/add-friend-with/{friend}', [UserController::class, 'addFriend']);
     Route::post('{user}/accept-friend-with/{friend}', [UserController::class, 'acceptFriend']);
+
     Route::delete('{user}/deleted-friend-with/{friend}', [UserController::class, 'deletedFriendship']);
     Route::delete('{user}', [UserController::class, 'destroy']);
 });

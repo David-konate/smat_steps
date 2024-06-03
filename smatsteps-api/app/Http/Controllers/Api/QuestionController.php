@@ -183,12 +183,10 @@ class QuestionController extends Controller
     public function newPrivateGame($currentLevel, Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'theme' => 'nullable|array',
-            'theme.*' => 'integer|exists:themes,id',
-            'sousTheme' => 'nullable|array',
-            'sousTheme.*' => 'integer|exists:sous_themes,id',
-            'user1' => 'required|integer|exists:users,id',
-            'user2' => 'required|integer|exists:users,id',
+            'theme' => 'nullable|integer', // Modifiez la validation pour accepter un entier
+            'sousTheme' => 'nullable|integer',
+            'user1' => 'required|integer',
+            'user2' => 'required|integer',
         ]);
 
         if ($validator->fails()) {
@@ -200,8 +198,8 @@ class QuestionController extends Controller
         }
         try {
             // Récupérer les thèmes et sous-thèmes spécifiés dans la requête
-            $theme = $request->query('theme');
-            $sous_theme = $request->query('sousTheme');
+            $theme = $request->input('theme'); // Utilisez input() plutôt que query() pour récupérer les paramètres POST
+            $sous_theme = $request->input('sousTheme'); // Utilisez input() plutôt que query() pour récupérer les paramètres POST
             $user1 = User::find($request->input('user1'));
             $user2 = User::find($request->input('user2'));
 
@@ -214,6 +212,7 @@ class QuestionController extends Controller
             $countLevel1 = 0;
             $countLevel2 = 0;
             $countLevel3 = 0;
+
             switch ($currentLevel) {
                 case 1:
                     // Récupérer 20 questions de niveau 1

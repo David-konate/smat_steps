@@ -22,7 +22,7 @@ class SecurityController extends Controller
 
         try {
             $validation = Validator::make(request()->all(), [
-                'user_pseudo' => 'required|min:1|string',
+                'email' => 'required|min:1|string',
                 'password' => 'required|min:1|string',
             ]);
 
@@ -34,13 +34,13 @@ class SecurityController extends Controller
                 ], 401);
             }
             //verifi si leuser exist
-            if (!Auth::attempt($request->only(['user_pseudo', 'password']))) {
+            if (!Auth::attempt($request->only(['email', 'password']))) {
                 return response()->json([
                     'status' => false,
-                    'message' => "Le pseudo ou le mot de passe ne sont pas correct"
+                    'message' => "L'email ou le mot de passe ne sont pas correct"
                 ], 401);
             }
-            $user = User::where("user_pseudo", $request->user_pseudo)->first();
+            $user = User::where("email", $request->email)->first();
             return response()->json([
                 "status" => true,
                 "message" => "User connecté",
