@@ -37,25 +37,24 @@ const RankingsListProfil = ({ rankings }) => {
         : valueB.localeCompare(valueA);
     } else if (typeof valueA === "number" && typeof valueB === "number") {
       return order === "asc" ? valueA - valueB : valueB - valueA;
-    } else if (moment.isMoment(valueA) && moment.isMoment(valueB)) {
-      return order === "asc" ? valueA.diff(valueB) : valueB.diff(valueA);
+    } else if (
+      moment.isMoment(moment(valueA)) &&
+      moment.isMoment(moment(valueB))
+    ) {
+      return order === "asc"
+        ? moment(valueA).diff(moment(valueB))
+        : moment(valueB).diff(moment(valueA));
     } else {
       return 0;
     }
   });
 
   const filteredRankings = sortedRankings.filter((ranking) => {
-    const theme = ranking.theme.theme.toLowerCase();
-    const sousTheme = ranking.sous_theme
-      ? ranking.sous_theme.sous_theme.toLowerCase()
-      : "";
+    const theme = ranking.theme?.theme?.toLowerCase() || "";
+    const sousTheme = ranking.sous_theme?.sous_theme?.toLowerCase() || "";
 
     const filterText = filterValue.toLowerCase();
-    return (
-      filterValue === "" ||
-      theme.includes(filterText) ||
-      sousTheme.includes(filterText)
-    );
+    return theme.includes(filterText) || sousTheme.includes(filterText);
   });
 
   return (
@@ -90,30 +89,24 @@ const RankingsListProfil = ({ rankings }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {filteredRankings.map(
-              (ranking, index) =>
-                (order === "asc" ||
-                  filterValue !== "" ||
-                  index >= 3 ||
-                  orderBy !== "result_quiz") && (
-                  <TableRow key={index}>
-                    <TableCell className="cell-result-profil">
-                      {ranking.result_quiz}%
-                    </TableCell>
-                    <TableCell className="cell-other-profil">
-                      {firstLetterUppercase(ranking.theme.theme)}
-                    </TableCell>
-                    <TableCell className="cell-other-profil">
-                      {ranking.sous_theme
-                        ? firstLetterUppercase(ranking.sous_theme.sous_theme)
-                        : "N/A"}
-                    </TableCell>
-                    <TableCell className="cell-other-profil">
-                      {moment(ranking.created_at).format("D MMMM YYYY")}
-                    </TableCell>
-                  </TableRow>
-                )
-            )}
+            {filteredRankings.map((ranking, index) => (
+              <TableRow key={index}>
+                <TableCell className="cell-result-profil">
+                  {ranking.result_quiz}%
+                </TableCell>
+                <TableCell className="cell-other-profil">
+                  {firstLetterUppercase(ranking.theme.theme)}
+                </TableCell>
+                <TableCell className="cell-other-profil">
+                  {ranking.sous_theme
+                    ? firstLetterUppercase(ranking.sous_theme.sous_theme)
+                    : "N/A"}
+                </TableCell>
+                <TableCell className="cell-other-profil">
+                  {moment(ranking.created_at).format("D MMMM YYYY")}
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </TableContainer>
