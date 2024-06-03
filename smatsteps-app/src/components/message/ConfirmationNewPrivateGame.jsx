@@ -6,11 +6,11 @@ import {
   IconButton,
   Typography,
   Avatar,
+  DialogActions,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { Box, Stack } from "@mui/system";
-import { displayImage, firstLetterUppercase } from "../../utils";
-import CustomButton from "../buttons/CustomButton";
+import { displayImage } from "../../utils";
 import { useUserContext } from "../../context/UserProvider";
 import CustomButton2 from "../buttons/CustomButton2";
 
@@ -125,7 +125,7 @@ const ConfirmationNewPrivateGame = ({
               Level {smatData.relatedSmats[1]?.smat.level_id}
             </Typography>
 
-            <Stack mt={1} direction="row" gap={3}>
+            <DialogActions>
               {smatData.relatedSmats[1]?.user_id !== user.id ? (
                 <>
                   <CustomButton2
@@ -166,7 +166,7 @@ const ConfirmationNewPrivateGame = ({
                   </CustomButton2>
                 </>
               )}
-            </Stack>
+            </DialogActions>
           </Box>
         ))}
       </DialogContent>

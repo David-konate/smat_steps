@@ -116,7 +116,7 @@ const Home = () => {
                         },
                       }}
                     >
-                      VS la communauté
+                      partie classée
                     </Typography>
 
                     <Box mt={2} position={"absolute"} bottom={0}>
@@ -196,7 +196,7 @@ const Home = () => {
                         },
                       }}
                     >
-                      VS vos amis
+                      vos amis
                     </Typography>
                     <Box position={"absolute"} bottom={0}>
                       <WhiteButton onClick={handleOpenCardPrivate}>

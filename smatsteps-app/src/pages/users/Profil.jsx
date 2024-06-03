@@ -170,24 +170,26 @@ const Profil = () => {
   };
 
   return (
-    <Paper elevation={3} style={{ padding: "20px", margin: "20px" }}>
+    <Paper
+      sx={{ position: "relative" }}
+      elevation={3}
+      style={{ padding: "20px", margin: "20px" }}
+    >
       {isBusy ? (
         <CircularProgress />
       ) : (
         <Container>
-          {/* <Typography className="numb-pending-friend">
-            {" "}
-            Profil de {userProfil?.user_pseudo}
-          </Typography> */}
           <Box sx={{ position: "relative" }}>
-            <Stack
-              direction={"column"}
-              gap={1}
-              sx={{ position: "absolute", top: 0, left: 0 }}
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "flex-start",
+              }}
             >
-              <Stack>
-                {" "}
-                {userProfil.id === user.id && friendSent?.length > 0 ? (
+              {/* Icônes du côté gauche */}
+              <Stack direction={"column"} gap={1}>
+                {userProfil.id === user.id && friendSent?.length > 0 && (
                   <IconButton onClick={handleSentFriendDialogToggle}>
                     <SettingsAccessibilityIcon style={{ color: "red" }} />
                     <Typography
@@ -203,42 +205,28 @@ const Profil = () => {
                       {friendSent.length}
                     </Typography>
                   </IconButton>
-                ) : (
-                  <></>
                 )}
-              </Stack>
-              <Stack>
-                {" "}
-                {userProfil.id === user.id && smatsFinish?.length > 0 ? (
+                {userProfil.id === user.id && smatsFinish?.length > 0 && (
                   <IconButton
                     onClick={toggleMessagePrivateFinish}
-                    title="Cliquez ici pour ouvrir vôtre liste d'amis"
+                    title="Cliquez ici pour ouvrir votre liste d'amis"
                   >
                     <PlaylistAddCheckCircleIcon
                       style={{ color: "var(--secondary-color-special)" }}
                     />
                   </IconButton>
-                ) : (
-                  <></>
                 )}
-              </Stack>
-              <Stack>
-                {" "}
-                {userProfil.id === user.id && friends?.length > 0 ? (
+                {userProfil.id === user.id && friends?.length > 0 && (
                   <IconButton
                     onClick={handlesOpenListFriend}
-                    title="Cliquez ici pour ouvrir vôtre liste d'amis"
+                    title="Cliquez ici pour ouvrir votre liste d'amis"
                   >
                     <GroupIcon
                       style={{ color: "var(--secondary-color-special)" }}
                     />
                   </IconButton>
-                ) : (
-                  <></>
                 )}
-              </Stack>
-              <Stack>
-                {userProfil.id === user.id && openSmats?.length ? (
+                {userProfil.id === user.id && openSmats?.length > 0 && (
                   <IconButton
                     title="Cliquez ici pour ouvrir vos parties privées en cours"
                     onClick={toggleMessagePrivateParty}
@@ -256,47 +244,42 @@ const Profil = () => {
                         fontSize: "0.7rem",
                       }}
                     >
-                      {openSmats?.length}
+                      {openSmats.length}
                     </Typography>
                   </IconButton>
-                ) : (
-                  <></>
                 )}
               </Stack>
-            </Stack>
 
-            {userProfil.id !== user.id && friend === false && (
-              <IconButton
-                title="Cliquez ici pour ajouter en ami"
-                sx={{ position: "absolute", top: 0, right: 0 }}
-                onClick={handleAddFriendClick}
-              >
-                <PersonAddIcon
-                  style={{ color: "var(--secondary-color-special)" }}
-                />
-              </IconButton>
-            )}
-            {userProfil.id !== user.id && friend === true && (
-              <IconButton
-                sx={{ position: "absolute", top: 0, right: 0 }}
-                onClick={() => setIsDeleteFriendDialogOpen(true)} // Ouvre la boîte de dialogue de confirmation
-              >
-                <PersonAddDisabledIcon
-                  style={{ color: "var(--secondary-color-special)" }}
-                />
-              </IconButton>
-            )}
-            {userProfil.id === user.id && (
-              <IconButton
-                sx={{ position: "absolute", top: 0, right: 0 }}
-                onClick={handleOpenProfileDialog} // Ouvre la boîte de dialogue de profil
-              >
-                <SettingsIcon
-                  style={{ color: "var(--secondary-color-special)" }}
-                />
-              </IconButton>
-            )}
+              {/* Icônes du côté droit */}
+              <Stack direction={"column"} gap={1}>
+                {userProfil.id !== user.id && !friend && (
+                  <IconButton
+                    title="Cliquez ici pour ajouter en ami"
+                    onClick={handleAddFriendClick}
+                  >
+                    <PersonAddIcon
+                      style={{ color: "var(--secondary-color-special)" }}
+                    />
+                  </IconButton>
+                )}
+                {userProfil.id !== user.id && friend && (
+                  <IconButton onClick={() => setIsDeleteFriendDialogOpen(true)}>
+                    <PersonAddDisabledIcon
+                      style={{ color: "var(--secondary-color-special)" }}
+                    />
+                  </IconButton>
+                )}
+                {userProfil.id === user.id && (
+                  <IconButton onClick={handleOpenProfileDialog}>
+                    <SettingsIcon
+                      style={{ color: "var(--secondary-color-special)" }}
+                    />
+                  </IconButton>
+                )}
+              </Stack>
+            </Box>
           </Box>
+
           {user ? (
             <Box
               sx={{
@@ -363,8 +346,8 @@ const Profil = () => {
               >
                 {userRankings.length > 0 ? (
                   userRankings
-                    .sort((a, b) => b.result_quiz - a.result_quiz) // Trie par ordre ascendant de result_quiz
-                    .slice(0, 3) // Récupère les trois premiers éléments
+                    .sort((a, b) => b.result_quiz - a.result_quiz)
+                    .slice(0, 3)
                     .map((ranking, index) => (
                       <Card
                         key={index}
@@ -374,7 +357,7 @@ const Profil = () => {
                           display: "flex",
                           justifyContent: "center",
                           alignItems: "center",
-                          boxShadow: `0px 4px 8px ${shadowColors[index]}`, // Utilisation de la couleur d'ombre correspondante
+                          boxShadow: `0px 4px 8px ${shadowColors[index]}`,
                           border: `3px solid ${shadowColors[index]}`,
                           background: `${shadowColors[index]}`,
                         }}
@@ -394,7 +377,6 @@ const Profil = () => {
                             direction={"row"}
                             gap={1}
                           >
-                            {" "}
                             <Typography variant="h6" className="text-stack">
                               Score :
                             </Typography>
@@ -413,7 +395,6 @@ const Profil = () => {
                 )}
               </Stack>
               <Box mt={2}>
-                {" "}
                 <Button onClick={toggleList}>
                   <ExpandMoreIcon
                     style={{ color: "var(--secondary-color-special)" }}
@@ -421,7 +402,6 @@ const Profil = () => {
                 </Button>
               </Box>
               <Box mt={2}>
-                {" "}
                 {isOpen && <RankingsListProfil rankings={userRankings} />}
               </Box>
             </Box>
@@ -430,6 +410,7 @@ const Profil = () => {
           )}
         </Container>
       )}
+
       <MessageListFriend
         open={isOpenListFriend}
         onClose={handlesOpenListFriend}
@@ -448,15 +429,13 @@ const Profil = () => {
         smatsFinish={smatsFinish}
         handlePlayPrivateParty={handlePlayPrivateParty}
       />
-      {
-        <MessageUpdateProfil
-          userProfil={userProfil} // Passer les informations sur le profil de l'utilisateur
-          open={isEditOpen} // Indiquer si le composant doit être ouvert ou fermé
-          onClose={handleCloseEdit} // Gérer la fermeture du composant
-          redirection={null} // Ajouter une éventuelle redirection après la modification du profil
-          setuserProfil={setuserProfil} // Passer la fonction pour mettre à jour les informations du profil
-        />
-      }
+      <MessageUpdateProfil
+        userProfil={userProfil}
+        open={isEditOpen}
+        onClose={handleCloseEdit}
+        redirection={null}
+        setuserProfil={setuserProfil}
+      />
       <ConfirmationDialog
         open={isDeleteFriendDialogOpen}
         onClose={() => setIsDeleteFriendDialogOpen(false)}

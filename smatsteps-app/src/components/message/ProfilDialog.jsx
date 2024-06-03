@@ -17,6 +17,7 @@ import { useUserContext } from "../../context/UserProvider";
 import MessageDialog from "../message/MessageDialog";
 import { displayImage } from "../../utils";
 import { useNavigate } from "react-router-dom";
+import CustomButton2 from "../buttons/CustomButton2";
 
 const ProfileDialog = ({ open, onClose }) => {
   const navigate = useNavigate();
@@ -64,9 +65,15 @@ const ProfileDialog = ({ open, onClose }) => {
   };
 
   return (
-    <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
-      <DialogTitle>Modifier le Profil</DialogTitle>
-      <DialogContent>
+    <Dialog
+      className="custom-profil"
+      open={open}
+      onClose={onClose}
+      fullWidth
+      maxWidth="sm"
+    >
+      <DialogTitle className="title-profil">Modifier le Profil</DialogTitle>
+      <DialogContent className="content-profile">
         <Box
           className="form-profile"
           sx={{
@@ -76,6 +83,7 @@ const ProfileDialog = ({ open, onClose }) => {
           }}
         >
           <Box
+            mt={2}
             sx={{
               display: "flex",
               justifyContent: "center",
@@ -122,12 +130,12 @@ const ProfileDialog = ({ open, onClose }) => {
       </DialogContent>
 
       <DialogActions>
-        <Button onClick={onClose} color="secondary">
+        <CustomButton2 onClick={onClose} color="secondary">
           Annuler
-        </Button>
-        <Button onClick={handleSubmit(onSubmit)} color="primary">
+        </CustomButton2>
+        <CustomButton2 onClick={handleSubmit(onSubmit)} color="primary">
           Enregistrer
-        </Button>
+        </CustomButton2>
       </DialogActions>
       <MessageDialog
         open={openMessageDialog}

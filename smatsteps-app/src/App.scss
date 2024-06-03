@@ -21,6 +21,8 @@
 :root {
   --primary-color: #6949ff;
   --secondary-color: #ffc107;
+  --primary-color-back: #6a49ff46;
+  --secondary-color-back: #ffc1072c;
   --secondary-color-light: #f3f3f3;
   --secondary-color-dark: #231f20;
   --color-text-light: #ffffff;
@@ -40,6 +42,8 @@ body {
     background: var(--secondary-color-dark);
     --primary-color-special: var(--primary-color);
     --secondary-color-special: var(--secondary-color);
+    --primary-color-special-back: var(--primary-color-back);
+    --secondary-color-special-back: var(--secondary-color-back);
     --proress-bar-bg: var(--secondary-color-light);
     --background-color: rgba(255, 193, 7, 0.4);
     .index-sous-theme {
@@ -57,6 +61,8 @@ body {
     background: var(--secondary-color-light);
     --primary-color-special: var(--secondary-color);
     --secondary-color-special: var(--primary-color);
+    --primary-color-special-back: var(--secondary-color-back);
+    --secondary-color-special-back: var(--primary-color-back);
     --proress-bar-bg: var(--secondary-color-dark);
     --background-color: rgba(105, 73, 255, 0.5);
     .index-sous-theme {
@@ -310,23 +316,65 @@ body {
       box-shadow: 1px 1px 6px rgba(105, 73, 255, 0.3);
     }
   }
-  .form-profile {
-    .title-connexion {
-      font-family: "Bangers", sans-serif;
+
+  .custom-profil {
+    .title-profil {
       color: var(--secondary-color-special);
     }
-    .input-profil {
-      font-family: "Madimi One", sans-serif;
-      border-radius: 5px;
-      box-shadow: 0px 1px 6px rgba(105, 73, 255, 0.8);
-      margin-bottom: 16px; /* Ajout de marge en bas */
-    }
-    .btn-profil {
-      color: var(--primary-color);
-      border: 2px solid rgba(105, 73, 255, 0.3);
-      box-shadow: 1px 1px 6px rgba(105, 73, 255, 0.3);
+    .content-profile {
+      border-radius: 20px;
+      margin: auto;
+      background-color: var(--primary-color-special-back);
+      border: 2px solid var(--secondary-color-special);
+      box-shadow: 1px 1px 6px var(--primary-color-special);
+
+      .form-profile {
+        padding: auto;
+        .title-connexion {
+          font-family: "Bangers", sans-serif;
+          color: var(--secondary-color-special);
+        }
+        .input-profil {
+          font-family: "Madimi One", sans-serif;
+          border-radius: 5px;
+          box-shadow: 0px 1px 6px var(--primary-color-special);
+          margin-bottom: 16px; /* Ajout de marge en bas */
+        }
+        .btn-profil {
+          color: var(--primary-color);
+          border: 2px solid rgba(105, 73, 255, 0.3);
+          box-shadow: 1px 1px 6px rgba(105, 73, 255, 0.3);
+        }
+      }
     }
   }
+  .content-profile {
+    border-radius: 20px;
+    margin: auto;
+    background-color: var(--primary-color-special-back);
+    border: 2px solid var(--secondary-color-special);
+    box-shadow: 1px 1px 6px var(--primary-color-special);
+
+    .form-profile {
+      padding: auto;
+      .title-connexion {
+        font-family: "Bangers", sans-serif;
+        color: var(--secondary-color-special);
+      }
+      .input-profil {
+        font-family: "Madimi One", sans-serif;
+        border-radius: 5px;
+        box-shadow: 0px 1px 6px var(--primary-color-special);
+        margin-bottom: 16px; /* Ajout de marge en bas */
+      }
+      .btn-profil {
+        color: var(--primary-color);
+        border: 2px solid rgba(105, 73, 255, 0.3);
+        box-shadow: 1px 1px 6px rgba(105, 73, 255, 0.3);
+      }
+    }
+  }
+
   .regles {
     text-align: center;
     padding: 20px; /* Ajoutez un espacement intérieur pour aérer le contenu */
@@ -804,23 +852,29 @@ body {
   .container-result-profil {
     box-shadow: 0px 1px 6px var(--secondary-color-special);
     border: 1px solid var(--primary-color-special);
+    max-width: "100%"; /* Ajuster automatiquement la largeur en fonction du contenu */
+    overflow-x: auto; /* Assurer le défilement horizontal si le contenu dépasse */
+
     .cell-result-profil {
       font-family: "Bangers", sans-serif;
       color: var(--secondary-color-special);
-      font-size: 1.5rem;
     }
+
     .cell-other-profil {
       font-family: "Madimi One", sans-serif;
     }
+
     .head-result-profil {
       background-color: var(--primary-color-special);
 
       .label-result-profil {
         font-family: "Bangers", sans-serif;
-        font-size: 1.3rem;
       }
     }
   }
+  .custom-profil {
+  }
+
   .box-field {
     box-shadow: 0px 1px 6px var(--secondary-color-special);
   }

@@ -17,8 +17,8 @@ import moment from "moment";
 import { firstLetterUppercase } from "../../utils";
 
 const RankingsListProfil = ({ rankings }) => {
-  const [orderBy, setOrderBy] = useState("result_quiz"); // Modifier orderBy pour le tri initial
-  const [order, setOrder] = useState("desc"); // Modifier order pour le tri initial
+  const [orderBy, setOrderBy] = useState("result_quiz");
+  const [order, setOrder] = useState("desc");
   const [filterValue, setFilterValue] = useState("");
 
   const handleSort = (property) => {
@@ -40,11 +40,10 @@ const RankingsListProfil = ({ rankings }) => {
     } else if (moment.isMoment(valueA) && moment.isMoment(valueB)) {
       return order === "asc" ? valueA.diff(valueB) : valueB.diff(valueA);
     } else {
-      // Handle other types of data comparison as needed
-      // For example, you might want to handle booleans or other types here
       return 0;
     }
   });
+
   const filteredRankings = sortedRankings.filter((ranking) => {
     const theme = ranking.theme.theme.toLowerCase();
     const sousTheme = ranking.sous_theme
@@ -58,8 +57,9 @@ const RankingsListProfil = ({ rankings }) => {
       sousTheme.includes(filterText)
     );
   });
+
   return (
-    <Container component="main" maxWidth="md">
+    <Container component="main">
       <Box sx={{ mb: 2, textAlign: "center" }}>
         <TextField
           className="box-field"
@@ -80,12 +80,10 @@ const RankingsListProfil = ({ rankings }) => {
                   onClick={() => handleSort("result_quiz")}
                 >
                   <Typography className="label-result-profil">
-                    {" "}
                     Résultat
                   </Typography>
                 </TableSortLabel>
               </TableCell>
-
               <TableCell className="label-result-profil">Theme</TableCell>
               <TableCell className="label-result-profil">Sous Theme</TableCell>
               <TableCell className="label-result-profil">Date</TableCell>
