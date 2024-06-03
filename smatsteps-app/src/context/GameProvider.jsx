@@ -138,11 +138,12 @@ export const GameProvider = ({ children }) => {
         params.user1 = user1;
         params.user2 = user2;
         // Effectuer une requête GET vers l'endpoint /new-private-game avec les paramètres
-        const res = await axios.get(`/new-private-game/${currentLevel}`, {
-          params,
-        });
+        const res = await axios.post(
+          `/new-private-game/${currentLevel}`,
+          params
+        );
+
         // Afficher la réponse dans la console
-        console.log(res);
       } else {
         // Si ni currentTheme ni currentSousTheme ne sont définis, afficher une erreur dans la console
         console.error("Neither currentTheme nor currentSousTheme is defined");

@@ -15,11 +15,14 @@ import { useGameContext } from "../../context/GameProvider";
 import ListIcon from "@mui/icons-material/List";
 import MultiplePersonsIcon from "../../components/svg/MultiplePersonsIcon";
 import RankingsList from "../../components/list/RankingList";
-import MessageThemeNewRanged from "../../components/message/MessageThemeNewRanged";
-import PlayerCard from "../../components/cards/PlayerCars";
+import MessageRankedPart from "../../components/message/MessageRankedPart";
+import PlayerCard from "../../components/cards/PlayerCars.jsx";
+import MessageDualPart from "../../components/message/MessageDualPart.jsx";
+
 const Theme = () => {
   const { id } = useParams(); // Use useParams to get the ID from the URL
   const [isCardNewRankedOpen, setIsCardNewRankedOpen] = useState(false);
+  const [isCardNewDualOpen, setIsCardNewDualOpen] = useState(false); // State for dual card
   const [isBusy, setIsBusy] = useState(true);
   const {
     currentLevel,
@@ -71,6 +74,10 @@ const Theme = () => {
 
   const handleOpenCardNewRanked = () => {
     setIsCardNewRankedOpen(true);
+  };
+
+  const handleOpenCardNewDual = () => {
+    setIsCardNewDualOpen(true);
   };
 
   return isBusy ? (
@@ -125,6 +132,7 @@ const Theme = () => {
           <ListIcon className="icon-list" />
         </Button>
         <Button
+          onClick={handleOpenCardNewDual}
           className="btn-multi"
           sx={{ color: "var(--secondary-color)" }}
           label="Multi"
@@ -134,9 +142,15 @@ const Theme = () => {
         </Button>
       </Stack>
       {isCardNewRankedOpen && (
-        <MessageThemeNewRanged
+        <MessageRankedPart
           open={isCardNewRankedOpen}
           onClose={() => setIsCardNewRankedOpen(false)}
+        />
+      )}
+      {isCardNewDualOpen && (
+        <MessageDualPart
+          open={isCardNewDualOpen}
+          onClose={() => setIsCardNewDualOpen(false)}
         />
       )}
     </Container>

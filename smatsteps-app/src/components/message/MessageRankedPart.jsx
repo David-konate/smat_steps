@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { useGameContext } from "../../context/GameProvider";
 import axios from "axios";
 
-const MessageThemeNewRanged = ({
+const MessageRankedPart = ({
   open,
   onClose,
 
@@ -133,4 +133,4 @@ const MessageThemeNewRanged = ({
   );
 };
 
-export default MessageThemeNewRanged;
+export default MessageRankedPart;

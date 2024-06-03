@@ -18,7 +18,7 @@ import { displayImage } from "../../utils";
 import ListIcon from "@mui/icons-material/List";
 import MultiplePersonsIcon from "../../components/svg/MultiplePersonsIcon";
 import RankingsList from "../../components/list/RankingList";
-import MessageThemeNewRanged from "../../components/message/MessageThemeNewRanged";
+import MessageRankedPart from "../../components/message/MessageRankedPart";
 
 const SousTheme = () => {
   const { id } = useParams();
@@ -181,7 +181,7 @@ const SousTheme = () => {
         </Button>
       </Stack>
       {isCardNewRankedOpen && (
-        <MessageThemeNewRanged
+        <MessageRankedPart
           open={isCardNewRankedOpen}
           onClose={() => setIsCardNewRankedOpen(false)}
         />
