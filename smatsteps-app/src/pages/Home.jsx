@@ -42,9 +42,6 @@ const Home = () => {
     navigate("/sous-theme");
   };
 
-  const handleRandom = () => {
-    navigate("/random-theme");
-  };
   return (
     <Container>
       <Helmet>
@@ -359,7 +356,7 @@ const Home = () => {
               fontWeight: "bold",
               color: "var(--secondary-color-special)",
             }}
-            onClick={handleRandom}
+            onClick={handleSousThemes}
           >
             tout voir
           </Typography>

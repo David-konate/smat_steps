@@ -40,73 +40,75 @@ const RankingsList = () => {
   });
 
   return (
-    <Container component="main" maxWidth="md">
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>
-                <TableSortLabel
-                  active={orderBy === "id"}
-                  direction={orderBy === "id" ? order : "asc"}
-                  onClick={() => handleSort("id")}
-                >
-                  #
-                </TableSortLabel>
-              </TableCell>
-              <TableCell>
-                <TableSortLabel
-                  active={orderBy === "result_quiz"}
-                  direction={orderBy === "result_quiz" ? order : "asc"}
-                  onClick={() => handleSort("result_quiz")}
-                >
-                  Résultat (%)
-                </TableSortLabel>
-              </TableCell>
-              <TableCell>
-                <TableSortLabel
-                  active={orderBy === "time_quiz"}
-                  direction={orderBy === "time_quiz" ? order : "asc"}
-                  onClick={() => handleSort("time_quiz")}
-                >
-                  Temps
-                </TableSortLabel>
-              </TableCell>
-              <TableCell>
-                <TableSortLabel
-                  active={orderBy === "user.user_pseudo"}
-                  direction={orderBy === "user.user_pseudo" ? order : "asc"}
-                  onClick={() => handleSort("user.user_pseudo")}
-                >
-                  Joueur
-                </TableSortLabel>
-              </TableCell>
-              <TableCell>
-                <TableSortLabel
-                  active={orderBy === "created_at"}
-                  direction={orderBy === "created_at" ? order : "asc"}
-                  onClick={() => handleSort("created_at")}
-                >
-                  Date
-                </TableSortLabel>
-              </TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {sortedRankings.slice(3, 14).map((ranking, index) => (
-              <TableRow key={index}>
-                <TableCell>{index + 4}</TableCell>
-                <TableCell>{ranking.result_quiz}%</TableCell>
-                <TableCell>{ranking.time_quiz}</TableCell>
-                <TableCell>{ranking.user.user_pseudo}</TableCell>
+    <Container className="list-ranking" maxWidth="sm">
+      <Box mt={2} mb={2}>
+        <TableContainer component={Paper}>
+          <Table>
+            <TableHead className="ranking-head">
+              <TableRow>
                 <TableCell>
-                  {moment(ranking.created_at).format("D MMMM YYYY")}
+                  <TableSortLabel
+                    active={orderBy === "id"}
+                    direction={orderBy === "id" ? order : "asc"}
+                    onClick={() => handleSort("id")}
+                  >
+                    #
+                  </TableSortLabel>
+                </TableCell>
+                <TableCell>
+                  <TableSortLabel
+                    active={orderBy === "result_quiz"}
+                    direction={orderBy === "result_quiz" ? order : "asc"}
+                    onClick={() => handleSort("result_quiz")}
+                  >
+                    Résultat (%)
+                  </TableSortLabel>
+                </TableCell>
+                <TableCell>
+                  <TableSortLabel
+                    active={orderBy === "time_quiz"}
+                    direction={orderBy === "time_quiz" ? order : "asc"}
+                    onClick={() => handleSort("time_quiz")}
+                  >
+                    Temps
+                  </TableSortLabel>
+                </TableCell>
+                <TableCell>
+                  <TableSortLabel
+                    active={orderBy === "user.user_pseudo"}
+                    direction={orderBy === "user.user_pseudo" ? order : "asc"}
+                    onClick={() => handleSort("user.user_pseudo")}
+                  >
+                    Joueur
+                  </TableSortLabel>
+                </TableCell>
+                <TableCell>
+                  <TableSortLabel
+                    active={orderBy === "created_at"}
+                    direction={orderBy === "created_at" ? order : "asc"}
+                    onClick={() => handleSort("created_at")}
+                  >
+                    Date
+                  </TableSortLabel>
                 </TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableHead>
+            <TableBody className="ranking-body">
+              {sortedRankings.slice(3, 14).map((ranking, index) => (
+                <TableRow className="ranking-row" key={index}>
+                  <TableCell>{index + 4}</TableCell>
+                  <TableCell>{ranking.result_quiz}%</TableCell>
+                  <TableCell>{ranking.time_quiz}</TableCell>
+                  <TableCell>{ranking.user.user_pseudo}</TableCell>
+                  <TableCell>
+                    {moment(ranking.created_at).format("D MMMM YYYY")}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Box>
     </Container>
   );
 };
