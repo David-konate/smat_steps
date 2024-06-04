@@ -19,11 +19,12 @@ import ListIcon from "@mui/icons-material/List";
 import MultiplePersonsIcon from "../../components/svg/MultiplePersonsIcon";
 import RankingsList from "../../components/list/RankingList";
 import MessageRankedPart from "../../components/message/MessageRankedPart";
+import MessageDualPart from "../../components/message/MessageDualPart.jsx";
 
 const SousTheme = () => {
   const { id } = useParams();
   const [isCardNewRankedOpen, setIsCardNewRankedOpen] = useState(false);
-
+  const [isCardNewDualOpen, setIsCardNewDualOpen] = useState(false);
   const [isBusy, setIsBusy] = useState(true);
   const {
     currentLevel,
@@ -73,6 +74,10 @@ const SousTheme = () => {
 
   const handleOpenCardNewRanked = () => {
     setIsCardNewRankedOpen(true);
+  };
+
+  const handleOpenCardNewDual = () => {
+    setIsCardNewDualOpen(true);
   };
 
   return isBusy ? (
@@ -172,6 +177,7 @@ const SousTheme = () => {
           <ListIcon className="icon-list" />
         </Button>
         <Button
+          onClick={handleOpenCardNewDual}
           className="btn-multi"
           sx={{ color: "var(--secondary-color)" }}
           label="Multi"
@@ -184,6 +190,12 @@ const SousTheme = () => {
         <MessageRankedPart
           open={isCardNewRankedOpen}
           onClose={() => setIsCardNewRankedOpen(false)}
+        />
+      )}
+      {isCardNewDualOpen && (
+        <MessageDualPart
+          open={isCardNewDualOpen}
+          onClose={() => setIsCardNewDualOpen(false)}
         />
       )}
     </Container>
