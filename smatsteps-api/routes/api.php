@@ -201,12 +201,18 @@ Route::get('/me/{currentLevel}', function ($currentLevel) {
             ->with('userSmats')
             ->with(['theme', 'sousTheme']) // Charger les données associées dans UserSmat
             ->first();
+        $smat3 = Smat::where('id', $smatId)
+            ->where('status', 3) // Condition pour le statut égal à 2
+            ->with('userSmats')
+            ->with(['theme', 'sousTheme']) // Charger les données associées dans UserSmat
+            ->first();
 
         if ($smat2) {
             // Ajouter les données de SmatUser associées à ce Smat2 dans le tableau $openSmats
             $openSmats[] = [
                 'relatedSmats' => $relatedSmats,
                 'smat' => $smat2,
+                'smatClose' => $smat3,
                 // Les données associées dans UserSmat
             ];
         }

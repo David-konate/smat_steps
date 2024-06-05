@@ -348,9 +348,11 @@ class QuestionController extends Controller
                 ], 500); // Utiliser le code 500 pour les erreurs internes du serveur
             }
             // Associer les questions au Smat et mélanger les réponses
-            $questions->shuffle();
             $index = 0;
             foreach ($questions as $question) {
+                // Mélanger les réponses avant de les assigner à la question
+                $question->answers->shuffle();
+
                 $questionSmat = new QuestionSmat([
                     'question_id' => $question->id,
                     'smat_id' => $smat->id,

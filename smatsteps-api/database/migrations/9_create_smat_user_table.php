@@ -17,6 +17,7 @@ return new class extends Migration
             $table->decimal('result_smat', 5, 2);
             $table->integer('current_question')->default(0);
             $table->integer('current_points_max')->default(0);
+            $table->integer('state')->default(0);
 
             $table->timestamps();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');

@@ -154,7 +154,6 @@ class UserController extends Controller
     {
         $currentLevel = $request->query('currentLevel');
 
-
         try {
             $user = User::with('friends')->where('user_pseudo', $user)->first();
 
@@ -165,6 +164,7 @@ class UserController extends Controller
                 ], 404);
             }
 
+            // Récupérer les classements pour le niveau actuel
             $rankings = Ranking::where('user_id', $user->id)
                 ->where('level', $currentLevel)
                 ->with(['theme', 'sousTheme'])
@@ -172,14 +172,29 @@ class UserController extends Controller
                 ->orderByDesc('result_quiz')
                 ->get();
 
-            $SmatsFinish = Smat::where('status', 3)->with('userSmats')->with('users')->get();
+            // Récupérer les Smats terminés (status = 3) liés à l'utilisateur courant via la table pivot user_smat
+            $SmatsFinish = Smat::where('status', 3)
+                ->whereHas('userSmats', function ($query) use ($user) {
+                    $query->where('user_id', $user->id);
+                })
+                ->with(['theme', 'sousTheme', 'users', 'userSmats'])
+                ->get();
 
-            // $latestReview = $user->receiverReviews->first(); // Assuming reviews are ordered by creation date
+            // Récupérer les Smats avec un statut de 2 liés à l'utilisateur courant via la table pivot user_smat
+            $openSmats = Smat::where('status', 2)
+                ->whereHas('userSmats', function ($query) use ($user) {
+                    $query->where('user_id', $user->id);
+                })
+
+                ->with(['theme', 'sousTheme', 'users', 'userSmats'])
+                ->get();
+
             return response()->json([
                 'status' => true,
                 'user' => $user,
-                'rankings' => $rankings, // Envoyer les classements dans la réponse JSON
-                'SmatsFinish' => $SmatsFinish
+                'rankings' => $rankings,
+                'SmatsFinish' => $SmatsFinish,
+                'openSmats' => $openSmats // Ajout des Smats avec un statut de 2 dans la réponse JSON
             ], 200);
         } catch (\Exception $e) {
             return response()->json([
@@ -188,6 +203,8 @@ class UserController extends Controller
             ], 500);
         }
     }
+
+
 
 
 

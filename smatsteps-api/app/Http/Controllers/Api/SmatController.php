@@ -147,17 +147,20 @@ class SmatController extends Controller
 
             // Vérifier si tous les utilisateurs ont terminé toutes les questions
             $allUsersFinished = true;
-            $smatUsers = SmatUser::where('smat_id', $smatId)->get();
-            $smat = Smat::where('smat_id', $smatId)->first();
+            $usersSmat = SmatUser::where('smat_id', $smatId)->get();
+            $smat = Smat::where('id', $smatId)->first();
 
-            foreach ($smatUsers as $smatUser) {
-                if ($smatUser->current_question <= $smat->length() - 1) {
+
+            foreach ($usersSmat as $userSmat) {
+                // Vérifie si l'utilisateur a répondu aux questions de 0 à 9 (10 questions au total)
+                if ($userSmat->current_question < 10) {
+                    // L'utilisateur n'a pas répondu à toutes les questions
                     $allUsersFinished = false;
                     break;
                 }
             }
 
-            // Si tous les utilisateurs ont terminé toutes les questions,
+            // Si tous les utilisateurs ont répondu à toutes les questions,
             // mettre à jour l'état du Smat en le marquant comme terminé (status 3)
             if ($allUsersFinished) {
                 $smat->update(['status' => 3]);
