@@ -63,7 +63,8 @@ class SousThemeController extends Controller
             ->get();
 
         // Récupérer le thème correspondant
-        $sousTheme = SousTheme::findOrFail($id);
+        $sousTheme = SousTheme::with('theme')->findOrFail($id);
+
 
         // Retourner les données
         return response()->json([
