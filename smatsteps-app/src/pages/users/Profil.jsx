@@ -55,7 +55,7 @@ const Profil = () => {
   if (slug.includes("?")) {
     slug = slug.split("?")[0];
   }
-  console.log(slug);
+
   const [userProfil, setuserProfil] = useState();
   const [userRankings, setUserRankings] = useState();
   const [smatsFinish, setSmatsFinish] = useState();
@@ -104,12 +104,9 @@ const Profil = () => {
           currentTheme: currentTheme,
         },
       });
-      console.log(res);
-      console.log(user);
       const friend = await axios.get(
         `users/${res.data.user.id}/is-friend-with/${user.id}`
       );
-      console.log(friend.data.friend);
       setFriend(friend.data.friend);
       setuserProfil(res.data.user);
       setUserRankings(res.data.rankings);

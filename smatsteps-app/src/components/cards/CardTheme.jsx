@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 import { displayImage } from "../../utils";
 
 const CardTheme = ({ theme, theme_id, theme_image }) => {
-  console.log(theme_id);
   return (
     <Card
       sx={{

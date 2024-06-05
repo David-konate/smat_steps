@@ -95,8 +95,7 @@ const MessagePrivateParty = ({ open, onClose, openSmats }) => {
               smat.relatedSmats[0].user_id === user.id ? 0 : 1;
             const currentUser = smat.relatedSmats[currentUserIndex];
             const opponent = smat.relatedSmats[1 - currentUserIndex];
-            console.log({ currentUser });
-            console.log({ opponent });
+
             // Vérifier si c'est au tour de l'utilisateur actuel de jouer
             const isCurrentUserTurn =
               currentUser.current_question - opponent.current_question <= 1;
@@ -128,7 +127,6 @@ const MessagePrivateParty = ({ open, onClose, openSmats }) => {
                 },
                 { name: opponent.user.user_pseudo, value: opponentPercentage },
               ];
-              console.log("Data Case 1:", data);
             } else {
               // Cas où les deux joueurs n'ont pas encore répondu
               if (currentUser.result_smat == 0.0 && opponent.result_smat == 0) {
@@ -137,7 +135,6 @@ const MessagePrivateParty = ({ open, onClose, openSmats }) => {
                   { name: currentUser.user.user_pseudo, value: 50 },
                   { name: opponent.user.user_pseudo, value: 50 },
                 ];
-                console.log("Data Case 2:", data);
               } else if (
                 currentUser.result_smat === 0.0 &&
                 opponent.result_smat !== 0.0
@@ -147,14 +144,12 @@ const MessagePrivateParty = ({ open, onClose, openSmats }) => {
                   { name: currentUser.user.user_pseudo, value: 0 },
                   { name: opponent.user.user_pseudo, value: 100 },
                 ];
-                console.log("Data Case 3:", data);
               } else {
                 // Cas où seul l'utilisateur actuel a répondu
                 data = [
                   { name: currentUser.user.user_pseudo, value: 100 },
                   { name: opponent.user.user_pseudo, value: 0 },
                 ];
-                console.log("Data Case 4:", data);
               }
             }
 

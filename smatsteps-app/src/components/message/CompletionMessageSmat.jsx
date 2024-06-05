@@ -47,15 +47,6 @@ const CompletionMessageSmat = ({
     resetSmat();
   };
 
-  // Fonction personnalisée pour la fermeture avec surcharge
-  const handleCustomClose = () => {
-    console.log("Merci d'avoir jouer a Smat-Steps");
-    //appelez la fonction onClose fournie par les props pour fermer la boîte de dialogue
-    onClose();
-    gameFinished();
-  };
-  console.log({ currentAnswerSmat });
-  console.log({ currentPointsSmat });
   return isBusy ? (
     <Box>
       <CircularProgress></CircularProgress>

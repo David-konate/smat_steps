@@ -22,7 +22,6 @@ const ResetPasswordForm = () => {
     setIsSubmitting(true);
     try {
       const response = await axios.post("/forgot-password", data);
-      console.log(response.data);
       // Réinitialisation réussie, met à jour l'état
       setResetSuccess(true);
       reset(); // Réinitialiser le formulaire après une réinitialisation réussie

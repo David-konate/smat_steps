@@ -6,7 +6,6 @@ import axios from "axios";
 const EmailVerifyPage = () => {
   const location = useLocation();
   const [isSuccess, setIsSuccess] = useState(false); // État pour suivre si la vérification est réussie
-  console.log(location);
   useEffect(() => {
     onVerifyAccount();
   }, []);
@@ -14,7 +13,6 @@ const EmailVerifyPage = () => {
   const onVerifyAccount = async () => {
     try {
       await axios.post(`/email-verify${location.search}`, "post");
-      console.log("success");
       setIsSuccess(true); // Mettre à jour l'état pour indiquer que la vérification est réussie
     } catch (error) {
       console.error(error);

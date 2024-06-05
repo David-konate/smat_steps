@@ -18,7 +18,6 @@ const IndexUsers = () => {
   const fetchData = async () => {
     try {
       const res = await axios.get(`users`);
-      console.log(res.data);
       setUsers(res.data);
     } catch (error) {
       // Gérer les erreurs

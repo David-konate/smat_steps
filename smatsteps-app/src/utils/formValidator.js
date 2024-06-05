@@ -111,7 +111,6 @@ export const validationQuestion = create((data = {}) => {
 });
 
 export const validationForgotPassword = create((data = {}) => {
-  console.log({ data });
   test("email", IS_REQUIRED_MESSAGE, () => {
     enforce(data.email).isNotEmpty();
   });

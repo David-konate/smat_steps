@@ -32,7 +32,6 @@ const ChangePassword = () => {
   }, [errors]);
 
   const onSubmit = async (data) => {
-    console.log(data);
     try {
       await axios.post("/reset-password", {
         password: data.password,
@@ -134,7 +133,6 @@ const SendMail = () => {
 
   const onSubmit = async (data) => {
     try {
-      console.log({ data });
       await axios.post("/forgot-password", {
         email: data.email,
       });

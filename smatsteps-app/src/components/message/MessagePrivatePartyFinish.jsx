@@ -1,6 +1,5 @@
 import { Close } from "@mui/icons-material";
 import {
-  Avatar,
   Card,
   CardContent,
   Dialog,
@@ -14,7 +13,6 @@ import { useUserContext } from "../../context/UserProvider";
 import CustomButton2 from "../buttons/CustomButton2";
 import { PieChart, Pie, ResponsiveContainer, Cell } from "recharts";
 import { useNavigate } from "react-router-dom";
-import { useGameContext } from "../../context/GameProvider";
 import axios from "axios";
 
 const MessagePrivatePartyFinish = ({ open, onClose, smatsFinish }) => {
@@ -23,8 +21,6 @@ const MessagePrivatePartyFinish = ({ open, onClose, smatsFinish }) => {
   const COLORS = ["#0088FE", "#00C49F"];
   const RADIAN = Math.PI / 180;
   const navigate = useNavigate();
-  const { setSmatUsers, setSmat } = useGameContext();
-  console.log({ smatsFinish });
   // Filtrer les parties privées en cours en fonction du texte de recherche
   const filteredSmats = smatsFinish?.filter((smat) =>
     smat?.relatedSmats?.some(
@@ -93,13 +89,7 @@ const MessagePrivatePartyFinish = ({ open, onClose, smatsFinish }) => {
             smat.relatedSmats[0].user_id === user.id ? 0 : 1;
           const currentUser = smat.relatedSmats[currentUserIndex];
           const opponent = smat.relatedSmats[1 - currentUserIndex];
-          console.log(currentUser.current_question);
-          console.log(opponent.current_question);
-          // Vérifier si c'est au tour de l'utilisateur actuel de jouer
-          const isCurrentUserTurn =
-            currentUser.current_question - opponent.current_question <= 1;
-          console.log(currentUser.current_question - opponent.current_question);
-          console.log({ isCurrentUserTurn });
+
           // Initialiser les données pour le graphique en camembert
           let data = [];
 
@@ -127,7 +117,6 @@ const MessagePrivatePartyFinish = ({ open, onClose, smatsFinish }) => {
               },
               { name: opponent.user.user_pseudo, value: opponentPercentage },
             ];
-            console.log("1");
           } else {
             // Cas où les deux joueurs n'ont pas encore répondu
             if (currentUser.result_smat == 0.0 && opponent.result_smat == 0) {
@@ -136,7 +125,6 @@ const MessagePrivatePartyFinish = ({ open, onClose, smatsFinish }) => {
                 { name: currentUser.user.user_pseudo, value: 50 },
                 { name: opponent.user.user_pseudo, value: 50 },
               ];
-              console.log("2");
             } else if (
               currentUser.result_smat == 0.0 &&
               opponent.result_smat != 0.0
@@ -146,14 +134,12 @@ const MessagePrivatePartyFinish = ({ open, onClose, smatsFinish }) => {
                 { name: currentUser.user.user_pseudo, value: 0 },
                 { name: opponent.user.user_pseudo, value: 100 },
               ];
-              console.log("3");
             } else {
               // Cas où seul l'utilisateur actuel a répondu
               data = [
                 { name: currentUser.user.user_pseudo, value: 100 },
                 { name: opponent.user.user_pseudo, value: 0 },
               ];
-              console.log("4");
             }
           }
 

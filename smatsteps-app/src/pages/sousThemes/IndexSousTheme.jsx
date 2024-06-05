@@ -19,7 +19,6 @@ const IndexSousTheme = () => {
       setIsBusy(true);
       const res = await axios.get(`/sous-themes`);
 
-      console.log(res.data);
       setSousThemes(res.data);
     } catch (error) {
       console.error(error);

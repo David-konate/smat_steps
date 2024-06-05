@@ -53,7 +53,6 @@ const Theme = () => {
         },
       });
 
-      console.log(res.data);
       setTheme(res.data.theme);
       setCurrentTheme(res.data.theme);
       setTopUserRanking(res.data.topRankings);

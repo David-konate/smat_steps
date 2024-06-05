@@ -145,7 +145,6 @@ const QuestionForm = ({ questionId = null }) => {
 
     // Ajoutez l'ID de l'utilisateur connecté
     data.user_id = user.id;
-    console.log(data);
     try {
       const token = Cookies.get("token");
       const response = await axios.post("/questions", data, {
@@ -153,7 +152,6 @@ const QuestionForm = ({ questionId = null }) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response.data);
     } catch (error) {
       console.error("Erreur lors de la soumission de la question :", error);
     }
@@ -201,7 +199,6 @@ const QuestionForm = ({ questionId = null }) => {
     setSearchLevel(level.level);
     setListVisibleLevel(false);
   };
-  console.log(sousThemes);
   return (
     <Container>
       {isBusy ? (

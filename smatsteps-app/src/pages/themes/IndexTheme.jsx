@@ -18,7 +18,6 @@ const IndexTheme = () => {
       setIsBusy(true);
       const res = await axios.get(`/themes`);
 
-      console.log(res.data);
       setThemes(res.data);
     } catch (error) {
       console.error(error);

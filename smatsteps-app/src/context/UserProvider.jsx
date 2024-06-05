@@ -41,9 +41,6 @@ export const UserProvider = ({ children }) => {
       setOpenSmats(res.data.openSmats);
     } catch (error) {
       console.log(error); // Gestion des erreurs potentielles
-      if (error.status === 401) {
-        console.log("true"); // S'il y a une erreur 401, l'utilisateur n'est pas authentifié
-      }
     }
   };
 

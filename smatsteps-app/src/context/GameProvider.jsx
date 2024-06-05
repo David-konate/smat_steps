@@ -104,7 +104,6 @@ export const GameProvider = ({ children }) => {
 
         const res = await axios.get(`/new-game/${currentLevel}`, { params });
         setQuestionsRanked(res.data.questions);
-        console.log(res.data);
         setCountLevel1(res.data.countLevel1);
         setCountLevel2(res.data.countLevel2);
         setCountLevel3(res.data.countLeve2);
@@ -216,8 +215,6 @@ export const GameProvider = ({ children }) => {
 
   //Calcule des points gagné par questions
   const onCalculPointRanked = () => {
-    console.log({ currentQuestionData });
-    console.log({ currentAnswer });
     if (currentAnswer.is_correct === 1 && timeRemaining > 0) {
       console.log("Tu as suivi la voie de la Force! Bonne réponse!");
       let res;
@@ -247,7 +244,6 @@ export const GameProvider = ({ children }) => {
       );
     } else if (currentAnswer.is_correct === 0) {
       saveBadAnswer(currentQuestionData, currentAnswer);
-      console.log({ badAnswers });
       // Ajoutez le temps écoulé au temps total
       setTotalTime(
         (prevTotalTime) =>

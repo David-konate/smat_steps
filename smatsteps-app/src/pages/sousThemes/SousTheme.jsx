@@ -57,7 +57,6 @@ const SousTheme = () => {
 
       setSousTheme(res.data.sousTheme);
       setCurrentTheme(res.data.sousTheme.theme);
-      console.log(res.data.sousTheme);
       setCurrentSousTheme(res.data.sousTheme);
       setTopUserRanking(res.data.topRankings);
     } catch (error) {

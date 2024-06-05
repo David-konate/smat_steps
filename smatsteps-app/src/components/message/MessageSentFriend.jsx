@@ -21,15 +21,11 @@ const MessageSentFriend = ({
   const navigate = useNavigate();
 
   const handleOpenConfirmation = (friendId) => {
-    console.log(friendId);
     setFriendToDelete(friendId);
     setIsConfirmationOpen(true);
   };
 
   const handleDeleteFriend = async () => {
-    console.log(friendToDelete);
-    console.log(friendToDelete);
-
     try {
       await axios.delete(
         `users/${user.id}/deleted-friend-with/${friendToDelete}`

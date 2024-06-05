@@ -92,7 +92,6 @@ export const LIMITE_ALL_POINT = QUESTION_TIMER_DURATION - 2000;
 
 // Fonction pour calculer les points en fonction du temps
 export const calculatePoints = (userTime, userLevel) => {
-  console.log(userTime);
   userTime = userTime * 1000;
   const pointsMax = LEVELS[userLevel];
 
@@ -100,11 +99,9 @@ export const calculatePoints = (userTime, userLevel) => {
   if (userTime < LIMITE_ALL_POINT) {
     const pointsPerdus =
       Math.round((pointsMax / userTime) * LIMITE_ALL_POINT * 0.1 * 100) / 100;
-    console.log({ pointsPerdus });
     const points = pointsMax - pointsPerdus;
     return points;
   } else {
-    console.log("full point", LEVELS[userLevel]);
     // Si le temps est supérieur à POINTS_LIMITE_ALL_POINT, attribuer le nombre maximum de points
     return pointsMax;
   }

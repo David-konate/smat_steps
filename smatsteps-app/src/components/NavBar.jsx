@@ -87,7 +87,6 @@ function NavBar() {
   };
 
   const onProfil = () => {
-    console.log("profil");
     if (user.id) {
       navigate(`/profil/${user.slug}`);
     }
@@ -136,8 +135,6 @@ function NavBar() {
       // Mettre à jour la liste de newSmats après la suppression en utilisant setNewSmats
       setNewSmats(response.data.updatedNewSmats);
 
-      console.log(response.data);
-
       // setMessage(response.data.message);
       // openConfirmDial();
     } catch (error) {
@@ -149,9 +146,7 @@ function NavBar() {
   };
 
   const handleLogout = async () => {
-    console.log("logout");
     localStorage.removeItem("token");
-
     setUser(null);
     window.location.replace("/login");
   };
