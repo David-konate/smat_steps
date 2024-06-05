@@ -26,7 +26,7 @@ const MessagePrivateParty = ({ open, onClose, openSmats }) => {
   const { setSmatUsers, setSmat } = useGameContext();
 
   // Filtrer les parties privées en cours en fonction du texte de recherche
-  const filteredSmats = openSmats.filter((smat) =>
+  const filteredSmats = openSmats?.filter((smat) =>
     smat.relatedSmats.some(
       (relatedSmat) =>
         relatedSmat.user.user_pseudo
@@ -89,7 +89,7 @@ const MessagePrivateParty = ({ open, onClose, openSmats }) => {
 
         {/* Affichage des parties filtrées */}
         <Box sx={{ margin: "0 auto" }}>
-          {filteredSmats.map((smat, index) => {
+          {filteredSmats?.map((smat, index) => {
             // Détermination de l'index de l'utilisateur actuel et de son adversaire
             const currentUserIndex =
               smat.relatedSmats[0].user_id === user.id ? 0 : 1;

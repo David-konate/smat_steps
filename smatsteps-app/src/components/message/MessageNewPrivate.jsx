@@ -9,22 +9,14 @@ import {
   Typography,
   Box,
 } from "@mui/material";
-import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { useGameContext } from "../../context/GameProvider";
 import LevelBox from "../LevelBox";
 import axios from "axios";
 import { useUserContext } from "../../context/UserProvider";
 import MessageDialog from "./MessageDialog";
-import { Redirect } from "react-router-dom";
 
-const MessageNewPrivate = ({
-  open,
-  onClose,
-  title,
-  message,
-  redirection = "/partie-classe",
-}) => {
+const MessageNewPrivate = ({ open, onClose }) => {
   const navigate = useNavigate();
   const [errorOpen, setErrorOpen] = useState(false);
   const {
@@ -70,7 +62,7 @@ const MessageNewPrivate = ({
   const filteredPseudos = useMemo(() => {
     return friends?.filter(
       (friend) =>
-        typeof searchTextPseudo === "string" &&
+        friend.user_pseudo &&
         friend.user_pseudo
           .toLowerCase()
           .includes(searchTextPseudo.toLowerCase())
@@ -136,9 +128,8 @@ const MessageNewPrivate = ({
       )?.id;
       fetchPrivateNewGame(user.id, selectedFriendId);
       onClose();
-      if (redirection) {
-        navigate(redirection);
-      }
+
+      navigate(`profil/${user.slug}`);
     } else {
       setErrorOpen(true);
     }

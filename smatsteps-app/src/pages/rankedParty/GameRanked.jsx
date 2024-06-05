@@ -38,6 +38,8 @@ const GameRanked = () => {
   // Utilisation de la fonction pointsTotal pour calculer le total des points
   const totalPoints = pointsTotal(countLevel1, countLevel2, countLevel3);
   const currentScorePercentage = calculatePercentage(points, totalPoints);
+  // Déclaration de l'état local pour suivre si l'utilisateur a répondu
+  const [answered, setAnswered] = useState(false);
 
   // Utilisation correcte de totalPoints dans votre composant
   const currentScoreMaxPercentage = calculatePercentage(pointsMax, totalPoints);
@@ -105,8 +107,12 @@ const GameRanked = () => {
     setTimeRemaining(timeRemaining); // Réinitialiser le chronomètre
     setCurrentAnswer(answer);
     setCurrentQuestionData(questionsRanked[currentQuestion]);
+
+    // Mettre à jour l'état pour indiquer que l'utilisateur a répondu
+    setAnswered(true);
   };
 
+  // Logique pour définir le fond et la bordure en fonction de l'index
   // Logique pour définir le fond et la bordure en fonction de l'index
   const getCardStyle = (index) => {
     let backgroundColor, color, shadow;
@@ -139,6 +145,7 @@ const GameRanked = () => {
       borderRadius: 10,
       boxShadow: `0px 1px 6px ${shadow}`,
       color: color,
+      pointerEvents: answered ? "none" : "auto", // Désactiver les clics une fois que l'utilisateur a répondu
     };
   };
 

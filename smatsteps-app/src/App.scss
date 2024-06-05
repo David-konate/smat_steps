@@ -253,6 +253,22 @@ body {
     }
   }
 
+  .card-part-end {
+    background-color: var(--primary-color-special-back);
+    border: 1px solid var(--primary-color-special);
+    box-shadow: 0px 1px 6px var(--secondary-color-special);
+    text-align: center; // Pour centrer le texte
+
+    h4 {
+      color: var(--secondary-color-special); // Couleur spécifique pour le titre
+    }
+
+    p {
+      color: var(--text-color); // Couleur spécifique pour le texte
+      font-weight: bold;
+    }
+  }
+
   /* General drawer styles */
   .drawer {
     width: 100%;

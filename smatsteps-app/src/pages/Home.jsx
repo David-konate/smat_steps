@@ -51,6 +51,18 @@ const Home = () => {
           content="Bienvenue sur la page d'accueil de SmatSteps, une application de quiz interactive, conviviale et enrichissante. Explorez et élargissez vos connaissances avec SmatSteps !"
         />
       </Helmet>
+      <Box mt={2}>
+        <Typography
+          variant="body1"
+          color="error"
+          textAlign="center"
+          sx={{ fontSize: 13, fontWeight: "bold" }}
+        >
+          L'application est en version bêta. Les données peuvent être mises à
+          jour et les comptes créés supprimés. Merci pour votre compréhension.
+        </Typography>
+      </Box>
+
       <Typography
         sx={{ color: "var(--primary-color)" }}
         mt={2}

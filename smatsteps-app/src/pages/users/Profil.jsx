@@ -35,7 +35,7 @@ import ProfileDialog from "../../components/message/ProfilDialog";
 import SettingsIcon from "@mui/icons-material/Settings";
 
 const Profil = () => {
-  const { user, friendSent, friendSend, friends, openSmats } = useUserContext();
+  const { user, friendSent, friendSend, friends } = useUserContext();
   const [isBusy, setIsBusy] = useState(true);
   const {
     currentLevel,
@@ -44,18 +44,13 @@ const Profil = () => {
     setSmatUsers,
     setSmat,
   } = useGameContext();
+  const [openSmats, setOpenSmats] = useState();
   const location = useLocation();
   const pathname = location.pathname;
-
   // Diviser le pathname en segments en utilisant '/'
   const segments = pathname.split("/");
-  let slug = segments.pop();
-
-  // Vérifier si le slug contient un '?', si oui, ne prendre que la partie avant le '?'
-  if (slug.includes("?")) {
-    slug = slug.split("?")[0];
-  }
-
+  const slug = segments.pop();
+  // Récupérer le dernier segment === slug
   const [userProfil, setuserProfil] = useState();
   const [userRankings, setUserRankings] = useState();
   const [smatsFinish, setSmatsFinish] = useState();
@@ -104,9 +99,12 @@ const Profil = () => {
           currentTheme: currentTheme,
         },
       });
+
       const friend = await axios.get(
         `users/${res.data.user.id}/is-friend-with/${user.id}`
       );
+      console.log(res);
+      setOpenSmats(res.data.openSmats);
       setFriend(friend.data.friend);
       setuserProfil(res.data.user);
       setUserRankings(res.data.rankings);
@@ -117,13 +115,6 @@ const Profil = () => {
       setIsBusy(false);
     }
   };
-
-  useEffect(() => {
-    const queryParams = new URLSearchParams(location.search);
-    if (queryParams.get("toggleMessage") === "true") {
-      toggleMessagePrivateParty();
-    }
-  }, [location.search]);
 
   const handleCloseEdit = () => {
     setIsEditOpen(false);
@@ -216,16 +207,7 @@ const Profil = () => {
                     </Typography>
                   </IconButton>
                 )}
-                {userProfil.id === user.id && smatsFinish?.length > 0 && (
-                  <IconButton
-                    onClick={toggleMessagePrivateFinish}
-                    title="Cliquez ici pour ouvrir votre liste d'amis"
-                  >
-                    <PlaylistAddCheckCircleIcon
-                      style={{ color: "var(--secondary-color-special)" }}
-                    />
-                  </IconButton>
-                )}
+
                 {userProfil.id === user.id && friends?.length > 0 && (
                   <IconButton
                     onClick={handlesOpenListFriend}
@@ -262,6 +244,13 @@ const Profil = () => {
 
               {/* Icônes du côté droit */}
               <Stack direction={"column"} gap={1}>
+                {userProfil.id === user.id && (
+                  <IconButton onClick={handleOpenProfileDialog}>
+                    <SettingsIcon
+                      style={{ color: "var(--secondary-color-special)" }}
+                    />
+                  </IconButton>
+                )}
                 {userProfil.id !== user.id && !friend && (
                   <IconButton
                     title="Cliquez ici pour ajouter en ami"
@@ -279,9 +268,13 @@ const Profil = () => {
                     />
                   </IconButton>
                 )}
-                {userProfil.id === user.id && (
-                  <IconButton onClick={handleOpenProfileDialog}>
-                    <SettingsIcon
+
+                {userProfil.id === user.id && smatsFinish?.length > 0 && (
+                  <IconButton
+                    onClick={toggleMessagePrivateFinish}
+                    title="Cliquez ici pour ouvrir votre liste d'amis"
+                  >
+                    <PlaylistAddCheckCircleIcon
                       style={{ color: "var(--secondary-color-special)" }}
                     />
                   </IconButton>

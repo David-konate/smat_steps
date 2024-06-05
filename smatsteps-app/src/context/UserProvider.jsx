@@ -9,7 +9,6 @@ const UserContext = createContext({});
 // Création du fournisseur de contexte utilisateur
 export const UserProvider = ({ children }) => {
   // Déclaration des différents états de l'utilisateur et de ses interactions
-
   const [friendPending, setFriendPending] = useState(null); // Les demandes d'amis en attente
   const [friendSent, setFriendSent] = useState(null); // Les demandes d'amis envoyées
   const [friends, setFriends] = useState(null); // Les amis de l'utilisateur
@@ -34,11 +33,8 @@ export const UserProvider = ({ children }) => {
       // Mise à jour des états de l'utilisateur avec les données récupérées depuis le backend
       setUser(res.data.user);
       setFriendPending(res.data.friendPending);
-
       setFriendSent(res.data.friendSent);
       setFriends(res.data.friends);
-      setNewSmats(res.data.newSmats);
-      setOpenSmats(res.data.openSmats);
     } catch (error) {
       console.log(error); // Gestion des erreurs potentielles
     }

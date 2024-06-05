@@ -41,6 +41,7 @@ const Gameprivate = () => {
   const [itIsTurn, setItIsTurn] = useState(true);
   const [intervalId, setIntervalId] = useState(null);
   const navigate = useNavigate();
+  const [answered, setAnswered] = useState(false);
 
   // État local pour gérer l'ouverture du dialogue
   const [openDialog, setOpenDialog] = useState(false);
@@ -107,13 +108,17 @@ const Gameprivate = () => {
     setTimeRemaining(timeRemaining);
     setCurrentAnswerSmat(answer);
 
+    // Mettre à jour l'état pour indiquer que l'utilisateur a répondu
+    setAnswered(true);
+
     await saveResultCurrentQuestionSmat(smat, answer);
 
     setOpenDialog(true);
   };
 
   // Fonction pour fermer le dialogue
-  const handleClose = () => {
+  const handleClose = async () => {
+    await axios.put(``);
     navigate("/");
   };
 
@@ -152,13 +157,14 @@ const Gameprivate = () => {
     };
   };
 
+  console.log(smatUsers);
   return isBusy ? (
     <Box sx={{ display: "flex" }}>
       <CircularProgress />
     </Box>
   ) : (
     <Container>
-      {smatUsers.current_question === 10 ? (
+      {smatUsers.current_question >= 10 ? (
         <Box mt={5}>
           <Card
             className="card-finish-private"
@@ -205,7 +211,7 @@ const Gameprivate = () => {
               )}
               <Stack mt={3} direction="row" justifyContent="space-between">
                 <Typography className="text-bar-question">
-                  {smatUsers.current_question + 1} /9
+                  {smatUsers.current_question + 1} / 10
                 </Typography>
                 <Box sx={{ width: "60%" }}></Box>
                 <Typography
@@ -294,7 +300,7 @@ const Gameprivate = () => {
                           alignItems: "center",
                           ...getCardStyle(index),
                         }}
-                        onClick={() => handleCardClick(answer)}
+                        onClick={() => !answered && handleCardClick(answer)} // Conditionnez l'appel à handleCardClick
                       >
                         <CardContent>
                           <Typography className="answer-text">
