@@ -59,11 +59,10 @@ class SecurityController extends Controller
     public function register(Request $request)
     {
         try {
-            $validation = Validator::make(request()->all(), [
-                'user_pseudo' => 'required|min:1|string|unique:users,user_pseudo,',
-                'email' => 'required|min:1|string|unique:users,email,',
+            $validation = Validator::make($request->all(), [
+                'user_pseudo' => 'required|min:1|string|unique:users,user_pseudo',
+                'email' => 'required|min:1|string|unique:users,email',
                 'password' => 'required|string|min:8',
-
             ]);
 
             if ($validation->fails()) {
@@ -71,24 +70,23 @@ class SecurityController extends Controller
                     'status' => 'error',
                     'message' => 'Validation error',
                     'errors' => $validation->errors(),
-                ], 401);
+                ], 422); // Utilisation du statut HTTP 422 pour les erreurs de validation
             }
 
             // Si la validation réussit, vous pouvez créer l'utilisateur
-            $user = User::create(array_merge(
-                $validation->validated(),
-                [
-                    'password' => Hash::make($request->password),
-                    'is_admin' => 0,
-                ]
-            ));
+            $user = User::create([
+                'user_pseudo' => $request->user_pseudo,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'is_admin' => 0,
+            ]);
+
             $this->emailVerificationService->sendVerificationLink($user);
 
             return response()->json([
                 'status' => 'success',
-                'message' => 'Merci pour votre inscription, véri!fier vos mails pour confirmer votre inscription',
+                'message' => 'Merci pour votre inscription, vérifiez vos mails pour confirmer votre inscription',
                 'user' => $user,
-
             ], 200);
         } catch (\Throwable $e) {
             return response()->json([
@@ -97,6 +95,7 @@ class SecurityController extends Controller
             ], 403);
         }
     }
+
 
     public function logout(Request $request)
     {
