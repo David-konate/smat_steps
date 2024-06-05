@@ -51,7 +51,7 @@ const RegisterFormComponent = () => {
 
       reset();
     } catch (error) {
-      setDialogTitle("Erreur ll");
+      setDialogTitle("Erreur");
 
       let errorMessage = "Une erreur s'est produite";
 
