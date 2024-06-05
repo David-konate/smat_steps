@@ -35,7 +35,7 @@ const CompletionMessageSmat = ({
     resetSmat,
   } = useGameContext();
   const navigate = useNavigate();
-  const { authentification } = useUserContext();
+  const { authentification, user } = useUserContext();
   const [showCorrection, setShowCorrection] = useState(false);
   const toggleCorrection = () => {
     setShowCorrection(!showCorrection);
@@ -43,7 +43,7 @@ const CompletionMessageSmat = ({
 
   const onClick = () => {
     authentification();
-    navigate(`/`);
+    navigate(`/profil/${user.slug}?toggleMessage=true`);
     resetSmat();
   };
 

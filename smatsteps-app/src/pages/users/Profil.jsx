@@ -46,10 +46,16 @@ const Profil = () => {
   } = useGameContext();
   const location = useLocation();
   const pathname = location.pathname;
+
   // Diviser le pathname en segments en utilisant '/'
   const segments = pathname.split("/");
-  const slug = segments.pop();
-  // Récupérer le dernier segment === slug
+  let slug = segments.pop();
+
+  // Vérifier si le slug contient un '?', si oui, ne prendre que la partie avant le '?'
+  if (slug.includes("?")) {
+    slug = slug.split("?")[0];
+  }
+  console.log(slug);
   const [userProfil, setuserProfil] = useState();
   const [userRankings, setUserRankings] = useState();
   const [smatsFinish, setSmatsFinish] = useState();
@@ -114,6 +120,13 @@ const Profil = () => {
       setIsBusy(false);
     }
   };
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    if (queryParams.get("toggleMessage") === "true") {
+      toggleMessagePrivateParty();
+    }
+  }, [location.search]);
 
   const handleCloseEdit = () => {
     setIsEditOpen(false);

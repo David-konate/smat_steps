@@ -33,6 +33,7 @@ const SousTheme = () => {
     setTopUserRanking,
     sousTheme,
     setSousTheme,
+    setCurrentTheme,
     setCurrentSousTheme,
   } = useGameContext();
   const shadowColors = [
@@ -55,6 +56,8 @@ const SousTheme = () => {
       });
 
       setSousTheme(res.data.sousTheme);
+      setCurrentTheme(res.data.sousTheme.theme);
+      console.log(res.data.sousTheme);
       setCurrentSousTheme(res.data.sousTheme);
       setTopUserRanking(res.data.topRankings);
     } catch (error) {
@@ -196,6 +199,7 @@ const SousTheme = () => {
         <MessageDualPart
           open={isCardNewDualOpen}
           onClose={() => setIsCardNewDualOpen(false)}
+          theme={sousTheme.theme_id}
         />
       )}
     </Container>
