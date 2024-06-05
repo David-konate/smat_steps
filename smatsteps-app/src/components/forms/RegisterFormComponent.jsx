@@ -51,12 +51,19 @@ const RegisterFormComponent = () => {
 
       reset();
     } catch (error) {
-      setDialogTitle("Erreur");
-      setDialogMessage(
-        error.response?.data?.message || "Une erreur s'est produite"
-      );
+      setDialogTitle("Erreur ll");
+
+      let errorMessage = "Une erreur s'est produite";
+
+      if (error.response && error.response.data && error.response.data.errors) {
+        const errors = error.response.data.errors;
+
+        // Concaténer toutes les erreurs en un seul message
+        errorMessage = Object.values(errors).join(", ");
+      }
+
+      setDialogMessage(errorMessage);
       setOpenDialog(true);
-      console.log(error);
     }
   };
 

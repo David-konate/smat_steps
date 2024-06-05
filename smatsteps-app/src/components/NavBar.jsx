@@ -27,7 +27,6 @@ import { useUserContext } from "../context/UserProvider";
 import MessageSendFriend from "./message/MessageSendFriend";
 import MessageDialog from "./message/MessageDialog";
 import { useGameContext } from "../context/GameProvider";
-import { margin, width } from "@mui/system";
 
 function NavBar() {
   const navigate = useNavigate();
